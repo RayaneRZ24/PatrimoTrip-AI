@@ -1,7 +1,8 @@
 ﻿param(
     [string]$BaseUrl = "http://127.0.0.1:8080",
     [string]$RunLabel = "Qwen3.5-2B-Q4_K_M-ngl20-ctx4096",
-    [ValidateRange(10, 3600)][int]$TimeoutSeconds = 300
+    [ValidateRange(10, 3600)][int]$TimeoutSeconds = 300,
+    [switch]$StructuredOutput
 )
 
 $ErrorActionPreference = "Stop"
@@ -44,6 +45,20 @@ Reponds uniquement avec un objet JSON, sans Markdown, avec exactement ces cles :
 {"site_id":"identifiant ou unknown","status":"identified ou uncertain ou out_of_scope","observations":["observation visible"],"hypothesis":"hypothese breve"}
 "@
 
+# Enforce the original four fields and three-observation limit at decoding.
+# The b11889 API expects schema inside response_format.json_schema.schema.
+$responseSchema = [ordered]@{
+    type = "object"
+    properties = [ordered]@{
+        site_id = @{ type = "string"; enum = @($manifest.allowed_sites.site_id) + @("unknown") }
+        status = @{ type = "string"; enum = @("identified", "uncertain", "out_of_scope") }
+        observations = @{ type = "array"; items = @{ type = "string" }; minItems = 1; maxItems = 3 }
+        hypothesis = @{ type = "string" }
+    }
+    required = @("site_id", "status", "observations", "hypothesis")
+    additionalProperties = $false
+}
+
 $runId = (Get-Date -Format "yyyyMMdd-HHmmss") + "-" + ([Guid]::NewGuid().ToString("N").Substring(0,6))
 $output = Join-Path (Join-Path $PSScriptRoot "results") $runId
 New-Item -ItemType Directory -Path $output -Force | Out-Null
@@ -52,6 +67,9 @@ $configuration = [ordered]@{
     utc_started = [DateTime]::UtcNow.ToString("o"); powershell = $PSVersionTable.PSVersion.ToString()
     case_manifest_sha256 = (Get-FileHash (Join-Path $PSScriptRoot "cases.json") -Algorithm SHA256).Hash
     temperature = 0; seed = 42; max_tokens = 256; cache_prompt = $false
+    structured_output = [bool]$StructuredOutput
+    response_schema = $(if ($StructuredOutput) { $responseSchema } else { $null })
+    script_sha256 = (Get-FileHash $PSCommandPath -Algorithm SHA256).Hash
     note = "Reference-image smoke test; not an independent evaluation. Server flags are not inferred from RunLabel."
 }
 [IO.File]::WriteAllText((Join-Path $output "configuration.json"), ($configuration | ConvertTo-Json -Depth 10), $utf8)
@@ -77,7 +95,7 @@ try {
 foreach ($case in $manifest.cases) {
     Write-Host "Testing $($case.case_id) ..."
     $bytes = [IO.File]::ReadAllBytes((Join-Path $PSScriptRoot $case.image))
-    $body = @{
+    $request = @{
         model = $modelName
         messages = @(@{ role = "user"; content = @(
             @{ type = "text"; text = $prompt },
@@ -85,7 +103,14 @@ foreach ($case in $manifest.cases) {
         ) })
         temperature = 0; seed = 42; max_tokens = 256; stream = $false; cache_prompt = $false
         chat_template_kwargs = @{ enable_thinking = $false }
-    } | ConvertTo-Json -Depth 12 -Compress
+    }
+    if ($StructuredOutput) {
+        $request.response_format = @{
+            type = "json_schema"
+            json_schema = @{ name = "patrimotrip_vision"; strict = $true; schema = $responseSchema }
+        }
+    }
+    $body = $request | ConvertTo-Json -Depth 16 -Compress
     $reply = $null; $text = ""; $parsed = $null; $requestError = $null; $formatError = $null
     $watch = [Diagnostics.Stopwatch]::StartNew()
     try {
@@ -97,10 +122,11 @@ foreach ($case in $manifest.cases) {
     } finally {
         $watch.Stop()
     }
-    $valid = $false
+    $valid = $false; $jsonParseValid = $false
     if (-not $requestError) {
         try {
             $parsed = $text | ConvertFrom-Json -ErrorAction Stop
+            $jsonParseValid = $null -ne $parsed
             $keys = @($parsed.PSObject.Properties.Name)
             $required = @("site_id", "status", "observations", "hypothesis")
             $sameKeys = $keys.Count -eq 4 -and @($required | Where-Object { $_ -notin $keys }).Count -eq 0
@@ -125,10 +151,18 @@ foreach ($case in $manifest.cases) {
         $identityCorrect = $predicted -eq $case.expected_site_id
         $statusCorrect = $status -eq $case.expected_status
     }
+    # Inspect labels separately from schema validity, without repairing JSON.
+    $labelFieldsCorrect = $null; $rawSiteId = $null; $rawStatus = $null
+    if ($jsonParseValid -and $parsed.site_id -is [string] -and $parsed.status -is [string]) {
+        $rawSiteId = $parsed.site_id; $rawStatus = $parsed.status
+        $labelFieldsCorrect = $rawSiteId -eq $case.expected_site_id -and $rawStatus -eq $case.expected_status
+    }
     $record = [ordered]@{
         case_id = $case.case_id; category = $case.category; expected_site_id = $case.expected_site_id
         expected_status = $case.expected_status; seconds = [math]::Round($watch.Elapsed.TotalSeconds, 3)
         response_received = [bool]($null -ne $reply); strict_json_valid = [bool]$valid
+        json_parse_valid = [bool]$jsonParseValid; raw_site_id = $rawSiteId; raw_status = $rawStatus
+        label_fields_correct_when_parseable = $labelFieldsCorrect
         predicted_site_id = $predicted; predicted_status = $status
         identity_correct = $identityCorrect; status_correct = $statusCorrect
         request_error = $requestError; format_error = $formatError; response_text = $text
@@ -141,6 +175,9 @@ foreach ($case in $manifest.cases) {
     $rows.Add([pscustomobject]@{
         case_id = $case.case_id; category = $case.category; expected_site_id = $case.expected_site_id
         predicted_site_id = $predicted; status = $status; response_received = [bool]($null -ne $reply)
+        json_parse_valid = [bool]$jsonParseValid; raw_site_id = $rawSiteId; raw_status = $rawStatus
+        label_fields_correct_when_parseable = $labelFieldsCorrect
+        finish_reason = $record.finish_reason
         strict_json_valid = [bool]$valid; identity_correct = $identityCorrect; status_correct = $statusCorrect
         seconds = $record.seconds; observations = $(if ($valid) { $parsed.observations -join " | " } else { "" })
         hypothesis = $(if ($valid) { $parsed.hypothesis } else { "" })
@@ -158,13 +195,17 @@ $summary = [ordered]@{
     cases_planned = @($manifest.cases).Count; cases_attempted = $rows.Count
     responses_received = @($rows | Where-Object { $_.response_received }).Count
     valid_json = @($rows | Where-Object { $_.strict_json_valid }).Count
+    well_formed_json = @($rows | Where-Object { $_.json_parse_valid }).Count
+    schema_only_failures = @($rows | Where-Object { $_.json_parse_valid -and -not $_.strict_json_valid }).Count
+    truncated_responses = @($rows | Where-Object { $_.finish_reason -eq "length" }).Count
+    standard_views_labels_correct_when_parseable = @($rows | Where-Object { $_.category -eq "standard_view" -and $_.label_fields_correct_when_parseable -eq $true }).Count
     standard_views_exact = @($rows | Where-Object { $_.category -eq "standard_view" -and $_.identity_correct -eq $true -and $_.status_correct -eq $true }).Count
     standard_views_total = @($rows | Where-Object { $_.category -eq "standard_view" }).Count
     distant_views_exact = @($rows | Where-Object { $_.category -eq "distant_view" -and $_.identity_correct -eq $true -and $_.status_correct -eq $true }).Count
     distant_views_total = @($rows | Where-Object { $_.category -eq "distant_view" }).Count
     out_of_scope_correct = @($rows | Where-Object { $_.category -eq "out_of_scope" -and $_.identity_correct -eq $true -and $_.status_correct -eq $true }).Count
     out_of_scope_total = @($rows | Where-Object { $_.category -eq "out_of_scope" }).Count
-    note = "Invalid JSON and request failures are not counted as correct. Review distant-view abstentions and all descriptions manually. Small reference sample, not general model accuracy."
+    note = "Exact scores require valid schema. Label-only counts require well-formed JSON but can include schema failures. No repair of truncated replies. Review distant views and descriptions manually. Small reference sample, not general model accuracy."
 }
 [IO.File]::WriteAllText((Join-Path $output "summary.json"), ($summary | ConvertTo-Json -Depth 10), $utf8)
 $rows | Format-Table case_id, predicted_site_id, status, strict_json_valid, identity_correct, seconds -AutoSize

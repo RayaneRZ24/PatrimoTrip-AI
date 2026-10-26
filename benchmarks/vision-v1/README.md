@@ -75,3 +75,20 @@ Ces vérifications valident la collecte et le comptage, pas la performance ou la
 ## Provenance et licences
 
 Chaque image possède sa page source, son auteur, sa licence et son empreinte dans `cases.json`. Voir également `ATTRIBUTIONS.md`. Les miniatures Commons sont conservées telles que téléchargées ; les conditions varient par fichier. La provenance publique ne remplace pas la vérification des droits applicables.
+
+
+## Lanceur 1.1 : sortie contrainte et compteurs séparés
+
+Le script source courant ajoute un mode optionnel `-StructuredOutput`. L'archive initiale `vision-v1.zip` reste inchangée pour conserver la première expérience. Télécharger le script source courant séparément permet de conserver l'ancien lanceur et les résultats existants.
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy RemoteSigned -File .\Run-VisionTest.ps1 -StructuredOutput -RunLabel "2B-Q4-structured-same-server"
+```
+
+Le mode structuré transmet un schéma au serveur (`response_format.json_schema.schema`) pour contraindre les types, les quatre clés, les identifiants possibles et la limite de trois observations. Ce format de requête a été vérifié dans le code de llama.cpp b11889. Aucun autre paramètre d'inférence ni image ni prompt n'est changé. L'absence du switch conserve la demande libre de la première version.
+
+Les résultats ajoutent `well_formed_json`, `schema_only_failures`, `truncated_responses` et le nombre d'identités/statuts corrects lorsque le JSON est syntaxiquement exploitable. Ces compteurs sont distincts des réussites strictes : les erreurs de schéma ne sont pas transformées rétroactivement en réussites.
+
+Le schéma améliore le contrôle de la structure, pas la véracité des descriptions. Une mauvaise identité parmi les identifiants autorisés reste possible ; la cohérence entre identité et statut reste contrôlée après génération. La limite de 256 tokens demeure : une réponse encore tronquée est conservée comme erreur, sans correction silencieuse.
+
+Le nouveau mode a été vérifié avec le faux serveur local pour contrôler les paramètres transmis et le comptage. Son effet sur les sorties du modèle doit être mesuré sur le PC. Les logs personnels de l'utilisateur ne sont pas publiés dans le dépôt.
