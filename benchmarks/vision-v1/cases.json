@@ -1,0 +1,258 @@
+{
+  "version": "vision-v1",
+  "fixture_status": "reference_smoke_test_not_independent_evaluation",
+  "allowed_sites": [
+    {
+      "site_id": "Q243",
+      "name": "tour Eiffel"
+    },
+    {
+      "site_id": "Q1075988",
+      "name": "palais du Louvre"
+    },
+    {
+      "site_id": "Q2981",
+      "name": "cathédrale Notre-Dame de Paris"
+    },
+    {
+      "site_id": "Q64436",
+      "name": "arc de triomphe de l'Étoile"
+    },
+    {
+      "site_id": "Q188856",
+      "name": "Panthéon"
+    },
+    {
+      "site_id": "Q28785",
+      "name": "basilique du Sacré-Cœur de Montmartre"
+    },
+    {
+      "site_id": "Q187840",
+      "name": "palais Garnier"
+    },
+    {
+      "site_id": "Q193193",
+      "name": "Sainte-Chapelle"
+    },
+    {
+      "site_id": "Q188977",
+      "name": "hôtel des Invalides"
+    },
+    {
+      "site_id": "Q189503",
+      "name": "place de la Concorde"
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "paris-Q243",
+      "image": "images/Q243.jpg",
+      "sha256": "848139c75c8eb5d021837af2f856a51e8e0055e3f0c388d6fae26b49cfac339f",
+      "category": "standard_view",
+      "expected_site_id": "Q243",
+      "expected_status": "identified",
+      "review_features": [
+        "structure métallique ajourée",
+        "quatre pieds et grande arche à la base"
+      ],
+      "note": "Image de référence déjà disponible, pas un test indépendant.",
+      "license": "Public domain",
+      "author": "Benh LIEU SONG",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Tour_Eiffel_Wikimedia_Commons.jpg",
+      "license_url": null
+    },
+    {
+      "case_id": "paris-Q1075988",
+      "image": "images/Q1075988.jpg",
+      "sha256": "be8e75e32fa051c99c3a5cbac99a1f2a60a54316bd242ddb9e4f384d0d58ad3d",
+      "category": "standard_view",
+      "expected_site_id": "Q1075988",
+      "expected_status": "identified",
+      "review_features": [
+        "pavillon en pierre",
+        "toiture et sculptures",
+        "vue partielle du palais"
+      ],
+      "note": "Image de référence déjà disponible, pas un test indépendant.",
+      "license": "CC0",
+      "author": "Ali Sabbagh",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Pavillon_de_Flore,_Louvre_Museum,_Paris_5_November_2019.jpg",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    },
+    {
+      "case_id": "paris-Q2981",
+      "image": "images/Q2981.jpg",
+      "sha256": "584c0bc87a1b68e16cdf87a84e8d293c229b7345fd648cd69168964894109418",
+      "category": "standard_view",
+      "expected_site_id": "Q2981",
+      "expected_status": "identified",
+      "review_features": [
+        "deux tours",
+        "trois portails",
+        "rosace centrale",
+        "galerie de statues au-dessus des portails"
+      ],
+      "note": "Image de référence déjà disponible, pas un test indépendant.",
+      "license": "CC BY-SA 3.0",
+      "author": "P e z i",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Notre-Dame_de_Paris_2013-07-24.jpg",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0"
+    },
+    {
+      "case_id": "paris-Q64436",
+      "image": "images/Q64436.jpg",
+      "sha256": "5d737dedd7faae0ef5fc0b1b425ac1034110baacd3b538d43b139ad5eb08e5da",
+      "category": "standard_view",
+      "expected_site_id": "Q64436",
+      "expected_status": "identified",
+      "review_features": [
+        "grande arche centrale",
+        "sculptures sur les piliers"
+      ],
+      "note": "Image de référence déjà disponible, pas un test indépendant.",
+      "license": "CC BY-SA 4.0",
+      "author": "ZeusUpsistos",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Arc_de_Triomphe_-_Ao%C3%BBt_2026.jpg",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+      "case_id": "paris-Q188856",
+      "image": "images/Q188856.jpg",
+      "sha256": "8b048fc04160a1f3459a7d2de5517cf1fef2089f49f22438119b8882c1e3bc66",
+      "category": "standard_view",
+      "expected_site_id": "Q188856",
+      "expected_status": "identified",
+      "review_features": [
+        "portique à colonnes",
+        "fronton triangulaire",
+        "coupole visible"
+      ],
+      "note": "Image de référence déjà disponible, pas un test indépendant.",
+      "license": "CC BY-SA 3.0",
+      "author": "Camille Gévaudan",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Panth%C3%A9on,_Paris_25_March_2012.jpg",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0"
+    },
+    {
+      "case_id": "paris-Q28785",
+      "image": "images/Q28785.jpg",
+      "sha256": "0f35a76f1f564bd2889127af0093513e5af41b9c113d2ececb1ce8954d267bfe",
+      "category": "standard_view",
+      "expected_site_id": "Q28785",
+      "expected_status": "identified",
+      "review_features": [
+        "coupoles",
+        "façade claire",
+        "escaliers"
+      ],
+      "note": "Image de référence déjà disponible, pas un test indépendant.",
+      "license": "CC BY-SA 3.0",
+      "author": "Tonchino",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Le_sacre_coeur.jpg",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0"
+    },
+    {
+      "case_id": "paris-Q187840",
+      "image": "images/Q187840.jpg",
+      "sha256": "0b629c5c3bb7889f6e2befe57454a26e0e2eeb850307ebfc7965451566b4127b",
+      "category": "standard_view",
+      "expected_site_id": "Q187840",
+      "expected_status": "identified",
+      "review_features": [
+        "colonnes en façade",
+        "coupole verte",
+        "sculptures dorées"
+      ],
+      "note": "Image de référence déjà disponible, pas un test indépendant.",
+      "license": "CC BY 2.0",
+      "author": "Peter Rivera",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Paris_Opera_full_frontal_architecture,_May_2009.jpg",
+      "license_url": "https://creativecommons.org/licenses/by/2.0"
+    },
+    {
+      "case_id": "paris-Q193193",
+      "image": "images/Q193193.jpg",
+      "sha256": "38a58cbd7277d73b182931ce28dce35664372c147eec08af98e7ab38dba15167",
+      "category": "standard_view",
+      "expected_site_id": "Q193193",
+      "expected_status": "identified",
+      "review_features": [
+        "rosace",
+        "arcs brisés",
+        "façade verticale étroite"
+      ],
+      "note": "Image de référence déjà disponible, pas un test indépendant.",
+      "license": "CC BY 2.5",
+      "author": "Mathae",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Szensapel.jpg",
+      "license_url": "https://creativecommons.org/licenses/by/2.5"
+    },
+    {
+      "case_id": "paris-Q188977",
+      "image": "images/Q188977.jpg",
+      "sha256": "9c0010c0ca92cbaa9034a34590ba929e1a9c972142987758dee38d99a3013b93",
+      "category": "distant_view",
+      "expected_site_id": "Q188977",
+      "expected_status": "identified",
+      "review_features": [
+        "vue aérienne",
+        "dôme doré",
+        "ensemble de bâtiments et cours"
+      ],
+      "note": "Image de référence déjà disponible, pas un test indépendant.",
+      "license": "CC BY-SA 4.0",
+      "author": "Another one of my pictures: This photograph was taken by Medium69 (William Crochot) and released under the license stated below. You are free to use it for any purpose as long as you credit the author (William Crochot), the Source (Wikimedia Commons) and the license (CC-BY-SA 4.0) in close relation to the image. Please do not upload an updated image here without consultation with the Author. The author would like to make corrections only at his own source RAW. This ensures that the changes are preserved.Please if you think that any changes should be required, please inform the author.Otherwise you can upload a new image with a new name. Please use one of the templates derivative or extract.",
+      "source_page": "https://commons.wikimedia.org/wiki/File:H%C3%B4tel_des_Invalides_-_20150801_16h09_(10630).jpg",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+      "case_id": "paris-Q189503",
+      "image": "images/Q189503.jpg",
+      "sha256": "7f5170abde9a0871b3a96b6374048cd8848a6020a5eab330ede31d9edb54d7e4",
+      "category": "distant_view",
+      "expected_site_id": "Q189503",
+      "expected_status": "identified",
+      "review_features": [
+        "vue éloignée",
+        "obélisque",
+        "grande place",
+        "Seine au premier plan"
+      ],
+      "note": "Image de référence déjà disponible, pas un test indépendant.",
+      "license": "CC BY 2.0",
+      "author": "Cristian Bortes from Cluj-Napoca, Romania",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Place_de_la_Concorde_from_the_Eiffel_Tower,_Paris_April_2011.jpg",
+      "license_url": "https://creativecommons.org/licenses/by/2.0"
+    },
+    {
+      "case_id": "outside-Q62378",
+      "image": "images/Q62378.jpg",
+      "sha256": "f7c37182564d066110db204bdabe71c14eb2b01b86cb6f2d0263ee5a350c0d7f",
+      "category": "out_of_scope",
+      "expected_site_id": "unknown",
+      "expected_status": "out_of_scope",
+      "review_features": [],
+      "actual_identity": "tour de Londres",
+      "note": "Hors du périmètre des dix sites parisiens ; reconnaître le nom réel reste permis, le mapper à un site parisien est une erreur.",
+      "license": "CC BY-SA 3.0",
+      "author": "<a href=\"//commons.wikimedia.org/wiki/User:Bob_Collow%C3%A2n\" title=\"User:Bob Collowân\">Bob Collowan</a>",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Tower_of_London_viewed_from_the_River_Thames.jpg",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0"
+    },
+    {
+      "case_id": "outside-Q83125",
+      "image": "images/Q83125.jpg",
+      "sha256": "00024d1a1c16fcc6be8f72be143b7de4d687670956957766c59e1c01750a8e69",
+      "category": "out_of_scope",
+      "expected_site_id": "unknown",
+      "expected_status": "out_of_scope",
+      "review_features": [],
+      "actual_identity": "Tower Bridge",
+      "note": "Hors du périmètre des dix sites parisiens ; reconnaître le nom réel reste permis, le mapper à un site parisien est une erreur.",
+      "license": "CC BY-SA 3.0",
+      "author": "<a href=\"//commons.wikimedia.org/wiki/User:Barcex\" title=\"User:Barcex\">Barcex</a>",
+      "source_page": "https://commons.wikimedia.org/wiki/File:London_-_London_Tower_Bridge_-_140806_171049.jpg",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0"
+    }
+  ]
+}
