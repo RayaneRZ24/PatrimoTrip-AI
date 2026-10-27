@@ -129,13 +129,16 @@ class Corpus:
         with (self.corpus / "documents.jsonl").open(encoding="utf-8") as stream:
             self.sources = {d["document_id"]: d["source"] for d in map(json.loads, stream)}
 
-    def bm25(self, question, limit=50):
+    def bm25(self, question, limit=50, site_id=None):
         words = rag.keywords(question)
         if not words:
             return []
         query = " OR ".join('"'+word+'"' for word in words)
         with rag.connect(self.database) as db:
-            rows = db.execute("SELECT passage_id FROM search WHERE search MATCH ? ORDER BY bm25(search,1,3,4,0), passage_id LIMIT ?", (query, limit)).fetchall()
+            scope = " AND passage_id IN (SELECT passage_id FROM passages WHERE site_id=?)" if site_id else ""
+            parameters = (query, site_id, limit) if site_id else (query, limit)
+            rows = db.execute("SELECT passage_id FROM search WHERE search MATCH ?" + scope +
+                              " ORDER BY bm25(search,1,3,4,0), passage_id LIMIT ?", parameters).fetchall()
         return [row[0] for row in rows]
 
     def routed(self, question, limit=10):

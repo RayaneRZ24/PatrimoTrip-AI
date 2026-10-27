@@ -2,6 +2,44 @@
 
 Un lancement prépare les embeddings, compare la recherche lexicale et dense, teste la fusion et le reranking, puis archive les résultats dans **un seul `report.zip`**. Python standard et SQLite FTS5 suffisent : aucun paquet pip, PyTorch ni service de base de données n'est ajouté.
 
+## Photo → monument proposé → explication sourcée
+
+Le lanceur `photo_local.py` relie désormais la vision, les embeddings et la génération textuelle. Pour sélectionner une photo avec la boîte de dialogue Windows :
+
+```powershell
+py .\photo_local.py --pick --take-over-test-server
+```
+
+Vous pouvez aussi indiquer un chemin et une question :
+
+```powershell
+py .\photo_local.py "C:\Photos\monument.jpg" --question "Quelle était sa fonction d'origine ?" --take-over-test-server
+```
+
+Ce premier profil accepte JPEG/PNG, au maximum 8 Mio et 4 millions de pixels. Il ne redimensionne pas les originaux et ne traite pas les HEIC. Les dimensions sont contrôlées avant de remplacer un serveur ; le décodage complet de l'image reste assuré par llama.cpp. Une erreur de fichier ou d'inférence est archivée.
+
+Le lanceur charge la vision pour obtenir une proposition JSON, la décharge, charge les embeddings si la question ou des passages du site ne sont pas encore en cache, puis charge le **profil texte sans projecteur** pour rédiger l'explication. Un seul modèle lourd est conservé à la fois. Le cache et son namespace sont les mêmes que dans l'expérience hybride : les 840 passages déjà préparés n'ont pas à être réencodés. Les poids déjà vérifiés dans `models/model.json` sont réutilisés hors connexion ; s'ils manquent, la même acquisition publique vérifiée est proposée par le lanceur existant. La première exécution sur un dossier sans cache peut donc demander une préparation plus longue.
+
+L'identification est toujours présentée comme une **proposition visuelle non vérifiée**, sans score de confiance inventé. Les observations du modèle sont séparées de son hypothèse et ne sont pas transmises comme preuves à la génération documentaire. L'explication concerne le site proposé ; ses références historiques ne prouvent pas l'identité de la photo. Un modèle peut encore proposer le mauvais site avec assurance : une validation sur de nouvelles photos reste nécessaire.
+
+Si la sortie visuelle est incohérente, tronquée ou invalide, aucune explication n'est générée. Si le modèle indique `uncertain`, le programme demande un nom ou une meilleure vue ; s'il indique `out_of_scope`, il signale que l'image n'a pas été identifiée parmi les dix sites du corpus. Dans ces deux cas, aucune recherche ni génération historique n'a lieu et le modèle vision est arrêté. Le programme affiche les identifiants des sites pour permettre une correction explicite, sans sélectionner automatiquement le plus proche.
+
+Pour fournir vous-même une identité connue ou corriger une proposition :
+
+```powershell
+py .\photo_local.py --pick --confirm-site Q188856 --take-over-test-server
+```
+
+Cet exemple fournit explicitement « Panthéon » ; le programme ne le déduit pas de la photo et n'appelle pas la vision. L'origine utilisateur est conservée dans le résultat, sans prétendre à une vérification indépendante.
+
+La recherche hybride BM25 + dense + RRF est limitée **aux passages rattachés au site choisi**, avant le classement des candidats. Elle conserve quatre extraits au maximum et les contrôles de citations par affirmation existants. Le reranking génératif n'est pas ajouté à ce parcours : les essais précédents ne justifient pas son coût systématique. Les sources peuvent mentionner d'autres édifices dans leur contenu ; le filtre porte sur le rattachement documentaire, pas sur l'absence de toute comparaison.
+
+Les observations proposées, l'explication, les liens des références et le chemin du `report.zip` sont affichés dans la console. L'archive se trouve dans `results/photo-<date-identifiant>/` et contient notamment `vision.json`, `retrieval.json`, `answer.json` si ces étapes ont été atteintes, `result.json`, les journaux, les empreintes et les mesures RAM/GPU. La photo originale et la requête image en base64 ne sont pas copiées dans ces fichiers de résultat. Les métadonnées enregistrent le nom, les dimensions et l'empreinte du fichier. Aucun résultat n'est envoyé automatiquement.
+
+Après une réponse acceptée, le serveur texte reste prêt sur 8080. Après une abstention ou une erreur, les processus lancés sont arrêtés ; aucun redémarrage implicite du serveur précédent n'est garanti. La règle de reprise du serveur existant est la même que pour les autres lanceurs.
+
+Les tests du parcours utilisent des réponses et processus simulés : ils couvrent l'isolation des sources, les interruptions, les images incompatibles, la réutilisation du cache, les deux origines d'identité et les réponses rejetées. La chaîne complète sur une nouvelle photo doit encore être exécutée sur le PC Windows ; aucune nouvelle précision de reconnaissance n'est annoncée.
+
 ## Comparer les profils texte et vision
 
 Cette comparaison ne télécharge rien et n'utilise pas le modèle d'embeddings. Elle réutilise les fichiers 4B existants et fixe les mêmes extraits documentaires avant d'exécuter les deux profils :
@@ -14,7 +52,7 @@ Le profil `vision_baseline` charge le projecteur comme lors de l'expérience pr�
 
 Le résultat est dans `results/profiles-<date-identifiant>/report.zip`. L'archive contient les deux séries de réponses et leurs contextes, les minimums de RAM disponible, la médiane de RAM disponible, les pics GPU et les temps de réponse, ainsi que les journaux bruts. La conformité des citations et les statuts attendus sont contrôlés ; la qualité factuelle doit encore être comparée en lisant les réponses. Les mesures sont globales, à une seconde et sur un seul passage vision puis texte ; les autres applications et l'ordre de passage peuvent influer. Aucun gain mémoire n'est présumé.
 
-Les règles de remplacement du serveur sont celles décrites ci-dessous. À la fin, le serveur **texte** reste prêt sur 8080. Il faut recharger le profil vision pour accepter des photos ; le basculement automatique par type de message n'est pas encore implémenté. Si une étape échoue, le rapport et les résultats déjà obtenus sont conservés, et les processus lancés sont arrêtés.
+Les règles de remplacement du serveur sont celles décrites ci-dessous. À la fin, le serveur **texte** reste prêt sur 8080. Le lanceur `photo_local.py` gère le rechargement successif des profils pour les photos ; ce comparatif seul ne reçoit pas d'images. Si une étape échoue, le rapport et les résultats déjà obtenus sont conservés, et les processus lancés sont arrêtés.
 
 Pour utiliser explicitement le profil léger dans le lanceur hybride existant :
 
@@ -92,7 +130,7 @@ py .\run_local.py lexical
 py -m unittest discover -s . -p "test_*.py" -v
 ```
 
-Quatorze tests couvrent les annotations réelles, le format de l'API d'embeddings simulée, les vecteurs, l'isolation du cache, la fusion des rangs, le rejet d'un reranking invalide, la sélection des processus, les changements de modèle simulés et le flux complet avec modèles factices. Les tests des profils vérifient aussi les commandes sans projecteur, les contextes identiques, la collecte des ressources et la conservation du résultat initial si le démarrage suivant échoue. Les dix tests du RAG d'origine ont aussi été exécutés. La recherche lexicale sur le vrai corpus a été exécutée dans l'environnement de développement.
+Vingt-cinq tests couvrent les annotations réelles, le format de l'API d'embeddings simulée, les vecteurs, l'isolation du cache, la fusion des rangs, le rejet d'un reranking invalide, la sélection des processus, les changements de modèle simulés et le flux complet avec modèles factices. Les tests des profils vérifient aussi les commandes sans projecteur, les contextes identiques, la collecte des ressources et la conservation du résultat initial si le démarrage suivant échoue. Les dix tests du RAG d'origine ont aussi été exécutés. La recherche lexicale sur le vrai corpus a été exécutée dans l'environnement de développement.
 
 L'expérience hybride initiale a depuis été exécutée sur le PC Windows de l'utilisateur : 872 encodages, six rerankings et 18 réponses ont abouti. Le rapport a confirmé une RAM libre descendant à environ 278 Mio pendant la génération. Il reste privé et n'est pas intégré à ce paquet. Le nouveau comparatif **avec/sans projecteur** est vérifié avec des processus et réponses simulés ; son gain mémoire réel doit être mesuré sur ce PC. Aucun gain n'est annoncé avant cette mesure.
 

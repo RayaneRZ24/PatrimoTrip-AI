@@ -26,6 +26,12 @@ def query_id(question):
     return hashlib.sha256(hybrid.query_input(question).encode()).hexdigest()
 
 
+def embedding_cache_key(metadata, corpus):
+    return hashlib.sha256(json.dumps({"model_sha256": metadata["sha256"], "corpus": corpus.fingerprint,
+                                     "input_format": hybrid.FORMAT_VERSION, "task": hybrid.QUERY_TASK,
+                                     "dimensions": 1024, "pooling": "last"}, sort_keys=True).encode()).hexdigest()
+
+
 def cache_items(corpus, cases):
     for passage in corpus.passages.values():
         yield "document", passage["passage_id"], hybrid.document_input(passage, corpus.sources[passage["document_id"]])
@@ -185,9 +191,7 @@ def main():
         report["generation_model"] = {"name": args.generation_model.name, "sha256": rag.sha_file(args.generation_model),
                                       "projector_sha256": None if args.text_only else rag.sha_file(args.projector), "gpu_layers": 20, "ctx_size": 4096,
                                       "vision_offload": not args.text_only, "verification": "Files previously checked by user; local digests recorded, not re-downloaded."}
-        model_key = hashlib.sha256(json.dumps({"model_sha256": metadata["sha256"], "corpus": corpus.fingerprint,
-                                               "input_format": hybrid.FORMAT_VERSION, "task": hybrid.QUERY_TASK,
-                                               "dimensions": 1024, "pooling": "last"}, sort_keys=True).encode()).hexdigest()
+        model_key = embedding_cache_key(metadata, corpus)
         cache = hybrid.VectorCache(ROOT / "vectors.sqlite3", model_key)
         report.update({"embedding_cache_namespace": model_key, "embedding_input_format": hybrid.FORMAT_VERSION,
                        "query_instruction": hybrid.QUERY_TASK})
