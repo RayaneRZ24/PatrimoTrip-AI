@@ -264,13 +264,13 @@ def render_claims(draft, evidence):
                             "citations": references}, evidence)
 
 
-def ask(database, question, client):
+def ask(database, question, client, retrieval_fn=None, retrieval_name=None):
     if not question.strip() or len(question) > 1000:
         raise ValueError("La question doit contenir entre 1 et 1000 caractères.")
     started = time.perf_counter()
-    evidence = retrieve(database, question)
+    evidence = (retrieval_fn or retrieve)(database, question)
     retrieval_seconds = time.perf_counter() - started
-    result = {"question": question, "retrieval": "sqlite_fts5_bm25_with_named_site_introduction", "evidence": evidence,
+    result = {"question": question, "retrieval": retrieval_name or "sqlite_fts5_bm25_with_named_site_introduction", "evidence": evidence,
               "retrieval_seconds": retrieval_seconds, "semantic_support_review": "pending",
               "generation_format": "claims_v1"}
     if not evidence:

@@ -1,0 +1,592 @@
+{
+  "version": "development-v1",
+  "split": "development_not_held_out",
+  "corpus": "Paris v1, 840 passages",
+  "annotation_limit": "Anchor-passage labels are partial. Metrics measure known-evidence coverage, not exhaustive recall or overall answer accuracy. These cases must not be presented as an independent final test set.",
+  "generation_case_ids": [
+    "Q243-1",
+    "Q188856-2",
+    "Q187840-1",
+    "Q193193-2",
+    "Q188977-1",
+    "tarif-current"
+  ],
+  "cases": [
+    {
+      "case_id": "Q243-1",
+      "kind": "named",
+      "question": "Pourquoi la tour Eiffel a-t-elle été construite ?",
+      "expected_site_id": "Q243",
+      "evidence_groups": [
+        [
+          "wikipedia:Q243:240161358:40cc6e9caff43f0e:0-1389"
+        ]
+      ],
+      "annotated_quotes": [
+        {
+          "passage_id": "wikipedia:Q243:240161358:40cc6e9caff43f0e:0-1389",
+          "quote": "pour l'Exposition universelle de Paris de 1889"
+        }
+      ],
+      "annotation": "Known supporting passage, not an exhaustive relevance judgment."
+    },
+    {
+      "case_id": "Q243-2",
+      "kind": "paraphrase",
+      "question": "Quel édifice parisien en fer mesure 330 mètres avec ses antennes ?",
+      "expected_site_id": "Q243",
+      "evidence_groups": [
+        [
+          "wikipedia:Q243:240161358:40cc6e9caff43f0e:0-1389"
+        ]
+      ],
+      "annotated_quotes": [
+        {
+          "passage_id": "wikipedia:Q243:240161358:40cc6e9caff43f0e:0-1389",
+          "quote": "de 330 m de hauteur (avec antennes)"
+        }
+      ],
+      "annotation": "Known supporting passage, not an exhaustive relevance judgment."
+    },
+    {
+      "case_id": "Q243-3",
+      "kind": "paraphrase",
+      "question": "Quel symbole de la capitale fut construit en deux ans pour célébrer les cent ans de la Révolution française ?",
+      "expected_site_id": "Q243",
+      "evidence_groups": [
+        [
+          "wikipedia:Q243:240161358:40cc6e9caff43f0e:0-1389"
+        ]
+      ],
+      "annotated_quotes": [
+        {
+          "passage_id": "wikipedia:Q243:240161358:40cc6e9caff43f0e:0-1389",
+          "quote": "célébrant le centenaire de la Révolution française"
+        }
+      ],
+      "annotation": "Known supporting passage, not an exhaustive relevance judgment."
+    },
+    {
+      "case_id": "Q1075988-1",
+      "kind": "named",
+      "question": "Quelle était la fonction du palais du Louvre avant de devenir un lieu de musées ?",
+      "expected_site_id": "Q1075988",
+      "evidence_groups": [
+        [
+          "wikipedia:Q1075988:240140490:b74a86466b190eee:0-1398"
+        ]
+      ],
+      "annotated_quotes": [
+        {
+          "passage_id": "wikipedia:Q1075988:240140490:b74a86466b190eee:0-1398",
+          "quote": "ancien palais royal"
+        }
+      ],
+      "annotation": "Known supporting passage, not an exhaustive relevance judgment."
+    },
+    {
+      "case_id": "Q1075988-2",
+      "kind": "paraphrase",
+      "question": "Quel ancien palais abrite à la fois un musée des Arts décoratifs et une école consacrée aux arts ?",
+      "expected_site_id": "Q1075988",
+      "evidence_groups": [
+        [
+          "wikipedia:Q1075988:240140490:b74a86466b190eee:0-1398"
+        ]
+      ],
+      "annotated_quotes": [
+        {
+          "passage_id": "wikipedia:Q1075988:240140490:b74a86466b190eee:0-1398",
+          "quote": "le musée des Arts décoratifs et l'École du Louvre"
+        }
+      ],
+      "annotation": "Known supporting passage, not an exhaustive relevance judgment."
+    },
+    {
+      "case_id": "Q1075988-3",
+      "kind": "paraphrase",
+      "question": "Quel palais était au départ une forteresse accolée à l'enceinte de Philippe Auguste ?",
+      "expected_site_id": "Q1075988",
+      "evidence_groups": [
+        [
+          "wikipedia:Q1075988:240140490:b74a86466b190eee:0-1398"
+        ]
+      ],
+      "annotated_quotes": [
+        {
+          "passage_id": "wikipedia:Q1075988:240140490:b74a86466b190eee:0-1398",
+          "quote": "D'abord forteresse dominant la Seine"
+        }
+      ],
+      "annotation": "Known supporting passage, not an exhaustive relevance judgment."
+    },
+    {
+      "case_id": "Q2981-1",
+      "kind": "named",
+      "question": "Sur quelle île se trouve Notre-Dame de Paris ?",
+      "expected_site_id": "Q2981",
+      "evidence_groups": [
+        [
+          "wikipedia:Q2981:240334275:1d0527fcc44fd932:0-1391"
+        ]
+      ],
+      "annotated_quotes": [
+        {
+          "passage_id": "wikipedia:Q2981:240334275:1d0527fcc44fd932:0-1391",
+          "quote": "Située sur l'île de la Cité"
+        }
+      ],
+      "annotation": "Known supporting passage, not an exhaustive relevance judgment."
+    },
+    {
+      "case_id": "Q2981-2",
+      "kind": "paraphrase",
+      "question": "Quelle cathédrale parisienne a vu sa construction commencer en 1163 sous Maurice de Sully ?",
+      "expected_site_id": "Q2981",
+      "evidence_groups": [
+        [
+          "wikipedia:Q2981:240334275:1d0527fcc44fd932:0-1391"
+        ]
+      ],
+      "annotated_quotes": [
+        {
+          "passage_id": "wikipedia:Q2981:240334275:1d0527fcc44fd932:0-1391",
+          "quote": "Sa construction est lancée en 1163"
+        }
+      ],
+      "annotation": "Known supporting passage, not an exhaustive relevance judgment."
+    },
+    {
+      "case_id": "Q2981-3",
+      "kind": "paraphrase",
+      "question": "Quelle cathédrale fut restaurée entre 1845 et 1867 sous la direction de Viollet-le-Duc ?",
+      "expected_site_id": "Q2981",
+      "evidence_groups": [
+        [
+          "wikipedia:Q2981:240334275:1d0527fcc44fd932:0-1391"
+        ]
+      ],
+      "annotated_quotes": [
+        {
+          "passage_id": "wikipedia:Q2981:240334275:1d0527fcc44fd932:0-1391",
+          "quote": "entre 1845 et 1867"
+        }
+      ],
+      "annotation": "Known supporting passage, not an exhaustive relevance judgment."
+    },
+    {
+      "case_id": "Q64436-1",
+      "kind": "named",
+      "question": "Qui a décidé la construction de l'Arc de Triomphe de l'Étoile ?",
+      "expected_site_id": "Q64436",
+      "evidence_groups": [
+        [
+          "wikipedia:Q64436:240166169:346820cdc4fcb8cf:0-625"
+        ]
+      ],
+      "annotated_quotes": [
+        {
+          "passage_id": "wikipedia:Q64436:240166169:346820cdc4fcb8cf:0-625",
+          "quote": "décidée par l'empereur Napoléon Ier"
+        }
+      ],
+      "annotation": "Known supporting passage, not an exhaustive relevance judgment."
+    },
+    {
+      "case_id": "Q64436-2",
+      "kind": "paraphrase",
+      "question": "Quel monument tétrapyle se situe à la jonction des huitième, seizième et dix-septième arrondissements ?",
+      "expected_site_id": "Q64436",
+      "evidence_groups": [
+        [
+          "wikipedia:Q64436:240166169:346820cdc4fcb8cf:0-625"
+        ]
+      ],
+      "annotated_quotes": [
+        {
+          "passage_id": "wikipedia:Q64436:240166169:346820cdc4fcb8cf:0-625",
+          "quote": "des 8e, 16e et 17e arrondissements"
+        }
+      ],
+      "annotation": "Known supporting passage, not an exhaustive relevance judgment."
+    },
+    {
+      "case_id": "Q64436-3",
+      "kind": "paraphrase",
+      "question": "Quel monument parisien commandé par un empereur a été construit entre 1806 et 1836 ?",
+      "expected_site_id": "Q64436",
+      "evidence_groups": [
+        [
+          "wikipedia:Q64436:240166169:346820cdc4fcb8cf:0-625"
+        ]
+      ],
+      "annotated_quotes": [
+        {
+          "passage_id": "wikipedia:Q64436:240166169:346820cdc4fcb8cf:0-625",
+          "quote": "débute en 1806 et s'achève en 1836"
+        }
+      ],
+      "annotation": "Known supporting passage, not an exhaustive relevance judgment."
+    },
+    {
+      "case_id": "Q188856-1",
+      "kind": "named",
+      "question": "Dans quel arrondissement se trouve le Panthéon de Paris ?",
+      "expected_site_id": "Q188856",
+      "evidence_groups": [
+        [
+          "wikipedia:Q188856:239973087:dfe044f7402c12fa:0-1396"
+        ]
+      ],
+      "annotated_quotes": [
+        {
+          "passage_id": "wikipedia:Q188856:239973087:dfe044f7402c12fa:0-1396",
+          "quote": "dans le 5e arrondissement"
+        }
+      ],
+      "annotation": "Known supporting passage, not an exhaustive relevance judgment."
+    },
+    {
+      "case_id": "Q188856-2",
+      "kind": "paraphrase",
+      "question": "Quel monument parisien sert de nécropole nationale aux personnalités qui ont marqué la France ?",
+      "expected_site_id": "Q188856",
+      "evidence_groups": [
+        [
+          "wikipedia:Q188856:239973087:dfe044f7402c12fa:0-1396"
+        ]
+      ],
+      "annotated_quotes": [
+        {
+          "passage_id": "wikipedia:Q188856:239973087:dfe044f7402c12fa:0-1396",
+          "quote": "servant de nécropole nationale"
+        }
+      ],
+      "annotation": "Known supporting passage, not an exhaustive relevance judgment."
+    },
+    {
+      "case_id": "Q188856-3",
+      "kind": "paraphrase",
+      "question": "Quel monument porte la devise Aux grands Hommes, la Patrie reconnaissante ?",
+      "expected_site_id": "Q188856",
+      "evidence_groups": [
+        [
+          "wikipedia:Q188856:239973087:dfe044f7402c12fa:0-1396"
+        ]
+      ],
+      "annotated_quotes": [
+        {
+          "passage_id": "wikipedia:Q188856:239973087:dfe044f7402c12fa:0-1396",
+          "quote": "Aux grands Hommes, la Patrie reconnaissante"
+        }
+      ],
+      "annotation": "Known supporting passage, not an exhaustive relevance judgment."
+    },
+    {
+      "case_id": "Q28785-1",
+      "kind": "named",
+      "question": "Où est située la basilique du Sacré-Cœur de Montmartre ?",
+      "expected_site_id": "Q28785",
+      "evidence_groups": [
+        [
+          "wikipedia:Q28785:240094093:35120b100a4bf2e5:0-1130"
+        ]
+      ],
+      "annotated_quotes": [
+        {
+          "passage_id": "wikipedia:Q28785:240094093:35120b100a4bf2e5:0-1130",
+          "quote": "au sommet de la butte Montmartre"
+        }
+      ],
+      "annotation": "Known supporting passage, not an exhaustive relevance judgment."
+    },
+    {
+      "case_id": "Q28785-2",
+      "kind": "paraphrase",
+      "question": "Quel grand sanctuaire parisien se trouve dans Clignancourt et le dix-huitième arrondissement ?",
+      "expected_site_id": "Q28785",
+      "evidence_groups": [
+        [
+          "wikipedia:Q28785:240094093:35120b100a4bf2e5:0-1130"
+        ]
+      ],
+      "annotated_quotes": [
+        {
+          "passage_id": "wikipedia:Q28785:240094093:35120b100a4bf2e5:0-1130",
+          "quote": "dans le quartier de Clignancourt du 18e arrondissement"
+        }
+      ],
+      "annotation": "Known supporting passage, not an exhaustive relevance judgment."
+    },
+    {
+      "case_id": "Q28785-3",
+      "kind": "paraphrase",
+      "question": "Quelle basilique parisienne est aussi appelée le Vœu national ?",
+      "expected_site_id": "Q28785",
+      "evidence_groups": [
+        [
+          "wikipedia:Q28785:240094093:35120b100a4bf2e5:0-1130"
+        ]
+      ],
+      "annotated_quotes": [
+        {
+          "passage_id": "wikipedia:Q28785:240094093:35120b100a4bf2e5:0-1130",
+          "quote": "dite du Vœu national"
+        }
+      ],
+      "annotation": "Known supporting passage, not an exhaustive relevance judgment."
+    },
+    {
+      "case_id": "Q187840-1",
+      "kind": "named",
+      "question": "Qui a conçu le palais Garnier ?",
+      "expected_site_id": "Q187840",
+      "evidence_groups": [
+        [
+          "wikipedia:Q187840:240044545:eb71ac515abf7e2e:0-1398"
+        ]
+      ],
+      "annotated_quotes": [
+        {
+          "passage_id": "wikipedia:Q187840:240044545:eb71ac515abf7e2e:0-1398",
+          "quote": "Sur une conception de l'architecte Charles Garnier"
+        }
+      ],
+      "annotation": "Known supporting passage, not an exhaustive relevance judgment."
+    },
+    {
+      "case_id": "Q187840-2",
+      "kind": "paraphrase",
+      "question": "Quel théâtre national parisien se trouve place de l’Opéra ?",
+      "expected_site_id": "Q187840",
+      "evidence_groups": [
+        [
+          "wikipedia:Q187840:240044545:eb71ac515abf7e2e:0-1398"
+        ]
+      ],
+      "annotated_quotes": [
+        {
+          "passage_id": "wikipedia:Q187840:240044545:eb71ac515abf7e2e:0-1398",
+          "quote": "Il est situé place de l'Opéra"
+        }
+      ],
+      "annotation": "Known supporting passage, not an exhaustive relevance judgment."
+    },
+    {
+      "case_id": "Q187840-3",
+      "kind": "paraphrase",
+      "question": "Quel bâtiment de spectacle fut inauguré le 5 janvier 1875 par Mac Mahon ?",
+      "expected_site_id": "Q187840",
+      "evidence_groups": [
+        [
+          "wikipedia:Q187840:240044545:eb71ac515abf7e2e:0-1398"
+        ]
+      ],
+      "annotated_quotes": [
+        {
+          "passage_id": "wikipedia:Q187840:240044545:eb71ac515abf7e2e:0-1398",
+          "quote": "Le bâtiment est inauguré le 5 janvier 1875"
+        }
+      ],
+      "annotation": "Known supporting passage, not an exhaustive relevance judgment."
+    },
+    {
+      "case_id": "Q193193-1",
+      "kind": "named",
+      "question": "Pourquoi saint Louis a-t-il fait construire la Sainte-Chapelle ?",
+      "expected_site_id": "Q193193",
+      "evidence_groups": [
+        [
+          "wikipedia:Q193193:240331382:23f3eb82e979ef85:0-1399"
+        ]
+      ],
+      "annotated_quotes": [
+        {
+          "passage_id": "wikipedia:Q193193:240331382:23f3eb82e979ef85:0-1399",
+          "quote": "afin d’abriter la Sainte Couronne d’épines"
+        }
+      ],
+      "annotation": "Known supporting passage, not an exhaustive relevance judgment."
+    },
+    {
+      "case_id": "Q193193-2",
+      "kind": "paraphrase",
+      "question": "Quelle chapelle palatine presque entièrement vitrée devait abriter des reliques de la Passion ?",
+      "expected_site_id": "Q193193",
+      "evidence_groups": [
+        [
+          "wikipedia:Q193193:240331382:23f3eb82e979ef85:0-1399"
+        ]
+      ],
+      "annotated_quotes": [
+        {
+          "passage_id": "wikipedia:Q193193:240331382:23f3eb82e979ef85:0-1399",
+          "quote": "conçue comme une vaste châsse presque entièrement vitrée"
+        }
+      ],
+      "annotation": "Known supporting passage, not an exhaustive relevance judgment."
+    },
+    {
+      "case_id": "Q193193-3",
+      "kind": "paraphrase",
+      "question": "À la demande de quel roi a été édifiée la chapelle palatine sur l'île de la Cité ?",
+      "expected_site_id": "Q193193",
+      "evidence_groups": [
+        [
+          "wikipedia:Q193193:240331382:23f3eb82e979ef85:0-1399"
+        ]
+      ],
+      "annotated_quotes": [
+        {
+          "passage_id": "wikipedia:Q193193:240331382:23f3eb82e979ef85:0-1399",
+          "quote": "à la demande de saint Louis"
+        }
+      ],
+      "annotation": "Known supporting passage, not an exhaustive relevance judgment."
+    },
+    {
+      "case_id": "Q188977-1",
+      "kind": "named",
+      "question": "À quoi était destiné l'hôtel des Invalides lors de sa création ?",
+      "expected_site_id": "Q188977",
+      "evidence_groups": [
+        [
+          "wikipedia:Q188977:240337999:f264e77b6c3acf52:0-1107"
+        ]
+      ],
+      "annotated_quotes": [
+        {
+          "passage_id": "wikipedia:Q188977:240337999:f264e77b6c3acf52:0-1107",
+          "quote": "pour accueillir les invalides de ses armées"
+        }
+      ],
+      "annotation": "Known supporting passage, not an exhaustive relevance judgment."
+    },
+    {
+      "case_id": "Q188977-2",
+      "kind": "paraphrase",
+      "question": "Quel ensemble parisien abrite une nécropole militaire et le tombeau de Napoléon Ier ?",
+      "expected_site_id": "Q188977",
+      "evidence_groups": [
+        [
+          "wikipedia:Q188977:240337999:f264e77b6c3acf52:0-1107"
+        ]
+      ],
+      "annotated_quotes": [
+        {
+          "passage_id": "wikipedia:Q188977:240337999:f264e77b6c3acf52:0-1107",
+          "quote": "notamment le tombeau de Napoléon Ier"
+        }
+      ],
+      "annotation": "Known supporting passage, not an exhaustive relevance judgment."
+    },
+    {
+      "case_id": "Q188977-3",
+      "kind": "paraphrase",
+      "question": "Quel établissement pour les soldats blessés fut ordonné par Louis XIV en février 1670 ?",
+      "expected_site_id": "Q188977",
+      "evidence_groups": [
+        [
+          "wikipedia:Q188977:240337999:f264e77b6c3acf52:0-1107"
+        ]
+      ],
+      "annotated_quotes": [
+        {
+          "passage_id": "wikipedia:Q188977:240337999:f264e77b6c3acf52:0-1107",
+          "quote": "par l'édit royal du 24 février 1670"
+        }
+      ],
+      "annotation": "Known supporting passage, not an exhaustive relevance judgment."
+    },
+    {
+      "case_id": "Q189503-1",
+      "kind": "named",
+      "question": "Dans quel arrondissement est située la place de la Concorde ?",
+      "expected_site_id": "Q189503",
+      "evidence_groups": [
+        [
+          "wikipedia:Q189503:240067051:6f801704ccdfa9a2:0-676"
+        ]
+      ],
+      "annotated_quotes": [
+        {
+          "passage_id": "wikipedia:Q189503:240067051:6f801704ccdfa9a2:0-676",
+          "quote": "Elle est située dans le 8e arrondissement"
+        }
+      ],
+      "annotation": "Known supporting passage, not an exhaustive relevance judgment."
+    },
+    {
+      "case_id": "Q189503-2",
+      "kind": "paraphrase",
+      "question": "Quelle est la plus grande place de Paris, étendue sur 7,56 hectares ?",
+      "expected_site_id": "Q189503",
+      "evidence_groups": [
+        [
+          "wikipedia:Q189503:240067051:6f801704ccdfa9a2:0-676"
+        ]
+      ],
+      "annotated_quotes": [
+        {
+          "passage_id": "wikipedia:Q189503:240067051:6f801704ccdfa9a2:0-676",
+          "quote": "est la plus grande place de Paris"
+        }
+      ],
+      "annotation": "Known supporting passage, not an exhaustive relevance judgment."
+    },
+    {
+      "case_id": "Q189503-3",
+      "kind": "paraphrase",
+      "question": "Quelle place parisienne se nommait autrefois place Louis XV puis place de la Révolution ?",
+      "expected_site_id": "Q189503",
+      "evidence_groups": [
+        [
+          "wikipedia:Q189503:240067051:6f801704ccdfa9a2:0-676"
+        ]
+      ],
+      "annotated_quotes": [
+        {
+          "passage_id": "wikipedia:Q189503:240067051:6f801704ccdfa9a2:0-676",
+          "quote": "initialement appelée place Louis XV puis place de la Révolution"
+        }
+      ],
+      "annotation": "Known supporting passage, not an exhaustive relevance judgment."
+    },
+    {
+      "case_id": "Garnier-conflict",
+      "kind": "source_conflict",
+      "question": "En quelle année Charles Garnier a-t-il remporté le concours ? Les sources concordent-elles ?",
+      "expected_site_id": "Q187840",
+      "evidence_groups": [
+        [
+          "wikipedia:Q187840:240044545:eb71ac515abf7e2e:2919-4311",
+          "wikipedia:Q187840:240044545:eb71ac515abf7e2e:4116-4500"
+        ],
+        [
+          "merimee:PA00089004:756431e2b315525b:487-717"
+        ]
+      ],
+      "annotated_quotes": [
+        {
+          "passage_id": "wikipedia:Q187840:240044545:eb71ac515abf7e2e:2919-4311",
+          "quote": "Le 30 mai 1861, Charles Garnier est proclamé vainqueur"
+        },
+        {
+          "passage_id": "merimee:PA00089004:756431e2b315525b:487-717",
+          "quote": "Charles Garnier remporte le concours en 1860"
+        }
+      ],
+      "annotation": "Both conflicting evidence groups are needed; do not silently correct source text."
+    },
+    {
+      "case_id": "tarif-current",
+      "kind": "missing_current_data",
+      "question": "Quel est le tarif exact pour visiter la tour Eiffel aujourd'hui ?",
+      "expected_site_id": "Q243",
+      "evidence_groups": [],
+      "annotated_quotes": [],
+      "expected_answer_status": "insufficient_sources",
+      "annotation": "No verified current tariff is established by the frozen corpus; not scored as a positive retrieval case."
+    }
+  ]
+}

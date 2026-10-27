@@ -1,0 +1,507 @@
+[
+  {
+    "city": "Paris",
+    "coordinates": {
+      "latitude": 48.858296,
+      "longitude": 2.294479,
+      "source_url": "https://www.wikidata.org/wiki/Q243",
+      "verified_on_site": false
+    },
+    "country": "France",
+    "merimee_ids": [
+      "PA00088801"
+    ],
+    "name": "tour Eiffel",
+    "official_website_candidates": [
+      "https://www.toureiffel.paris",
+      "https://www.toureiffel.paris/en",
+      "https://www.toureiffel.paris/it"
+    ],
+    "reference_image_candidates": [
+      "Tour Eiffel Wikimedia Commons.jpg"
+    ],
+    "site_id": "Q243",
+    "tourist_record": {
+      "address": "5 avenue Anatole France - Champ de Mars",
+      "alternative_uris": [
+        "https://data.datatourisme.fr/13/3357770f-8889-36de-80b2-181e3e0c23c1"
+      ],
+      "distance_from_wikidata_m": 5,
+      "identity_status": "candidate_not_fully_verified",
+      "name": "La tour Eiffel",
+      "publisher": "Paris je t'aime - Office de Tourisme",
+      "relation": "same_site_candidate",
+      "updated_at": "2026-09-01",
+      "uri": "https://data.datatourisme.fr/19/4b69d406-412a-3136-8cb8-cf8bac872956"
+    },
+    "visit_constraints": {
+      "estimated_visit_minutes": null,
+      "last_admission": null,
+      "opening_hours": null,
+      "status": "needs_verified_sources",
+      "ticket_prices": null
+    },
+    "warnings": [
+      "Opening hours, prices and visit duration are not established.",
+      "Multiple tourist records; one chosen for indexing, alternatives retained for review."
+    ],
+    "wikidata": {
+      "id": "Q243",
+      "license": "CC0",
+      "retrieved_at": "2026-10-10T19:19:11.878358+00:00",
+      "url": "https://www.wikidata.org/wiki/Q243"
+    }
+  },
+  {
+    "city": "Paris",
+    "coordinates": {
+      "latitude": 48.861028,
+      "longitude": 2.335886,
+      "source_url": "https://www.wikidata.org/wiki/Q1075988",
+      "verified_on_site": false
+    },
+    "country": "France",
+    "merimee_ids": [
+      "PA00085992"
+    ],
+    "name": "palais du Louvre",
+    "official_website_candidates": [],
+    "reference_image_candidates": [
+      "Pavillon de Flore, Louvre Museum, Paris 5 November 2019.jpg"
+    ],
+    "site_id": "Q1075988",
+    "tourist_record": {
+      "address": "Musée du Louvre",
+      "alternative_uris": [
+        "https://data.datatourisme.fr/13/d3d8d46b-e0cf-3208-aecf-216bb1473907"
+      ],
+      "distance_from_wikidata_m": 135,
+      "identity_status": "candidate_not_fully_verified",
+      "name": "Musée du Louvre",
+      "publisher": "Paris je t'aime - Office de Tourisme",
+      "relation": "related_museum",
+      "updated_at": "2026-09-01",
+      "uri": "https://data.datatourisme.fr/19/52b60bd8-4919-3890-ac11-6b49036a2f09"
+    },
+    "visit_constraints": {
+      "estimated_visit_minutes": null,
+      "last_admission": null,
+      "opening_hours": null,
+      "status": "needs_verified_sources",
+      "ticket_prices": null
+    },
+    "warnings": [
+      "Opening hours, prices and visit duration are not established.",
+      "Multiple tourist records; one chosen for indexing, alternatives retained for review.",
+      "The Louvre palace and museum have distinct identities and visiting conditions."
+    ],
+    "wikidata": {
+      "id": "Q1075988",
+      "license": "CC0",
+      "retrieved_at": "2026-10-10T19:19:11.878373+00:00",
+      "url": "https://www.wikidata.org/wiki/Q1075988"
+    }
+  },
+  {
+    "city": "Paris",
+    "coordinates": {
+      "latitude": 48.853,
+      "longitude": 2.3498,
+      "source_url": "https://www.wikidata.org/wiki/Q2981",
+      "verified_on_site": false
+    },
+    "country": "France",
+    "merimee_ids": [
+      "PA00086250"
+    ],
+    "name": "cathédrale Notre-Dame de Paris",
+    "official_website_candidates": [
+      "https://www.notredamedeparis.fr/",
+      "https://www.notredamedeparis.fr/en/"
+    ],
+    "reference_image_candidates": [
+      "Notre-Dame de Paris 2013-07-24.jpg"
+    ],
+    "site_id": "Q2981",
+    "tourist_record": {
+      "address": "Place Jean-Paul II 6 Parvis Notre-Dame",
+      "alternative_uris": [
+        "https://data.datatourisme.fr/19/cd159c2d-7c80-3f03-899f-dc24817f3ee4"
+      ],
+      "distance_from_wikidata_m": 52,
+      "identity_status": "candidate_not_fully_verified",
+      "name": "Cathédrale Notre-Dame de Paris",
+      "publisher": "Choose Paris Region",
+      "relation": "same_site_candidate",
+      "updated_at": "2026-09-24",
+      "uri": "https://data.datatourisme.fr/13/712933b2-6418-3caa-b1e2-786b03fa3293"
+    },
+    "visit_constraints": {
+      "estimated_visit_minutes": null,
+      "last_admission": null,
+      "opening_hours": null,
+      "status": "needs_verified_sources",
+      "ticket_prices": null
+    },
+    "warnings": [
+      "Opening hours, prices and visit duration are not established.",
+      "Multiple tourist records; one chosen for indexing, alternatives retained for review."
+    ],
+    "wikidata": {
+      "id": "Q2981",
+      "license": "CC0",
+      "retrieved_at": "2026-10-10T19:19:11.878391+00:00",
+      "url": "https://www.wikidata.org/wiki/Q2981"
+    }
+  },
+  {
+    "city": "Paris",
+    "coordinates": {
+      "latitude": 48.87378,
+      "longitude": 2.29504,
+      "source_url": "https://www.wikidata.org/wiki/Q64436",
+      "verified_on_site": false
+    },
+    "country": "France",
+    "merimee_ids": [
+      "PA00088804"
+    ],
+    "name": "arc de triomphe de l'Étoile",
+    "official_website_candidates": [
+      "https://www.paris-arc-de-triomphe.fr"
+    ],
+    "reference_image_candidates": [
+      "Arc de Triomphe - Août 2026.jpg"
+    ],
+    "site_id": "Q64436",
+    "tourist_record": {
+      "address": "Place Charles de Gaulle",
+      "alternative_uris": [
+        "https://data.datatourisme.fr/13/4eeb4e68-cbe3-37d6-a08f-b6a3ce3ee5fe"
+      ],
+      "distance_from_wikidata_m": 1,
+      "identity_status": "candidate_not_fully_verified",
+      "name": "Arc de Triomphe",
+      "publisher": "Paris je t'aime - Office de Tourisme",
+      "relation": "same_site_candidate",
+      "updated_at": "2026-09-01",
+      "uri": "https://data.datatourisme.fr/19/e26862ec-3926-3df7-b714-3a2a51514320"
+    },
+    "visit_constraints": {
+      "estimated_visit_minutes": null,
+      "last_admission": null,
+      "opening_hours": null,
+      "status": "needs_verified_sources",
+      "ticket_prices": null
+    },
+    "warnings": [
+      "Opening hours, prices and visit duration are not established.",
+      "Multiple tourist records; one chosen for indexing, alternatives retained for review."
+    ],
+    "wikidata": {
+      "id": "Q64436",
+      "license": "CC0",
+      "retrieved_at": "2026-10-10T19:19:11.878399+00:00",
+      "url": "https://www.wikidata.org/wiki/Q64436"
+    }
+  },
+  {
+    "city": "Paris",
+    "coordinates": {
+      "latitude": 48.846198,
+      "longitude": 2.3461054,
+      "source_url": "https://www.wikidata.org/wiki/Q188856",
+      "verified_on_site": false
+    },
+    "country": "France",
+    "merimee_ids": [
+      "PA00088420"
+    ],
+    "name": "Panthéon",
+    "official_website_candidates": [
+      "http://www.paris-pantheon.fr/"
+    ],
+    "reference_image_candidates": [
+      "Panthéon, Paris 25 March 2012.jpg"
+    ],
+    "site_id": "Q188856",
+    "tourist_record": {
+      "address": "Place du Panthéon",
+      "alternative_uris": [
+        "https://data.datatourisme.fr/13/7519e291-e72e-3694-bf74-780a218a406c"
+      ],
+      "distance_from_wikidata_m": 23,
+      "identity_status": "candidate_not_fully_verified",
+      "name": "Panthéon",
+      "publisher": "Paris je t'aime - Office de Tourisme",
+      "relation": "same_site_candidate",
+      "updated_at": "2026-09-01",
+      "uri": "https://data.datatourisme.fr/19/f368c1f6-f3f2-3fa7-93f0-d5fd64d8e644"
+    },
+    "visit_constraints": {
+      "estimated_visit_minutes": null,
+      "last_admission": null,
+      "opening_hours": null,
+      "status": "needs_verified_sources",
+      "ticket_prices": null
+    },
+    "warnings": [
+      "Opening hours, prices and visit duration are not established.",
+      "Multiple tourist records; one chosen for indexing, alternatives retained for review."
+    ],
+    "wikidata": {
+      "id": "Q188856",
+      "license": "CC0",
+      "retrieved_at": "2026-10-10T19:19:11.878457+00:00",
+      "url": "https://www.wikidata.org/wiki/Q188856"
+    }
+  },
+  {
+    "city": "Paris",
+    "coordinates": {
+      "latitude": 48.88665,
+      "longitude": 2.34295,
+      "source_url": "https://www.wikidata.org/wiki/Q28785",
+      "verified_on_site": false
+    },
+    "country": "France",
+    "merimee_ids": [
+      "PA75180004"
+    ],
+    "name": "basilique du Sacré-Cœur de Montmartre",
+    "official_website_candidates": [
+      "https://www.sacre-coeur-montmartre.com"
+    ],
+    "reference_image_candidates": [
+      "Le sacre coeur.jpg"
+    ],
+    "site_id": "Q28785",
+    "tourist_record": {
+      "address": "Parvis du Sacré-Coeur - 35 rue du Chevalier de la Barre",
+      "alternative_uris": [],
+      "distance_from_wikidata_m": 13,
+      "identity_status": "candidate_not_fully_verified",
+      "name": "Basilique du Sacré-Coeur de Montmartre",
+      "publisher": "Paris je t'aime - Office de Tourisme",
+      "relation": "same_site_candidate",
+      "updated_at": "2026-09-01",
+      "uri": "https://data.datatourisme.fr/19/83beb2fc-ef69-3d4e-bf27-06ba118a34aa"
+    },
+    "visit_constraints": {
+      "estimated_visit_minutes": null,
+      "last_admission": null,
+      "opening_hours": null,
+      "status": "needs_verified_sources",
+      "ticket_prices": null
+    },
+    "warnings": [
+      "Opening hours, prices and visit duration are not established."
+    ],
+    "wikidata": {
+      "id": "Q28785",
+      "license": "CC0",
+      "retrieved_at": "2026-10-10T19:19:11.878464+00:00",
+      "url": "https://www.wikidata.org/wiki/Q28785"
+    }
+  },
+  {
+    "city": "Paris",
+    "coordinates": {
+      "latitude": 48.871944444444,
+      "longitude": 2.3316666666667,
+      "source_url": "https://www.wikidata.org/wiki/Q187840",
+      "verified_on_site": false
+    },
+    "country": "France",
+    "merimee_ids": [
+      "PA00089004"
+    ],
+    "name": "palais Garnier",
+    "official_website_candidates": [
+      "https://www.operadeparis.fr/"
+    ],
+    "reference_image_candidates": [
+      "Paris Opera full frontal architecture, May 2009.jpg",
+      "Paris Palais Garnier 2010-04-06 16.55.07.jpg"
+    ],
+    "site_id": "Q187840",
+    "tourist_record": {
+      "address": "Place de l'Opéra",
+      "alternative_uris": [],
+      "distance_from_wikidata_m": 6,
+      "identity_status": "candidate_not_fully_verified",
+      "name": "Opéra national de Paris - Palais Garnier",
+      "publisher": "Paris je t'aime - Office de Tourisme",
+      "relation": "same_site_candidate",
+      "updated_at": "2026-09-01",
+      "uri": "https://data.datatourisme.fr/19/247a18e6-e4b9-392b-b043-6d142585fdee"
+    },
+    "visit_constraints": {
+      "estimated_visit_minutes": null,
+      "last_admission": null,
+      "opening_hours": null,
+      "status": "needs_verified_sources",
+      "ticket_prices": null
+    },
+    "warnings": [
+      "Opening hours, prices and visit duration are not established."
+    ],
+    "wikidata": {
+      "id": "Q187840",
+      "license": "CC0",
+      "retrieved_at": "2026-10-10T19:19:11.878470+00:00",
+      "url": "https://www.wikidata.org/wiki/Q187840"
+    }
+  },
+  {
+    "city": "Paris",
+    "coordinates": {
+      "latitude": 48.855369,
+      "longitude": 2.345028,
+      "source_url": "https://www.wikidata.org/wiki/Q193193",
+      "verified_on_site": false
+    },
+    "country": "France",
+    "merimee_ids": [
+      "PA00086001"
+    ],
+    "name": "Sainte-Chapelle",
+    "official_website_candidates": [
+      "https://www.sainte-chapelle.fr/",
+      "https://www.sainte-chapelle.fr/en/"
+    ],
+    "reference_image_candidates": [
+      "Szensapel.jpg",
+      "Paris Sainte Chapelle East View 02.JPG"
+    ],
+    "site_id": "Q193193",
+    "tourist_record": {
+      "address": "8 boulevard du Palais",
+      "alternative_uris": [
+        "https://data.datatourisme.fr/13/3f80536b-0796-3ea3-b7b0-fc73ecc79732"
+      ],
+      "distance_from_wikidata_m": 5,
+      "identity_status": "candidate_not_fully_verified",
+      "name": "Sainte-Chapelle",
+      "publisher": "Paris je t'aime - Office de Tourisme",
+      "relation": "same_site_candidate",
+      "updated_at": "2026-09-01",
+      "uri": "https://data.datatourisme.fr/19/8a8e1493-d2bf-3b91-90c9-921d530ae082"
+    },
+    "visit_constraints": {
+      "estimated_visit_minutes": null,
+      "last_admission": null,
+      "opening_hours": null,
+      "status": "needs_verified_sources",
+      "ticket_prices": null
+    },
+    "warnings": [
+      "Opening hours, prices and visit duration are not established.",
+      "Multiple tourist records; one chosen for indexing, alternatives retained for review."
+    ],
+    "wikidata": {
+      "id": "Q193193",
+      "license": "CC0",
+      "retrieved_at": "2026-10-10T19:19:11.878476+00:00",
+      "url": "https://www.wikidata.org/wiki/Q193193"
+    }
+  },
+  {
+    "city": "Paris",
+    "coordinates": {
+      "latitude": 48.855,
+      "longitude": 2.3125,
+      "source_url": "https://www.wikidata.org/wiki/Q188977",
+      "verified_on_site": false
+    },
+    "country": "France",
+    "merimee_ids": [
+      "PA00088714"
+    ],
+    "name": "hôtel des Invalides",
+    "official_website_candidates": [
+      "https://www.invalides.fr/"
+    ],
+    "reference_image_candidates": [
+      "Hôtel des Invalides - 20150801 16h09 (10630).jpg"
+    ],
+    "site_id": "Q188977",
+    "tourist_record": {
+      "address": "Esplanade des Invalides",
+      "alternative_uris": [],
+      "distance_from_wikidata_m": 171,
+      "identity_status": "candidate_not_fully_verified",
+      "name": "Hôtel national des Invalides",
+      "publisher": "Paris je t'aime - Office de Tourisme",
+      "relation": "same_site_candidate",
+      "updated_at": "2026-09-01",
+      "uri": "https://data.datatourisme.fr/19/25123bd7-337d-35d4-800e-641e64473db9"
+    },
+    "visit_constraints": {
+      "estimated_visit_minutes": null,
+      "last_admission": null,
+      "opening_hours": null,
+      "status": "needs_verified_sources",
+      "ticket_prices": null
+    },
+    "warnings": [
+      "Opening hours, prices and visit duration are not established."
+    ],
+    "wikidata": {
+      "id": "Q188977",
+      "license": "CC0",
+      "retrieved_at": "2026-10-10T19:19:11.878481+00:00",
+      "url": "https://www.wikidata.org/wiki/Q188977"
+    }
+  },
+  {
+    "city": "Paris",
+    "coordinates": {
+      "latitude": 48.8656331,
+      "longitude": 2.3212357,
+      "source_url": "https://www.wikidata.org/wiki/Q189503",
+      "verified_on_site": false
+    },
+    "country": "France",
+    "merimee_ids": [
+      "PA00088880"
+    ],
+    "name": "place de la Concorde",
+    "official_website_candidates": [
+      "https://en.parisinfo.com/transport/90907/Place-de-la-Concorde",
+      "https://www.pop.culture.gouv.fr/notice/merimee/PA00088880"
+    ],
+    "reference_image_candidates": [
+      "Place de la Concorde from the Eiffel Tower, Paris April 2011.jpg"
+    ],
+    "site_id": "Q189503",
+    "tourist_record": {
+      "address": "Place de la Concorde",
+      "alternative_uris": [],
+      "distance_from_wikidata_m": 11,
+      "identity_status": "candidate_not_fully_verified",
+      "name": "Place de la Concorde",
+      "publisher": "Choose Paris Region",
+      "relation": "same_site_candidate",
+      "updated_at": "2024-06-17",
+      "uri": "https://data.datatourisme.fr/13/29af0637-88a4-3e14-933f-382bd21bf3d3"
+    },
+    "visit_constraints": {
+      "estimated_visit_minutes": null,
+      "last_admission": null,
+      "opening_hours": null,
+      "status": "needs_verified_sources",
+      "ticket_prices": null
+    },
+    "warnings": [
+      "Opening hours, prices and visit duration are not established.",
+      "Tourist record predates 2025; update needed before practical use."
+    ],
+    "wikidata": {
+      "id": "Q189503",
+      "license": "CC0",
+      "retrieved_at": "2026-10-10T19:19:11.878486+00:00",
+      "url": "https://www.wikidata.org/wiki/Q189503"
+    }
+  }
+]
