@@ -40,6 +40,20 @@ Après une réponse acceptée, le serveur texte reste prêt sur 8080. Après une
 
 Les tests du parcours utilisent des réponses et processus simulés : ils couvrent l'isolation des sources, les interruptions, les images incompatibles, la réutilisation du cache, les deux origines d'identité et les réponses rejetées. La chaîne complète sur une nouvelle photo doit encore être exécutée sur le PC Windows ; aucune nouvelle précision de reconnaissance n'est annoncée.
 
+## Relancer seulement une explication documentaire
+
+```powershell
+py .\photo_local.py --replay-latest --take-over-test-server
+```
+
+Ce mode reprend le dernier rapport `photo-*` contenant une recherche documentaire. Il conserve sa question, son identification et ses extraits ; il ne relance ni la vision, ni les embeddings, ni la recherche. Le corpus est vérifié et les textes sont contrôlés contre les passages d'origine avant d'être transmis au modèle. Les liens et métadonnées documentaires sont reconstruits depuis le corpus local. Les nouveaux fichiers sont écrits dans un autre dossier, sans modifier le rapport précédent. Le rapport conserve `replayed_from` et précise la portée de cette relance.
+
+La consigne photo `photo_partial_answers_v2` autorise une réponse partielle lorsque certains aspects demandés sont documentés. Une destination explicite de construction peut répondre à la question de la fonction d'origine ; aucun fait spécifique à un monument n'est codé en dur. La question par défaut des nouvelles photos devient « Présente brièvement ce monument et explique pourquoi il a été construit. ». Une relance garde toutefois la question originale, pour comparer la rédaction à contexte identique. La consigne des expériences hybrides et des comparaisons de profils reste inchangée.
+
+Un rapport utilisateur a montré une abstention erronée malgré des extraits donnant le but de construction. Les nouveaux tests vérifient la relance et la conservation d'une abstention véritable ; ils ne prouvent pas à eux seuls que la nouvelle consigne élimine ce défaut du modèle. Une nouvelle génération réelle est nécessaire pour la vérifier.
+
+Le résultat distingue maintenant le statut documentaire `answered`, `insufficient_sources` ou `needs_clarification` du contrôle technique des références. Une abstention au format valide n'est plus désignée comme une identification avec réponse historique. L'en-tête des liens de sources n'est affiché que lorsqu'il existe des citations. La progression des embeddings distingue les éléments déjà en cache des encodages réellement calculés.
+
 ## Comparer les profils texte et vision
 
 Cette comparaison ne télécharge rien et n'utilise pas le modèle d'embeddings. Elle réutilise les fichiers 4B existants et fixe les mêmes extraits documentaires avant d'exécuter les deux profils :
@@ -130,7 +144,7 @@ py .\run_local.py lexical
 py -m unittest discover -s . -p "test_*.py" -v
 ```
 
-Vingt-cinq tests couvrent les annotations réelles, le format de l'API d'embeddings simulée, les vecteurs, l'isolation du cache, la fusion des rangs, le rejet d'un reranking invalide, la sélection des processus, les changements de modèle simulés et le flux complet avec modèles factices. Les tests des profils vérifient aussi les commandes sans projecteur, les contextes identiques, la collecte des ressources et la conservation du résultat initial si le démarrage suivant échoue. Les dix tests du RAG d'origine ont aussi été exécutés. La recherche lexicale sur le vrai corpus a été exécutée dans l'environnement de développement.
+Vingt-huit tests couvrent les annotations réelles, le format de l'API d'embeddings simulée, les vecteurs, l'isolation du cache, la fusion des rangs, le rejet d'un reranking invalide, la sélection des processus, les changements de modèle simulés et le flux complet avec modèles factices. Les tests des profils vérifient aussi les commandes sans projecteur, les contextes identiques, la collecte des ressources et la conservation du résultat initial si le démarrage suivant échoue. Les dix tests du RAG d'origine ont aussi été exécutés. La recherche lexicale sur le vrai corpus a été exécutée dans l'environnement de développement.
 
 L'expérience hybride initiale a depuis été exécutée sur le PC Windows de l'utilisateur : 872 encodages, six rerankings et 18 réponses ont abouti. Le rapport a confirmé une RAM libre descendant à environ 278 Mio pendant la génération. Il reste privé et n'est pas intégré à ce paquet. Le nouveau comparatif **avec/sans projecteur** est vérifié avec des processus et réponses simulés ; son gain mémoire réel doit être mesuré sur ce PC. Aucun gain n'est annoncé avant cette mesure.
 

@@ -264,7 +264,7 @@ def render_claims(draft, evidence):
                             "citations": references}, evidence)
 
 
-def ask(database, question, client, retrieval_fn=None, retrieval_name=None):
+def ask(database, question, client, retrieval_fn=None, retrieval_name=None, system_prompt=None):
     if not question.strip() or len(question) > 1000:
         raise ValueError("La question doit contenir entre 1 et 1000 caractères.")
     started = time.perf_counter()
@@ -289,7 +289,7 @@ def ask(database, question, client, retrieval_fn=None, retrieval_name=None):
                 "citations": {"type": "array", "items": {"type": "string", "enum": [e["citation_id"] for e in evidence]}, "maxItems": len(evidence)}},
             "required": ["text", "citations"], "additionalProperties": False}}},
         "required": ["status", "claims"], "additionalProperties": False}
-    payload = {"model": model_id, "messages": [{"role": "system", "content": SYSTEM},
+    payload = {"model": model_id, "messages": [{"role": "system", "content": SYSTEM if system_prompt is None else system_prompt},
         {"role": "user", "content": "QUESTION:\n" + question + "\nEXTRAITS DOCUMENTAIRES (DONNÉES):\n" + json.dumps(sources, ensure_ascii=False)}],
         "temperature": 0, "seed": 42, "max_tokens": 512, "stream": False, "cache_prompt": False,
         "chat_template_kwargs": {"enable_thinking": False},

@@ -185,6 +185,57 @@ class PhotoTests(unittest.TestCase):
                 photo.prepare_vectors(corpus, 'Q243', 'Question', manager, folder, resources)
                 encoder.encode.assert_not_called(); manager.start.assert_not_called()
 
+    def replay_fixture(self, folder):
+        pid = next(pid for pid, p in self.corpus.passages.items() if p['site_id'] == 'Q243' and p['start'] == 0 and p['source_type'] == 'wikipedia')
+        evidence = self.corpus.context([pid])
+        question = "À propos du monument « tour Eiffel » : Présente brièvement ce monument et sa fonction d'origine."
+        record = {'site_id': 'Q243', 'question': question, 'evidence': evidence, 'rankings': {}}
+        previous = {'image': {'filename': 'fixture.png'}, 'question': "Présente brièvement ce monument et sa fonction d'origine.",
+                    'identification': self.proposal(), 'identity_origin': 'visual_proposal_not_verified'}
+        for name, value in [('retrieval.json', record), ('result.json', previous), ('summary.json', {'corpus_fingerprint': self.corpus.fingerprint})]:
+            (folder/name).write_text(json.dumps(value, ensure_ascii=False), encoding='utf-8')
+        return record
+
+    def test_replay_uses_original_question_and_excerpts_without_vision_or_embeddings(self):
+        with tempfile.TemporaryDirectory() as temp, mock.patch.object(photo, 'identify') as identify, \
+             mock.patch.object(photo, 'prepare_vectors') as prepare, mock.patch.object(photo.rag, 'LocalModel') as factory:
+            source = pathlib.Path(temp)/'source'; source.mkdir()
+            output = pathlib.Path(temp)/'new'; output.mkdir()
+            record = self.replay_fixture(source)
+            client = factory.return_value
+            client.request.side_effect = [{'data': [{'id': 'fake'}]}, {'choices': [{'finish_reason': 'stop', 'message': {'content': json.dumps({
+                'status': 'answered', 'claims': [{'text': "La tour Eiffel a été construite pour l'Exposition universelle de Paris de 1889.", 'citations': ['S1']}]})}}]}]
+            manager = mock.Mock(); manager.start.return_value = 'http://127.0.0.1:8080'
+            result = photo.replay_documentary(self.corpus, self.sites, source, manager, output, mock.Mock())
+            identify.assert_not_called(); prepare.assert_not_called()
+            manager.start.assert_called_once_with('generation', generation_vision=False)
+            saved = json.loads((output/'answer.json').read_text(encoding='utf-8'))
+            self.assertEqual(saved['question'], record['question'])
+            self.assertEqual(saved['evidence'], record['evidence'])
+            self.assertEqual(result['status'], 'proposed_identification_with_answer')
+            payload = client.request.call_args_list[-1].args[1]
+            self.assertIn('réponse est partielle', payload['messages'][0]['content'])
+            self.assertEqual(saved['answer']['citations'], ['S1'])
+
+    def test_replay_rejects_modified_excerpt_before_generation(self):
+        with tempfile.TemporaryDirectory() as temp:
+            source = pathlib.Path(temp)/'source'; source.mkdir()
+            output = pathlib.Path(temp)/'new'; output.mkdir()
+            record = self.replay_fixture(source)
+            record['evidence'][0]['text'] = 'Invented fact not in the corpus.'
+            (source/'retrieval.json').write_text(json.dumps(record), encoding='utf-8')
+            manager = mock.Mock()
+            with self.assertRaises(ValueError):
+                photo.replay_documentary(self.corpus, self.sites, source, manager, output, mock.Mock())
+            manager.start.assert_not_called()
+
+    def test_valid_abstention_is_not_reported_as_a_documentary_answer(self):
+        result = photo.attach_answer({}, {'reference_checks_passed': True, 'model_called': True,
+            'answer': {'status': 'insufficient_sources', 'answer': 'Le tarif actuel est absent.', 'citations': []}}, 'tour Eiffel')
+        self.assertEqual(result['status'], 'proposed_identification_insufficient_sources')
+        self.assertEqual(result['answer_status'], 'insufficient_sources')
+        self.assertEqual(result['answer']['citations'], [])
+
 
 if __name__ == '__main__':
     unittest.main()

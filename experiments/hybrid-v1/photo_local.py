@@ -18,7 +18,15 @@ from run_local import ROOT, embedding_cache_key, query_id, save
 
 MAX_BYTES = 8*1024*1024
 MAX_PIXELS = 4_000_000
-DEFAULT_QUESTION = "Présente brièvement ce monument et sa fonction d'origine."
+DEFAULT_QUESTION = "Présente brièvement ce monument et explique pourquoi il a été construit."
+PHOTO_SYSTEM = rag.SYSTEM + """
+Si une question comporte plusieurs demandes, réponds aux aspects documentés et précise seulement les aspects manquants.
+Utilise answered si au moins un aspect demandé est établi par les extraits, même si la réponse est partielle.
+Réserve insufficient_sources au cas où aucun aspect demandé ne peut être établi.
+Pour le but de construction ou la fonction d'origine, une destination ou un événement pour lequel
+l'édifice a explicitement été construit constitue une information pertinente. N'invente pas d'usage supplémentaire.
+Un fait documentaire reste un fait à citer même s'il figure dans une phrase signalant une information manquante.
+Ces consignes n'autorisent pas à inventer un tarif ou un horaire actuel absent des extraits."""
 
 
 def load_image(path):
@@ -121,6 +129,7 @@ def prepare_vectors(corpus, site_id, question, manager, output, resources):
     items = [("document", p["passage_id"], hybrid.document_input(p, corpus.sources[p["document_id"]])) for p in passages]
     items.append(("query", query_id(question), hybrid.query_input(question)))
     missing = sum(cache.get(role, key, text) is None for role, key, text in items)
+    print(f"Cache documentaire : {len(items)-missing}/{len(items)} éléments réutilisables ; {missing} à encoder.", flush=True)
     save(output / "embedding.json", {"model": metadata, "missing_items": missing, "scope": site_id,
                                     "cache_namespace": cache.model_key})
     if missing:
@@ -132,10 +141,13 @@ def prepare_vectors(corpus, site_id, question, manager, output, resources):
             print("Essai des embeddings sur CPU, avec la vision arrêtée.", flush=True)
             url = manager.start("embedding", model_path, embedding_cpu=True)
         encoder = hybrid.Embeddings(url)
-        for n, (role, key, text) in enumerate(items, 1):
-            cache.encode(encoder, role, key, text)
-            if n % 25 == 0:
-                print(f"Préparation documentaire : {n}/{len(items)}", flush=True)
+        computed = 0
+        for role, key, text in items:
+            _, reused, _ = cache.encode(encoder, role, key, text)
+            if not reused:
+                computed += 1
+                if computed % 25 == 0 or computed == missing:
+                    print(f"Nouveaux encodages : {computed}/{missing}", flush=True)
         manager.stop()
     return cache
 
@@ -152,6 +164,57 @@ def scoped_retrieval(corpus, site_id, question, cache):
     if any(e["site_id"] != site_id for e in evidence):
         raise ValueError("Une source d'un autre monument a été sélectionnée.")
     return evidence, {"bm25": lexical[:10], "dense": dense[:10], "hybrid_rrf": ranking[:10]}
+
+
+def documentary_answer(corpus, question, evidence, manager, output, resources):
+    resources.phase = "text_answer"
+    url = manager.start("generation", generation_vision=False)
+    answer = rag.ask(corpus.database, question, rag.LocalModel(url),
+                     retrieval_fn=lambda database, query: evidence, retrieval_name="site_scoped_hybrid_rrf",
+                     system_prompt=PHOTO_SYSTEM)
+    answer["prompt_version"] = "photo_partial_answers_v2"
+    save(output / "answer.json", answer)
+    return answer
+
+
+def attach_answer(result, answer, site_name):
+    valid = answer.get("reference_checks_passed", False)
+    documentary_status = answer.get("answer", {}).get("status") if valid else None
+    statuses = {"answered": "proposed_identification_with_answer",
+                "insufficient_sources": "proposed_identification_insufficient_sources",
+                "needs_clarification": "proposed_identification_needs_clarification"}
+    result.update(status=statuses.get(documentary_status, "answer_rejected"), site_name=site_name,
+                  answer_status=documentary_status,
+                  historical_answer_generated=answer.get("model_called", False), reference_checks_passed=valid,
+                  answer=answer.get("answer") if valid else None, error=answer.get("validation_error"),
+                  explanation_scope="Cette explication concerne le monument proposé ; elle ne prouve pas l'identité de la photo.")
+    return result
+
+
+def replay_documentary(corpus, sites, source, manager, output, resources):
+    previous = json.loads((source / "result.json").read_text(encoding="utf-8"))
+    record = json.loads((source / "retrieval.json").read_text(encoding="utf-8"))
+    summary = json.loads((source / "summary.json").read_text(encoding="utf-8"))
+    site_id = record["site_id"]
+    if summary.get("corpus_fingerprint") != corpus.fingerprint or site_id not in sites or previous["identification"]["site_id"] != site_id:
+        raise ValueError("Le rapport source ne correspond pas au corpus ou au site attendu.")
+    evidence = []
+    if not 1 <= len(record["evidence"]) <= 4:
+        raise ValueError("Nombre d'extraits invalide dans le rapport source.")
+    for item in record["evidence"]:
+        passage = corpus.passages[item["passage_id"]]
+        text = item["text"]
+        if passage["site_id"] != site_id or not isinstance(text, str) or not text or not passage["text"].startswith(text):
+            raise ValueError("Extrait altéré ou rattaché à un autre monument.")
+        evidence.append({**passage, "text": text, "end": passage["start"]+len(text),
+                         "citation_id": f"S{len(evidence)+1}", "source": corpus.sources[passage["document_id"]]})
+    question = record["question"]
+    save(output / "retrieval.json", {**record, "evidence": evidence})
+    result = {key: previous[key] for key in ["image", "question", "identification", "identity_origin"]}
+    result.update(identity_verified=False, factual_review="pending", replayed_from=source.name,
+                  replay_scope="Same question and excerpts; no image analysis, embeddings or new retrieval.")
+    answer = documentary_answer(corpus, question, evidence, manager, output, resources)
+    return attach_answer(result, answer, sites[site_id]["name"])
 
 
 def pipeline(corpus, sites, data, metadata, question, manager, output, resources, confirmed_site=None):
@@ -183,17 +246,8 @@ def pipeline(corpus, sites, data, metadata, question, manager, output, resources
     cache = prepare_vectors(corpus, site_id, scoped_question, manager, output, resources)
     evidence, rankings = scoped_retrieval(corpus, site_id, scoped_question, cache)
     save(output / "retrieval.json", {"site_id": site_id, "question": scoped_question, "rankings": rankings, "evidence": evidence})
-    resources.phase = "text_answer"
-    url = manager.start("generation", generation_vision=False)
-    answer = rag.ask(corpus.database, scoped_question, rag.LocalModel(url),
-                     retrieval_fn=lambda database, query: evidence, retrieval_name="site_scoped_hybrid_rrf")
-    save(output / "answer.json", answer)
-    valid = answer.get("reference_checks_passed", False)
-    result.update(status="proposed_identification_with_answer" if valid else "answer_rejected", site_name=site_name,
-                  historical_answer_generated=answer.get("model_called", False), reference_checks_passed=valid,
-                  answer=answer.get("answer") if valid else None, error=answer.get("validation_error"),
-                  explanation_scope="Cette explication concerne le monument proposé ; elle ne prouve pas l'identité de la photo.")
-    return result
+    answer = documentary_answer(corpus, scoped_question, evidence, manager, output, resources)
+    return attach_answer(result, answer, site_name)
 
 
 def pick_image():
@@ -230,6 +284,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("image", nargs="?", type=pathlib.Path)
     parser.add_argument("--pick", action="store_true", help="Select a photo with the Windows file dialog.")
+    parser.add_argument("--replay-latest", action="store_true", help="Retry the documentary step of the latest photo report, using its original question and excerpts.")
     parser.add_argument("--question", default=DEFAULT_QUESTION)
     parser.add_argument("--confirm-site", help="Site id explicitly supplied by the user, bypassing visual identification.")
     parser.add_argument("--take-over-test-server", action="store_true")
@@ -237,8 +292,12 @@ def main():
     parser.add_argument("--generation-model", type=pathlib.Path, default=models / "Qwen3.5-4B-Q4_K_M.gguf")
     parser.add_argument("--projector", type=pathlib.Path, default=models / "mmproj-F16.gguf")
     args = parser.parse_args()
-    if bool(args.image) == args.pick:
-        parser.error("Indiquez un chemin de photo OU --pick.")
+    if sum([bool(args.image), args.pick, args.replay_latest]) != 1:
+        parser.error("Choisissez un chemin de photo, --pick OU --replay-latest.")
+    if args.replay_latest and args.confirm_site:
+        parser.error("--replay-latest conserve l'identification du rapport, sans --confirm-site.")
+    if args.replay_latest and args.question != DEFAULT_QUESTION:
+        parser.error("--replay-latest conserve la question d'origine, sans --question.")
     if not args.question.strip() or len(args.question) > 800:
         parser.error("La question doit contenir entre 1 et 800 caractères.")
     output = ROOT / "results" / ("photo-" + dt.datetime.now().strftime("%Y%m%d-%H%M%S") + "-" + runtime.uuid_suffix())
@@ -254,34 +313,44 @@ def main():
                 success = True
                 return
             args.image = pathlib.Path(selected)
-        data, metadata = load_image(args.image)
+        source = None
+        if args.replay_latest:
+            candidates = sorted((ROOT / "results").glob("photo-*/retrieval.json"), key=lambda p: p.parent.name)
+            if not candidates:
+                raise ValueError("Aucun rapport photo contenant des extraits n'a été trouvé.")
+            source = candidates[-1].parent
+            print("Relance documentaire : " + source.name, flush=True)
+        else:
+            data, metadata = load_image(args.image)
         corpus = hybrid.Corpus(ROOT)
         sites = {s["site_id"]: s for s in json.loads((ROOT / "corpus" / "sites.json").read_text(encoding="utf-8"))}
         if args.confirm_site and args.confirm_site not in sites:
             raise ValueError("Identifiant de site absent du corpus.")
-        for path in [args.generation_model] + ([] if args.confirm_site else [args.projector]):
+        needs_vision = not args.confirm_site and not args.replay_latest
+        for path in [args.generation_model] + ([args.projector] if needs_vision else []):
             with path.open("rb") as stream:
                 if stream.read(4) != b"GGUF":
                     raise ValueError("Fichier GGUF invalide : " + path.name)
         manager = runtime.Models(args.generation_model.resolve(), args.projector.resolve(), output, args.take_over_test_server)
         version = subprocess.run([manager.executable, "--version"], capture_output=True, text=True, errors="replace", timeout=20, env=manager.environment)
         report.update(corpus_fingerprint=corpus.fingerprint, generation_sha256=rag.sha_file(args.generation_model),
-                      projector_sha256=None if args.confirm_site else rag.sha_file(args.projector),
+                      projector_sha256=rag.sha_file(args.projector) if needs_vision else None,
                       llama_version=(version.stdout+version.stderr)[:2000],
                       script_sha256={p.name: rag.sha_file(p) for p in ROOT.glob("*.py")})
         manager.prepare_ports()
         resources = runtime.Resources(output, manager.environment)
         resources.start()
-        result = pipeline(corpus, sites, data, metadata, args.question, manager, output, resources, args.confirm_site)
+        result = replay_documentary(corpus, sites, source, manager, output, resources) if source else pipeline(
+            corpus, sites, data, metadata, args.question, manager, output, resources, args.confirm_site)
         save(output / "result.json", result)
         display(result, sites)
-        if result.get("reference_checks_passed"):
+        if result.get("reference_checks_passed") and result.get("answer", {}).get("citations"):
             print("\nSources documentaires :")
             answer = json.loads((output / "answer.json").read_text(encoding="utf-8"))
             for e in answer["evidence"]:
                 if e["citation_id"] in result["answer"]["citations"]:
                     print(f"[{e['citation_id']}] {e['source']['title']} — {e['source']['url']}")
-        report.update(status=result["status"], identity_origin=result["identity_origin"])
+        report.update(status=result["status"], identity_origin=result["identity_origin"], answer_status=result.get("answer_status"))
         if result.get("reference_checks_passed"):
             report.update(server_left_running=True, server_profile="text_only", server_pid=manager.process.pid)
             manager.event("text_server_left_running_for_user")
