@@ -180,7 +180,7 @@ ConvertTo-Json -InputObject $items -Compress
             time.sleep(0.2)
         raise RuntimeError("The former test server has not released its port.")
 
-    def start(self, role, embedding_model=None, embedding_cpu=False):
+    def start(self, role, embedding_model=None, embedding_cpu=False, generation_vision=True):
         self.stop()
         port = 8081 if role == "embedding" else 8080
         if port_busy(port):
@@ -190,8 +190,10 @@ ConvertTo-Json -InputObject $items -Compress
             args = ["--model", str(embedding_model), "--embedding", "--pooling", "last", "--n-gpu-layers", "0" if embedding_cpu else "99",
                     "--ctx-size", "2048", "--batch-size", "2048", "--ubatch-size", "2048"]
         else:
-            args = ["--model", str(self.model), "--mmproj", str(self.projector), "--mmproj-offload",
+            args = ["--model", str(self.model),
                     "--n-gpu-layers", "20", "--ctx-size", "4096", "--batch-size", "256", "--ubatch-size", "128", "--reasoning-budget", "0"]
+            if generation_vision:
+                args += ["--mmproj", str(self.projector), "--mmproj-offload"]
         print(f"Chargement local : {role} (un seul modèle à la fois)...", flush=True)
         started = time.perf_counter()
         log = self.logs / f"{role}-{uuid_suffix()}.log"
@@ -205,7 +207,8 @@ ConvertTo-Json -InputObject $items -Compress
             try:
                 with opener.open(f"http://127.0.0.1:{port}/health", timeout=2) as response:
                     if json.load(response).get("status") == "ok":
-                        self.event(role + "_ready", startup_seconds=time.perf_counter()-started, embedding_cpu=embedding_cpu)
+                        self.event(role + "_ready", startup_seconds=time.perf_counter()-started, embedding_cpu=embedding_cpu,
+                                   generation_vision=generation_vision if role == "generation" else None)
                         return f"http://127.0.0.1:{port}"
             except (OSError, ValueError):
                 pass

@@ -2,6 +2,28 @@
 
 Un lancement prépare les embeddings, compare la recherche lexicale et dense, teste la fusion et le reranking, puis archive les résultats dans **un seul `report.zip`**. Python standard et SQLite FTS5 suffisent : aucun paquet pip, PyTorch ni service de base de données n'est ajouté.
 
+## Comparer les profils texte et vision
+
+Cette comparaison ne télécharge rien et n'utilise pas le modèle d'embeddings. Elle réutilise les fichiers 4B existants et fixe les mêmes extraits documentaires avant d'exécuter les deux profils :
+
+```powershell
+py .\compare_profiles.py --take-over-test-server
+```
+
+Le profil `vision_baseline` charge le projecteur comme lors de l'expérience précédente ; le profil `text_only` le retire. Le nombre de couches GPU, le contexte, les batches, les paramètres de génération et les six questions restent identiques. Douze réponses sont produites au total. Le test mesure la mémoire globale après le chargement de chaque profil, pendant les questions ; le temps de chargement est enregistré séparément. Les extraits viennent de la référence avec routage et sont partagés à l'identique : ce test isole le profil de génération, sans refaire la comparaison des moteurs de recherche.
+
+Le résultat est dans `results/profiles-<date-identifiant>/report.zip`. L'archive contient les deux séries de réponses et leurs contextes, les minimums de RAM disponible, la médiane de RAM disponible, les pics GPU et les temps de réponse, ainsi que les journaux bruts. La conformité des citations et les statuts attendus sont contrôlés ; la qualité factuelle doit encore être comparée en lisant les réponses. Les mesures sont globales, à une seconde et sur un seul passage vision puis texte ; les autres applications et l'ordre de passage peuvent influer. Aucun gain mémoire n'est présumé.
+
+Les règles de remplacement du serveur sont celles décrites ci-dessous. À la fin, le serveur **texte** reste prêt sur 8080. Il faut recharger le profil vision pour accepter des photos ; le basculement automatique par type de message n'est pas encore implémenté. Si une étape échoue, le rapport et les résultats déjà obtenus sont conservés, et les processus lancés sont arrêtés.
+
+Pour utiliser explicitement le profil léger dans le lanceur hybride existant :
+
+```powershell
+py .\run_local.py ask "Qui a conçu le palais Garnier ?" --text-only --take-over-test-server
+```
+
+Le mode sans `--text-only` conserve le profil vision précédent pour permettre les comparaisons et éviter de changer silencieusement sa configuration.
+
 ## Lancement sur le PC préparé
 
 Depuis ce dossier extrait, avec Python 3.13, llama.cpp Vulkan et les deux fichiers 4B déjà téléchargés :
@@ -70,8 +92,8 @@ py .\run_local.py lexical
 py -m unittest discover -s . -p "test_*.py" -v
 ```
 
-Onze tests couvrent les annotations réelles, le format de l'API d'embeddings simulée, les vecteurs, l'isolation du cache, la fusion des rangs, le rejet d'un reranking invalide, la sélection des processus, les changements de modèle simulés et le flux complet avec modèles factices. Les dix tests du RAG d'origine ont aussi été exécutés. La recherche lexicale sur le vrai corpus a été exécutée dans l'environnement de développement.
+Quatorze tests couvrent les annotations réelles, le format de l'API d'embeddings simulée, les vecteurs, l'isolation du cache, la fusion des rangs, le rejet d'un reranking invalide, la sélection des processus, les changements de modèle simulés et le flux complet avec modèles factices. Les tests des profils vérifient aussi les commandes sans projecteur, les contextes identiques, la collecte des ressources et la conservation du résultat initial si le démarrage suivant échoue. Les dix tests du RAG d'origine ont aussi été exécutés. La recherche lexicale sur le vrai corpus a été exécutée dans l'environnement de développement.
 
-**Le téléchargement Hugging Face était bloqué dans l'environnement cloud** : aucun gain dense, temps d'encodage ni fonctionnement réel des nouveaux embeddings sur le PC Windows n'est affirmé ici. Les simulations valident le code et les échanges attendus ; le lancement utilisateur mesure la compatibilité et les résultats réels.
+L'expérience hybride initiale a depuis été exécutée sur le PC Windows de l'utilisateur : 872 encodages, six rerankings et 18 réponses ont abouti. Le rapport a confirmé une RAM libre descendant à environ 278 Mio pendant la génération. Il reste privé et n'est pas intégré à ce paquet. Le nouveau comparatif **avec/sans projecteur** est vérifié avec des processus et réponses simulés ; son gain mémoire réel doit être mesuré sur ce PC. Aucun gain n'est annoncé avant cette mesure.
 
 Sources techniques : [Qwen3-Embedding-0.6B](https://huggingface.co/Qwen/Qwen3-Embedding-0.6B), [llama.cpp au commit d854d98ba](https://github.com/ggml-org/llama.cpp/tree/d854d98ba), et corpus Paris v1 dans le dépôt. Aucun fine-tuning n'est effectué. Cette expérience évalue la recherche documentaire ; l'intégration MCP et le planificateur de voyage restent des étapes distinctes du projet.

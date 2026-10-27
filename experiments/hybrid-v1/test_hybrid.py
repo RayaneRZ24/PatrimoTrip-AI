@@ -11,6 +11,7 @@ import hybrid
 import rag_local as rag
 import run_local
 import runtime
+import compare_profiles
 
 ROOT = pathlib.Path(__file__).resolve().parent
 
@@ -152,8 +153,64 @@ class HybridTests(unittest.TestCase):
             self.assertEqual(active[0].poll(), 0)
             self.assertIn("--pooling", created[0])
             self.assertIn("--mmproj-offload", created[1])
+            models.start("generation", generation_vision=False)
+            self.assertEqual(active[1].poll(), 0)
+            self.assertNotIn("--mmproj", created[2])
+            self.assertNotIn("--mmproj-offload", created[2])
+            self.assertNotIn("projector.gguf", created[2])
+            for flag in ["--n-gpu-layers", "--ctx-size", "--batch-size", "--ubatch-size", "--reasoning-budget"]:
+                self.assertEqual(created[1][created[1].index(flag)+1], created[2][created[2].index(flag)+1])
             models.stop()
             self.assertFalse(any(p.poll() is None for p in active))
+
+    def test_profile_resource_summary_handles_units_and_separate_gpus(self):
+        with tempfile.TemporaryDirectory() as temp:
+            folder = pathlib.Path(temp)
+            (folder / "memory.jsonl").write_text('{"available_ram_mib": 900}\n{"available_ram_mib": null}\n{"available_ram_mib": 600}\n')
+            (folder / "gpu.csv").write_text('timestamp, index, name, memory.used [MiB], memory.free [MiB]\n'
+                't, 0, NVIDIA, 2700 MiB, 1200 MiB\nt, 0, NVIDIA, 2800 MiB, 1100 MiB\nt, 1, Other, N/A, N/A\n')
+            result = compare_profiles.resource_summary(folder)
+            self.assertEqual(result["min_available_ram_mib"], 600)
+            self.assertEqual(result["median_available_ram_mib"], 750)
+            self.assertEqual(result["gpu"]["0"]["peak_used_mib"], 2800)
+            self.assertEqual(result["gpu"]["0"]["min_free_mib"], 1100)
+            self.assertIsNone(result["gpu"]["1"]["peak_used_mib"])
+
+    def test_profile_comparison_uses_identical_contexts_and_flags_status_failures(self):
+        corpus = hybrid.Corpus(ROOT)
+        manifest = json.loads((ROOT / "cases.json").read_text(encoding="utf-8"))
+        observed = []
+        def answer(database, question, client, retrieval_fn, retrieval_name):
+            observed.append((question, retrieval_fn(database, question)))
+            return {"answer": {"status": "answered"}, "reference_checks_passed": True, "total_seconds": 1}
+        manager = mock.Mock()
+        manager.start.return_value = "http://127.0.0.1:8080"
+        monitor = mock.Mock()
+        with tempfile.TemporaryDirectory() as temp, mock.patch.object(compare_profiles.rag, "ask", side_effect=answer):
+            result = compare_profiles.compare(corpus, manifest, manager, pathlib.Path(temp), resource_factory=monitor)
+            self.assertEqual(manager.start.call_args_list, [mock.call("generation", generation_vision=True),
+                                                          mock.call("generation", generation_vision=False)])
+            self.assertEqual(observed[:6], observed[6:])
+            self.assertEqual(len(observed), 12)
+            for profile in result.values():
+                self.assertEqual(profile["reference_checks_passed"], 6)
+                self.assertEqual(profile["expected_status_matches"], 5)  # Fake model incorrectly answers the tariff.
+                self.assertEqual(profile["factual_review"], "pending")
+            self.assertEqual(monitor.return_value.stop.call_count, 2)
+
+    def test_failed_text_start_preserves_baseline_and_stops_monitor(self):
+        corpus = hybrid.Corpus(ROOT)
+        manifest = json.loads((ROOT / "cases.json").read_text(encoding="utf-8"))
+        manager = mock.Mock()
+        manager.start.side_effect = ["http://127.0.0.1:8080", runtime.ModelStartupError("mock failure")]
+        monitor = mock.Mock()
+        with tempfile.TemporaryDirectory() as temp, mock.patch.object(compare_profiles.rag, "ask", return_value={
+                "answer": {"status": "answered"}, "reference_checks_passed": True, "total_seconds": 1}):
+            with self.assertRaises(runtime.ModelStartupError):
+                compare_profiles.compare(corpus, manifest, manager, pathlib.Path(temp), resource_factory=monitor)
+            saved = json.loads((pathlib.Path(temp) / "profiles.json").read_text())
+            self.assertIn("vision_baseline", saved)
+            monitor.return_value.stop.assert_called_once()
 
     def test_complete_evaluation_flow_with_synthetic_vectors_and_fake_model(self):
         corpus = hybrid.Corpus(ROOT)

@@ -137,6 +137,7 @@ def main():
     parser.add_argument("question", nargs="?")
     parser.add_argument("--take-over-test-server", action="store_true",
                         help="Allow stopping only the recognized local 4B test server on port 8080.")
+    parser.add_argument("--text-only", action="store_true", help="Do not load the visual projector for generation.")
     default_models = pathlib.Path.home() / "PatrimoTripAI" / "models" / "qwen3.5-4b"
     parser.add_argument("--generation-model", type=pathlib.Path, default=default_models / "Qwen3.5-4B-Q4_K_M.gguf")
     parser.add_argument("--projector", type=pathlib.Path, default=default_models / "mmproj-F16.gguf")
@@ -168,7 +169,7 @@ def main():
                            "dense": "not_run", "reranking": "not_run", "generation": "not_run"})
             success = True
             return
-        for path in [args.generation_model, args.projector]:
+        for path in [args.generation_model] + ([] if args.text_only else [args.projector]):
             if not path.is_file():
                 raise ValueError(f"Previously prepared 4B file not found: {path}")
             with path.open("rb") as stream:
@@ -182,8 +183,8 @@ def main():
         embedding_path, metadata = runtime.download_embedding(ROOT / "models")
         report["embedding_model"] = metadata
         report["generation_model"] = {"name": args.generation_model.name, "sha256": rag.sha_file(args.generation_model),
-                                      "projector_sha256": rag.sha_file(args.projector), "gpu_layers": 20, "ctx_size": 4096,
-                                      "vision_offload": True, "verification": "Files previously checked by user; local digests recorded, not re-downloaded."}
+                                      "projector_sha256": None if args.text_only else rag.sha_file(args.projector), "gpu_layers": 20, "ctx_size": 4096,
+                                      "vision_offload": not args.text_only, "verification": "Files previously checked by user; local digests recorded, not re-downloaded."}
         model_key = hashlib.sha256(json.dumps({"model_sha256": metadata["sha256"], "corpus": corpus.fingerprint,
                                                "input_format": hybrid.FORMAT_VERSION, "task": hybrid.QUERY_TASK,
                                                "dimensions": 1024, "pooling": "last"}, sort_keys=True).encode()).hexdigest()
@@ -213,7 +214,7 @@ def main():
             save(output / "embedding-work.json", embedding_rows)
             manager.stop()
         resources.phase = "generation_start"
-        url = manager.start("generation")
+        url = manager.start("generation", generation_vision=not args.text_only)
         client = rag.LocalModel(url)
         resources.phase = "evaluation" if args.command == "run" else "answer"
         if args.command == "run":
