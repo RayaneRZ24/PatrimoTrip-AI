@@ -67,6 +67,7 @@ class RagTests(unittest.TestCase):
             {"status": "answered", "answer": "Un fait sans référence", "citations": []},
             {"status": "answered", "answer": "Un fait [S999]", "citations": ["S999"]},
             {"status": "answered", "answer": "Un fait [S1]", "citations": []},
+            {"status": "answered", "answer": "Le Panthéon se trouve dans le 5e arrondissement.", "citations": ["S1"]},
             {"status": "answered", "answer": "Un fait [S1]", "citations": ["S1", "S1"]},
         ]
         for answer in invalid:
@@ -79,6 +80,26 @@ class RagTests(unittest.TestCase):
         for url in ["http://example.com:8080", "https://127.0.0.1:8080", "http://user:secret@localhost:8080"]:
             with self.subTest(url=url), self.assertRaises(ValueError):
                 rag.LocalModel(url)
+
+    def test_claims_render_pantheon_citation_without_model_marker(self):
+        draft = {"status": "answered", "claims": [
+            {"text": "Le Panthéon se trouve dans le 5e arrondissement.", "citations": ["S1"]}]}
+        answer = rag.render_claims(draft, [{"citation_id": "S1"}])
+        self.assertEqual(answer["answer"], "Le Panthéon se trouve dans le 5e arrondissement. [S1]")
+        self.assertEqual(answer["citations"], ["S1"])
+        self.assertNotIn("[S1]", draft["claims"][0]["text"])
+
+    def test_each_claim_requires_valid_sources(self):
+        for citations in [[], ["S999"], ["S1", "S1"]]:
+            draft = {"status": "answered", "claims": [{"text": "Un fait.", "citations": citations}]}
+            with self.subTest(citations=citations), self.assertRaises(ValueError):
+                rag.render_claims(draft, [{"citation_id": "S1"}])
+        draft = {"status": "insufficient_sources", "claims": [{"text": "Le tarif actuel manque.", "citations": []}]}
+        self.assertEqual(rag.render_claims(draft, [{"citation_id": "S1"}])["citations"], [])
+        draft = {"status": "answered", "claims": [
+            {"text": "Premier fait.", "citations": ["S1"]}, {"text": "Second fait non sourcé.", "citations": []}]}
+        with self.assertRaises(ValueError):
+            rag.render_claims(draft, [{"citation_id": "S1"}])
 
     def test_http_flow_and_truncated_answer(self):
         payloads = []
@@ -103,7 +124,7 @@ class RagTests(unittest.TestCase):
             def do_POST(self):
                 data = json.loads(self.rfile.read(int(self.headers["Content-Length"])))
                 payloads.append(data)
-                answer = {"status": "answered", "answer": "Réponse simulée [S1]", "citations": ["S1"]}
+                answer = {"status": "answered", "claims": [{"text": "Réponse simulée", "citations": ["S1"]}]}
                 self.send({"choices": [{"message": {"content": json.dumps(answer)},
                                         "finish_reason": "length" if self.truncated else "stop"}], "usage": {"completion_tokens": 10}})
 
@@ -116,7 +137,7 @@ class RagTests(unittest.TestCase):
             self.assertTrue(result["reference_checks_passed"])
             payload = payloads[0]
             schema = payload["response_format"]["json_schema"]["schema"]
-            self.assertEqual(schema["properties"]["citations"]["items"]["enum"], [e["citation_id"] for e in result["evidence"]])
+            self.assertEqual(schema["properties"]["claims"]["items"]["properties"]["citations"]["items"]["enum"], [e["citation_id"] for e in result["evidence"]])
             self.assertEqual(payload["messages"][0]["content"], rag.SYSTEM)
             self.assertLess(len(payload["messages"][1]["content"]), 7500)
             self.assertIn("Exposition universelle", payload["messages"][1]["content"])

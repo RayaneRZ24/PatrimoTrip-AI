@@ -78,3 +78,20 @@ Les 10 sites, 30 documents et 840 passages sont ceux du corpus Paris v1. Les tex
 Huit contrôles automatisés passent : construction/réutilisation de l'index, extraits réels pour la tour Eiffel, localisation du Panthéon et architecte Garnier, traitement des requêtes comme données SQL, absence de résultat, vérification des références, rejet des destinations externes et flux HTTP local avec gestion d'une réponse tronquée.
 
 Les commandes doctor, index et ask ont aussi été exécutées avec un faux serveur local. Ces vérifications portent sur le code, les données et le transport. Elles ne sont pas des tests du modèle 4B ni des mesures de performance sur le PC personnel.
+
+
+## Lanceur 1.1 : références associées à chaque phrase
+
+Le script source courant utilise un contrat JSON `status` + `claims`. Chaque élément de `claims` contient `text` et sa liste `citations`, avec au maximum trois phrases. Le modèle n'écrit pas de marqueur dans le texte ; le code valide les références puis affiche les marqueurs à la fin de la phrase concernée. La sortie normalisée enregistrée garde les champs `status`, `answer` et `citations` pour faciliter la relecture.
+
+Ce changement évite de demander au modèle de maintenir deux représentations synchronisées des références. Il ne supprime pas le contrôle précédent : les références inconnues, les phrases factuelles sans source et les sorties tronquées restent rejetées. Les réponses anciennes ne sont pas réparées rétroactivement. La vérification du soutien réel des faits reste manuelle.
+
+Le prompt limite aussi la réponse aux informations demandées, pour réduire les ajouts annexes. Les contradictions du corpus ne sont pas corrigées automatiquement par ce changement.
+
+L'archive initiale `rag-local-v1.zip` reste inchangée. Pour essayer la version courante en conservant le premier script, télécharger le fichier source `rag_local.py` sous le nom `rag_local_claims.py` dans le même dossier, puis lancer :
+
+```powershell
+py .\rag_local_claims.py ask "Où se trouve le Panthéon de Paris ?"
+```
+
+Dix contrôles automatisés passent dans l'environnement de développement, dont le cas du Panthéon sans marqueur généré, la vérification des sources phrase par phrase et la conservation du rejet des anciennes réponses incohérentes. Le contrat HTTP est testé avec un faux serveur ; la génération réelle du nouveau format doit être validée sur le PC utilisateur.
