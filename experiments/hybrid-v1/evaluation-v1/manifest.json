@@ -1,0 +1,155 @@
+{
+  "version": "photo-evaluation-v1",
+  "frozen_on": "2026-10-28",
+  "scope": "Small additional evaluation, not a general accuracy estimate; no claim about model pretraining overlap.",
+  "novelty": "Different original files and hashes from vision-v1; new question wording, same corpus facts; natural image text is retained.",
+  "previous_image_sha256": [
+    "00024d1a1c16fcc6be8f72be143b7de4d687670956957766c59e1c01750a8e69",
+    "0b629c5c3bb7889f6e2befe57454a26e0e2eeb850307ebfc7965451566b4127b",
+    "0f35a76f1f564bd2889127af0093513e5af41b9c113d2ececb1ce8954d267bfe",
+    "38a58cbd7277d73b182931ce28dce35664372c147eec08af98e7ab38dba15167",
+    "584c0bc87a1b68e16cdf87a84e8d293c229b7345fd648cd69168964894109418",
+    "5d737dedd7faae0ef5fc0b1b425ac1034110baacd3b538d43b139ad5eb08e5da",
+    "7f5170abde9a0871b3a96b6374048cd8848a6020a5eab330ede31d9edb54d7e4",
+    "848139c75c8eb5d021837af2f856a51e8e0055e3f0c388d6fae26b49cfac339f",
+    "8b048fc04160a1f3459a7d2de5517cf1fef2089f49f22438119b8882c1e3bc66",
+    "9c0010c0ca92cbaa9034a34590ba929e1a9c972142987758dee38d99a3013b93",
+    "be8e75e32fa051c99c3a5cbac99a1f2a60a54316bd242ddb9e4f384d0d58ad3d",
+    "f7c37182564d066110db204bdabe71c14eb2b01b86cb6f2d0263ee5a350c0d7f"
+  ],
+  "cases": [
+    {
+      "case_id": "q01",
+      "asset_id": "a01",
+      "question": "Pour quel événement parisien cette tour a-t-elle été édifiée, et que commémorait-il ?",
+      "kind": "documented",
+      "expected_answer_status": "answered",
+      "known_evidence": [
+        {
+          "passage_id": "wikipedia:Q243:240161358:40cc6e9caff43f0e:0-1389",
+          "quote": "pour l'Exposition universelle de Paris de 1889, célébrant le centenaire de la Révolution française"
+        }
+      ],
+      "review_expectation": "Answer the requested facts only; every added detail must be supported by cited excerpts."
+    },
+    {
+      "case_id": "q02",
+      "asset_id": "a02",
+      "question": "Quel évêque est associé au lancement de la construction de cette cathédrale, et en quelle année ?",
+      "kind": "documented",
+      "expected_answer_status": "answered",
+      "known_evidence": [
+        {
+          "passage_id": "wikipedia:Q2981:240334275:1d0527fcc44fd932:0-1391",
+          "quote": "Sa construction est lancée en 1163 sous l'impulsion de l'évêque Maurice de Sully"
+        }
+      ],
+      "review_expectation": "Answer the requested facts only; every added detail must be supported by cited excerpts."
+    },
+    {
+      "case_id": "q03",
+      "asset_id": "a03",
+      "question": "Quel architecte a donné son nom à cet opéra ?",
+      "kind": "documented",
+      "expected_answer_status": "answered",
+      "known_evidence": [
+        {
+          "passage_id": "wikipedia:Q187840:240044545:eb71ac515abf7e2e:0-1398",
+          "quote": "Sur une conception de l'architecte Charles Garnier retenue à la suite d'un concours"
+        }
+      ],
+      "review_expectation": "Answer the requested facts only; every added detail must be supported by cited excerpts."
+    },
+    {
+      "case_id": "q04",
+      "asset_id": "a04",
+      "question": "À quel usage ce bâtiment était-il destiné avant sa transformation en nécropole ?",
+      "kind": "documented",
+      "expected_answer_status": "answered",
+      "known_evidence": [
+        {
+          "passage_id": "wikipedia:Q188856:239973087:dfe044f7402c12fa:0-1396",
+          "quote": "en tant qu'église dédiée à sainte Geneviève, destinée à abriter les reliques de la sainte"
+        }
+      ],
+      "review_expectation": "Answer the requested facts only; every added detail must be supported by cited excerpts."
+    },
+    {
+      "case_id": "q05",
+      "asset_id": "a05",
+      "question": "Quels bénéficiaires Louis XIV voulait-il accueillir dans cet établissement ?",
+      "kind": "documented",
+      "expected_answer_status": "answered",
+      "known_evidence": [
+        {
+          "passage_id": "wikipedia:Q188977:240337999:f264e77b6c3acf52:0-1107",
+          "quote": "pour accueillir les invalides de ses armées"
+        }
+      ],
+      "review_expectation": "Answer the requested facts only; every added detail must be supported by cited excerpts."
+    },
+    {
+      "case_id": "q06",
+      "asset_id": "a01",
+      "question": "Combien coûte un billet adulte au tarif exact applicable aujourd'hui ?",
+      "kind": "missing_current",
+      "expected_answer_status": "insufficient_sources",
+      "known_evidence": [],
+      "review_expectation": "No verified current tariff or same-day closing time is present in this frozen corpus. Do not substitute historical numbers."
+    },
+    {
+      "case_id": "q07",
+      "asset_id": "a04",
+      "question": "À quelle heure ferme ce monument aujourd'hui ?",
+      "kind": "missing_current",
+      "expected_answer_status": "insufficient_sources",
+      "known_evidence": [],
+      "review_expectation": "No verified current tariff or same-day closing time is present in this frozen corpus. Do not substitute historical numbers."
+    },
+    {
+      "case_id": "q08",
+      "asset_id": "a06",
+      "question": "Que représente cette image ? Si un monument est identifiable, présente-le brièvement.",
+      "kind": "detail",
+      "expected_answer_status": null,
+      "known_evidence": [],
+      "review_expectation": "Detail: correct identity or cautious abstention are acceptable; outside/ambiguous: no forced Paris identity or historical answer."
+    },
+    {
+      "case_id": "q09",
+      "asset_id": "a07",
+      "question": "Que représente cette image ? Si un monument est identifiable, présente-le brièvement.",
+      "kind": "detail",
+      "expected_answer_status": null,
+      "known_evidence": [],
+      "review_expectation": "Detail: correct identity or cautious abstention are acceptable; outside/ambiguous: no forced Paris identity or historical answer."
+    },
+    {
+      "case_id": "q10",
+      "asset_id": "a08",
+      "question": "Que représente cette image ? Si un monument est identifiable, présente-le brièvement.",
+      "kind": "outside",
+      "expected_answer_status": null,
+      "known_evidence": [],
+      "review_expectation": "Detail: correct identity or cautious abstention are acceptable; outside/ambiguous: no forced Paris identity or historical answer."
+    },
+    {
+      "case_id": "q11",
+      "asset_id": "a09",
+      "question": "Que représente cette image ? Si un monument est identifiable, présente-le brièvement.",
+      "kind": "outside",
+      "expected_answer_status": null,
+      "known_evidence": [],
+      "review_expectation": "Detail: correct identity or cautious abstention are acceptable; outside/ambiguous: no forced Paris identity or historical answer."
+    },
+    {
+      "case_id": "q12",
+      "asset_id": "a10",
+      "question": "Que représente cette image ? Si un monument est identifiable, présente-le brièvement.",
+      "kind": "ambiguous",
+      "expected_answer_status": null,
+      "known_evidence": [],
+      "review_expectation": "Detail: correct identity or cautious abstention are acceptable; outside/ambiguous: no forced Paris identity or historical answer."
+    }
+  ]
+}

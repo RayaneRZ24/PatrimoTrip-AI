@@ -2,6 +2,16 @@
 
 Un lancement prépare les embeddings, compare la recherche lexicale et dense, teste la fusion et le reranking, puis archive les résultats dans **un seul `report.zip`**. Python standard et SQLite FTS5 suffisent : aucun paquet pip, PyTorch ni service de base de données n'est ajouté.
 
+## Évaluer le parcours sur des images supplémentaires
+
+Un jeu de **dix nouvelles images et douze scénarios** est inclus dans `evaluation-v1/`, avec leurs attributions et des questions documentées ou sans information actuelle disponible. Le lanceur exécute le parcours complet, sans transmettre les réponses attendues au modèle :
+
+```powershell
+py .\evaluate_photo.py --take-over-test-server
+```
+
+Un seul `report.zip` rassemble les sorties et les mesures. Les détails du jeu, les limites des scores et la grille de lecture sont dans [evaluation-v1/README.md](evaluation-v1/README.md). Les contrôles automatiques ne prétendent pas mesurer la véracité : `review.json` conserve les affirmations et les extraits pour une lecture humaine. Ce lancement peut prendre plusieurs minutes et arrête ses modèles à la fin.
+
 ## Photo → monument proposé → explication sourcée
 
 Le lanceur `photo_local.py` relie désormais la vision, les embeddings et la génération textuelle. Pour sélectionner une photo avec la boîte de dialogue Windows :
@@ -38,7 +48,7 @@ Les observations proposées, l'explication, les liens des références et le che
 
 Après une réponse acceptée, le serveur texte reste prêt sur 8080. Après une abstention ou une erreur, les processus lancés sont arrêtés ; aucun redémarrage implicite du serveur précédent n'est garanti. La règle de reprise du serveur existant est la même que pour les autres lanceurs.
 
-Les tests du parcours utilisent des réponses et processus simulés : ils couvrent l'isolation des sources, les interruptions, les images incompatibles, la réutilisation du cache, les deux origines d'identité et les réponses rejetées. La chaîne complète sur une nouvelle photo doit encore être exécutée sur le PC Windows ; aucune nouvelle précision de reconnaissance n'est annoncée.
+Les tests du parcours utilisent des réponses et processus simulés : ils couvrent l'isolation des sources, les interruptions, les images incompatibles, la réutilisation du cache, les deux origines d'identité et les réponses rejetées. Un premier parcours sur une photo Eiffel a été exécuté sur le PC Windows. La relance documentaire v2 a corrigé une abstention sur ce cas, tout en laissant un détail non étayé à relever. Le nouveau jeu d'évaluation doit encore être exécuté ; aucune précision générale de reconnaissance n'est annoncée.
 
 ## Relancer seulement une explication documentaire
 
@@ -144,8 +154,8 @@ py .\run_local.py lexical
 py -m unittest discover -s . -p "test_*.py" -v
 ```
 
-Vingt-huit tests couvrent les annotations réelles, le format de l'API d'embeddings simulée, les vecteurs, l'isolation du cache, la fusion des rangs, le rejet d'un reranking invalide, la sélection des processus, les changements de modèle simulés et le flux complet avec modèles factices. Les tests des profils vérifient aussi les commandes sans projecteur, les contextes identiques, la collecte des ressources et la conservation du résultat initial si le démarrage suivant échoue. Les dix tests du RAG d'origine ont aussi été exécutés. La recherche lexicale sur le vrai corpus a été exécutée dans l'environnement de développement.
+Trente-deux tests couvrent les annotations réelles, le format de l'API d'embeddings simulée, les vecteurs, l'isolation du cache, la fusion des rangs, le rejet d'un reranking invalide, la sélection des processus, les changements de modèle simulés et le flux complet avec modèles factices. Les tests des profils vérifient aussi les commandes sans projecteur, les contextes identiques, la collecte des ressources et la conservation du résultat initial si le démarrage suivant échoue. Les dix tests du RAG d'origine ont aussi été exécutés. La recherche lexicale sur le vrai corpus a été exécutée dans l'environnement de développement.
 
-L'expérience hybride initiale a depuis été exécutée sur le PC Windows de l'utilisateur : 872 encodages, six rerankings et 18 réponses ont abouti. Le rapport a confirmé une RAM libre descendant à environ 278 Mio pendant la génération. Il reste privé et n'est pas intégré à ce paquet. Le nouveau comparatif **avec/sans projecteur** est vérifié avec des processus et réponses simulés ; son gain mémoire réel doit être mesuré sur ce PC. Aucun gain n'est annoncé avant cette mesure.
+L'expérience hybride initiale a depuis été exécutée sur le PC Windows de l'utilisateur : 872 encodages, six rerankings et 18 réponses ont abouti. Le rapport a confirmé une RAM libre descendant à environ 278 Mio pendant la génération. Il reste privé et n'est pas intégré à ce paquet. Le comparatif **avec/sans projecteur** a depuis été exécuté : pic GPU global de 2 873 Mio avec vision et 2 008 Mio en texte, soit 865 Mio d'écart observé, avec les six réponses identiques. Aucun gain significatif de RAM ni de vitesse n'a été établi sur cet essai unique. Ces résultats ne valident pas la fiabilité de nouvelles photos.
 
 Sources techniques : [Qwen3-Embedding-0.6B](https://huggingface.co/Qwen/Qwen3-Embedding-0.6B), [llama.cpp au commit d854d98ba](https://github.com/ggml-org/llama.cpp/tree/d854d98ba), et corpus Paris v1 dans le dépôt. Aucun fine-tuning n'est effectué. Cette expérience évalue la recherche documentaire ; l'intégration MCP et le planificateur de voyage restent des étapes distinctes du projet.
