@@ -2,6 +2,12 @@
 
 Un lancement prépare les embeddings, compare la recherche lexicale et dense, teste la fusion et le reranking, puis archive les résultats dans **un seul `report.zip`**. Python standard et SQLite FTS5 suffisent : aucun paquet pip, PyTorch ni service de base de données n'est ajouté.
 
+## Serveur existant et port 8080
+
+L'évaluation démarre et arrête ses propres modèles. Il n'est pas nécessaire de lancer `llama-server` dans une deuxième fenêtre. Si un serveur manuel est encore ouvert, on peut le fermer avec Ctrl+C avant de lancer l'évaluation. L'option `--take-over-test-server` conserve le contrôle strict du processus attendu.
+
+L'arrêt du serveur reconnu attend désormais jusqu'à 30 secondes la libération du port (six auparavant). Si le port reste occupé, le journal `model-events.json` conserve le nom et le PID du propriétaire observé, sans sa ligne de commande complète. Le lanceur s'arrête avec un message explicite et n'arrête pas un nouveau propriétaire du port. Ce changement améliore l'attente et le diagnostic ; sans rapport complémentaire, il ne permet pas d'affirmer pourquoi un port particulier est resté occupé.
+
 ## Évaluer le parcours sur des images supplémentaires
 
 Un jeu de **dix nouvelles images et douze scénarios** est inclus dans `evaluation-v1/`, avec leurs attributions et des questions documentées ou sans information actuelle disponible. Le lanceur exécute le parcours complet, sans transmettre les réponses attendues au modèle :
@@ -154,7 +160,7 @@ py .\run_local.py lexical
 py -m unittest discover -s . -p "test_*.py" -v
 ```
 
-Trente-deux tests couvrent les annotations réelles, le format de l'API d'embeddings simulée, les vecteurs, l'isolation du cache, la fusion des rangs, le rejet d'un reranking invalide, la sélection des processus, les changements de modèle simulés et le flux complet avec modèles factices. Les tests des profils vérifient aussi les commandes sans projecteur, les contextes identiques, la collecte des ressources et la conservation du résultat initial si le démarrage suivant échoue. Les dix tests du RAG d'origine ont aussi été exécutés. La recherche lexicale sur le vrai corpus a été exécutée dans l'environnement de développement.
+Trente-cinq tests couvrent les annotations réelles, le format de l'API d'embeddings simulée, les vecteurs, l'isolation du cache, la fusion des rangs, le rejet d'un reranking invalide, la sélection des processus, les changements de modèle simulés et le flux complet avec modèles factices. Les tests des profils vérifient aussi les commandes sans projecteur, les contextes identiques, la collecte des ressources et la conservation du résultat initial si le démarrage suivant échoue. Les dix tests du RAG d'origine ont aussi été exécutés. La recherche lexicale sur le vrai corpus a été exécutée dans l'environnement de développement.
 
 L'expérience hybride initiale a depuis été exécutée sur le PC Windows de l'utilisateur : 872 encodages, six rerankings et 18 réponses ont abouti. Le rapport a confirmé une RAM libre descendant à environ 278 Mio pendant la génération. Il reste privé et n'est pas intégré à ce paquet. Le comparatif **avec/sans projecteur** a depuis été exécuté : pic GPU global de 2 873 Mio avec vision et 2 008 Mio en texte, soit 865 Mio d'écart observé, avec les six réponses identiques. Aucun gain significatif de RAM ni de vitesse n'a été établi sur cet essai unique. Ces résultats ne valident pas la fiabilité de nouvelles photos.
 

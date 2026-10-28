@@ -157,6 +157,40 @@ class Models:
             return
         if not self.takeover or os.name != "nt":
             raise RuntimeError("Port 8080 is busy. Close the existing test server, or use --take-over-test-server on Windows.")
+        processes = self.windows_listeners()
+        if not processes and not port_busy(8080):
+            return  # The listener exited between the initial probe and inspection.
+        if not processes or not all(is_expected_test_process(p, self.model) for p in processes):
+            self.event("test_server_takeover_refused", listeners=self.listener_summary(processes))
+            raise RuntimeError("Port 8080 does not belong to the expected local 4B test server. Nothing was stopped.")
+        self.event("test_server_before_stop", listeners=self.listener_summary(processes))
+        for process in processes:
+            pid = int(process["ProcessId"])
+            subprocess.run(["powershell.exe", "-NoProfile", "-Command", f"Stop-Process -Id {pid} -ErrorAction Stop"],
+                           check=True, timeout=15, env=self.environment, capture_output=True)
+        for second in range(30):
+            if not port_busy(8080):
+                self.event("adopted_known_test_server")
+                return
+            if second in (10, 20):
+                print("Attente de la libération du port 8080...", flush=True)
+            time.sleep(1)
+        try:
+            remaining = self.listener_summary(self.windows_listeners())
+            self.event("test_server_port_still_busy", listeners=remaining)
+            detail = "; ".join(f"{p['name']} (PID {p['pid']})" for p in remaining) or "aucun propriétaire identifié"
+        except (ValueError, OSError, subprocess.SubprocessError) as error:
+            self.event("test_server_diagnostic_failed", error=str(error))
+            detail = "propriétaire non déterminé"
+        raise RuntimeError("Le port 8080 reste occupé après 30 secondes : " + detail +
+                           ". Fermez la fenêtre du serveur avec Ctrl+C, puis relancez uniquement l'évaluation. "
+                           "Aucun autre processus n'a été arrêté.")
+
+    def listener_summary(self, processes):
+        return [{"pid": p.get("ProcessId"), "name": p.get("Name"),
+                 "expected_test_server": bool(is_expected_test_process(p, self.model))} for p in processes]
+
+    def windows_listeners(self):
         script = """[Console]::OutputEncoding = New-Object System.Text.UTF8Encoding($false);
 $ids = @(Get-NetTCPConnection -LocalPort 8080 -State Listen -ErrorAction SilentlyContinue | Select-Object -ExpandProperty OwningProcess -Unique);
 $items = @($ids | ForEach-Object { Get-CimInstance Win32_Process -Filter ('ProcessId=' + $_) | Select-Object ProcessId,Name,CommandLine });
@@ -164,21 +198,10 @@ ConvertTo-Json -InputObject $items -Compress
 """
         found = subprocess.run(["powershell.exe", "-NoProfile", "-Command", script], capture_output=True, text=True,
                                encoding="utf-8-sig", errors="replace", timeout=20, check=True, env=self.environment)
-        processes = json.loads(found.stdout)
-        if isinstance(processes, dict):
-            processes = [processes]
-        if not processes or not all(is_expected_test_process(p, self.model) for p in processes):
-            raise RuntimeError("Port 8080 does not belong to the expected local 4B test server. Nothing was stopped.")
-        for process in processes:
-            pid = int(process["ProcessId"])
-            subprocess.run(["powershell.exe", "-NoProfile", "-Command", f"Stop-Process -Id {pid} -ErrorAction Stop"],
-                           check=True, timeout=15, env=self.environment, capture_output=True)
-        for _ in range(30):
-            if not port_busy(8080):
-                self.event("adopted_known_test_server")
-                return
-            time.sleep(0.2)
-        raise RuntimeError("The former test server has not released its port.")
+        processes = json.loads(found.stdout or "null")
+        if processes is None:
+            return []
+        return [processes] if isinstance(processes, dict) else processes
 
     def start(self, role, embedding_model=None, embedding_cpu=False, generation_vision=True):
         self.stop()

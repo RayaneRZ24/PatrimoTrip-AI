@@ -93,6 +93,48 @@ class HybridTests(unittest.TestCase):
         self.assertEqual(len({e["citation_id"] for e in context}), len(context))
         self.assertIn("Q243", [corpus.passages[pid]["site_id"] for pid in ranking[:5]])
 
+    def test_takeover_waits_for_delayed_port_release(self):
+        with tempfile.TemporaryDirectory() as temp, mock.patch.object(runtime.shutil, "which", return_value="mock-server"):
+            model = pathlib.Path(temp)/"generation.gguf"
+            manager = runtime.Models(model, pathlib.Path(temp)/"projector.gguf", pathlib.Path(temp), takeover=True)
+            process = {"Name": "llama-server.exe", "ProcessId": 221,
+                       "CommandLine": f'llama-server.exe --model "{model}" --host 127.0.0.1 --port 8080'}
+            with mock.patch.object(runtime.os, "name", "nt"), mock.patch.object(manager, "windows_listeners", return_value=[process]), \
+                 mock.patch.object(runtime, "port_busy", side_effect=[False, True]+[True]*8+[False]), \
+                 mock.patch.object(runtime.subprocess, "run") as stop, mock.patch.object(runtime.time, "sleep") as sleep:
+                manager.prepare_ports()
+                self.assertEqual(sleep.call_count, 8)
+                stop.assert_called_once()
+                self.assertIn("Stop-Process -Id 221", stop.call_args.args[0][-1])
+                self.assertEqual(manager.events[-1]["phase"], "adopted_known_test_server")
+
+    def test_takeover_does_not_stop_an_unrecognized_listener(self):
+        with tempfile.TemporaryDirectory() as temp, mock.patch.object(runtime.shutil, "which", return_value="mock-server"):
+            manager = runtime.Models(pathlib.Path(temp)/"model.gguf", pathlib.Path(temp)/"projector.gguf", pathlib.Path(temp), takeover=True)
+            with mock.patch.object(runtime.os, "name", "nt"), \
+                 mock.patch.object(manager, "windows_listeners", return_value=[{"Name": "other.exe", "ProcessId": 999}]), \
+                 mock.patch.object(runtime, "port_busy", side_effect=lambda port: port == 8080), \
+                 mock.patch.object(runtime.subprocess, "run") as stop:
+                with self.assertRaises(RuntimeError):
+                    manager.prepare_ports()
+                stop.assert_not_called()
+                self.assertEqual(manager.events[-1]["phase"], "test_server_takeover_refused")
+
+    def test_takeover_reports_remaining_listener_without_killing_it(self):
+        with tempfile.TemporaryDirectory() as temp, mock.patch.object(runtime.shutil, "which", return_value="mock-server"):
+            model = pathlib.Path(temp)/"generation.gguf"
+            manager = runtime.Models(model, pathlib.Path(temp)/"projector.gguf", pathlib.Path(temp), takeover=True)
+            process = {"Name": "llama-server.exe", "ProcessId": 221,
+                       "CommandLine": f'llama-server.exe --model "{model}" --host 127.0.0.1 --port 8080'}
+            with mock.patch.object(runtime.os, "name", "nt"), \
+                 mock.patch.object(manager, "windows_listeners", side_effect=[[process], [{"Name": "other.exe", "ProcessId": 999}]]), \
+                 mock.patch.object(runtime, "port_busy", side_effect=lambda port: port == 8080), \
+                 mock.patch.object(runtime.subprocess, "run") as stop, mock.patch.object(runtime.time, "sleep"):
+                with self.assertRaisesRegex(RuntimeError, "other.exe.*999"):
+                    manager.prepare_ports()
+                stop.assert_called_once()
+                self.assertEqual(manager.events[-1]["phase"], "test_server_port_still_busy")
+
     def test_embedding_api_shape_and_query_instruction(self):
         requests = []
         class Handler(http.server.BaseHTTPRequestHandler):
