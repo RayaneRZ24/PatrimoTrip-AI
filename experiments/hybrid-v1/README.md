@@ -8,6 +8,18 @@ L'évaluation démarre et arrête ses propres modèles. Il n'est pas nécessaire
 
 L'arrêt du serveur reconnu attend désormais jusqu'à 30 secondes la libération du port (six auparavant). Si le port reste occupé, le journal `model-events.json` conserve le nom et le PID du propriétaire observé, sans sa ligne de commande complète. Le lanceur s'arrête avec un message explicite et n'arrête pas un nouveau propriétaire du port. Ce changement améliore l'attente et le diagnostic ; sans rapport complémentaire, il ne permet pas d'affirmer pourquoi un port particulier est resté occupé.
 
+## Recherche documentaire par sous-question
+
+La chaîne propose maintenant `facet_coverage_v1` pour les formulations composées reconnues : recherche par volet, sélection équilibrée des extraits et statut de réponse distinct pour chaque volet. Le contexte reste limité à quatre passages et 4 800 caractères. Les questions simples conservent la méthode précédente. Une réponse partielle peut établir un fait historique et signaler séparément qu'un tarif actuel manque.
+
+Le comparatif documentaire utilise six questions avec les deux méthodes, sans réexécuter la vision :
+
+```powershell
+py .\evaluate_retrieval.py --take-over-test-server
+```
+
+Les sites sont fournis pour isoler la recherche et la rédaction. Les photos, poids et vecteurs existants restent conservés. Les règles, limites, mesures et fichiers produits sont décrits dans [retrieval-v2/README.md](retrieval-v2/README.md). Les tests automatisés vérifient le logiciel ; le gain réel sur les réponses doit être mesuré sur le PC utilisateur.
+
 ## Contrôle de l'identité canonique — v3
 
 Le modèle visuel ne produit plus d'identifiant Wikidata. Il choisit un **nom canonique qualifié par ville et pays** ; le programme résout ce nom dans le dictionnaire du corpus. L'analyse fournit séparément la ville, le pays, les observations et l'hypothèse. Le champ `identity_check` conserve ces valeurs, la version `canonical_location_v3` et les éventuelles contradictions. Aucune confiance numérique calibrée ni vérification indépendante n'est ajoutée.
@@ -26,7 +38,7 @@ py .\evaluate_photo.py --identity-regression --take-over-test-server
 
 Le sous-ensemble comprend Eiffel et Panthéon comme contrôles, Garnier, Invalides, le Panthéon de Rome et le mur sans contexte. Les photos, questions et réponses attendues d'origine sont conservées ; aucun label attendu n'est transmis à l'inférence. Le manifeste et les images figés ne sont pas modifiés. Le résultat est une régression de développement, pas une nouvelle mesure indépendante de précision.
 
-Si le rapport complet antérieur de douze cas est présent dans `results/` et correspond au même jeu, `identity-before-after.json` compare les mêmes cas avant et après, en indiquant le dossier source. Les premiers résultats restent intacts. Les proportions de ce sous-ensemble ne doivent pas être comparées directement à celles des douze scénarios initiaux. Les corrections de la recherche et de la rédaction sont des travaux distincts : cette version cible l'identité.
+Si le rapport complet antérieur de douze cas est présent dans `results/` et correspond au même jeu, `identity-before-after.json` compare les mêmes cas avant et après, en indiquant le dossier source. Les premiers résultats restent intacts. Les proportions de ce sous-ensemble ne doivent pas être comparées directement à celles des douze scénarios initiaux. La régression v3 initiale ciblait l'identité. La version documentaire par sous-question est évaluée séparément ; les versions d'identité, de recherche et de rédaction sont consignées dans les nouveaux rapports.
 
 ## Évaluer le parcours sur des images supplémentaires
 
@@ -180,7 +192,7 @@ py .\run_local.py lexical
 py -m unittest discover -s . -p "test_*.py" -v
 ```
 
-Quarante tests couvrent les annotations réelles, le format de l'API d'embeddings simulée, les vecteurs, l'isolation du cache, la fusion des rangs, le rejet d'un reranking invalide, la sélection des processus, les changements de modèle simulés et le flux complet avec modèles factices. Les tests des profils vérifient aussi les commandes sans projecteur, les contextes identiques, la collecte des ressources et la conservation du résultat initial si le démarrage suivant échoue. Les dix tests du RAG d'origine ont aussi été exécutés. La recherche lexicale sur le vrai corpus a été exécutée dans l'environnement de développement.
+Quarante-six tests couvrent les annotations réelles, le format de l'API d'embeddings simulée, les vecteurs, l'isolation du cache, la fusion des rangs, le rejet d'un reranking invalide, la sélection des processus, les changements de modèle simulés et le flux complet avec modèles factices. Les tests des profils vérifient aussi les commandes sans projecteur, les contextes identiques, la collecte des ressources et la conservation du résultat initial si le démarrage suivant échoue. Les dix tests du RAG d'origine ont aussi été exécutés. La recherche lexicale sur le vrai corpus a été exécutée dans l'environnement de développement.
 
 L'expérience hybride initiale a depuis été exécutée sur le PC Windows de l'utilisateur : 872 encodages, six rerankings et 18 réponses ont abouti. Le rapport a confirmé une RAM libre descendant à environ 278 Mio pendant la génération. Il reste privé et n'est pas intégré à ce paquet. Le comparatif **avec/sans projecteur** a depuis été exécuté : pic GPU global de 2 873 Mio avec vision et 2 008 Mio en texte, soit 865 Mio d'écart observé, avec les six réponses identiques. Aucun gain significatif de RAM ni de vitesse n'a été établi sur cet essai unique. Ces résultats ne valident pas la fiabilité de nouvelles photos.
 

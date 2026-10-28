@@ -144,7 +144,7 @@ class Corpus:
     def routed(self, question, limit=10):
         return [e["passage_id"] for e in rag.retrieve(self.database, question, top_k=limit, context_chars=limit*1400)]
 
-    def context(self, ranking, top_k=4, budget=4800):
+    def context(self, ranking, top_k=4, budget=4800, max_per_document=2):
         selected = []
         for pid in ranking:
             if len(selected) >= top_k or budget < 200:
@@ -154,7 +154,7 @@ class Corpus:
                    max(0, min(e["end"], passage["end"])-max(e["start"], passage["start"])) >
                    0.4*min(len(e["text"]), len(passage["text"])) for e in selected):
                 continue
-            if sum(e["document_id"] == passage["document_id"] for e in selected) >= 2:
+            if sum(e["document_id"] == passage["document_id"] for e in selected) >= max_per_document:
                 continue
             text = passage["text"][:budget]
             if len(text) < len(passage["text"]):

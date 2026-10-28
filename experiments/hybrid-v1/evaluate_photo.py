@@ -106,6 +106,7 @@ def score_case(case, asset, result, evidence):
             "detail_correct_or_abstained": bool(exact or rejected) if asset["kind"] == "detail" else None,
             "ambiguous_clarification": status == "uncertain" and rejected if asset["kind"] == "ambiguous" else None,
             "answer_status": result.get("answer_status"), "known_evidence_in_context": known_hit,
+            "facet_statuses": result.get("facet_statuses"), "all_facets_answered": result.get("all_facets_answered"),
             "reference_checks_passed": result.get("reference_checks_passed", False),
             "format_and_expected_status_on_correct_identity": bool(exact and result.get("reference_checks_passed") and
                 result.get("answer_status") == expected_status) if expected_status else None,
@@ -121,13 +122,15 @@ def review_entries(case_id, folder):
         return [{"case_id": case_id, "kind": "rejected_answer", "review": "not_reviewed",
                  "validation_error": answer.get("validation_error")}]
     sources = {e["citation_id"]: e for e in answer["evidence"]}
+    claims = answer.get("review_claims", answer.get("claims_response", {}).get("claims", []))
     return [{"case_id": case_id, "claim_index": n, "answer_status": answer["answer"]["status"],
+             "facet_id": claim.get("facet_id"), "facet_status": claim.get("facet_status"),
              "claim": claim["text"], "citations": claim["citations"],
              "cited_excerpts": [{"reference": ref, "text": sources[ref]["text"], "title": sources[ref]["source"]["title"],
                                 "url": sources[ref]["source"]["url"]} for ref in claim["citations"]],
              "all_supplied_excerpts": [{"reference": ref, "text": e["text"]} for ref, e in sources.items()],
              "support": "not_reviewed", "answers_question": "not_reviewed", "notes": ""}
-            for n, claim in enumerate(answer["claims_response"]["claims"], 1)]
+            for n, claim in enumerate(claims, 1)]
 
 
 def summarize(rows):
@@ -235,6 +238,7 @@ def main():
     manager, started, success = None, time.perf_counter(), False
     report = {"status": "started", "utc_started": dt.datetime.now(dt.timezone.utc).isoformat(), "factual_review": "pending",
               "identity_version": photo.IDENTITY_VERSION,
+              "retrieval_version": photo.facet_rag.VERSION,
               "evaluation_kind": "identity_development_regression" if args.identity_regression else "full_additional_evaluation",
               "scope": "Previously examined cases after identity correction; development regression, not an independent test." if args.identity_regression else
                        "Additional small frozen evaluation; no claim of general accuracy or independence from model training."}
@@ -252,7 +256,8 @@ def main():
                       generation_sha256=rag.sha_file(args.generation_model), projector_sha256=rag.sha_file(args.projector),
                       script_sha256={p.name: rag.sha_file(p) for p in ROOT.glob("*.py")},
                       generation_settings={"gpu_layers": 20, "context": 4096, "batch": 256, "ubatch": 128,
-                                           "parallel": 1, "reasoning_budget": 0, "prompt_version": "photo_partial_answers_v2"})
+                                           "parallel": 1, "reasoning_budget": 0,
+                                           "single_prompt_version": "photo_partial_answers_v2", "compound_prompt_version": "photo_facets_v1"})
         report["selected_case_ids"] = [c["case_id"] for c in manifest["cases"]]
         save(output / "evaluation-manifest.json", manifest)
         save(output / "evaluation-assets.json", list(assets.values()))

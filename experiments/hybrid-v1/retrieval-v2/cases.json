@@ -1,0 +1,187 @@
+{
+  "version": "retrieval-facets-v1",
+  "scope": "Documentary-only development comparison with supplied site identity; not a new photo recognition evaluation. Partial known-evidence annotations; no automatic factual accuracy.",
+  "cases": [
+    {
+      "case_id": "r01",
+      "site_id": "Q243",
+      "question": "Pour quel événement parisien cette tour a-t-elle été édifiée, et que commémorait-il ?",
+      "expected_status": "answered",
+      "facets": [
+        {
+          "facet_id": "F1",
+          "expected_status": "answered",
+          "known_evidence": [
+            {
+              "passage_id": "wikipedia:Q243:240161358:40cc6e9caff43f0e:0-1389",
+              "quote": "pour l'Exposition universelle de Paris de 1889"
+            },
+            {
+              "passage_id": "wikipedia:Q243:240161358:40cc6e9caff43f0e:20403-21802",
+              "quote": "pour l'Exposition universelle de 1889"
+            },
+            {
+              "passage_id": "wikipedia:Q243:240161358:40cc6e9caff43f0e:21604-23000",
+              "quote": "pour l'Exposition universelle de 1889"
+            },
+            {
+              "passage_id": "datatourisme:c73b631ca9cdb8e3:1eafb7006395722d:0-473",
+              "quote": "pour l'Exposition universelle de 1889"
+            }
+          ]
+        },
+        {
+          "facet_id": "F2",
+          "expected_status": "answered",
+          "known_evidence": [
+            {
+              "passage_id": "wikipedia:Q243:240161358:40cc6e9caff43f0e:0-1389",
+              "quote": "centenaire de la Révolution française"
+            },
+            {
+              "passage_id": "wikipedia:Q243:240161358:40cc6e9caff43f0e:1482-2880",
+              "quote": "centenaire de la Révolution française"
+            },
+            {
+              "passage_id": "wikipedia:Q243:240161358:40cc6e9caff43f0e:14925-16320",
+              "quote": "centenaire de la Révolution française"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "r02",
+      "site_id": "Q2981",
+      "question": "Quel évêque a lancé la construction de cette cathédrale, et en quelle année a-t-elle commencé ?",
+      "expected_status": "answered",
+      "facets": [
+        {
+          "facet_id": "F1",
+          "expected_status": "answered",
+          "known_evidence": [
+            {
+              "passage_id": "wikipedia:Q2981:240334275:1d0527fcc44fd932:0-1391",
+              "quote": "Sa construction est lancée en 1163 sous l'impulsion de l'évêque Maurice de Sully"
+            },
+            {
+              "passage_id": "merimee:PA00086250:732485bf36e572d4:450-1849",
+              "quote": "Sa construction est due à l’évêque de Paris Maurice de Sully"
+            }
+          ]
+        },
+        {
+          "facet_id": "F2",
+          "expected_status": "answered",
+          "known_evidence": [
+            {
+              "passage_id": "wikipedia:Q2981:240334275:1d0527fcc44fd932:0-1391",
+              "quote": "construction est lancée en 1163"
+            },
+            {
+              "passage_id": "merimee:PA00086250:732485bf36e572d4:450-1849",
+              "quote": "pose la première pierre en 1163"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "r03",
+      "site_id": "Q187840",
+      "question": "Qui a conçu cet opéra et quand a-t-il été inauguré ?",
+      "expected_status": "answered",
+      "facets": [
+        {
+          "facet_id": "F1",
+          "expected_status": "answered",
+          "known_evidence": [
+            {
+              "passage_id": "datatourisme:0a747ecd5e91e0d5:94a02fa5647f36b7:0-387",
+              "quote": "conçu par Charles Garnier"
+            },
+            {
+              "passage_id": "wikipedia:Q187840:240044545:eb71ac515abf7e2e:0-1398",
+              "quote": "Sur une conception de l'architecte Charles Garnier retenue"
+            }
+          ]
+        },
+        {
+          "facet_id": "F2",
+          "expected_status": "answered",
+          "known_evidence": [
+            {
+              "passage_id": "datatourisme:0a747ecd5e91e0d5:94a02fa5647f36b7:0-387",
+              "quote": "Inauguré en 1875"
+            },
+            {
+              "passage_id": "wikipedia:Q187840:240044545:eb71ac515abf7e2e:0-1398",
+              "quote": "Le bâtiment est inauguré le 5 janvier 1875"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "r04",
+      "site_id": "Q243",
+      "question": "Combien coûte un billet adulte au tarif exact applicable aujourd'hui ?",
+      "expected_status": "insufficient_sources",
+      "facets": [
+        {
+          "facet_id": "F1",
+          "expected_status": "insufficient_sources",
+          "known_evidence": []
+        }
+      ]
+    },
+    {
+      "case_id": "r05",
+      "site_id": "Q188856",
+      "question": "À quelle heure ferme ce monument aujourd'hui ?",
+      "expected_status": "insufficient_sources",
+      "facets": [
+        {
+          "facet_id": "F1",
+          "expected_status": "insufficient_sources",
+          "known_evidence": []
+        }
+      ]
+    },
+    {
+      "case_id": "r06",
+      "site_id": "Q243",
+      "question": "Pour quel événement cette tour a-t-elle été construite et quel est son prix d'entrée aujourd'hui ?",
+      "expected_status": "answered",
+      "facets": [
+        {
+          "facet_id": "F1",
+          "expected_status": "answered",
+          "known_evidence": [
+            {
+              "passage_id": "wikipedia:Q243:240161358:40cc6e9caff43f0e:0-1389",
+              "quote": "pour l'Exposition universelle de Paris de 1889"
+            },
+            {
+              "passage_id": "wikipedia:Q243:240161358:40cc6e9caff43f0e:20403-21802",
+              "quote": "pour l'Exposition universelle de 1889"
+            },
+            {
+              "passage_id": "wikipedia:Q243:240161358:40cc6e9caff43f0e:21604-23000",
+              "quote": "pour l'Exposition universelle de 1889"
+            },
+            {
+              "passage_id": "datatourisme:c73b631ca9cdb8e3:1eafb7006395722d:0-473",
+              "quote": "pour l'Exposition universelle de 1889"
+            }
+          ]
+        },
+        {
+          "facet_id": "F2",
+          "expected_status": "insufficient_sources",
+          "known_evidence": []
+        }
+      ]
+    }
+  ]
+}

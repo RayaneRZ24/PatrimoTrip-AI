@@ -12,6 +12,7 @@ import traceback
 import zipfile
 
 import hybrid
+import facet_rag
 import rag_local as rag
 import runtime
 from run_local import ROOT, embedding_cache_key, query_id, save
@@ -195,12 +196,13 @@ def identify(client, image, metadata, sites, output):
     return resolve_identity(json.loads(choice["message"]["content"]), sites)
 
 
-def prepare_vectors(corpus, site_id, question, manager, output, resources):
+def prepare_vectors(corpus, site_id, question, manager, output, resources, extra_queries=None):
     model_path, metadata = runtime.download_embedding(ROOT / "models")
     cache = hybrid.VectorCache(ROOT / "vectors.sqlite3", embedding_cache_key(metadata, corpus))
     passages = [p for p in corpus.passages.values() if p["site_id"] == site_id]
     items = [("document", p["passage_id"], hybrid.document_input(p, corpus.sources[p["document_id"]])) for p in passages]
-    items.append(("query", query_id(question), hybrid.query_input(question)))
+    for query in dict.fromkeys([question]+list(extra_queries or [])):
+        items.append(("query", query_id(query), hybrid.query_input(query)))
     missing = sum(cache.get(role, key, text) is None for role, key, text in items)
     print(f"Cache documentaire : {len(items)-missing}/{len(items)} éléments réutilisables ; {missing} à encoder.", flush=True)
     save(output / "embedding.json", {"model": metadata, "missing_items": missing, "scope": site_id,
@@ -239,13 +241,16 @@ def scoped_retrieval(corpus, site_id, question, cache):
     return evidence, {"bm25": lexical[:10], "dense": dense[:10], "hybrid_rrf": ranking[:10]}
 
 
-def documentary_answer(corpus, question, evidence, manager, output, resources):
+def documentary_answer(corpus, question, evidence, manager, output, resources, plan=None):
     resources.phase = "text_answer"
     url = manager.start("generation", generation_vision=False)
-    answer = rag.ask(corpus.database, question, rag.LocalModel(url),
-                     retrieval_fn=lambda database, query: evidence, retrieval_name="site_scoped_hybrid_rrf",
-                     system_prompt=PHOTO_SYSTEM)
-    answer["prompt_version"] = "photo_partial_answers_v2"
+    if plan and plan["compound"]:
+        answer = facet_rag.ask(question, plan, evidence, rag.LocalModel(url), PHOTO_SYSTEM)
+    else:
+        answer = rag.ask(corpus.database, question, rag.LocalModel(url),
+                         retrieval_fn=lambda database, query: evidence, retrieval_name="site_scoped_hybrid_rrf",
+                         system_prompt=PHOTO_SYSTEM)
+    answer["prompt_version"] = "photo_facets_v1" if plan and plan["compound"] else "photo_partial_answers_v2"
     save(output / "answer.json", answer)
     return answer
 
@@ -261,6 +266,8 @@ def attach_answer(result, answer, site_name):
                   historical_answer_generated=answer.get("model_called", False), reference_checks_passed=valid,
                   answer=answer.get("answer") if valid else None, error=answer.get("validation_error"),
                   explanation_scope="Cette explication concerne le monument proposé ; elle ne prouve pas l'identité de la photo.")
+    if valid and "facet_statuses" in answer:
+        result.update(facet_statuses=answer["facet_statuses"], all_facets_answered=answer.get("all_facets_answered", False))
     return result
 
 
@@ -329,10 +336,16 @@ def pipeline(corpus, sites, data, metadata, question, manager, output, resources
     site_id = prediction["site_id"]
     site_name = sites[site_id]["name"]
     scoped_question = f"À propos du monument « {site_name} » : {question}"
-    cache = prepare_vectors(corpus, site_id, scoped_question, manager, output, resources)
-    evidence, rankings = scoped_retrieval(corpus, site_id, scoped_question, cache)
+    plan = facet_rag.plan_question(question, site_name)
+    save(output / "question-plan.json", plan)
+    cache = prepare_vectors(corpus, site_id, scoped_question, manager, output, resources,
+                            extra_queries=facet_rag.extra_queries(plan))
+    if plan["compound"]:
+        evidence, rankings = facet_rag.retrieve(corpus, site_id, site_name, plan, cache)
+    else:
+        evidence, rankings = scoped_retrieval(corpus, site_id, scoped_question, cache)
     save(output / "retrieval.json", {"site_id": site_id, "question": scoped_question, "rankings": rankings, "evidence": evidence})
-    answer = documentary_answer(corpus, scoped_question, evidence, manager, output, resources)
+    answer = documentary_answer(corpus, scoped_question, evidence, manager, output, resources, plan=plan)
     return attach_answer(result, answer, site_name)
 
 
@@ -357,6 +370,8 @@ def display(result, sites):
     if result.get("answer"):
         print("\nMonument " + ("fourni" if result["identity_origin"] == "user_provided" else "proposé") + " : " + result["site_name"])
         print(result["explanation_scope"] + "\n")
+        if result.get("all_facets_answered") is False and result.get("answer_status") == "answered":
+            print("Réponse partielle : certains éléments demandés ne sont pas établis par les extraits.")
         print(result["answer"]["answer"])
     elif result.get("message"):
         print(result["message"])
@@ -390,6 +405,7 @@ def main():
     output.mkdir(parents=True)
     report = {"status": "started", "server_left_running": False, "factual_review": "pending",
               "identity_version": IDENTITY_VERSION,
+              "retrieval_version": facet_rag.VERSION,
               "utc_started": dt.datetime.now(dt.timezone.utc).isoformat()}
     manager, resources, started, success = None, None, time.perf_counter(), False
     try:
