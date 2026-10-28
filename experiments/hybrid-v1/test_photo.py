@@ -25,6 +25,11 @@ class PhotoTests(unittest.TestCase):
     def proposal(self, status='identified', site_id='Q243'):
         return {'site_id': site_id, 'status': status, 'observations': ['Structure métallique visible.'], 'hypothesis': 'Une tour métallique.'}
 
+    def visual_proposal(self, site_id='Q243'):
+        name = next(name for name, sid in photo.canonical_sites(self.sites).items() if sid == site_id)
+        return {'site_name': name, 'status': 'identified', 'city': 'Paris', 'country': 'France',
+                'observations': ['Structure visible.'], 'hypothesis': self.sites[site_id]['name']}
+
     def test_image_dimensions_limits_and_supported_headers(self):
         with tempfile.TemporaryDirectory() as temp:
             path = pathlib.Path(temp)/'photo.png'
@@ -79,8 +84,8 @@ class PhotoTests(unittest.TestCase):
                 return {'data': [{'id': 'fake-Qwen3.5-4B'}]}
             requests.append(payload)
             props = payload['response_format']['json_schema']['schema']['properties']
-            if 'site_id' in props:
-                value = self.proposal()
+            if 'site_name' in props:
+                value = self.visual_proposal()
             else:
                 value = {'status': 'answered', 'claims': [{'text': 'Réponse simulée uniquement.', 'citations': ['S1']}]}
             return {'choices': [{'message': {'content': json.dumps(value)}, 'finish_reason': 'stop'}]}
@@ -101,6 +106,39 @@ class PhotoTests(unittest.TestCase):
             self.assertTrue(requests[0]['messages'][1]['content'][1]['image_url']['url'].startswith('data:image/png;base64,'))
             self.assertNotIn('Structure métallique visible.', json.dumps(requests[1], ensure_ascii=False))
             self.assertNotIn('data:image', (folder/'vision.json').read_text())
+            self.assertNotIn('site_id', requests[0]['response_format']['json_schema']['schema']['properties'])
+            self.assertNotIn('Q243', requests[0]['messages'][1]['content'][0]['text'])
+
+    def test_canonical_name_resolves_id_and_cannot_accept_a_model_supplied_code(self):
+        raw = self.visual_proposal('Q187840')
+        resolved = photo.resolve_identity(raw, self.sites)
+        self.assertEqual(resolved['site_id'], 'Q187840')
+        self.assertTrue(resolved['identity_check']['passed'])
+        with self.assertRaises(ValueError):
+            photo.resolve_identity({**raw, 'site_id': 'Q188856'}, self.sites)
+        for field, value in [('city', 'Rome'), ('country', 'Italie'), ('city', 'unknown')]:
+            resolved = photo.resolve_identity({**raw, field: value}, self.sites)
+            self.assertEqual(resolved['status'], 'uncertain')
+            self.assertEqual(resolved['site_id'], 'unknown')
+            self.assertFalse(resolved['identity_check']['passed'])
+
+    def test_name_or_location_contradiction_stops_before_documentary_work(self):
+        raw = self.visual_proposal('Q188856')
+        contradictions = [{**raw, 'hypothesis': 'Le monument est le Palais Garnier.'},
+                          {**raw, 'city': 'Rome', 'country': 'Italie', 'hypothesis': 'Panthéon de Rome.'}]
+        for value in contradictions:
+            with self.subTest(value=value), tempfile.TemporaryDirectory() as temp, \
+                 mock.patch.object(photo.rag, 'LocalModel') as factory, \
+                 mock.patch.object(photo, 'prepare_vectors') as prepare, mock.patch.object(photo.rag, 'ask') as ask:
+                factory.return_value.request.side_effect = [{'data': [{'id': 'fake'}]}, {'choices': [
+                    {'finish_reason': 'stop', 'message': {'content': json.dumps(value)}}]}]
+                manager = mock.Mock(); manager.start.return_value = 'http://127.0.0.1:8080'
+                result = photo.pipeline(self.corpus, self.sites, PNG, {'mime': 'image/png'}, 'Question',
+                                        manager, pathlib.Path(temp), mock.Mock())
+                self.assertEqual(result['status'], 'needs_clarification')
+                self.assertTrue(result['identification']['identity_check']['conflicts'])
+                self.assertFalse(result['historical_answer_generated'])
+                prepare.assert_not_called(); ask.assert_not_called(); manager.stop.assert_called_once()
 
     def test_abstention_and_out_of_scope_do_not_retrieve_or_generate(self):
         for status in ['uncertain', 'out_of_scope']:
@@ -191,7 +229,7 @@ class PhotoTests(unittest.TestCase):
         question = "À propos du monument « tour Eiffel » : Présente brièvement ce monument et sa fonction d'origine."
         record = {'site_id': 'Q243', 'question': question, 'evidence': evidence, 'rankings': {}}
         previous = {'image': {'filename': 'fixture.png'}, 'question': "Présente brièvement ce monument et sa fonction d'origine.",
-                    'identification': self.proposal(), 'identity_origin': 'visual_proposal_not_verified'}
+                    'identification': photo.resolve_identity(self.visual_proposal(), self.sites), 'identity_origin': 'visual_proposal_not_verified'}
         for name, value in [('retrieval.json', record), ('result.json', previous), ('summary.json', {'corpus_fingerprint': self.corpus.fingerprint})]:
             (folder/name).write_text(json.dumps(value, ensure_ascii=False), encoding='utf-8')
         return record
@@ -228,6 +266,20 @@ class PhotoTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 photo.replay_documentary(self.corpus, self.sites, source, manager, output, mock.Mock())
             manager.start.assert_not_called()
+
+    def test_legacy_unchecked_visual_identity_is_not_replayed_as_verified(self):
+        with tempfile.TemporaryDirectory() as temp, mock.patch.object(photo, 'documentary_answer') as generate:
+            source = pathlib.Path(temp)/'source'; source.mkdir()
+            output = pathlib.Path(temp)/'new'; output.mkdir()
+            self.replay_fixture(source)
+            path = source/'result.json'
+            previous = json.loads(path.read_text(encoding='utf-8'))
+            previous['identification'].pop('identity_check')
+            path.write_text(json.dumps(previous), encoding='utf-8')
+            result = photo.replay_documentary(self.corpus, self.sites, source, mock.Mock(), output, mock.Mock())
+            self.assertEqual(result['status'], 'needs_clarification')
+            self.assertFalse(result['historical_answer_generated'])
+            generate.assert_not_called()
 
     def test_valid_abstention_is_not_reported_as_a_documentary_answer(self):
         result = photo.attach_answer({}, {'reference_checks_passed': True, 'model_called': True,

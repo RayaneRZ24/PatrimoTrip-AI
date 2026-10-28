@@ -17,6 +17,40 @@ from compare_profiles import resource_summary
 from run_local import ROOT, save
 
 DATASET = ROOT / "evaluation-v1"
+IDENTITY_REGRESSION_CASES = {"q01", "q03", "q04", "q05", "q11", "q12"}
+
+
+def select_cases(manifest, identity_regression=False):
+    if not identity_regression:
+        return manifest
+    selected = [c for c in manifest["cases"] if c["case_id"] in IDENTITY_REGRESSION_CASES]
+    if {c["case_id"] for c in selected} != IDENTITY_REGRESSION_CASES:
+        raise ValueError("Cas manquants dans le sous-ensemble de régression.")
+    return {**manifest, "cases": selected, "selection": "previously_seen_identity_regression_v1"}
+
+
+def previous_comparison(results_root, output, rows, manifest_sha, assets_sha):
+    for path in sorted(results_root.glob("evaluation-*/summary.json"), reverse=True):
+        if path.parent == output:
+            continue
+        try:
+            summary = json.loads(path.read_text(encoding="utf-8"))
+            if (summary.get("status") != "complete" or summary.get("cases_planned") != 12 or
+                    summary.get("manifest_sha256") != manifest_sha or summary.get("assets_sha256") != assets_sha):
+                continue
+            before = {r["case_id"]: r for r in json.loads((path.parent / "cases-summary.json").read_text(encoding="utf-8"))}
+            if len(before) != 12 or any(r["case_id"] not in before or before[r["case_id"]]["asset_id"] != r["asset_id"] for r in rows):
+                continue
+            fields = ["predicted_site_id", "visual_status", "identity_exact", "safe_rejection_without_history", "answer_status"]
+            comparison = {"before_run": path.parent.name, "scope": "Same selected cases before/after a development correction, not an independent accuracy estimate.",
+                          "cases": [{"case_id": r["case_id"], "asset_id": r["asset_id"],
+                                     "before": {k: before[r["case_id"]].get(k) for k in fields},
+                                     "after": {k: r.get(k) for k in fields}} for r in rows]}
+            save(output / "identity-before-after.json", comparison)
+            return path.parent.name
+        except (OSError, ValueError, KeyError, TypeError):
+            continue
+    return None
 
 
 def verify_dataset(dataset, corpus):
@@ -53,6 +87,7 @@ def verify_dataset(dataset, corpus):
 
 def score_case(case, asset, result, evidence):
     prediction = result.get("identification", {})
+    identity_check = prediction.get("identity_check", {})
     predicted = prediction.get("site_id")
     status = prediction.get("status")
     expected = asset["expected_site_id"]
@@ -62,6 +97,10 @@ def score_case(case, asset, result, evidence):
                     for a in case["known_evidence"] for e in evidence) if case["known_evidence"] else None
     expected_status = case["expected_answer_status"]
     return {"predicted_site_id": predicted, "visual_status": status, "identity_exact": exact,
+            "identity_check_version": identity_check.get("version"),
+            "model_canonical_name": identity_check.get("canonical_name"),
+            "model_city": identity_check.get("city"), "model_country": identity_check.get("country"),
+            "identity_conflicts": identity_check.get("conflicts", []),
             "safe_rejection_without_history": rejected,
             "outside_classified": status == "out_of_scope" and predicted == "unknown" if asset["kind"] == "outside" else None,
             "detail_correct_or_abstained": bool(exact or rejected) if asset["kind"] == "detail" else None,
@@ -160,7 +199,9 @@ def run_suite(corpus, sites, manifest, assets, dataset, manager, output, resourc
 def write_report(output, report):
     lines = ["# Évaluation supplémentaire du parcours photo", "", "Statut d'exécution : " + report["status"], "",
              "Les scores techniques et de statut ne prouvent pas la véracité des réponses.",
-             "Petit jeu fixé avant ce lancement ; mêmes faits documentaires, nouvelles images. Pas une estimation d'exactitude générale.", ""]
+             "Petit jeu documentaire et visuel ; pas une estimation d'exactitude générale.", ""]
+    if report.get("evaluation_kind") == "identity_development_regression":
+        lines += ["Régression de développement : six cas déjà examinés, après correction de l'identité. Ces résultats ne constituent pas un nouveau test indépendant et ne se comparent pas directement aux proportions du jeu complet.", ""]
     metrics = report.get("metrics", {})
     for good, total, label in [("standard_identity_exact", "standard_images", "Identités exactes, vues générales"),
         ("detail_correct_or_abstained", "detail_images", "Détails : identité correcte ou abstention prudente"),
@@ -183,19 +224,25 @@ def write_report(output, report):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--take-over-test-server", action="store_true")
+    parser.add_argument("--identity-regression", action="store_true", help="Run six previously seen cases to check the identity correction; not an independent evaluation.")
     models = pathlib.Path.home() / "PatrimoTripAI" / "models" / "qwen3.5-4b"
     parser.add_argument("--generation-model", type=pathlib.Path, default=models / "Qwen3.5-4B-Q4_K_M.gguf")
     parser.add_argument("--projector", type=pathlib.Path, default=models / "mmproj-F16.gguf")
     args = parser.parse_args()
-    output = ROOT / "results" / ("evaluation-"+dt.datetime.now().strftime("%Y%m%d-%H%M%S")+"-"+runtime.uuid_suffix())
+    prefix = "evaluation-identity-" if args.identity_regression else "evaluation-"
+    output = ROOT / "results" / (prefix+dt.datetime.now().strftime("%Y%m%d-%H%M%S")+"-"+runtime.uuid_suffix())
     output.mkdir(parents=True)
     manager, started, success = None, time.perf_counter(), False
     report = {"status": "started", "utc_started": dt.datetime.now(dt.timezone.utc).isoformat(), "factual_review": "pending",
-              "scope": "Additional small frozen evaluation; no claim of general accuracy or independence from model training."}
+              "identity_version": photo.IDENTITY_VERSION,
+              "evaluation_kind": "identity_development_regression" if args.identity_regression else "full_additional_evaluation",
+              "scope": "Previously examined cases after identity correction; development regression, not an independent test." if args.identity_regression else
+                       "Additional small frozen evaluation; no claim of general accuracy or independence from model training."}
     try:
         corpus = hybrid.Corpus(ROOT)
         sites = {s["site_id"]: s for s in json.loads((ROOT / "corpus/sites.json").read_text(encoding="utf-8"))}
         manifest, assets = verify_dataset(DATASET, corpus)
+        manifest = select_cases(manifest, args.identity_regression)
         for path in [args.generation_model, args.projector]:
             with path.open("rb") as stream:
                 if stream.read(4) != b"GGUF":
@@ -206,6 +253,7 @@ def main():
                       script_sha256={p.name: rag.sha_file(p) for p in ROOT.glob("*.py")},
                       generation_settings={"gpu_layers": 20, "context": 4096, "batch": 256, "ubatch": 128,
                                            "parallel": 1, "reasoning_budget": 0, "prompt_version": "photo_partial_answers_v2"})
+        report["selected_case_ids"] = [c["case_id"] for c in manifest["cases"]]
         save(output / "evaluation-manifest.json", manifest)
         save(output / "evaluation-assets.json", list(assets.values()))
         manager = runtime.Models(args.generation_model.resolve(), args.projector.resolve(), output, args.take_over_test_server)
@@ -213,6 +261,10 @@ def main():
         report["llama_version"] = (version.stdout+version.stderr)[:2000]
         manager.prepare_ports()
         report["metrics"] = run_suite(corpus, sites, manifest, assets, DATASET, manager, output)
+        if args.identity_regression:
+            rows = json.loads((output / "cases-summary.json").read_text(encoding="utf-8"))
+            report["comparison_before_run"] = previous_comparison(ROOT / "results", output, rows,
+                                                                 report["manifest_sha256"], report["assets_sha256"])
         report["status"] = "complete_with_case_errors" if report["metrics"]["case_errors"] else "complete"
         success = report["metrics"]["case_errors"] == 0
     except (Exception, KeyboardInterrupt) as error:

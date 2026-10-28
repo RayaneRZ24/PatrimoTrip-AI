@@ -60,6 +60,30 @@ class EvaluationTests(unittest.TestCase):
         self.assertEqual(report['repeated_image_prediction_disagreements'], 1)
         self.assertEqual(report['automatic_factual_accuracy'], 'not_measured')
 
+    def test_regression_selection_preserves_original_manifest(self):
+        original = json.dumps(self.manifest, sort_keys=True)
+        selected = evaluation.select_cases(self.manifest, True)
+        self.assertEqual([c['case_id'] for c in selected['cases']], ['q01', 'q03', 'q04', 'q05', 'q11', 'q12'])
+        self.assertEqual(json.dumps(self.manifest, sort_keys=True), original)
+        self.assertEqual(len(self.manifest['cases']), 12)
+
+    def test_before_after_comparison_requires_matching_dataset_and_asset(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = pathlib.Path(temp)
+            baseline = root/'evaluation-20261028'; baseline.mkdir()
+            output = root/'evaluation-identity-new'; output.mkdir()
+            save(baseline/'summary.json', {'status': 'complete', 'cases_planned': 12,
+                                          'manifest_sha256': 'manifest', 'assets_sha256': 'assets'})
+            before = [{'case_id': c['case_id'], 'asset_id': c['asset_id'], 'predicted_site_id': 'Q188856',
+                       'visual_status': 'identified'} for c in self.manifest['cases']]
+            save(baseline/'cases-summary.json', before)
+            after = [{'case_id': 'q03', 'asset_id': 'a03', 'predicted_site_id': 'Q187840', 'visual_status': 'identified'}]
+            self.assertIsNone(evaluation.previous_comparison(root, output, after, 'wrong-manifest', 'assets'))
+            self.assertEqual(evaluation.previous_comparison(root, output, after, 'manifest', 'assets'), baseline.name)
+            comparison = json.loads((output/'identity-before-after.json').read_text(encoding='utf-8'))
+            self.assertEqual(comparison['cases'][0]['before']['predicted_site_id'], 'Q188856')
+            self.assertEqual(comparison['cases'][0]['after']['predicted_site_id'], 'Q187840')
+
     def test_full_suite_simulation_isolates_gold_continues_errors_and_leaves_review_pending(self):
         calls = []
         def fake_pipeline(corpus, sites, data, metadata, question, manager, folder, resources):

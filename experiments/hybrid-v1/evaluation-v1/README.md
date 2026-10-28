@@ -52,3 +52,7 @@ Les données sont déjà incluses dans le paquet. Les modèles et vecteurs exist
 L'exécution peut prendre plusieurs minutes. Les résultats sont enregistrés après chaque scénario. Un échec isolé est conservé et les cas suivants continuent. À la fin, le lanceur arrête les processus qu'il a démarrés et affiche le chemin d'un unique `results/evaluation-<date-identifiant>/report.zip`. Aucune image ni donnée personnelle de l'utilisateur n'est nécessaire ; aucun résultat n'est envoyé automatiquement. L'archive contient les journaux et les sorties, pas les poids ni le cache vectoriel.
 
 Les tests de ce lanceur couvrent les empreintes et annotations, le refus d'une image altérée, la séparation des labels et de l'inférence, les rejets, les dénominateurs et la poursuite après erreur avec un modèle simulé. Les performances réelles doivent être mesurées sur le PC Windows.
+
+## Régression après les premiers résultats
+
+Les premiers résultats de ce jeu ont maintenant été examinés. Le mode `--identity-regression` sélectionne six cas déjà vus (q01, q03, q04, q05, q11, q12) pour vérifier la correction d'identité v3. Il conserve les questions, photos et labels figés, mais constitue un contrôle de développement. Les proportions de ce sous-ensemble ne sont ni une nouvelle précision indépendante ni directement comparables au score du jeu complet. Le rapport distingue la version de contrôle d'identité de la version de consigne documentaire.
