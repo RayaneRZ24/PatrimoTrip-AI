@@ -52,6 +52,51 @@ class VisualReferenceTests(unittest.TestCase):
             path.write_bytes(b'x'*len(content))
             for e in entries: self.assertFalse(visual.check_file(path, e))
 
+    def provenance(self):
+        metadata = self.metadata(); metadata['cardData'] = {}
+        readme = b'ONNX conversion of https://huggingface.co/facebook/dinov2-small\n'
+        metadata['siblings'].append({'rfilename': 'README.md', 'size': len(readme),
+                                    'blobId': hashlib.sha1(b'blob '+str(len(readme)).encode()+b'\0'+readme).hexdigest()})
+        upstream = {'id': visual.UPSTREAM_REPO, 'sha': 'd'*40, 'cardData': {'license': 'apache-2.0'}}
+        return metadata, readme, upstream
+
+    def test_empty_conversion_license_requires_verified_upstream_evidence(self):
+        metadata, readme, upstream = self.provenance()
+        with self.assertRaises(ValueError): visual.model_spec(metadata)
+        evidence = visual.upstream_license_evidence(metadata, readme, upstream)
+        spec = visual.model_spec(metadata, evidence)
+        visual.validate_spec(spec)
+        self.assertIsNone(spec['conversion_declared_license'])
+        self.assertEqual(spec['license_basis'], 'verified_upstream_card_and_conversion_link')
+        for card in [None, {'license': ''}]:
+            metadata['cardData'] = card
+            visual.validate_spec(visual.model_spec(metadata, evidence))
+
+    def test_fallback_rejects_bad_provenance_license_and_revision(self):
+        metadata, readme, upstream = self.provenance()
+        with self.assertRaises(ValueError): visual.upstream_license_evidence(metadata, readme+b'changed', upstream)
+        other = readme.replace(b'dinov2-small', b'another-model')
+        changed = copy.deepcopy(metadata)
+        changed['siblings'][-1].update(size=len(other), blobId=hashlib.sha1(b'blob '+str(len(other)).encode()+b'\0'+other).hexdigest())
+        with self.assertRaises(ValueError): visual.upstream_license_evidence(changed, other, upstream)
+        for alteration in [{'id': 'other/repo'}, {'cardData': {}}, {'cardData': {'license': 'non-commercial'}}, {'sha': 'main'}]:
+            with self.subTest(alteration=alteration), self.assertRaises(ValueError):
+                visual.upstream_license_evidence(metadata, readme, {**upstream, **alteration})
+        evidence = visual.upstream_license_evidence(metadata, readme, upstream)
+        metadata['cardData'] = {'license': 'non-commercial'}
+        with self.assertRaises(ValueError): visual.model_spec(metadata, evidence)
+        metadata['cardData'] = {}; metadata['sha'] = 'e'*40
+        with self.assertRaises(ValueError): visual.model_spec(metadata, evidence)
+
+    def test_cached_lock_cannot_omit_upstream_proof(self):
+        metadata, readme, upstream = self.provenance()
+        spec = visual.model_spec(metadata, visual.upstream_license_evidence(metadata, readme, upstream))
+        for field in ['license_evidence', 'conversion_declared_license', 'license_basis']:
+            changed = copy.deepcopy(spec)
+            if field in ['license_evidence', 'license_basis']: changed.pop(field)
+            else: changed[field] = 'unknown'
+            with self.subTest(field=field), self.assertRaises(ValueError): visual.validate_spec(changed)
+
     def test_ranking_uses_normalized_pixels_descriptors_without_expected_query_label(self):
         x, y = [1.0]+[0.0]*383, [0.0, 1.0]+[0.0]*382
         refs = [{'site_id': 'A', 'sha256': 'a', 'vector': x}, {'site_id': 'B', 'sha256': 'b', 'vector': y}]

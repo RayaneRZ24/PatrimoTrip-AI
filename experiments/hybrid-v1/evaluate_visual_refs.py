@@ -67,7 +67,7 @@ def worker(output):
         if {r['site_id'] for r, _ in references} != sites:
             raise ValueError('Reference sites differ from the catalog.')
         model_dir = ROOT/'models/dinov2-small-onnx'
-        spec = visual.fetch_model(model_dir)
+        spec = visual.fetch_model(model_dir, evidence_dir=output)
         save(output/'model-lock.json', spec)
         print('Chargement du modèle visuel sur CPU ; aucun serveur génératif lancé.', flush=True)
         encoder = visual.Encoder(model_dir, spec)

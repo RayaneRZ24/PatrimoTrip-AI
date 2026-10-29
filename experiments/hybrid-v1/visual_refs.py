@@ -8,6 +8,7 @@ import time
 import urllib.request
 
 MODEL_REPO = 'Xenova/dinov2-small'
+UPSTREAM_REPO = 'facebook/dinov2-small'
 FILES = ('config.json', 'preprocessor_config.json', 'onnx/model.onnx')
 VERSION = 'dinov2_reference_ranking_v1'
 
@@ -32,12 +33,45 @@ def check_file(path, entry):
     return hashlib.sha1(b'blob '+str(len(content)).encode()+b'\0'+content).hexdigest() == entry['digest']
 
 
-def model_spec(metadata):
-    if metadata.get('id') != MODEL_REPO or metadata.get('cardData', {}).get('license') != 'apache-2.0':
-        raise ValueError('Unexpected conversion repository or missing Apache-2.0 licence.')
+def validate_license_evidence(evidence, revision):
+    if (not isinstance(evidence, dict) or evidence.get('upstream_repo') != UPSTREAM_REPO or
+            evidence.get('upstream_license') != 'apache-2.0' or
+            not re.fullmatch(r'[a-f0-9]{40}', evidence.get('upstream_revision', '')) or
+            not re.fullmatch(r'[a-f0-9]{40}', evidence.get('conversion_card_git_blob', '')) or
+            not re.fullmatch(r'[a-f0-9]{64}', evidence.get('conversion_card_sha256', '')) or
+            evidence.get('conversion_revision') != revision):
+        raise ValueError('Missing verified upstream licence/provenance evidence.')
+
+
+def upstream_license_evidence(metadata, readme, upstream):
+    """Verify a pinned conversion card links the exact base model, not a guessed licence."""
+    entry = next((e for e in metadata.get('siblings', []) if e.get('rfilename') == 'README.md'), {})
+    digest = hashlib.sha1(b'blob '+str(len(readme)).encode()+b'\0'+readme).hexdigest()
+    if len(readme) != entry.get('size') or digest != entry.get('blobId'):
+        raise ValueError('Conversion README digest/size mismatch.')
+    text = readme.decode('utf-8')
+    if not re.search(r'https://huggingface\.co/facebook/dinov2-small(?=$|[\s/)#?\]"<>])', text):
+        raise ValueError('Conversion card does not link the expected upstream model.')
+    if upstream.get('id') != UPSTREAM_REPO or (upstream.get('cardData') or {}).get('license') != 'apache-2.0':
+        raise ValueError('Upstream model does not explicitly declare Apache-2.0.')
+    evidence = {'upstream_repo': UPSTREAM_REPO, 'upstream_revision': upstream.get('sha'),
+                'upstream_license': 'apache-2.0', 'conversion_revision': metadata['sha'],
+                'conversion_card_git_blob': digest, 'conversion_card_sha256': hashlib.sha256(readme).hexdigest()}
+    validate_license_evidence(evidence, metadata['sha'])
+    return evidence
+
+
+def model_spec(metadata, license_evidence=None):
+    if metadata.get('id') != MODEL_REPO:
+        raise ValueError('Unexpected conversion repository: '+str(metadata.get('id')))
     revision = metadata.get('sha', '')
     if not re.fullmatch(r'[a-f0-9]{40}', revision):
         raise ValueError('Model revision is not pinned.')
+    declared = (metadata.get('cardData') or {}).get('license')
+    if declared not in (None, '', 'apache-2.0'):
+        raise ValueError('Unexpected explicitly declared conversion licence: '+str(declared))
+    if declared != 'apache-2.0':
+        validate_license_evidence(license_evidence, revision)
     siblings = {e['rfilename']: e for e in metadata.get('siblings', [])}
     entries = []
     for name in FILES:
@@ -50,7 +84,10 @@ def model_spec(metadata):
                 not isinstance(digest, str) or not re.fullmatch(r'[a-f0-9]{'+('64' if lfs else '40')+r'}', digest)):
             raise ValueError('Missing or unexpected size/digest for '+name)
         entries.append({'file': name, 'size': size, 'algorithm': algorithm, 'digest': digest})
-    return {'repo': MODEL_REPO, 'revision': revision, 'license': 'apache-2.0', 'files': entries}
+    return {'repo': MODEL_REPO, 'revision': revision, 'license': 'apache-2.0', 'files': entries,
+            'conversion_declared_license': declared,
+            'license_basis': 'conversion_card' if declared == 'apache-2.0' else 'verified_upstream_card_and_conversion_link',
+            'license_evidence': license_evidence}
 
 
 def validate_spec(spec):
@@ -58,13 +95,19 @@ def validate_spec(spec):
             not re.fullmatch(r'[a-f0-9]{40}', spec.get('revision', '')) or
             [e.get('file') for e in spec.get('files', [])] != list(FILES)):
         raise ValueError('Invalid local model lock.')
+    if spec.get('license_basis') == 'verified_upstream_card_and_conversion_link':
+        if spec.get('conversion_declared_license') not in (None, ''):
+            raise ValueError('Inconsistent conversion licence lock.')
+        validate_license_evidence(spec.get('license_evidence'), spec['revision'])
+    elif spec.get('license_basis') != 'conversion_card' or spec.get('conversion_declared_license') != 'apache-2.0':
+        raise ValueError('Missing or inconsistent conversion licence basis.')
     for entry in spec['files']:
         count = 64 if entry.get('algorithm') == 'sha256' else 40 if entry.get('algorithm') == 'git_blob_sha1' else 0
         if not count or not re.fullmatch(r'[a-f0-9]{'+str(count)+r'}', entry.get('digest', '')) or not 0 < entry['size'] < 200_000_000:
             raise ValueError('Invalid local file lock.')
 
 
-def fetch_model(folder):
+def fetch_model(folder, evidence_dir=None):
     folder = pathlib.Path(folder); folder.mkdir(parents=True, exist_ok=True)
     lock = folder/'model-lock.json'
     if lock.exists():
@@ -72,7 +115,26 @@ def fetch_model(folder):
     else:
         print('Recherche du modèle visuel public et de sa licence...', flush=True)
         with urllib.request.urlopen('https://huggingface.co/api/models/'+MODEL_REPO+'?blobs=true', timeout=45) as response:
-            spec = model_spec(json.load(response))
+            metadata = json.load(response)
+        if evidence_dir:
+            (pathlib.Path(evidence_dir)/'conversion-metadata.json').write_text(json.dumps(metadata, indent=2)+'\n', encoding='utf-8')
+        evidence = None
+        if metadata.get('id') == MODEL_REPO and not (metadata.get('cardData') or {}).get('license'):
+            revision = metadata.get('sha', '')
+            if not re.fullmatch(r'[a-f0-9]{40}', revision):
+                raise ValueError('Conversion revision is not pinned.')
+            print('Licence absente du champ API : vérification de la fiche de conversion et du modèle amont...', flush=True)
+            with urllib.request.urlopen('https://huggingface.co/'+MODEL_REPO+'/resolve/'+revision+'/README.md', timeout=45) as response:
+                readme = response.read(1_000_001)
+            if len(readme) > 1_000_000:
+                raise ValueError('Model card exceeds expected size.')
+            with urllib.request.urlopen('https://huggingface.co/api/models/'+UPSTREAM_REPO+'?blobs=true', timeout=45) as response:
+                upstream = json.load(response)
+            if evidence_dir:
+                (pathlib.Path(evidence_dir)/'conversion-README.md').write_bytes(readme)
+                (pathlib.Path(evidence_dir)/'upstream-metadata.json').write_text(json.dumps(upstream, indent=2)+'\n', encoding='utf-8')
+            evidence = upstream_license_evidence(metadata, readme, upstream)
+        spec = model_spec(metadata, evidence)
         lock.write_text(json.dumps(spec, indent=2)+'\n', encoding='utf-8')
     for entry in spec['files']:
         dest = folder/entry['file']; dest.parent.mkdir(parents=True, exist_ok=True)
