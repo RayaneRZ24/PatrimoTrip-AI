@@ -79,6 +79,48 @@ class FacetTests(unittest.TestCase):
             with self.subTest(change=change), self.assertRaises(ValueError):
                 facets.render_answers(altered, plan, evidence)
 
+    def test_sentence_prefix_never_completes_a_cut_source_or_splits_a_long_sentence(self):
+        text = 'Une phrase complète. La direction revient à Maurice de Sully. Puis un fragment'
+        self.assertEqual(hybrid.sentence_prefix(text, text.index(' de Sully')), 'Une phrase complète.')
+        self.assertEqual(hybrid.sentence_prefix(text, len(text)), text[:text.index(' Puis')])
+        self.assertEqual(hybrid.sentence_prefix('Une phrase beaucoup trop longue.', 10), '')
+        self.assertEqual(hybrid.sentence_prefix('Champ: valeur\nAutre: longue valeur', 20, structured=True), 'Champ: valeur')
+
+    def test_balancing_preserves_late_notre_dame_identity_without_increasing_budget(self):
+        # Regression for the observed failure: three full chunks previously
+        # left only a prefix ending at Maurice in the fourth passage.
+        candidates = [p for p in self.corpus.passages.values() if p['site_id'] == 'Q2981']
+        target = next(p for p in candidates if 'Une légende, fondée' in p['text']
+                      and 'Maurice de Sully' in p['text'])
+        fillers = []
+        for p in candidates:
+            if p['document_id'] == target['document_id'] and len(p['text']) >= 1380 and p['end'] < target['start']:
+                if all(abs(p['start']-x['start']) > 1600 for x in fillers):
+                    fillers.append(p)
+                if len(fillers) == 3: break
+        self.assertEqual(len(fillers), 3)
+        ranking = [p['passage_id'] for p in fillers]+[target['passage_id']]
+        evidence = self.corpus.context(ranking, max_per_document=4, balanced_sentences=True)
+        self.assertEqual(len(evidence), 4)
+        self.assertLessEqual(sum(len(e['text']) for e in evidence), 4800)
+        final = evidence[-1]
+        self.assertIn('Maurice de Sully', final['text'])
+        for e in evidence:
+            original = self.corpus.passages[e['passage_id']]
+            self.assertTrue(original['text'].startswith(e['text']))
+            self.assertEqual(e['end'], e['start']+len(e['text']))
+            self.assertRegex(e['text'], r'[.!?…][»”"\)\]]*$')
+
+    def test_long_unbroken_candidate_is_skipped_without_hiding_later_evidence(self):
+        corpus = object.__new__(hybrid.Corpus)
+        corpus.sources = {'d': {'title': 'Source de test'}}
+        corpus.passages = {str(n): {'passage_id': str(n), 'document_id': 'd', 'source_type': 'wikipedia',
+                                  'start': n*5000, 'end': n*5000+len(text), 'text': text}
+                           for n, text in enumerate(['Mot '*1000, 'Une preuve complète.'])}
+        evidence = corpus.context(['0', '1'], balanced_sentences=True)
+        self.assertEqual([e['passage_id'] for e in evidence], ['1'])
+        self.assertEqual(evidence[0]['citation_id'], 'S1')
+
     def test_facet_api_keeps_questions_in_user_data_and_rejects_truncation(self):
         plan = facets.plan_question('Qui a conçu USER_SENTINEL et quand a-t-il été inauguré ?', 'palais Garnier')
         pid = self.manifest['cases'][2]['facets'][0]['known_evidence'][0]['passage_id']

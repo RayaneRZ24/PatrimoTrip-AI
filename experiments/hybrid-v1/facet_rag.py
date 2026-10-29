@@ -7,7 +7,7 @@ import hybrid
 import rag_local as rag
 from run_local import query_id
 
-VERSION = "facet_coverage_v1"
+VERSION = "facet_coverage_v2"
 # Query expansion is retrieval-only: no monument, date, price or expected answer is inserted.
 EXPANSIONS = {
     "commemoration": "commémoration anniversaire célébration célébrer célébrant",
@@ -99,10 +99,12 @@ def retrieve(corpus, site_id, site_name, plan, cache):
             candidates = ranking["hybrid_rrf"]
             if position < len(candidates) and candidates[position] not in merged:
                 merged.append(candidates[position])
-    evidence = corpus.context(merged, max_per_document=4)
+    evidence = corpus.context(merged, max_per_document=4, balanced_sentences=True)
     if any(e["site_id"] != site_id for e in evidence):
         raise ValueError("Une preuve appartient à un autre monument.")
-    return evidence, {"version": VERSION, "plan": plan, "per_facet": rankings, "merged_ranking": merged[:20],
+    return evidence, {"version": VERSION, "context_policy": "balanced_sentence_prefix_v1",
+                      "context_limit_chars": 4800, "context_limit_passages": 4,
+                      "plan": plan, "per_facet": rankings, "merged_ranking": merged[:20],
                       "candidate_presence_not_semantic_support": {f["facet_id"]: [e["passage_id"] for e in evidence
                           if e["passage_id"] in f["hybrid_rrf"][:5]] for f in rankings}}
 

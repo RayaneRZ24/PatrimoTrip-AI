@@ -3,6 +3,7 @@ import hashlib
 import json
 import math
 import pathlib
+import re
 import struct
 import time
 
@@ -10,6 +11,23 @@ import rag_local as rag
 
 QUERY_TASK = "Given a question about Paris cultural heritage, retrieve relevant passages that answer the question"
 FORMAT_VERSION = "title-section-text-query-instruct-v1"
+
+
+def sentence_prefix(text, budget, structured=False):
+    """Keep an exact prefix ending at a visible boundary; never complete source text.
+
+    This is a punctuation heuristic, not a linguistic sentence parser. Corpus
+    chunks may themselves start/end inside a sentence. A too-long first
+    sentence is omitted rather than cut at an arbitrary word.
+    """
+    if structured:
+        ends = [m.start() for m in re.finditer(r"\n", text)] + [len(text)]
+    else:
+        ends = [m.end() for m in re.finditer(r'[.!?…](?:[»”"\)\]]+)?(?=\s|$)', text)
+                if not (m.start() > 0 and text[m.start()-1].isdigit()
+                        and m.end() < len(text) and text[m.end():m.end()+1].isdigit())]
+    end = max((end for end in ends if end <= budget), default=0)
+    return text[:end].rstrip()
 
 
 def document_input(passage, source):
@@ -144,7 +162,7 @@ class Corpus:
     def routed(self, question, limit=10):
         return [e["passage_id"] for e in rag.retrieve(self.database, question, top_k=limit, context_chars=limit*1400)]
 
-    def context(self, ranking, top_k=4, budget=4800, max_per_document=2):
+    def context(self, ranking, top_k=4, budget=4800, max_per_document=2, balanced_sentences=False):
         selected = []
         for pid in ranking:
             if len(selected) >= top_k or budget < 200:
@@ -156,9 +174,19 @@ class Corpus:
                 continue
             if sum(e["document_id"] == passage["document_id"] for e in selected) >= max_per_document:
                 continue
-            text = passage["text"][:budget]
-            if len(text) < len(passage["text"]):
-                text = text.rsplit(" ", 1)[0]
+            if balanced_sentences:
+                # Reserve space for later ranked candidates, instead of giving
+                # the final passage only the leftovers of three full chunks.
+                allowance = budget // (top_k-len(selected))
+                text = sentence_prefix(passage["text"], allowance,
+                                       structured=passage["source_type"] == "merimee")
+                if not text:
+                    continue
+            else:
+                # Frozen legacy policy for the baseline comparison.
+                text = passage["text"][:budget]
+                if len(text) < len(passage["text"]):
+                    text = text.rsplit(" ", 1)[0]
             selected.append({**passage, "citation_id": f"S{len(selected)+1}", "text": text,
                              "end": passage["start"]+len(text), "source": self.sources[passage["document_id"]]})
             budget -= len(text)

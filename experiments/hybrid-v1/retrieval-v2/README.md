@@ -1,6 +1,6 @@
 # Recherche et réponses par sous-question
 
-Cette étape compare la méthode documentaire précédente avec `facet_coverage_v1` sur six questions : trois questions historiques composées, deux demandes actuelles absentes, une question mixte sur l'événement de construction et le prix actuel. Chaque question est exécutée avec les deux méthodes, soit douze générations.
+Cette étape compare la méthode documentaire précédente avec `facet_coverage_v2` sur six questions : trois questions historiques composées, deux demandes actuelles absentes, une question mixte sur l'événement de construction et le prix actuel. Chaque question est exécutée avec les deux méthodes, soit douze générations.
 
 ```powershell
 py .\evaluate_retrieval.py --take-over-test-server
@@ -15,6 +15,10 @@ La décomposition est un ensemble borné de règles de syntaxe française, sans 
 Les requêtes de chaque volet sont complétées par des termes de recherche neutres, selon leur intention (événement, commémoration, conception, date, usage, tarif, horaire). Aucune date, valeur, identité d'architecte ou réponse attendue n'est injectée. Une commémoration peut reprendre le contexte du volet événement pour ses embeddings ; les termes lexicaux restent propres au volet. Les développements de requête servent seulement à la recherche et ne sont pas présentés comme des faits au rédacteur.
 
 La recherche BM25 et dense reste filtrée sur le site. Les termes du nom du site et certains mots génériques sont écartés de la requête lexicale, puisque l'identité est déjà filtrée. Les rangs sont fusionnés par volet puis les candidats sont réunis en alternance. Le contexte conserve au maximum **quatre passages et 4 800 caractères**, avec déduplication des recouvrements. Pour une question composée, les quatre passages peuvent provenir du même document si leurs sections sont distinctes ; la limite de la référence reste deux passages par document. Les preuves rattachées à chaque volet dans les traces sont des candidats, pas une attestation de soutien sémantique.
+
+La version v2 répartit aussi le budget restant entre les emplacements encore disponibles. Elle conserve uniquement des préfixes exacts terminés par une ponctuation de fin de phrase visible (ou une ligne complète de notice structurée). Un candidat sans limite exploitable dans son allocation est ignoré, sans couper un mot ni inventer une suite. Cela évite que les premiers passages consomment presque tout le budget et qu'un dernier nom propre soit coupé. Le classement, les requêtes, les embeddings et les sources ne changent pas ; les vecteurs en cache restent réutilisables. La méthode de référence garde son ancienne politique de coupure pour permettre la comparaison.
+
+Cette règle de ponctuation est une heuristique : les passages du corpus peuvent eux-mêmes commencer au milieu d'une phrase, et une phrase trop longue peut être omise. Une preuve utile peut aussi être classée trop bas. La sélection ne constitue donc pas une vérification sémantique des réponses. Les traces indiquent `context_policy: balanced_sentence_prefix_v1`. Les six questions sont des régressions de développement déjà examinées, pas un nouveau jeu indépendant.
 
 Le rédacteur retourne un statut et une phrase pour chaque volet. Un volet `answered` exige une citation récupérée. Un volet `insufficient_sources` peut signaler une absence sans citation. Le programme vérifie chaque sous-réponse, refuse une référence invalide ou une sous-question oubliée, puis agrège les réponses dans l'ordre demandé. Il peut donc présenter un fait historique sourcé et signaler séparément l'absence d'un tarif actuel, sans faire passer la seconde partie pour un fait documenté. Les identifiants de volets ne sont pas affichés comme éléments d'interface.
 

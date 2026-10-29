@@ -10,7 +10,7 @@ L'arrêt du serveur reconnu attend désormais jusqu'à 30 secondes la libératio
 
 ## Recherche documentaire par sous-question
 
-La chaîne propose maintenant `facet_coverage_v1` pour les formulations composées reconnues : recherche par volet, sélection équilibrée des extraits et statut de réponse distinct pour chaque volet. Le contexte reste limité à quatre passages et 4 800 caractères. Les questions simples conservent la méthode précédente. Une réponse partielle peut établir un fait historique et signaler séparément qu'un tarif actuel manque.
+La chaîne propose maintenant `facet_coverage_v2` pour les formulations composées reconnues : recherche par volet, sélection équilibrée des extraits et statut de réponse distinct pour chaque volet. Le contexte reste limité à quatre passages et 4 800 caractères. La version v2 réserve de la place aux derniers extraits et termine leurs préfixes à une ponctuation de phrase, afin de limiter les preuves coupées. Les questions simples conservent la méthode précédente. Une réponse partielle peut établir un fait historique et signaler séparément qu'un tarif actuel manque.
 
 Le comparatif documentaire utilise six questions avec les deux méthodes, sans réexécuter la vision :
 
