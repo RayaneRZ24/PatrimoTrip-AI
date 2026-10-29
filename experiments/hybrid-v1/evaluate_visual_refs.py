@@ -139,12 +139,19 @@ def main():
     parser.add_argument('--worker', action='store_true', help=argparse.SUPPRESS)
     parser.add_argument('--output', type=pathlib.Path, help=argparse.SUPPRESS)
     parser.add_argument('--expanded-references', action='store_true', help='Compare one and three reference views per site, without an identity gate.')
+    parser.add_argument('--calibrate-abstention', action='store_true', help='Fit an abstention rule on a calibration split, then evaluate it on reserved images.')
     args = parser.parse_args()
+    if args.expanded_references and args.calibrate_abstention:
+        parser.error('Choose either the reference comparison or the abstention protocol.')
     if args.worker:
         if args.output is None or not args.output.resolve().is_relative_to((ROOT/'results').resolve()):
             parser.error('Invalid output directory.')
+        if args.calibrate_abstention:
+            import evaluate_abstention
+            raise SystemExit(evaluate_abstention.worker(args.output))
         raise SystemExit(worker(args.output, args.expanded_references))
-    output = ROOT/'results'/('visual-refs-'+dt.datetime.now(dt.timezone.utc).strftime('%Y%m%d-%H%M%S')+'-'+uuid.uuid4().hex[:8])
+    prefix = 'visual-abstention-' if args.calibrate_abstention else 'visual-refs-'
+    output = ROOT/'results'/(prefix+dt.datetime.now(dt.timezone.utc).strftime('%Y%m%d-%H%M%S')+'-'+uuid.uuid4().hex[:8])
     output.mkdir(parents=True)
     try:
         env_dir = ROOT/'.visual-venv'
@@ -161,6 +168,7 @@ def main():
                                [k+'=='+v for k, v in DEPENDENCIES.items()], stdout=log, stderr=subprocess.STDOUT, check=True)
         command = [str(python), str(pathlib.Path(__file__).resolve()), '--worker', '--output', str(output)]
         if args.expanded_references: command.append('--expanded-references')
+        if args.calibrate_abstention: command.append('--calibrate-abstention')
         code = subprocess.call(command)
         if not (output/'report.zip').is_file():
             raise RuntimeError('Worker stopped before writing its report; exit code '+str(code))

@@ -8,6 +8,8 @@ Un lancement prépare les embeddings, compare la recherche lexicale et dense, te
 
 Pour comparer une et trois vues par site : `py .\evaluate_visual_refs.py --expanded-references`. La [banque enrichie](visual-references-v2/README.md) ajoute vingt photos attribuées et vérifiées visuellement. Les anciens poids, vecteurs et résultats restent utilisables ; le rapport aligne les classements avant/après sur les mêmes dix photos déjà connues. La galerie locale [gallery.html](visual-references-v2/gallery.html) présente les trente références. Aucun gain de précision ni rejet hors catalogue n'est présumé avant la comparaison.
 
+Le [protocole pilote d'abstention](abstention-v1/README.md) utilise quarante autres images, vingt pour choisir une règle score/écart et vingt pour mesurer cette règle figée : `py .\evaluate_visual_refs.py --calibrate-abstention`. Les photographes, sources et fichiers sont séparés entre ces deux ensembles. La règle est enregistrée avant les inférences du test, sans modifier le parcours historique. Les refus et mauvaises propositions sont rapportés séparément ; zéro erreur de calibration ne garantit pas zéro erreur future.
+
 ## Serveur existant et port 8080
 
 L'évaluation démarre et arrête ses propres modèles. Il n'est pas nécessaire de lancer `llama-server` dans une deuxième fenêtre. Si un serveur manuel est encore ouvert, on peut le fermer avec Ctrl+C avant de lancer l'évaluation. L'option `--take-over-test-server` conserve le contrôle strict du processus attendu.

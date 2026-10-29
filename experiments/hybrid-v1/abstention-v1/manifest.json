@@ -1,0 +1,27 @@
+{
+  "version": "visual_abstention_pilot_v1",
+  "frozen_on": "2026-10-29",
+  "selection": "Manual image/source/photographer curation before any descriptor results; not sampled to represent tourist-photo population. Metadata and visual review informed labels. Calibration and heldout images are different sources and photographer groups. Existing development errors motivated the study; model pretraining overlap is unknown.",
+  "split_counts": {
+    "calibration": {
+      "known": 10,
+      "outside": 8,
+      "ambiguous": 2
+    },
+    "heldout": {
+      "known": 10,
+      "outside": 8,
+      "ambiguous": 2
+    }
+  },
+  "reference_manifests_sha256": {
+    "visual-references-v1/references.json": "cdc9f86129f174c8c77d9491c6dcaaa6fd5bb1c8e40494f14dc3cee3174399a2",
+    "visual-references-v2/references.json": "ad5a259814da502afdca77dbe1ce1dab56cd08045e5d3f9340fe712159b0a0ea"
+  },
+  "metadata_sha256": {
+    "calibration.json": "eee57cfae2f593f9f8148d70c393d3abf72b93509166946a0fb46c629d223b81",
+    "heldout.json": "a7c44237c711578c7f47035e31d220d921e256911ff5aec899b3977a1f68bd53",
+    "excluded-sources.json": "72ce2519b50ee0f1c64205858b058ed0d71cc0fa60618311b07fb62005d828ed"
+  },
+  "inference_order": "Calibration inference -> fit score/gap rule -> write and hash policy.json -> heldout inference -> report; no tuning based on heldout results."
+}
