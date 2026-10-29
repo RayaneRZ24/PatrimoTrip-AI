@@ -44,7 +44,7 @@ def prior_predictions(results, assets_sha):
     return None, {}
 
 
-def worker(output):
+def worker(output, expanded=False):
     started = time.perf_counter()
     summary = {'status': 'failed', 'version': visual.VERSION,
                'scope': 'Previously seen development photos; independent descriptor model, not independent test data.',
@@ -72,7 +72,27 @@ def worker(output):
         print('Chargement du modèle visuel sur CPU ; aucun serveur génératif lancé.', flush=True)
         encoder = visual.Encoder(model_dir, spec)
         summary['descriptor_namespace'] = encoder.namespace
-        rows = visual.evaluate(encoder, references, queries, ROOT/'models/visual-descriptor-cache')
+        cache_dir = ROOT/'models/visual-descriptor-cache'
+        rows = visual.evaluate(encoder, references, queries, cache_dir)
+        summary['reference_bank_version'] = 'visual_references_v1'
+        if expanded:
+            bank, bank_manifest = visual.expanded_bank(refs_root, ROOT/'visual-references-v2', queries_root)
+            print('\nComparaison avec trois références par monument...', flush=True)
+            before = rows
+            rows = visual.evaluate(encoder, bank, queries, cache_dir)
+            save(output/'baseline-cases.json', before)
+            aligned = {row['asset_id']: row for row in before}
+            save(output/'bank-comparison.json', [
+                {'asset_id': row['asset_id'], 'kind': row['kind'], 'expected_site_id': row['expected_site_id'],
+                 'before': aligned[row['asset_id']]['top3_candidates'], 'after': row['top3_candidates'],
+                 'before_top1_exact': aligned[row['asset_id']]['top1_exact'], 'after_top1_exact': row['top1_exact'],
+                 'identity_confirmed': False} for row in rows])
+            save(output/'expanded-reference-metadata.json', bank_manifest)
+            summary.update(reference_bank_version='visual_references_v2', references_per_site=3,
+                           reference_count=30, score_aggregation='maximum_reference_similarity_per_site',
+                           expanded_manifest_sha256=visual.sha(ROOT/'visual-references-v2/references.json'),
+                           baseline_known_site_top1={kind: {'correct': sum(r['top1_exact'] is True for r in before if r['kind'] == kind),
+                                                           'total': sum(r['kind'] == kind for r in before)} for kind in ['standard', 'detail']})
         previous, predictions = prior_predictions(ROOT/'results', visual.sha(queries_root/'assets.json'))
         for row in rows:
             old = predictions.get(row['asset_id'])
@@ -103,7 +123,9 @@ def worker(output):
             '# Comparaison visuelle avec références\n\n'
             'Les scores cosinus ne sont pas des probabilités. Un meilleur voisin est toujours retourné, même pour Rome ou un mur. '
             'Aucun seuil hors catalogue, aucune identité confirmée et aucune réponse historique automatique ne sont produits.\n\n'
-            'Les images de test sont déjà connues du développement, mais distinctes des dix références. Un seul angle par site limite le rappel. '
+            'Les images de test sont déjà connues du développement, mais distinctes des références. La banque initiale a une vue par site ; '
+            'avec --expanded-references, bank-comparison.json compare cette base aux trois vues par site. Les gains ne sont pas présumés. '
+            'Le maximum de similarité sur davantage de vues peut augmenter les faux rapprochements hors catalogue. '
             'Le modèle CPU et ses erreurs peuvent différer du modèle génératif ; leur accord ne prouve pas une identité. '
             'Voir cases.json pour Invalides, Panthéon de Paris/Rome et les écarts avec le parcours précédent, si disponible.\n\n'
             'Aucune photo, aucun poids ni vecteur complet ne sont inclus dans ce rapport. '
@@ -116,11 +138,12 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--worker', action='store_true', help=argparse.SUPPRESS)
     parser.add_argument('--output', type=pathlib.Path, help=argparse.SUPPRESS)
+    parser.add_argument('--expanded-references', action='store_true', help='Compare one and three reference views per site, without an identity gate.')
     args = parser.parse_args()
     if args.worker:
         if args.output is None or not args.output.resolve().is_relative_to((ROOT/'results').resolve()):
             parser.error('Invalid output directory.')
-        raise SystemExit(worker(args.output))
+        raise SystemExit(worker(args.output, args.expanded_references))
     output = ROOT/'results'/('visual-refs-'+dt.datetime.now(dt.timezone.utc).strftime('%Y%m%d-%H%M%S')+'-'+uuid.uuid4().hex[:8])
     output.mkdir(parents=True)
     try:
@@ -136,7 +159,9 @@ def main():
             with (output/'installation.log').open('w', encoding='utf-8') as log:
                 subprocess.run([str(python), '-m', 'pip', 'install', '--disable-pip-version-check', '--only-binary=:all:']+
                                [k+'=='+v for k, v in DEPENDENCIES.items()], stdout=log, stderr=subprocess.STDOUT, check=True)
-        code = subprocess.call([str(python), str(pathlib.Path(__file__).resolve()), '--worker', '--output', str(output)])
+        command = [str(python), str(pathlib.Path(__file__).resolve()), '--worker', '--output', str(output)]
+        if args.expanded_references: command.append('--expanded-references')
+        code = subprocess.call(command)
         if not (output/'report.zip').is_file():
             raise RuntimeError('Worker stopped before writing its report; exit code '+str(code))
         raise SystemExit(code)

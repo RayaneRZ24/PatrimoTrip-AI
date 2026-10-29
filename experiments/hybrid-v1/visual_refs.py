@@ -5,6 +5,7 @@ import math
 import pathlib
 import re
 import time
+import urllib.parse
 import urllib.request
 
 MODEL_REPO = 'Xenova/dinov2-small'
@@ -178,6 +179,36 @@ def checked_assets(root, rows, field='site_id'):
     return result
 
 
+def expanded_bank(base_root, expanded_root, queries_root):
+    base_root, expanded_root, queries_root = map(pathlib.Path, (base_root, expanded_root, queries_root))
+    base = json.loads((base_root/'references.json').read_text(encoding='utf-8'))
+    extra = json.loads((expanded_root/'references.json').read_text(encoding='utf-8'))
+    queries = json.loads((queries_root/'assets.json').read_text(encoding='utf-8'))
+    if (extra.get('version') != 'visual_references_v2' or
+            extra.get('base_manifest_sha256') != sha(base_root/'references.json') or
+            extra.get('excluded_query_assets_sha256') != sha(queries_root/'assets.json')):
+        raise ValueError('Expanded reference bank does not match base/query manifests.')
+    originals = checked_assets(base_root, base['references'])
+    additions = checked_assets(expanded_root, extra['references'])
+    checked_assets(queries_root, queries, 'expected_site_id')
+    sites = {r['site_id'] for r, _ in originals}
+    if (len(originals) != 10 or len(additions) != 20 or {r['site_id'] for r, _ in additions} != sites or
+            any(sum(r['site_id'] == site for r, _ in additions) != 2 for site in sites)):
+        raise ValueError('Expanded bank must contain two additions per catalog site.')
+    hashes = [r['sha256'] for r, _ in originals+additions]
+    if len(set(hashes)) != 30 or set(hashes) & {r['sha256'] for r in queries}:
+        raise ValueError('Duplicate reference or exact query image in expanded bank.')
+    def page_key(row):
+        return urllib.parse.unquote(row['source_page']).replace('_', ' ').casefold()
+    pages = [page_key(r) for r, _ in originals+additions]
+    if len(set(pages)) != 30 or set(pages) & {page_key(r) for r in queries}:
+        raise ValueError('Repeated Commons source or query source in expanded bank.')
+    for row, _ in additions:
+        if not row.get('author') or not row.get('license') or not row.get('license_url') or row.get('visual_review') != 'reviewed_before_descriptor_run':
+            raise ValueError('Incomplete licence or visual curation record.')
+    return originals+additions, extra
+
+
 def rank_vector(vector, references):
     # No query identity/label is accepted here. Only image vectors and catalog labels.
     def normalize(v):
@@ -190,7 +221,20 @@ def rank_vector(vector, references):
     q = normalize(vector)
     scored = [{'site_id': r['site_id'], 'reference_sha256': r['sha256'],
                'cosine_similarity': math.fsum(a*b for a, b in zip(q, normalize(r['vector'])))} for r in references]
-    return sorted(scored, key=lambda r: (-r['cosine_similarity'], r['site_id']))
+    # Equal reference counts per site in the expanded bank. Group before top-k:
+    # three views of one site must not occupy the three candidate positions.
+    grouped = {}
+    for row in scored:
+        site = row['site_id']
+        if site not in grouped:
+            grouped[site] = {**row, 'references_for_site': 1}
+        else:
+            count = grouped[site]['references_for_site']+1
+            if row['cosine_similarity'] > grouped[site]['cosine_similarity']:
+                grouped[site] = {**row, 'references_for_site': count}
+            else:
+                grouped[site]['references_for_site'] = count
+    return sorted(grouped.values(), key=lambda r: (-r['cosine_similarity'], r['site_id']))
 
 
 class Encoder:

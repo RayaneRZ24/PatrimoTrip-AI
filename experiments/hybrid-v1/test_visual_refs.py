@@ -2,6 +2,7 @@ import copy
 import hashlib
 import json
 import pathlib
+import shutil
 import tempfile
 import unittest
 from unittest import mock
@@ -149,6 +150,71 @@ class VisualReferenceTests(unittest.TestCase):
             (old/'cases-summary.json').write_text(json.dumps([{'asset_id': 'a05', 'predicted_site_id': 'Q188856'}]))
             self.assertEqual(evaluate.prior_predictions(root, 'other'), (None, {}))
             self.assertEqual(evaluate.prior_predictions(root, 'verified')[1]['a05'], 'Q188856')
+
+    def test_expanded_bank_keeps_three_distinct_references_per_catalog_site(self):
+        bank, manifest = visual.expanded_bank(ROOT/'visual-references-v1', ROOT/'visual-references-v2', ROOT/'evaluation-v1')
+        self.assertEqual(len(bank), 30)
+        self.assertEqual(len({r['sha256'] for r, _ in bank}), 30)
+        self.assertEqual(len(manifest['references']), 20)
+        self.assertTrue(all(sum(r['site_id'] == site for r, _ in bank) == 3 for site in {r['site_id'] for r, _ in bank}))
+
+    def test_expanded_bank_rejects_query_source_leak_and_missing_views(self):
+        with tempfile.TemporaryDirectory() as temp:
+            expanded = pathlib.Path(temp)/'bank'; shutil.copytree(ROOT/'visual-references-v2', expanded)
+            original = json.loads((expanded/'references.json').read_text(encoding='utf-8'))
+            query = json.loads((ROOT/'evaluation-v1/assets.json').read_text(encoding='utf-8'))[0]
+            for problem in ['query_source', 'missing_view', 'changed_base', 'unchecked_curation']:
+                manifest = copy.deepcopy(original)
+                if problem == 'query_source': manifest['references'][0]['source_page'] = query['source_page']
+                elif problem == 'missing_view': manifest['references'].pop()
+                elif problem == 'changed_base': manifest['base_manifest_sha256'] = 'wrong'
+                else: manifest['references'][0]['visual_review'] = 'pending'
+                (expanded/'references.json').write_text(json.dumps(manifest), encoding='utf-8')
+                with self.subTest(problem=problem), self.assertRaises(ValueError):
+                    visual.expanded_bank(ROOT/'visual-references-v1', expanded, ROOT/'evaluation-v1')
+
+    def test_expanded_bank_rejects_resubmitted_query_bytes(self):
+        with tempfile.TemporaryDirectory() as temp:
+            expanded = pathlib.Path(temp)/'bank'; shutil.copytree(ROOT/'visual-references-v2', expanded)
+            manifest = json.loads((expanded/'references.json').read_text(encoding='utf-8'))
+            query = json.loads((ROOT/'evaluation-v1/assets.json').read_text(encoding='utf-8'))[0]
+            row = manifest['references'][0]
+            shutil.copyfile(ROOT/'evaluation-v1'/query['image'], expanded/row['image'])
+            row['sha256'] = query['sha256']
+            (expanded/'references.json').write_text(json.dumps(manifest), encoding='utf-8')
+            with self.assertRaises(ValueError): visual.expanded_bank(ROOT/'visual-references-v1', expanded, ROOT/'evaluation-v1')
+
+    def test_multi_view_ranking_returns_distinct_sites_and_best_reference(self):
+        x, y = [1.0]+[0.0]*383, [0.0, 1.0]+[0.0]*382
+        refs = [{'site_id': 'A', 'sha256': 'a1', 'vector': y},
+                {'site_id': 'A', 'sha256': 'a2', 'vector': x},
+                {'site_id': 'B', 'sha256': 'b', 'vector': [0.8, 0.2]+[0.0]*382},
+                {'site_id': 'C', 'sha256': 'c', 'vector': y}]
+        ranked = visual.rank_vector(x, refs)
+        self.assertEqual([row['site_id'] for row in ranked], ['A', 'B', 'C'])
+        self.assertEqual(ranked[0]['reference_sha256'], 'a2')
+        self.assertEqual(ranked[0]['references_for_site'], 2)
+
+    def test_expanded_worker_saves_aligned_comparison_without_confirming_identity(self):
+        # Exercise real manifest checks, ranking, report and ZIP paths with a
+        # synthetic descriptor. This does not measure DINOv2 accuracy.
+        with tempfile.TemporaryDirectory() as temp:
+            output = pathlib.Path(temp)
+            encoder = mock.Mock(namespace='synthetic-not-real-model')
+            with mock.patch.object(evaluate.visual, 'fetch_model', return_value={'synthetic': True}), \
+                 mock.patch.object(evaluate.visual, 'Encoder', return_value=encoder), \
+                 mock.patch.object(evaluate.visual, 'cached_encode', return_value=([1.0]+[0.0]*383, False)), \
+                 mock.patch.object(evaluate.importlib.metadata, 'version', return_value='synthetic-test'), \
+                 mock.patch.object(evaluate, 'prior_predictions', return_value=(None, {})):
+                self.assertEqual(evaluate.worker(output, expanded=True), 0)
+            summary = json.loads((output/'summary.json').read_text(encoding='utf-8'))
+            comparison = json.loads((output/'bank-comparison.json').read_text(encoding='utf-8'))
+            self.assertEqual(summary['reference_bank_version'], 'visual_references_v2')
+            self.assertEqual(summary['reference_count'], 30)
+            self.assertEqual(len(comparison), 10)
+            self.assertTrue(all(len(row['after']) == 3 and not row['identity_confirmed'] for row in comparison))
+            self.assertFalse(summary['automatic_identity_gate'])
+            self.assertTrue((output/'report.zip').is_file())
 
 
 if __name__ == '__main__': unittest.main()
