@@ -1,5 +1,17 @@
 # PatrimoTrip AI — évaluation hybride locale v1
 
+## Application locale intégrée
+
+```powershell
+py .\verify_release.py --models --open
+```
+
+Ce lancement vérifie le logiciel, les outils MCP et le parcours photo sur une image connue, écrit un rapport unique puis ouvre l'application à `http://127.0.0.1:8765`. Garder PowerShell ouvert. Pour les lancements suivants : `py .\app_local.py --open`.
+
+L'application propose l'analyse photo avec abstention, un agent de questions culturelles utilisant MCP, la préparation de promenades extérieures, la confirmation de sauvegarde, l'export et l'impression. Le nouveau parcours documentaire reproduit des phrases sources exactes : le modèle sélectionne des identifiants, pas des paraphrases factuelles libres. Les données pratiques actuelles et les routes dans les rues ne sont pas vérifiées ; les parcours restent des estimations.
+
+Documentation : [guide utilisateur](docs/USER_GUIDE.md), [architecture](docs/ARCHITECTURE.md), [installation](docs/SETUP.md), [dossier de projet](docs/PROJECT_REPORT.md). Les sections suivantes conservent l'historique des expériences ; les anciens contrats de génération ne décrivent pas tous le nouveau mode assisté.
+
 Un lancement prépare les embeddings, compare la recherche lexicale et dense, teste la fusion et le reranking, puis archive les résultats dans **un seul `report.zip`**. Python standard et SQLite FTS5 suffisent : aucun paquet pip, PyTorch ni service de base de données n'est ajouté.
 
 ## Parcours photo assisté

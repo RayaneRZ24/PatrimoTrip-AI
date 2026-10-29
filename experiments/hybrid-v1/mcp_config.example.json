@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "patrimotrip-local": {
+      "command": "py",
+      "args": ["C:\\Users\\VOTRE_NOM\\PatrimoTripAI\\hybrid-v1\\mcp_server.py"]
+    }
+  }
+}

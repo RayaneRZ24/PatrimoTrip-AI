@@ -13,6 +13,7 @@ import zipfile
 
 import hybrid
 import facet_rag
+import grounded_rag
 import rag_local as rag
 import runtime
 from run_local import ROOT, embedding_cache_key, query_id, save
@@ -241,16 +242,18 @@ def scoped_retrieval(corpus, site_id, question, cache):
     return evidence, {"bm25": lexical[:10], "dense": dense[:10], "hybrid_rrf": ranking[:10]}
 
 
-def documentary_answer(corpus, question, evidence, manager, output, resources, plan=None):
+def documentary_answer(corpus, question, evidence, manager, output, resources, plan=None, strict_quotes=False):
     resources.phase = "text_answer"
     url = manager.start("generation", generation_vision=False)
-    if plan and plan["compound"]:
+    if strict_quotes:
+        answer = grounded_rag.ask(question, plan, evidence, rag.LocalModel(url))
+    elif plan and plan["compound"]:
         answer = facet_rag.ask(question, plan, evidence, rag.LocalModel(url), PHOTO_SYSTEM)
     else:
         answer = rag.ask(corpus.database, question, rag.LocalModel(url),
                          retrieval_fn=lambda database, query: evidence, retrieval_name="site_scoped_hybrid_rrf",
                          system_prompt=PHOTO_SYSTEM)
-    answer["prompt_version"] = "photo_facets_v1" if plan and plan["compound"] else "photo_partial_answers_v2"
+    answer["prompt_version"] = grounded_rag.VERSION if strict_quotes else "photo_facets_v1" if plan and plan["compound"] else "photo_partial_answers_v2"
     save(output / "answer.json", answer)
     return answer
 
@@ -268,6 +271,8 @@ def attach_answer(result, answer, site_name):
                   explanation_scope="Cette explication concerne le monument proposé ; elle ne prouve pas l'identité de la photo.")
     if valid and "facet_statuses" in answer:
         result.update(facet_statuses=answer["facet_statuses"], all_facets_answered=answer.get("all_facets_answered", False))
+    if 'exact_quotes_verified' in answer:
+        result['exact_quotes_verified'] = answer['exact_quotes_verified']
     return result
 
 
@@ -328,7 +333,7 @@ def replay_documentary(corpus, sites, source, manager, output, resources, requir
             return identity_clarification(result)
     save(output / "retrieval.json", {**record, "evidence": evidence})
     replay_plan = facet_rag.plan_question(previous['question'], sites[site_id]['name']) if require_visual_gate else None
-    answer = documentary_answer(corpus, question, evidence, manager, output, resources, plan=replay_plan)
+    answer = documentary_answer(corpus, question, evidence, manager, output, resources, plan=replay_plan, strict_quotes=require_visual_gate)
     return attach_answer(result, answer, sites[site_id]["name"])
 
 
@@ -389,12 +394,14 @@ def pipeline(corpus, sites, data, metadata, question, manager, output, resources
     save(output / "question-plan.json", plan)
     cache = prepare_vectors(corpus, site_id, scoped_question, manager, output, resources,
                             extra_queries=facet_rag.extra_queries(plan))
-    if plan["compound"]:
+    if visual_gate:
+        evidence, rankings = grounded_rag.retrieve(corpus, site_id, site_name, scoped_question, plan, cache)
+    elif plan["compound"]:
         evidence, rankings = facet_rag.retrieve(corpus, site_id, site_name, plan, cache)
     else:
         evidence, rankings = scoped_retrieval(corpus, site_id, scoped_question, cache)
     save(output / "retrieval.json", {"site_id": site_id, "question": scoped_question, "rankings": rankings, "evidence": evidence})
-    answer = documentary_answer(corpus, scoped_question, evidence, manager, output, resources, plan=plan)
+    answer = documentary_answer(corpus, scoped_question, evidence, manager, output, resources, plan=plan, strict_quotes=bool(visual_gate))
     return attach_answer(result, answer, site_name)
 
 
@@ -455,6 +462,7 @@ def main(assisted=False):
     report = {"status": "started", "server_left_running": False, "factual_review": "pending",
               "identity_version": IDENTITY_VERSION,
               "assisted_pipeline_version": 'reference_qwen_agreement_v1' if assisted else None,
+              "answer_grounding_version": grounded_rag.VERSION if assisted else None,
               "retrieval_version": facet_rag.VERSION,
               "utc_started": dt.datetime.now(dt.timezone.utc).isoformat()}
     manager, resources, started, success = None, None, time.perf_counter(), False

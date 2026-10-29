@@ -118,7 +118,7 @@ class AssistedPhotoTests(unittest.TestCase):
         answer = {'reference_checks_passed': True, 'model_called': True,
                   'answer': {'status': 'answered', 'answer': 'Simulation de texte sourcé. [S1]', 'citations': ['S1']}}
         with tempfile.TemporaryDirectory() as temp, mock.patch.object(photo, 'identify', side_effect=identify) as vision, \
-             mock.patch.object(photo, 'prepare_vectors'), mock.patch.object(photo, 'scoped_retrieval', return_value=(evidence, {})) as retrieve, \
+             mock.patch.object(photo, 'prepare_vectors'), mock.patch.object(photo.grounded_rag, 'retrieve', return_value=(evidence, {})) as retrieve, \
              mock.patch.object(photo, 'documentary_answer', return_value=answer):
             manager = mock.Mock(); manager.start.return_value = 'http://127.0.0.1:8080'
             manager.stop.side_effect = lambda: events.append('stop_owned')
@@ -142,7 +142,7 @@ class AssistedPhotoTests(unittest.TestCase):
 
     def test_explicit_user_identity_is_reported_as_bypass_without_visual_inference(self):
         with tempfile.TemporaryDirectory() as temp, mock.patch.object(photo, 'identify') as identify, \
-             mock.patch.object(photo, 'prepare_vectors'), mock.patch.object(photo, 'scoped_retrieval', return_value=([], {})), \
+             mock.patch.object(photo, 'prepare_vectors'), mock.patch.object(photo.grounded_rag, 'retrieve', return_value=([], {})), \
              mock.patch.object(photo, 'documentary_answer', return_value={'reference_checks_passed': True, 'model_called': False,
                  'answer': {'status': 'insufficient_sources', 'answer': 'Aucune source.', 'citations': []}}):
             callback = mock.Mock()
