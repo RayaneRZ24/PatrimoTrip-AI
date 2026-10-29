@@ -1,0 +1,96 @@
+{
+  "version": "visual_references_v1",
+  "selection": "One original reference per catalog site; fixed before the descriptor experiment. No evaluation images added.",
+  "references": [
+    {
+      "image": "images/Q243.jpg",
+      "sha256": "848139c75c8eb5d021837af2f856a51e8e0055e3f0c388d6fae26b49cfac339f",
+      "author": "Benh LIEU SONG",
+      "license": "Public domain",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Tour_Eiffel_Wikimedia_Commons.jpg",
+      "license_url": null,
+      "site_id": "Q243"
+    },
+    {
+      "image": "images/Q1075988.jpg",
+      "sha256": "be8e75e32fa051c99c3a5cbac99a1f2a60a54316bd242ddb9e4f384d0d58ad3d",
+      "author": "Ali Sabbagh",
+      "license": "CC0",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Pavillon_de_Flore,_Louvre_Museum,_Paris_5_November_2019.jpg",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "site_id": "Q1075988"
+    },
+    {
+      "image": "images/Q2981.jpg",
+      "sha256": "584c0bc87a1b68e16cdf87a84e8d293c229b7345fd648cd69168964894109418",
+      "author": "P e z i",
+      "license": "CC BY-SA 3.0",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Notre-Dame_de_Paris_2013-07-24.jpg",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "site_id": "Q2981"
+    },
+    {
+      "image": "images/Q64436.jpg",
+      "sha256": "5d737dedd7faae0ef5fc0b1b425ac1034110baacd3b538d43b139ad5eb08e5da",
+      "author": "ZeusUpsistos",
+      "license": "CC BY-SA 4.0",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Arc_de_Triomphe_-_Ao%C3%BBt_2026.jpg",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "site_id": "Q64436"
+    },
+    {
+      "image": "images/Q188856.jpg",
+      "sha256": "8b048fc04160a1f3459a7d2de5517cf1fef2089f49f22438119b8882c1e3bc66",
+      "author": "Camille Gévaudan",
+      "license": "CC BY-SA 3.0",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Panth%C3%A9on,_Paris_25_March_2012.jpg",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "site_id": "Q188856"
+    },
+    {
+      "image": "images/Q28785.jpg",
+      "sha256": "0f35a76f1f564bd2889127af0093513e5af41b9c113d2ececb1ce8954d267bfe",
+      "author": "Tonchino",
+      "license": "CC BY-SA 3.0",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Le_sacre_coeur.jpg",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "site_id": "Q28785"
+    },
+    {
+      "image": "images/Q187840.jpg",
+      "sha256": "0b629c5c3bb7889f6e2befe57454a26e0e2eeb850307ebfc7965451566b4127b",
+      "author": "Peter Rivera",
+      "license": "CC BY 2.0",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Paris_Opera_full_frontal_architecture,_May_2009.jpg",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "site_id": "Q187840"
+    },
+    {
+      "image": "images/Q193193.jpg",
+      "sha256": "38a58cbd7277d73b182931ce28dce35664372c147eec08af98e7ab38dba15167",
+      "author": "Mathae",
+      "license": "CC BY 2.5",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Szensapel.jpg",
+      "license_url": "https://creativecommons.org/licenses/by/2.5",
+      "site_id": "Q193193"
+    },
+    {
+      "image": "images/Q188977.jpg",
+      "sha256": "9c0010c0ca92cbaa9034a34590ba929e1a9c972142987758dee38d99a3013b93",
+      "author": "Another one of my pictures: This photograph was taken by Medium69 (William Crochot) and released under the license stated below. You are free to use it for any purpose as long as you credit the author (William Crochot), the Source (Wikimedia Commons) and the license (CC-BY-SA 4.0) in close relation to the image. Please do not upload an updated image here without consultation with the Author. The author would like to make corrections only at his own source RAW. This ensures that the changes are preserved.Please if you think that any changes should be required, please inform the author.Otherwise you can upload a new image with a new name. Please use one of the templates derivative or extract.",
+      "license": "CC BY-SA 4.0",
+      "source_page": "https://commons.wikimedia.org/wiki/File:H%C3%B4tel_des_Invalides_-_20150801_16h09_(10630).jpg",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "site_id": "Q188977"
+    },
+    {
+      "image": "images/Q189503.jpg",
+      "sha256": "7f5170abde9a0871b3a96b6374048cd8848a6020a5eab330ede31d9edb54d7e4",
+      "author": "Cristian Bortes from Cluj-Napoca, Romania",
+      "license": "CC BY 2.0",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Place_de_la_Concorde_from_the_Eiffel_Tower,_Paris_April_2011.jpg",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "site_id": "Q189503"
+    }
+  ]
+}

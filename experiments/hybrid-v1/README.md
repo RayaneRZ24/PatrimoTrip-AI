@@ -2,6 +2,10 @@
 
 Un lancement prépare les embeddings, compare la recherche lexicale et dense, teste la fusion et le reranking, puis archive les résultats dans **un seul `report.zip`**. Python standard et SQLite FTS5 suffisent : aucun paquet pip, PyTorch ni service de base de données n'est ajouté.
 
+## Essai séparé de comparaison visuelle
+
+`py .\evaluate_visual_refs.py` compare les dix images d'évaluation aux dix références originales avec DINOv2-small sur CPU. Ce nouvel essai crée son propre environnement avec NumPy, Pillow et ONNX Runtime ; les outils précédents restent en Python standard. Il fournit des candidats visuels, sans confirmer d'identité, sans seuil hors catalogue et sans modifier le parcours historique. Voir [visual-references-v1/README.md](visual-references-v1/README.md) pour les téléchargements vérifiés, les licences et les limites. Les résultats réels du modèle restent à mesurer sur le PC utilisateur.
+
 ## Serveur existant et port 8080
 
 L'évaluation démarre et arrête ses propres modèles. Il n'est pas nécessaire de lancer `llama-server` dans une deuxième fenêtre. Si un serveur manuel est encore ouvert, on peut le fermer avec Ctrl+C avant de lancer l'évaluation. L'option `--take-over-test-server` conserve le contrôle strict du processus attendu.
