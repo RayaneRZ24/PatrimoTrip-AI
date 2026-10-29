@@ -271,7 +271,7 @@ def attach_answer(result, answer, site_name):
     return result
 
 
-def replay_documentary(corpus, sites, source, manager, output, resources):
+def replay_documentary(corpus, sites, source, manager, output, resources, require_visual_gate=False):
     previous = json.loads((source / "result.json").read_text(encoding="utf-8"))
     record = json.loads((source / "retrieval.json").read_text(encoding="utf-8"))
     summary = json.loads((source / "summary.json").read_text(encoding="utf-8"))
@@ -292,6 +292,23 @@ def replay_documentary(corpus, sites, source, manager, output, resources):
     result = {key: previous[key] for key in ["image", "question", "identification", "identity_origin"]}
     result.update(identity_verified=False, factual_review="pending", replayed_from=source.name,
                   replay_scope="Same question and excerpts; no image analysis, embeddings or new retrieval.")
+    if require_visual_gate:
+        result['assisted_pipeline_version'] = 'reference_qwen_agreement_v1'
+        if result['identity_origin'] == 'user_provided':
+            result['visual_guard'] = {'status': 'bypassed_user_identity', 'identity_confirmed': False,
+                                      'note': 'Identité fournie explicitement dans le rapport source.'}
+    if require_visual_gate and result['identity_origin'] != 'user_provided':
+        import visual_guard
+        guard = previous.get('visual_guard', {})
+        agreement = previous.get('visual_agreement', {})
+        if guard.get('decision') != 'propose' or agreement.get('matched') is not True:
+            result['identification'] = {**previous['identification'], 'status': 'uncertain', 'site_id': 'unknown'}
+            return identity_clarification(result)
+        visual_guard.validate_record(guard, previous['image'].get('sha256'), sites)
+        if guard['proposed_site_id'] != site_id or agreement.get('reference_site_id') != site_id or agreement.get('qwen_site_id') != site_id:
+            raise ValueError('Le rapport précédent ne contient pas un accord visuel cohérent pour ce site.')
+        result.update(visual_guard=guard, visual_agreement=agreement,
+                      assisted_pipeline_version='reference_qwen_agreement_v1')
     if result["identity_origin"] != "user_provided":
         check = previous["identification"].get("identity_check", {})
         if check.get("version") == IDENTITY_VERSION:
@@ -310,11 +327,13 @@ def replay_documentary(corpus, sites, source, manager, output, resources):
         if updated["status"] != "identified":
             return identity_clarification(result)
     save(output / "retrieval.json", {**record, "evidence": evidence})
-    answer = documentary_answer(corpus, question, evidence, manager, output, resources)
+    replay_plan = facet_rag.plan_question(previous['question'], sites[site_id]['name']) if require_visual_gate else None
+    answer = documentary_answer(corpus, question, evidence, manager, output, resources, plan=replay_plan)
     return attach_answer(result, answer, sites[site_id]["name"])
 
 
-def pipeline(corpus, sites, data, metadata, question, manager, output, resources, confirmed_site=None):
+def pipeline(corpus, sites, data, metadata, question, manager, output, resources, confirmed_site=None, visual_gate=None):
+    guard = None
     if confirmed_site:
         if confirmed_site not in sites:
             raise ValueError("Le monument confirmé ne fait pas partie du corpus.")
@@ -322,6 +341,19 @@ def pipeline(corpus, sites, data, metadata, question, manager, output, resources
                       "hypothesis": "Identité fournie explicitement par l'utilisateur ; vision non exécutée."}
         identity_origin = "user_provided"
     else:
+        if visual_gate:
+            # Release any owned generation process before launching the CPU
+            # descriptor child; that child exits before vision starts below.
+            manager.stop()
+            resources.phase = 'visual_reference_gate'
+            guard = visual_gate(data, metadata, output)
+            if guard['decision'] != 'propose':
+                return identity_clarification({'image': metadata, 'question': question,
+                    'identification': {'site_id': 'unknown', 'status': 'uncertain', 'observations': [],
+                                       'hypothesis': 'Aucune identité retenue pour cette photo.'},
+                    'identity_origin': 'visual_reference_abstention', 'identity_verified': False,
+                    'factual_review': 'pending', 'visual_guard': guard,
+                    'assisted_pipeline_version': 'reference_qwen_agreement_v1'})
         resources.phase = "vision"
         url = manager.start("generation", generation_vision=True)
         try:
@@ -331,6 +363,23 @@ def pipeline(corpus, sites, data, metadata, question, manager, output, resources
         identity_origin = "visual_proposal_not_verified"
     result = {"image": metadata, "question": question, "identification": prediction, "identity_origin": identity_origin,
               "identity_verified": False, "factual_review": "pending"}
+    if visual_gate:
+        result['assisted_pipeline_version'] = 'reference_qwen_agreement_v1'
+        if confirmed_site:
+            result['visual_guard'] = {'status': 'bypassed_user_identity', 'identity_confirmed': False,
+                                      'note': 'Identité fournie explicitement ; aucune validation visuelle revendiquée.'}
+        else:
+            result['visual_guard'] = guard
+            matched = prediction['status'] == 'identified' and prediction['site_id'] == guard['proposed_site_id']
+            result['visual_agreement'] = {'matched': matched, 'reference_site_id': guard['proposed_site_id'],
+                                         'qwen_site_id': prediction['site_id'], 'qwen_status': prediction['status']}
+            if not matched:
+                result['qwen_identification'] = prediction
+                result['identification'] = {**prediction, 'site_id': 'unknown', 'status': 'uncertain',
+                    'identity_check': {**prediction.get('identity_check', {}), 'passed': False,
+                        'conflicts': ['Les analyses visuelles ne s’accordent pas sur un monument du catalogue.']}}
+                return identity_clarification(result)
+            result['identity_origin'] = 'reference_and_qwen_proposal_not_verified'
     if prediction["status"] != "identified":
         return identity_clarification(result)
     site_id = prediction["site_id"]
@@ -376,12 +425,12 @@ def display(result, sites):
     elif result.get("message"):
         print(result["message"])
         print("Pour fournir une identité connue, relancez avec --confirm-site suivi de son identifiant :")
-        print(" ; ".join(f"{site_id} = {site['name']}" for site_id, site in sites.items()))
+        print(" ; ".join(f"{site_id} = {site['name']} ({site['city']}, {site['country']})" for site_id, site in sites.items()))
     elif result.get("error"):
         print("Réponse rejetée : " + result["error"])
 
 
-def main():
+def main(assisted=False):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("image", nargs="?", type=pathlib.Path)
     parser.add_argument("--pick", action="store_true", help="Select a photo with the Windows file dialog.")
@@ -405,6 +454,7 @@ def main():
     output.mkdir(parents=True)
     report = {"status": "started", "server_left_running": False, "factual_review": "pending",
               "identity_version": IDENTITY_VERSION,
+              "assisted_pipeline_version": 'reference_qwen_agreement_v1' if assisted else None,
               "retrieval_version": facet_rag.VERSION,
               "utc_started": dt.datetime.now(dt.timezone.utc).isoformat()}
     manager, resources, started, success = None, None, time.perf_counter(), False
@@ -443,8 +493,12 @@ def main():
         manager.prepare_ports()
         resources = runtime.Resources(output, manager.environment)
         resources.start()
-        result = replay_documentary(corpus, sites, source, manager, output, resources) if source else pipeline(
-            corpus, sites, data, metadata, args.question, manager, output, resources, args.confirm_site)
+        if assisted:
+            import visual_guard
+        result = replay_documentary(corpus, sites, source, manager, output, resources,
+                                    require_visual_gate=assisted) if source else pipeline(
+            corpus, sites, data, metadata, args.question, manager, output, resources, args.confirm_site,
+            visual_gate=visual_guard.run_guard if assisted else None)
         save(output / "result.json", result)
         display(result, sites)
         if result.get("reference_checks_passed") and result.get("answer", {}).get("citations"):
@@ -454,7 +508,7 @@ def main():
                 if e["citation_id"] in result["answer"]["citations"]:
                     print(f"[{e['citation_id']}] {e['source']['title']} — {e['source']['url']}")
         report.update(status=result["status"], identity_origin=result["identity_origin"], answer_status=result.get("answer_status"))
-        if result.get("reference_checks_passed"):
+        if result.get("reference_checks_passed") and not assisted:
             report.update(server_left_running=True, server_profile="text_only", server_pid=manager.process.pid)
             manager.event("text_server_left_running_for_user")
             manager.process = None

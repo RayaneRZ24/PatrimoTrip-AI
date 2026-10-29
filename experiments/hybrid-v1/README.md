@@ -2,6 +2,10 @@
 
 Un lancement prépare les embeddings, compare la recherche lexicale et dense, teste la fusion et le reranking, puis archive les résultats dans **un seul `report.zip`**. Python standard et SQLite FTS5 suffisent : aucun paquet pip, PyTorch ni service de base de données n'est ajouté.
 
+## Parcours photo assisté
+
+Le parcours recommandé est désormais `py .\photo_assisted.py --pick --take-over-test-server` : comparaison aux références avec la règle figée 0,70/0,15, analyse indépendante de Qwen, puis explication sourcée seulement si les deux proposent le même site. Un refus ou désaccord demande une précision avant toute génération historique. Le processus CPU se ferme avant Qwen et les serveurs gérés s'arrêtent à la fin. Voir [visual-policy-v1/README.md](visual-policy-v1/README.md) pour les confirmations explicites, relances, limites et fichiers produits. Les anciens scripts restent disponibles pour reproduire les expériences antérieures.
+
 ## Essai séparé de comparaison visuelle
 
 `py .\evaluate_visual_refs.py` compare les dix images d'évaluation aux dix références originales avec DINOv2-small sur CPU. Ce nouvel essai crée son propre environnement avec NumPy, Pillow et ONNX Runtime ; les outils précédents restent en Python standard. Il fournit des candidats visuels, sans confirmer d'identité, sans seuil hors catalogue et sans modifier le parcours historique. Voir [visual-references-v1/README.md](visual-references-v1/README.md) pour les téléchargements vérifiés, les licences et les limites. Les résultats réels du modèle restent à mesurer sur le PC utilisateur.

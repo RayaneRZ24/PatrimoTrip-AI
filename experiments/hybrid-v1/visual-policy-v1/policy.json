@@ -1,0 +1,17 @@
+{
+  "version": "assisted_visual_policy_v1",
+  "rule": {
+    "reject_all": false,
+    "minimum_similarity": 0.7,
+    "minimum_gap": 0.15
+  },
+  "descriptor_namespace": "f14534bf22ccdb83831a0aef3585e8921727ba17ab04cc0369964f64d854f3bc",
+  "reference_manifests_sha256": {
+    "visual-references-v1/references.json": "cdc9f86129f174c8c77d9491c6dcaaa6fd5bb1c8e40494f14dc3cee3174399a2",
+    "visual-references-v2/references.json": "ad5a259814da502afdca77dbe1ce1dab56cd08045e5d3f9340fe712159b0a0ea"
+  },
+  "catalog_sha256": "917b0a15b3247adf20c4673b145bb1c95e178bb99e982fa706094cc5b693e9ba",
+  "calibration_protocol_sha256": "913c79b26ec7981636802ad0efa03ff029b76ff5ea2e03a508eeb90b336f4820",
+  "selection": "Frozen pilot calibration rule; no retuning against held-out or integration results.",
+  "interpretation": "A passing score is only a proposed identity. Qwen must independently propose the same site before historical generation. Explicit user-supplied identity is recorded separately."
+}
