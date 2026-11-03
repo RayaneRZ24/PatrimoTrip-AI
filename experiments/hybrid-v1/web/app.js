@@ -1,6 +1,6 @@
 "use strict";
 const $ = (id) => document.getElementById(id);
-let token = "", catalog = [], credits = {}, selectedFile = null, previewURL = null;
+let token = "", catalog = [], credits = {}, selectedFile = null, previewURL = null, recentContext = null;
 function element(tag, text, className) { const el = document.createElement(tag); if (text !== undefined) el.textContent = text; if (className) el.className = className; return el; }
 function notify(message) { $("notice").textContent = message; $("notice").classList.toggle("hidden", !message); }
 async function api(path, body) {
@@ -39,11 +39,44 @@ function sources(panel, evidence, citations) {
   }
 }
 function chooseWalk(site) { $("walk-anchor").value = site; show("walk"); $("walk-anchor").focus(); }
+function chatSite() {
+  const value = $("chat-site").value;
+  return value.startsWith("recent:") ? value.slice(7) : value;
+}
+function contextHint() {
+  const value = $("chat-site").value;
+  $("chat-context-hint").textContent = !value
+    ? "Écrivez le nom du monument dans votre question. « Ce monument » nécessite un contexte sélectionné."
+    : value.startsWith("recent:")
+      ? `Contexte repris explicitement : ${recentContext.name}. ${recentContext.proposed ? "L’identité proposée à partir de la photo reste à confirmer." : "Vous pouvez choisir un autre lieu à tout moment."}`
+      : `Votre question porte sur ${catalog.find(s => s.site_id === value)?.name || "le lieu sélectionné"}.`;
+  $("forget-context").classList.toggle("hidden", !recentContext);
+}
+function rememberContext(result) {
+  const site = result.identification?.site_id || result.site_id;
+  if (!result.site_name || !catalog.some(s => s.site_id === site)) return;
+  const previous = $("chat-site").value;
+  const proposed = (Boolean(result.identification) && result.identity_origin !== "user_provided") || Boolean(result.context_is_visual_proposal);
+  // A follow-up must preserve the uncertainty of an earlier visual proposal.
+  const inherited = !result.identification && previous === `recent:${site}` && recentContext?.site === site;
+  recentContext = {site, name: result.site_name, proposed: inherited ? recentContext.proposed : proposed};
+  const old = $("chat-site").querySelector("option[data-recent]"); if (old) old.remove();
+  const option = element("option", `Reprendre le dernier monument : ${recentContext.name}${recentContext.proposed ? " (proposition à confirmer)" : ""}`);
+  option.value = `recent:${site}`; option.dataset.recent = "true"; $("chat-site").append(option);
+  if (previous.startsWith("recent:")) $("chat-site").value = option.value;
+  contextHint();
+}
+$("chat-site").addEventListener("change", contextHint);
+$("forget-context").addEventListener("click", () => {
+  const recent = $("chat-site").querySelector("option[data-recent]"); if (recent) recent.remove();
+  recentContext = null; $("chat-site").value = ""; contextHint();
+});
 function renderResult(panel, result, jobId) {
   panel.replaceChildren();
+  rememberContext(result);
   if (result.trip) { renderTrip(panel, result.trip); return; }
   if (result.site_name) {
-    panel.append(element("span", result.identity_origin === "user_provided" ? "Identité fournie par vous" : result.identification ? "Monument proposé" : "Monument du contexte", "badge"));
+    panel.append(element("span", result.identity_origin === "user_provided" ? "Identité fournie par vous" : (result.identification || result.context_is_visual_proposal) ? "Monument proposé" : result.context_origin === "named_in_question" ? "Monument nommé dans votre question" : "Monument du contexte", "badge"));
     panel.append(element("h2", result.site_name));
   }
   if (result.answer) {
@@ -51,7 +84,7 @@ function renderResult(panel, result, jobId) {
     if (result.all_facets_answered === false) panel.append(element("p", "Réponse partielle : certaines informations manquent dans les sources.", "badge caution"));
     panel.append(element("p", result.answer.answer, "answer"));
     sources(panel, result.evidence, result.answer.citations);
-    if (result.identification) panel.append(element("p", "Ces extraits concernent le monument proposé ; ils ne prouvent pas l’identité de la photo.", "subtle"));
+    if (result.identification || result.context_is_visual_proposal) panel.append(element("p", "Ces extraits concernent le monument proposé ; ils ne prouvent pas l’identité de la photo.", "subtle"));
   } else {
     panel.append(element("span", "Une précision peut aider", "badge caution"));
     panel.append(element("h2", result.status === "current_information_unverified" ? "Vérifier les informations du jour" : "Poursuivons avec un peu de contexte."));
@@ -61,7 +94,19 @@ function renderResult(panel, result, jobId) {
   const site = result.identification?.site_id || result.site_id;
   const actions = element("div", undefined, "actions");
   if (site && site !== "unknown") { const button = element("button", "Composer un parcours à partir de ce lieu"); button.type = "button"; button.addEventListener("click", () => chooseWalk(site)); actions.append(button); }
-  if (jobId) { const a = element("a", "Télécharger le rapport"); a.href = `/api/report?id=${encodeURIComponent(jobId)}`; actions.append(a); }
+  if (site && site !== "unknown" && result.site_name) {
+    const followup = element("button", "Poser une question sur ce lieu"); followup.type = "button";
+    followup.addEventListener("click", () => { $("chat-site").value = `recent:${site}`; contextHint(); show("assistant"); $("chat-question").focus(); });
+    actions.append(followup);
+  }
+  if (jobId) {
+    const view = element("a", "Consulter la fiche monument"); view.href = `/api/monument-report?id=${encodeURIComponent(jobId)}`; view.target = "_blank"; view.rel = "noopener";
+    const pdf = element("a", "Télécharger la fiche PDF"); pdf.href = `/api/monument-report?id=${encodeURIComponent(jobId)}&format=pdf`;
+    actions.append(view, pdf);
+    const diagnostic = element("details", undefined, "diagnostic"); diagnostic.append(element("summary", "Diagnostic technique"));
+    const zip = element("a", "Télécharger le diagnostic technique (ZIP)"); zip.href = `/api/report?id=${encodeURIComponent(jobId)}`;
+    diagnostic.append(element("p", "Journaux et fichiers JSON destinés au dépannage ; ce n’est pas la fiche du monument.", "subtle"), zip); panel.append(diagnostic);
+  }
   panel.append(actions);
   if (result.status === "needs_clarification" && selectedFile && panel.id === "photo-result") {
     const confirmation = element("div", undefined, "confirmation"); const select = element("select"); select.setAttribute("aria-label", "Identité du monument connue par vous"); fillSelect(select, true);
@@ -101,7 +146,7 @@ async function submitPhoto(site = "") {
 $("photo-form").addEventListener("submit", async event => { event.preventDefault(); const button = event.submitter; button.disabled = true; try { await submitPhoto(); } catch (error) { notify(error.message); } finally { button.disabled = false; } });
 $("chat-form").addEventListener("submit", async event => {
   event.preventDefault(); const button = event.submitter; button.disabled = true; notify("");
-  try { const {job_id} = await api("/api/chat", {question: $("chat-question").value, site_id: $("chat-site").value}); await pollJob(job_id, $("chat-result")); }
+  try { const {job_id} = await api("/api/chat", {question: $("chat-question").value, site_id: chatSite(), context_is_visual_proposal: $("chat-site").value.startsWith("recent:") && Boolean(recentContext?.proposed)}); await pollJob(job_id, $("chat-result")); }
   catch (error) { notify(error.message); } finally { button.disabled = false; }
 });
 function routeMap(stops) {
@@ -143,11 +188,12 @@ $("status-button").addEventListener("click", async () => {
 async function initialize() {
   const data = await api("/api/bootstrap"); token = data.token; catalog = data.catalog; credits = data.image_credits || {};
   document.querySelectorAll(".site-select").forEach(select => fillSelect(select));
-  fillSelect($("chat-site"), true, "Déduire le monument de ma demande");
+  fillSelect($("chat-site"), true, "Reconnaître le nom écrit dans ma question");
+  contextHint();
   for (const site of catalog) {
     const check = element("input"); check.type = "checkbox"; check.value = site.site_id; check.checked = true; const label = element("label"); label.append(check, document.createTextNode(site.name)); $("site-checks").append(label);
     const card = element("article", undefined, "catalog-card"); const button = element("button", undefined, "catalog-open"); button.type = "button"; const image = element("img"); image.src = `/media/${site.site_id}.jpg`; image.alt = site.name; image.loading = "lazy";
-    const title = element("div"); title.append(element("strong", site.name), element("small", site.city)); button.append(image, title); button.addEventListener("click", () => { $("chat-site").value = site.site_id; $("walk-anchor").value = site.site_id; show("assistant"); $("chat-question").focus(); $("assistant").scrollIntoView({behavior: "smooth", block: "start"}); }); card.append(button);
+    const title = element("div"); title.append(element("strong", site.name), element("small", site.city)); button.append(image, title); button.addEventListener("click", () => { $("chat-site").value = site.site_id; contextHint(); $("walk-anchor").value = site.site_id; show("assistant"); $("chat-question").focus(); $("assistant").scrollIntoView({behavior: "smooth", block: "start"}); }); card.append(button);
     const credit = credits[site.site_id]; if (credit) { const note = element("div", undefined, "credit"); const author = credit.author.includes("William Crochot") ? "William Crochot (Medium69)" : credit.author; note.append(link(credit.source_page, `${author} · ${credit.license}`)); card.append(note); } $("catalog-grid").append(card);
   }
   if (!data.status.llama_found || !data.status.generation_model_found) notify("Le catalogue et les parcours sont disponibles. Le moteur local et ses modèles doivent être installés pour analyser les photos et répondre avec l’IA.");

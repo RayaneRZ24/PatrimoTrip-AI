@@ -11,3 +11,5 @@
 *.jpeg binary
 *.png binary
 *.zip binary
+
+*.ttf binary

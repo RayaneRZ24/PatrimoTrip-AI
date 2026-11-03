@@ -30,7 +30,7 @@ def facet_kind(question):
     for kind, stems in [("price", ["tarif", "prix", "cout", "combien"]),
                         ("hours", ["horaire", "heure", "ferme", "ouvre"]),
                         ("commemoration", ["commemor", "celebr", "annivers"]),
-                        ("designer", ["architect", "concu", "conception"]),
+                        ("designer", ["architect", "concu", "conception", "restaur", "qui a construit", "qui a dessine"]),
                         ("event", ["evenement", "occasion"]),
                         ("date", ["quand", "annee", "date"]),
                         ("purpose", ["fonction", "usage", "destin", "pourquoi"])]:

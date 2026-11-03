@@ -3,6 +3,8 @@ import json
 import sys
 
 import hybrid
+import grounded_rag
+import facet_rag
 import trip_tools
 from run_local import ROOT
 
@@ -61,7 +63,9 @@ class ToolService:
         if not question.strip() or len(question) > 800: raise ValueError('Question vide ou trop longue.')
         ranking = self.corpus.bm25(question, site_id=site_id)
         intro = [pid for pid, p in self.corpus.passages.items() if p['site_id'] == site_id and p['start'] == 0 and p['source_type'] == 'wikipedia'][:1]
-        return {'evidence': self.corpus.context(list(dict.fromkeys(intro+ranking)), max_per_document=3, balanced_sentences=True),
+        plan = facet_rag.plan_question(question, sites[site_id]['name'])
+        ranked = grounded_rag.prioritize(self.corpus, site_id, plan, list(dict.fromkeys(intro+ranking)))
+        return {'evidence': self.corpus.context(ranked, max_per_document=3, balanced_sentences=True),
                 'source_status': 'Frozen historical corpus; current practical information not verified.'}
 
 

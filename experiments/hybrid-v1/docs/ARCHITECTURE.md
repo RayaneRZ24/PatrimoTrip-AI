@@ -48,11 +48,13 @@ Le corpus est figé par empreintes, avec ses attributions. La banque de référe
 
 Le mode assisté utilise `grounded_rag.py`. Une demande de présentation conserve une introduction encyclopédique du site avant les autres candidats. Les passages sont découpés en unités de citation portant un identifiant et des positions. Qwen retourne seulement les identifiants de phrases et un statut par sous-question. Le programme valide les identifiants, les positions et l'égalité avec le texte source avant d'afficher la citation.
 
-Les présentations sont limitées aux introductions et présentations touristiques. Un passage relatant un projet concurrent ne peut donc pas servir de présentation directe du monument. Les demandes d'informations actuelles absentes du corpus sont signalées comme telles. La fidélité du texte est contrôlée ; la pertinence du choix et la vérité de la source ne sont pas déduites de cette égalité.
+Les présentations sont limitées aux introductions et présentations touristiques. La version `verified_source_spans_v2_scoped` écarte les phrases anaphoriques isolées (par exemple « Le projet… ») et restreint les motifs de construction à des passages de portée directe. Pour la conception, elle requiert une attribution explicite dans une phrase sur la construction ; un champ patrimonial listant plusieurs auteurs sans préciser leurs campagnes n’établit pas l’architecte d’origine. Les restaurations font l’objet d’un aspect distinct. Les phrases sont limitées à une par aspect et dédupliquées à l’affichage. Les passages non admissibles ne sont pas proposés au modèle. Un passage relatant un projet concurrent ne peut donc pas servir de présentation directe du monument. Les demandes d'informations actuelles absentes du corpus sont signalées comme telles. La fidélité du texte est contrôlée ; la pertinence du choix et la vérité de la source ne sont pas déduites de cette égalité.
 
 Les anciens lanceurs expérimentaux restent disponibles pour reproduire leurs contrats de génération historiques. La nouvelle règle documentaire concerne le parcours assisté et l'agent de l'application.
 
 ## Agent et MCP
+
+`conversation.py` reconnaît d’abord les noms et variantes du catalogue, les références au contexte choisi et les contradictions. Sans lieu identifiable, la clarification est rendue avant de charger le modèle. Le navigateur propose une reprise explicite du dernier site et transmet son caractère éventuellement proposé, sans transformer cet indice en identification confirmée.
 
 `agent_local.py` demande à Qwen un choix structuré parmi quatre actions : `answer_heritage`, `plan_walk`, `practical_links`, `clarify`. Les identifiants sont bornés au catalogue et les paramètres numériques sont validés côté programme. L'action ne peut contenir aucune instruction d'enregistrement ou d'achat. Un contexte de lieu contradictoire provoque une clarification.
 
@@ -63,3 +65,7 @@ Les anciens lanceurs expérimentaux restent disponibles pour reproduire leurs co
 Le serveur écoute seulement sur l'interface de boucle locale. Les appels d'écriture exigent le jeton de session, une origine locale compatible et un contenu JSON. Les chemins de fichiers ne sont pas fournis par l'utilisateur : les rapports sont associés à des identifiants d'analyse et les parcours sauvegardés reçoivent un UUID. Le navigateur n'insère pas les textes du modèle comme HTML.
 
 L'enregistrement reçoit l'identifiant d'un brouillon calculé et conservé côté serveur, puis la confirmation explicite. L'application ne se contente pas de sauvegarder n'importe quel parcours envoyé par le navigateur. Les images de travail sont supprimées après analyse ; les rapports conservent les métadonnées et décisions sans inclure l'original. À l'arrêt, seuls les processus lancés et possédés par l'application sont terminés.
+
+## Fiche utilisateur et PDF
+
+`visitor_report.py` produit une fiche HTML et un PDF A4 paginé depuis le résultat validé, sans exposer les journaux d’exécution. Les routes sont liées à un identifiant d’analyse existant, sans chemin utilisateur. Les sources citées, leurs liens et licences sont inclus. La photographie provient du catalogue, avec attribution et mention explicite ; l’original de l’utilisateur reste supprimé après analyse. `pdf_font.py` intègre la police DejaVu Sans non modifiée pour conserver les accents et caractères phonétiques du corpus, sans bibliothèque PDF externe. La licence de la police est incluse dans `assets/`. Le ZIP de diagnostic reste une ressource séparée.

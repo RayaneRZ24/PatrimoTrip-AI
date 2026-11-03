@@ -10,11 +10,15 @@ Choisir un JPEG ou PNG de 8 Mio et 4 millions de pixels maximum. L'aperçu reste
 
 Le résultat peut être un monument proposé, une demande de précision, une information documentaire manquante ou un échec technique. Un refus ne signifie pas automatiquement que le lieu est hors catalogue. Si l'identité est réellement connue de l'utilisateur, il peut la sélectionner explicitement ; cette provenance est enregistrée et ne devient pas une validation visuelle.
 
-Les textes historiques du nouveau parcours sont des citations exactes. Déplier chaque source pour lire le contexte, sa provenance et sa licence. La pertinence des extraits reste à apprécier. Le bouton de rapport télécharge un ZIP sans la photo originale.
+Les textes historiques sont des citations exactes, limitées à une phrase par aspect. Les extraits sans sujet autonome et ceux qui mélangent les rôles sont écartés des questions sur la conception. Déplier chaque source pour lire le contexte, sa provenance et sa licence. Ces règles conservatrices réduisent les confusions ; elles ne constituent pas une garantie générale de pertinence.
+
+« Consulter la fiche monument » ouvre une page lisible. « Télécharger la fiche PDF » crée un véritable PDF avec réponse, sources, crédits et une photographie de référence du catalogue, clairement distincte de votre photo personnelle. Aucune installation supplémentaire n’est nécessaire. Le volet « Diagnostic technique » contient séparément le ZIP de dépannage, sans photo originale. La fiche est disponible tant que la session du serveur conserve l’analyse ; téléchargez-la pour la garder.
 
 ## Poser une question
 
-Le sélecteur de contexte est facultatif. Une question peut nommer le monument, par exemple « Qui a conçu le palais Garnier ? ». Choisir un contexte aide les questions comme « Pourquoi a-t-il été construit ? ». En cas de contradiction entre le lieu choisi et celui compris dans la question, l'assistant demande une précision.
+Le sélecteur de contexte est facultatif. En mode « Reconnaître le nom écrit dans ma question », il faut nommer le monument ; « ce monument » seul ne permet pas de le deviner. Une demande sans contexte identifiable reçoit une précision ciblée sans charger Qwen. Une question peut nommer le monument, par exemple « Qui a conçu le palais Garnier ? ». Choisir un contexte aide les questions comme « Pourquoi a-t-il été construit ? ». En cas de contradiction entre le lieu choisi et celui compris dans la question, l'assistant demande une précision.
+
+Après une exploration, le sélecteur propose « Reprendre le dernier monument ». Vous pouvez aussi cliquer sur « Poser une question sur ce lieu ». La reprise est explicite, affichée et conserve le caractère incertain d’une proposition visuelle. Vous pouvez changer le monument ou cliquer sur « Oublier le dernier monument ». Le contexte n’est pas enregistré entre les rechargements de page.
 
 L'agent choisit une consultation du corpus, un parcours, des liens pratiques ou une clarification. Les horaires et prix du jour ne sont pas inventés à partir des documents historiques. Les liens pratiques sont des candidats à consulter, pas des résultats de réservation ou de disponibilité.
 
@@ -33,7 +37,8 @@ Relire le parcours, lui donner un nom, puis cliquer sur « Confirmer et enregist
 3. Montrer qu'une photo refusée mène à une demande de précision, sans histoire générée automatiquement.
 4. Demander « Prépare une promenade de trois heures à partir de la tour Eiffel ». Montrer le parcours, ses estimations et les limites d'accès non vérifié.
 5. Modifier les paramètres dans le formulaire, confirmer le parcours et exporter le fichier JSON.
-6. Montrer le serveur MCP, un rapport de calibration et la séparation entre vérifications logicielles et évaluation des modèles.
+6. Télécharger la fiche PDF du monument et montrer que le ZIP de diagnostic est séparé.
+7. Montrer le serveur MCP, un rapport de calibration et la séparation entre vérifications logicielles et évaluation des modèles.
 
 Les images de démonstration déjà utilisées ne doivent pas être présentées comme un nouveau test indépendant.
 

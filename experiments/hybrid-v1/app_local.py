@@ -23,6 +23,7 @@ import mcp_client
 import photo_local
 import runtime
 import trip_tools
+import visitor_report
 from run_local import ROOT
 
 MAX_BODY = 12*1024*1024
@@ -68,6 +69,7 @@ class Application:
         if not isinstance(question, str) or not question.strip() or len(question) > 800: raise ValueError('Question requise, 800 caractères maximum.')
         site = body.get('site_id') or None
         if site is not None and site not in {s['site_id'] for s in trip_tools.catalog()}: raise ValueError('Monument hors catalogue.')
+        if not isinstance(body.get('context_is_visual_proposal', False), bool): raise ValueError('Contexte invalide.')
         data = None
         if kind == 'photo':
             encoded = body.get('image_base64')
@@ -77,7 +79,7 @@ class Application:
             if len(data) > photo_local.MAX_BYTES: raise ValueError('Photo trop volumineuse.')
         if self.closing or not self.inference_lock.acquire(blocking=False): raise RuntimeError('Une analyse est déjà en cours. Attendez sa fin.')
         identifier = uuid.uuid4().hex
-        job = {'job_id': identifier, 'status': 'running', 'kind': kind, 'phase': 'Préparation de l’analyse locale…'}
+        job = {'job_id': identifier, 'status': 'running', 'kind': kind, 'context_is_visual_proposal': bool(kind == 'chat' and site and body.get('context_is_visual_proposal')), 'phase': 'Préparation de l’analyse locale…'}
         with self.lock: self.jobs[identifier] = job
         threading.Thread(target=self.run_job, args=(identifier, kind, question, site, data), daemon=True).start()
         return {'job_id': identifier}
@@ -121,6 +123,7 @@ class Application:
             if code: raise RuntimeError(result.get('message') or json.loads((report.parent/'summary.json').read_text()).get('error') or 'Analyse interrompue ; le rapport contient le diagnostic.')
             if (report.parent/'answer.json').exists():
                 result['evidence'] = json.loads((report.parent/'answer.json').read_text(encoding='utf-8')).get('evidence', [])
+            if kind == 'chat': result['context_is_visual_proposal'] = self.jobs[identifier].get('context_is_visual_proposal', False)
             if result.get('trip'): result['trip'] = self.add_draft(result['trip'])
             with self.lock:
                 self.jobs[identifier].update(status='done', phase='Terminé', result=result, report_path=str(report))
@@ -161,7 +164,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
         try:
             if path == '/': return self.send((app.root/'web/index.html').read_bytes(), mime='text/html; charset=utf-8')
             if path == '/favicon.ico': return self.send(b'', 204, mime='image/x-icon')
-            if path in ['/app.js', '/styles.css']:
+            if path in ['/app.js', '/styles.css', '/report.css', '/report.js']:
                 return self.send((app.root/'web'/path[1:]).read_bytes(), mime='text/javascript; charset=utf-8' if path.endswith('.js') else 'text/css; charset=utf-8')
             if re.fullmatch(r'/media/Q\d+\.jpg', path):
                 return self.send((app.root/'visual-references-v1/images'/path.rsplit('/', 1)[-1]).read_bytes(), mime='image/jpeg')
@@ -175,11 +178,20 @@ class Handler(http.server.BaseHTTPRequestHandler):
                 job['report_available'] = bool(job.get('report_path'))
                 job.pop('report_path', None)
                 return self.send(job)
+            if path == '/api/monument-report':
+                query = urllib.parse.parse_qs(url.query)
+                identifier = query.get('id', [''])[0]
+                with app.lock: job = dict(app.jobs.get(identifier, {}))
+                if job.get('status') != 'done' or not job.get('result'): return self.send({'error': 'Fiche indisponible : terminez d’abord une analyse.'}, 404)
+                result = job['result']
+                if query.get('format', ['html'])[0] == 'pdf':
+                    return self.send(visitor_report.pdf_report(result, app.root), mime='application/pdf', filename='patrimotrip-fiche-monument.pdf')
+                return self.send(visitor_report.html_report(result, app.root, identifier), mime='text/html; charset=utf-8')
             if path == '/api/report':
                 identifier = urllib.parse.parse_qs(url.query).get('id', [''])[0]
                 with app.lock: report = app.jobs.get(identifier, {}).get('report_path')
                 if not report: return self.send({'error': 'Rapport indisponible.'}, 404)
-                return self.send(pathlib.Path(report).read_bytes(), mime='application/zip', filename='patrimotrip-report.zip')
+                return self.send(pathlib.Path(report).read_bytes(), mime='application/zip', filename='patrimotrip-diagnostic-technique.zip')
             if path == '/api/trip-export':
                 identifier = urllib.parse.parse_qs(url.query).get('id', [''])[0]
                 if not re.fullmatch(r'[a-f0-9]{32}', identifier): raise ValueError('Identifiant invalide.')

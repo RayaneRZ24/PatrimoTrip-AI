@@ -6,7 +6,7 @@ Un utilisateur dispose d'une photo de monument et souhaite comprendre ce lieu pu
 
 ## Périmètre livré
 
-Le démonstrateur couvre dix monuments de Paris. Il associe une modalité image, des demandes textuelles, un corpus documentaire, un agent à actions bornées et des outils locaux MCP. L'application web réunit ces fonctions et conserve les parcours confirmés sur le PC.
+Le démonstrateur couvre dix monuments de Paris. Il associe une modalité image, des demandes textuelles, un corpus documentaire, un agent à actions bornées et des outils locaux MCP. L'application web réunit ces fonctions, propose une fiche monument HTML/PDF et conserve les parcours confirmés sur le PC.
 
 Le scénario principal est réalisable localement : photo → proposition ou abstention → accord de deux analyses → extraits historiques consultables → promenade extérieure estimée → confirmation → sauvegarde et export. Les informations pratiques du jour ne sont pas déduites de l'histoire du monument.
 
@@ -25,6 +25,8 @@ Le corpus historique, les images de référence et les ensembles d'évaluation s
 Le pilote de calibration choisit une règle avant les inférences du test réservé. Après examen des résultats, une nouvelle variante du modèle, des références ou des seuils nécessite un nouveau test réservé. Un résultat sur quelques images ne doit pas être présenté comme une précision générale. Les rapports locaux sont conservés hors Git et peuvent être joints à la présentation après relecture.
 
 ## Vérification logicielle
+
+Les régressions issues des retours utilisateur couvrent la confusion Soufflot/Lockroy au Panthéon, la distinction commanditaire/restaurateur à Notre-Dame et la citation technique isolée de la tour Eiffel. La reconnaissance explicite des noms et les demandes sans contexte sont testées sans inférence réelle.
 
 Les tests couvrent les empreintes, la séparation des données, l'abstention, les décisions en cas de désaccord, l'exclusion des images des rapports, les citations exactes et leur contexte, les appels MCP, le refus des écritures non confirmées, le respect des budgets de temps et l'optimisation sur de petits exemples comparés exhaustivement.
 
