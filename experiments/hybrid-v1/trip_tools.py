@@ -1,4 +1,6 @@
 """Local cultural walking plans with exact subset routing, explicitly estimated travel."""
+from heritage_names import monument_name
+
 import json
 import hashlib
 import math
@@ -64,7 +66,7 @@ def plan(anchor_site_id, duration_minutes=240, max_stops=4, visit_minutes=30, si
         walk = distance_km(sites[route[i-1]], sites[site])*1.3/4.5*60 if i else 0
         elapsed += walk
         s = sites[site]
-        stops.append({'site_id': site, 'name': s['name'], 'coordinates': s['coordinates'],
+        stops.append({'site_id': site, 'name': monument_name(s['name']), 'coordinates': s['coordinates'],
                       'walking_minutes_from_previous_estimate': round(walk, 1), 'arrival_after_minutes_estimate': round(elapsed, 1),
                       'visit_minutes_assumption': visit_minutes, 'opening_hours_verified': False,
                       'official_links': [u for u in s['official_website_candidates'] if u.startswith('https://')]})

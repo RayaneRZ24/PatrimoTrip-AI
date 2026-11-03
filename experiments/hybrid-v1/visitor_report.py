@@ -9,6 +9,8 @@ import json
 import re
 import urllib.parse
 
+from heritage_names import monument_name
+
 import photo_local
 import pdf_font
 
@@ -32,7 +34,7 @@ def document(result, root):
         credit = next((r for r in refs if r['site_id'] == site), None)
         path = root/'visual-references-v1/images'/(site+'.jpg')
         if credit and path.exists(): image = {'path':path, 'url':'/media/'+site+'.jpg', 'credit':credit}
-    return {'title':result.get('site_name') or 'Votre découverte culturelle', 'identity':identity,
+    return {'title':monument_name(result['site_name']) if result.get('site_name') else 'Votre découverte culturelle', 'identity':identity,
             'question':result.get('question', ''),
             'answer':answer.get('answer') or result.get('message') or 'Aucune réponse documentaire disponible.',
             'partial': result.get('all_facets_answered') is False or result.get('grounding', {}).get('all_facets_answered') is False,

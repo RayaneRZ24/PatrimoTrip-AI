@@ -2,6 +2,7 @@
 const $ = (id) => document.getElementById(id);
 let token = "", catalog = [], credits = {}, selectedFile = null, previewURL = null, recentContext = null;
 function element(tag, text, className) { const el = document.createElement(tag); if (text !== undefined) el.textContent = text; if (className) el.className = className; return el; }
+function monumentName(name) { return name.replace(/\p{L}[\p{L}\p{M}]*/gu, word => word[0].toLocaleUpperCase("fr-FR") + word.slice(1)); }
 function notify(message) { $("notice").textContent = message; $("notice").classList.toggle("hidden", !message); }
 async function api(path, body) {
   const response = await fetch(path, body === undefined ? {} : {method: "POST", headers: {"Content-Type": "application/json", "X-PatrimoTrip-Token": token}, body: JSON.stringify(body)});
@@ -59,7 +60,7 @@ function rememberContext(result) {
   const proposed = (Boolean(result.identification) && result.identity_origin !== "user_provided") || Boolean(result.context_is_visual_proposal);
   // A follow-up must preserve the uncertainty of an earlier visual proposal.
   const inherited = !result.identification && previous === `recent:${site}` && recentContext?.site === site;
-  recentContext = {site, name: result.site_name, proposed: inherited ? recentContext.proposed : proposed};
+  recentContext = {site, name: monumentName(result.site_name), proposed: inherited ? recentContext.proposed : proposed};
   const old = $("chat-site").querySelector("option[data-recent]"); if (old) old.remove();
   const option = element("option", `Reprendre le dernier monument : ${recentContext.name}${recentContext.proposed ? " (proposition à confirmer)" : ""}`);
   option.value = `recent:${site}`; option.dataset.recent = "true"; $("chat-site").append(option);
@@ -77,7 +78,7 @@ function renderResult(panel, result, jobId) {
   if (result.trip) { renderTrip(panel, result.trip); return; }
   if (result.site_name) {
     panel.append(element("span", result.identity_origin === "user_provided" ? "Identité fournie par vous" : (result.identification || result.context_is_visual_proposal) ? "Monument proposé" : result.context_origin === "named_in_question" ? "Monument nommé dans votre question" : "Monument du contexte", "badge"));
-    panel.append(element("h2", result.site_name));
+    panel.append(element("h2", monumentName(result.site_name)));
   }
   if (result.answer) {
     if (result.answer.status !== "answered") panel.append(element("p", "Information non établie dans le corpus", "badge caution"));
@@ -155,13 +156,13 @@ function routeMap(stops) {
   const minLat = Math.min(...lats), maxLat = Math.max(...lats), minLon = Math.min(...lons), maxLon = Math.max(...lons);
   const points = stops.map(s => ({x: 55+(s.coordinates.longitude-minLon)/(maxLon-minLon || 1)*410, y: 200-(s.coordinates.latitude-minLat)/(maxLat-minLat || 1)*155}));
   const line = document.createElementNS(ns, "polyline"); line.setAttribute("points", points.map(p => `${p.x},${p.y}`).join(" ")); line.setAttribute("fill", "none"); line.setAttribute("stroke", "#98a775"); line.setAttribute("stroke-width", "2"); line.setAttribute("stroke-dasharray", "5 5"); svg.append(line);
-  points.forEach((p, i) => { const circle = document.createElementNS(ns, "circle"); circle.setAttribute("cx", p.x); circle.setAttribute("cy", p.y); circle.setAttribute("r", "13"); circle.setAttribute("fill", "#dfe9ab"); circle.setAttribute("stroke", "#55734d"); const text = document.createElementNS(ns, "text"); text.setAttribute("x", p.x); text.setAttribute("y", p.y+4); text.setAttribute("text-anchor", "middle"); text.textContent = String(i+1); const title = document.createElementNS(ns, "title"); title.textContent = stops[i].name; circle.append(title); svg.append(circle, text); });
+  points.forEach((p, i) => { const circle = document.createElementNS(ns, "circle"); circle.setAttribute("cx", p.x); circle.setAttribute("cy", p.y); circle.setAttribute("r", "13"); circle.setAttribute("fill", "#dfe9ab"); circle.setAttribute("stroke", "#55734d"); const text = document.createElementNS(ns, "text"); text.setAttribute("x", p.x); text.setAttribute("y", p.y+4); text.setAttribute("text-anchor", "middle"); text.textContent = String(i+1); const title = document.createElementNS(ns, "title"); title.textContent = monumentName(stops[i].name); circle.append(title); svg.append(circle, text); });
   return svg;
 }
 function renderTrip(panel, trip) {
   panel.replaceChildren(element("span", trip.status === "saved" ? "Parcours enregistré" : "Parcours à relire", "badge"), element("h2", trip.title || "Votre promenade culturelle"));
   panel.append(element("p", `${trip.stops.length} étapes · ${Math.round(trip.total_minutes_estimate)} min estimées · ${trip.walking_km_estimate} km de marche estimée`, "subtle"), routeMap(trip.stops), element("p", "Positions schématiques ; les pointillés ne représentent pas les rues.", "subtle"));
-  trip.stops.forEach((stop, i) => { const row = element("div", undefined, "route-step"); const content = element("div"); content.append(element("h3", stop.name), element("p", `${stop.walking_minutes_from_previous_estimate ? Math.round(stop.walking_minutes_from_previous_estimate)+" min de marche estimée · " : ""}${stop.visit_minutes_assumption} min sur place prévues`)); if (stop.official_links?.length) content.append(link(stop.official_links[0], "Consulter les informations du site →")); row.append(element("span", String(i+1), "step-number"), content); panel.append(row); });
+  trip.stops.forEach((stop, i) => { const row = element("div", undefined, "route-step"); const content = element("div"); content.append(element("h3", monumentName(stop.name)), element("p", `${stop.walking_minutes_from_previous_estimate ? Math.round(stop.walking_minutes_from_previous_estimate)+" min de marche estimée · " : ""}${stop.visit_minutes_assumption} min sur place prévues`)); if (stop.official_links?.length) content.append(link(stop.official_links[0], "Consulter les informations du site →")); row.append(element("span", String(i+1), "step-number"), content); panel.append(row); });
   const assumptions = element("ul", undefined, "assumptions"); trip.assumptions.forEach(text => assumptions.append(element("li", text))); panel.append(assumptions);
   if (trip.draft_id) {
     const input = element("input"); input.type = "text"; input.maxLength = 120; input.value = "Promenade culturelle à Paris"; input.setAttribute("aria-label", "Nom du parcours"); panel.append(input);
@@ -186,7 +187,7 @@ $("status-button").addEventListener("click", async () => {
   try { const {status} = await api("/api/bootstrap"); const panel = $("status-content"); panel.replaceChildren(); for (const [key, label] of [["llama_found", "Moteur de génération"], ["generation_model_found", "Modèle de texte"], ["projector_found", "Composant photo Qwen"], ["visual_environment_found", "Environnement de comparaison visuelle"]]) { const row = element("div", label, "state-line"); row.append(element("b", status[key] ? "Repéré" : "Absent")); panel.append(row); } panel.append(element("p", "Ces contrôles repèrent les fichiers et programmes. Leur chargement est vérifié lors d’une analyse.", "subtle")); $("status-dialog").showModal(); } catch (error) { notify(error.message); }
 });
 async function initialize() {
-  const data = await api("/api/bootstrap"); token = data.token; catalog = data.catalog; credits = data.image_credits || {};
+  const data = await api("/api/bootstrap"); token = data.token; catalog = data.catalog.map(site => ({...site, name: monumentName(site.name)})); credits = data.image_credits || {};
   document.querySelectorAll(".site-select").forEach(select => fillSelect(select));
   fillSelect($("chat-site"), true, "Reconnaître le nom écrit dans ma question");
   contextHint();

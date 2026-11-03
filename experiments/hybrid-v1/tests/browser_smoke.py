@@ -31,14 +31,14 @@ try:
    result['question']=body.get('question','');server.application.jobs[key]={'status':'done','result':result};results[key]=result;route.fulfill(status=202,content_type='application/json',body=json.dumps({'job_id':key}))
   page.route('**/api/photo',fake_submit)
   page.route('**/api/jobs/synthetic-*',lambda route:route.fulfill(content_type='application/json',body=json.dumps({'status':'done','result':results[route.request.url.rsplit('/',1)[-1]]})))
-  page.locator('[data-view="explore"]').click();page.locator('#photo-file').set_input_files(str(ROOT/'evaluation-v1/images/a01.jpg'));page.locator('#photo-form button.primary').click();page.locator('#photo-result h2').filter(has_text='tour Eiffel').wait_for()
+  page.locator('[data-view="explore"]').click();page.locator('#photo-file').set_input_files(str(ROOT/'evaluation-v1/images/a01.jpg'));page.locator('#photo-form button.primary').click();page.locator('#photo-result h2').filter(has_text='Tour Eiffel').wait_for()
   assert page.locator('#photo-result .source').count()==1;page.locator('#photo-result .source summary').click();assert page.locator('#photo-result .source p').first.text_content()==evidence[0]['text']
   page.screenshot(path=str(P/'photo-result.png'),full_page=True)
   assert page.locator('#photo-result').get_by_text('Télécharger le rapport',exact=True).count()==0
   with page.expect_download() as download:page.get_by_role('link',name='Télécharger la fiche PDF',exact=True).click()
   pdf=download.value;assert pdf.suggested_filename.endswith('.pdf');assert pathlib.Path(pdf.path()).read_bytes().startswith(b'%PDF-1.4')
   with page.expect_popup() as popup:page.get_by_role('link',name='Consulter la fiche monument',exact=True).click()
-  fiche=popup.value;fiche.wait_for_load_state();assert fiche.locator('h1').text_content()=='tour Eiffel';assert fiche.get_by_text('Réponse documentaire',exact=True).count()==1;fiche.screenshot(path=str(P/'visitor-report.png'),full_page=True);fiche.close()
+  fiche=popup.value;fiche.wait_for_load_state();assert fiche.locator('h1').text_content()=='Tour Eiffel';assert fiche.get_by_text('Réponse documentaire',exact=True).count()==1;fiche.screenshot(path=str(P/'visitor-report.png'),full_page=True);fiche.close()
   page.get_by_role('button',name='Poser une question sur ce lieu',exact=True).click()
   assert page.locator('#chat-site').input_value()=='recent:Q243';assert 'reste à confirmer' in page.locator('#chat-context-hint').text_content()
   chats=[]
@@ -48,7 +48,7 @@ try:
    key='synthetic-chat';results[key]=result;server.application.jobs[key]={'status':'done','result':result}
    route.fulfill(status=202,content_type='application/json',body=json.dumps({'job_id':key}))
   page.route('**/api/chat',fake_chat)
-  page.locator('#chat-question').fill('Qui a conçu ce monument ?');page.locator('#chat-form button.primary').click();page.locator('#chat-result h2').filter(has_text='tour Eiffel').wait_for()
+  page.locator('#chat-question').fill('Qui a conçu ce monument ?');page.locator('#chat-form button.primary').click();page.locator('#chat-result h2').filter(has_text='Tour Eiffel').wait_for()
   assert chats[-1]['site_id']=='Q243' and chats[-1]['context_is_visual_proposal'] is True
   assert page.locator('#chat-result .badge').first.text_content()=='Monument proposé'
   page.locator('#forget-context').click();assert page.locator('#chat-site').input_value()=='';assert page.locator('#chat-site option[data-recent]').count()==0
