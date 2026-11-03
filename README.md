@@ -84,3 +84,5 @@ Outils : `catalog_search`, `heritage_evidence`, `plan_walk`, `tourism_reference_
 Les fiches de monuments sont consultables dans le navigateur et téléchargeables en PDF ; les archives de diagnostic sont séparées. La reprise du dernier monument est explicite. Les règles documentaires distinguent les attributions de construction des projets décoratifs et restaurations, avec abstention quand le corpus ne permet pas de conclure.
 
 Le [pilote de données Marrakech](datasets/morocco-marrakech-v1/README.md) prépare trois monuments marocains. Il contient les métadonnées et photos licenciées ainsi qu’un collecteur de textes. Il reste séparé du catalogue de production jusqu’à la revue des sources et à une nouvelle évaluation visuelle.
+
+Un [inventaire de 23 candidats à Marrakech, Rabat et Fès](datasets/morocco-candidates-v1/README.md) conserve les propositions utilisateur, les identifiants trouvés, les homonymes écartés et les points à vérifier avant collecte et intégration.

@@ -1,0 +1,13 @@
+{
+  "candidates": 23,
+  "by_city": {
+    "Marrakech": 9,
+    "Rabat": 5,
+    "Fès": 9
+  },
+  "resolved_metadata": 22,
+  "unresolved": [
+    "Souk Tahti"
+  ],
+  "scope": "Inventory only: no new historical texts, photos, practical information or model accuracy validated."
+}

@@ -1,0 +1,5818 @@
+{
+  "entities": {
+    "-1": {
+      "site": "enwiki",
+      "title": "Nejjarine Museum of Wooden Arts & Crafts",
+      "missing": ""
+    },
+    "Q2881543": {
+      "type": "item",
+      "id": "Q2881543",
+      "labels": {
+        "fr": {
+          "language": "fr",
+          "value": "Bab Bou Jeloud"
+        },
+        "en": {
+          "language": "en",
+          "value": "Bab Bou Jeloud"
+        }
+      },
+      "descriptions": {
+        "en": {
+          "language": "en",
+          "value": "Moroccan cultural heritage site"
+        },
+        "fr": {
+          "language": "fr",
+          "value": "site du patrimoine culturel marocain"
+        }
+      },
+      "claims": {
+        "P625": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P625",
+              "hash": "32bdecb238e125b852cb5e133c12e4ad2eec8e3e",
+              "datavalue": {
+                "value": {
+                  "latitude": 34.061692,
+                  "longitude": -4.984029,
+                  "altitude": null,
+                  "precision": 1e-06,
+                  "globe": "http://www.wikidata.org/entity/Q2"
+                },
+                "type": "globecoordinate"
+              },
+              "datatype": "globe-coordinate"
+            },
+            "type": "statement",
+            "id": "Q2881543$852689F2-0549-46D8-907D-41C3E32C8FF8",
+            "rank": "normal"
+          }
+        ],
+        "P18": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P18",
+              "hash": "9f14db34522473312bcddca240ebd689904159d4",
+              "datavalue": {
+                "value": "Fes Bab Bou Jeloud 2011.jpg",
+                "type": "string"
+              },
+              "datatype": "commonsMedia"
+            },
+            "type": "statement",
+            "qualifiers": {
+              "P2096": [
+                {
+                  "snaktype": "value",
+                  "property": "P2096",
+                  "hash": "f1d6142225a721a39ac4802e57fc5a644a977f93",
+                  "datavalue": {
+                    "value": {
+                      "text": "Bab Bou Jeloud des de la plaça Pacha el Baghdadi",
+                      "language": "ca"
+                    },
+                    "type": "monolingualtext"
+                  },
+                  "datatype": "monolingualtext"
+                }
+              ]
+            },
+            "qualifiers-order": [
+              "P2096"
+            ],
+            "id": "Q2881543$303EFD59-47D7-44D7-9839-0D0292F8CBCF",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "d4bd87b862b12d99d26e86472d44f26858dee639",
+                "snaks": {
+                  "P143": [
+                    {
+                      "snaktype": "value",
+                      "property": "P143",
+                      "hash": "f30cbd35620c4ea6d0633aaf0210a8916130469b",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 8447,
+                          "id": "Q8447"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P143"
+                ]
+              }
+            ]
+          }
+        ],
+        "P131": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P131",
+              "hash": "98e420558e217c447b70fa1ba505ca7a5b17fe29",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 80985,
+                  "id": "Q80985"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q2881543$af2a4dd2-4c30-80b1-91cb-7f803bc4d772",
+            "rank": "normal"
+          }
+        ],
+        "P17": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P17",
+              "hash": "882c688f4851777a2a3ec6d7ab769323b175f3c7",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 1028,
+                  "id": "Q1028"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q2881543$A4C0B941-036A-41A6-B7A7-F4501B07DEAD",
+            "rank": "normal"
+          }
+        ],
+        "P373": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P373",
+              "hash": "b68ad0a3ac2107ad2a155dd11f5fff31c30ce038",
+              "datavalue": {
+                "value": "Bab Bou Jeloud",
+                "type": "string"
+              },
+              "datatype": "string"
+            },
+            "type": "statement",
+            "id": "Q2881543$8E34F4E6-92E6-4866-BDF2-C9B518A0A0CC",
+            "rank": "normal"
+          }
+        ],
+        "P5694": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P5694",
+              "hash": "7702aefda9bd7d244e57c33a471e430cc563e2ef",
+              "datavalue": {
+                "value": "pc_architecture/sanae:390002",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q2881543$51049403-4608-bbb0-21ed-360bd654f5f9",
+            "rank": "normal"
+          }
+        ],
+        "P1435": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P1435",
+              "hash": "031af0d8ea9ce877a6f14dc48d8002cb515b06d9",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 57338034,
+                  "id": "Q57338034"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q2881543$fb19c848-47c5-f09c-9a1b-cc03c3a4a51b",
+            "rank": "normal"
+          },
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P1435",
+              "hash": "e4860a5b7394994b9ce8a6cd40ba85f2f5677267",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 43113623,
+                  "id": "Q43113623"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q2881543$2B6A9C00-EA61-4715-9823-143A030BF95F",
+            "rank": "normal"
+          }
+        ],
+        "P31": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P31",
+              "hash": "30601b739e9c4bc9d0b0251caa0f9cc1c16ed38c",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 82117,
+                  "id": "Q82117"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q2881543$a75fbacc-47a8-6d70-ef58-4e2981ceb1f2",
+            "rank": "normal"
+          }
+        ],
+        "P361": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P361",
+              "hash": "d235dc7d1481ab0fb998831d50e02f537cac64b8",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 2072102,
+                  "id": "Q2072102"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q2881543$8DFF62AF-2E92-475F-811D-390A43C7EE5E",
+            "rank": "normal"
+          }
+        ],
+        "P2671": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P2671",
+              "hash": "e41b1fe8699c3e43a47e51460d76e0b1e1224fdf",
+              "datavalue": {
+                "value": "/g/119pg7sjs",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q2881543$0ABBD2AC-9E81-461A-BC69-9D24ABB4F2D2",
+            "rank": "normal"
+          }
+        ],
+        "P7772": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P7772",
+              "hash": "e6b04e1523e2b2046774087f62d69fa517401e6a",
+              "datavalue": {
+                "value": "the-blue-gate-of-fes-fez-morocco",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q2881543$0FE8AED1-C864-422A-88C1-DE64C011117D",
+            "rank": "normal"
+          }
+        ],
+        "P5008": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P5008",
+              "hash": "757684534433e0a6a3f9e0b8e741f228fc86173b",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 109929866,
+                  "id": "Q109929866"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q2881543$3936963D-5B4C-48D5-8B86-42AE6334F99B",
+            "rank": "normal"
+          }
+        ]
+      },
+      "sitelinks": {
+        "arwiki": {
+          "site": "arwiki",
+          "title": "باب بوجلود",
+          "badges": []
+        },
+        "arzwiki": {
+          "site": "arzwiki",
+          "title": "باب بوجلود",
+          "badges": []
+        },
+        "bnwiki": {
+          "site": "bnwiki",
+          "title": "বাব বউ জেলৌদ",
+          "badges": []
+        },
+        "cawiki": {
+          "site": "cawiki",
+          "title": "Bab Bou Jeloud",
+          "badges": []
+        },
+        "commonswiki": {
+          "site": "commonswiki",
+          "title": "Category:Bab Bou Jeloud",
+          "badges": []
+        },
+        "dewiki": {
+          "site": "dewiki",
+          "title": "Bab Boujeloud",
+          "badges": []
+        },
+        "enwiki": {
+          "site": "enwiki",
+          "title": "Bab Bou Jeloud",
+          "badges": []
+        },
+        "eswiki": {
+          "site": "eswiki",
+          "title": "Bab Bou Jeloud",
+          "badges": []
+        },
+        "frwiki": {
+          "site": "frwiki",
+          "title": "Bab Boujloud",
+          "badges": []
+        },
+        "idwiki": {
+          "site": "idwiki",
+          "title": "Bab Bou Jeloud",
+          "badges": []
+        },
+        "itwiki": {
+          "site": "itwiki",
+          "title": "Bab Boujloud",
+          "badges": []
+        },
+        "jawiki": {
+          "site": "jawiki",
+          "title": "ブー・ジュルード門",
+          "badges": []
+        },
+        "rowiki": {
+          "site": "rowiki",
+          "title": "Bab Bou Jeloud",
+          "badges": []
+        },
+        "slwiki": {
+          "site": "slwiki",
+          "title": "Bab Bou Dželud",
+          "badges": []
+        },
+        "zhwiki": {
+          "site": "zhwiki",
+          "title": "布日卢蓝门",
+          "badges": []
+        }
+      }
+    },
+    "Q378014": {
+      "type": "item",
+      "id": "Q378014",
+      "labels": {
+        "en": {
+          "language": "en",
+          "value": "University of al-Qarawiyyin"
+        },
+        "fr": {
+          "language": "fr",
+          "value": "université Al Quaraouiyine"
+        }
+      },
+      "descriptions": {
+        "en": {
+          "language": "en",
+          "value": "university in Fez, Morocco"
+        },
+        "fr": {
+          "language": "fr",
+          "value": "selon le Livre Guinness des records, plus vieille université du monde située à Fès, Maroc"
+        }
+      },
+      "claims": {
+        "P227": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P227",
+              "hash": "89f501ffe3e53bb8d1ee81299edabb330ff94016",
+              "datavalue": {
+                "value": "5010783-5",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q378014$064dc5f4-46ea-48f8-8029-fdc491b93702",
+            "rank": "normal"
+          }
+        ],
+        "P373": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P373",
+              "hash": "5d51f8ad0aadad0fbbb27aa29bf1f3556af781e9",
+              "datavalue": {
+                "value": "Al-Qarawiyyin",
+                "type": "string"
+              },
+              "datatype": "string"
+            },
+            "type": "statement",
+            "id": "q378014$6ADE899E-98D5-4850-848C-F90ED0902DC7",
+            "rank": "normal"
+          }
+        ],
+        "P31": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P31",
+              "hash": "482db304b57e4b3a7a5b3a6e2256db7c639c49b0",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 3918,
+                  "id": "Q3918"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "q378014$69346A6E-0372-456A-9E63-24A7A8EA19C5",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "288ab581e7d2d02995a26dfa8b091d96e78457fc",
+                "snaks": {
+                  "P143": [
+                    {
+                      "snaktype": "value",
+                      "property": "P143",
+                      "hash": "6a164248fc96bfa583bbb495cb63ae6401ec203c",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 206855,
+                          "id": "Q206855"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P143"
+                ]
+              },
+              {
+                "hash": "15a234f45e9b1c6266b08b108c61cd140d965f35",
+                "snaks": {
+                  "P854": [
+                    {
+                      "snaktype": "value",
+                      "property": "P854",
+                      "hash": "bd340518d5b7fe91db82ec73af99960359b3a03f",
+                      "datavalue": {
+                        "value": "https://www.unirank.org/ma/uni/universite-al-quaraouiyine/",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854"
+                ]
+              }
+            ]
+          },
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P31",
+              "hash": "6a188628d038aa335188e349dc39c0495107ee0c",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 121614922,
+                  "id": "Q121614922"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q378014$0494ac2a-4095-2217-893a-a4a57dee39d6",
+            "rank": "normal"
+          }
+        ],
+        "P625": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P625",
+              "hash": "a3a4fb94b65062527d345792c291668cca144305",
+              "datavalue": {
+                "value": {
+                  "latitude": 34.064444444444,
+                  "longitude": -4.9733333333333,
+                  "altitude": null,
+                  "precision": null,
+                  "globe": "http://www.wikidata.org/entity/Q2"
+                },
+                "type": "globecoordinate"
+              },
+              "datatype": "globe-coordinate"
+            },
+            "type": "statement",
+            "id": "q378014$A7DB5869-583E-47C0-A30A-53997445B662",
+            "rank": "normal"
+          }
+        ],
+        "P910": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P910",
+              "hash": "eef257b1465224189e5e36eb5554fcce95df764a",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 8885015,
+                  "id": "Q8885015"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q378014$CFD4256C-8AF3-4D6A-8B69-6DDD29C51F15",
+            "rank": "normal"
+          }
+        ],
+        "P646": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P646",
+              "hash": "60ea162025abdcaef26d3d12f1b905887ed63728",
+              "datavalue": {
+                "value": "/m/053bwy",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q378014$1D479F9E-8E36-4853-9060-1F25D4CC5D1A",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "2b00cb481cddcac7623114367489b5c194901c4a",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "a94b740202b097dd33355e0e6c00e54b9395e5e0",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 15241312,
+                          "id": "Q15241312"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P577": [
+                    {
+                      "snaktype": "value",
+                      "property": "P577",
+                      "hash": "fde79ecb015112d2f29229ccc1ec514ed3e71fa2",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2013-10-28T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P577"
+                ]
+              }
+            ]
+          }
+        ],
+        "P17": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P17",
+              "hash": "882c688f4851777a2a3ec6d7ab769323b175f3c7",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 1028,
+                  "id": "Q1028"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q378014$5CFB83FA-3CA4-45AA-AA7F-DF309061D622",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "15a234f45e9b1c6266b08b108c61cd140d965f35",
+                "snaks": {
+                  "P854": [
+                    {
+                      "snaktype": "value",
+                      "property": "P854",
+                      "hash": "bd340518d5b7fe91db82ec73af99960359b3a03f",
+                      "datavalue": {
+                        "value": "https://www.unirank.org/ma/uni/universite-al-quaraouiyine/",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854"
+                ]
+              }
+            ]
+          },
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P17",
+              "hash": "fb69b0ba6384b0a830d593e4f5ec1f122278dd42",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 12536,
+                  "id": "Q12536"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q378014$2c3e55bc-4e9d-2cbd-2973-0831b9652445",
+            "rank": "normal"
+          }
+        ],
+        "P1566": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P1566",
+              "hash": "a59f3aea10767c2c5237349c962cf9f17765e42c",
+              "datavalue": {
+                "value": "8581492",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q378014$8C818090-797F-40FA-B23F-FD9BA6DF0BE2",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "88694a0f4d1486770c269f7db16a1982f74da69d",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "1b3ef912a2bd61e18dd43abd184337eb010b2e96",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 830106,
+                          "id": "Q830106"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248"
+                ]
+              }
+            ]
+          }
+        ],
+        "P214": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P214",
+              "hash": "e8aa23e27f43574a2aef4fa0054331045c9c7a31",
+              "datavalue": {
+                "value": "159504309",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q378014$22054BCB-8DED-4BEF-A453-C813F1D020F3",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "ffb7008c3b41d9efd69c450e837f49eebb1b6dce",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "6b7d4330c4aac4caec4ede9de0311ce273f88ecd",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 54919,
+                          "id": "Q54919"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "76142c1ac740096f18ea230da7fb62353d1c531f",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2015-08-03T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P813"
+                ]
+              }
+            ]
+          }
+        ],
+        "P159": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P159",
+              "hash": "b4e7618fc8cfc969f4ef1d2914bdbad7c0284308",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 80985,
+                  "id": "Q80985"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "qualifiers": {
+              "P17": [
+                {
+                  "snaktype": "value",
+                  "property": "P17",
+                  "hash": "882c688f4851777a2a3ec6d7ab769323b175f3c7",
+                  "datavalue": {
+                    "value": {
+                      "entity-type": "item",
+                      "numeric-id": 1028,
+                      "id": "Q1028"
+                    },
+                    "type": "wikibase-entityid"
+                  },
+                  "datatype": "wikibase-item"
+                }
+              ]
+            },
+            "qualifiers-order": [
+              "P17"
+            ],
+            "id": "Q378014$FCD5FAE1-C655-45A8-AF7B-58C76A5E8E9F",
+            "rank": "normal"
+          }
+        ],
+        "P112": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P112",
+              "hash": "8de72d52ea27b552d98d7709dc2bc82a488342c8",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 182363,
+                  "id": "Q182363"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q378014$3b74fe82-4b07-3150-fd57-ec5d7bfc2284",
+            "rank": "normal"
+          }
+        ],
+        "P131": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P131",
+              "hash": "98e420558e217c447b70fa1ba505ca7a5b17fe29",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 80985,
+                  "id": "Q80985"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q378014$A6A73B83-91BE-4F83-AD37-35B4A8C501DB",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "d4bd87b862b12d99d26e86472d44f26858dee639",
+                "snaks": {
+                  "P143": [
+                    {
+                      "snaktype": "value",
+                      "property": "P143",
+                      "hash": "f30cbd35620c4ea6d0633aaf0210a8916130469b",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 8447,
+                          "id": "Q8447"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P143"
+                ]
+              }
+            ]
+          }
+        ],
+        "P18": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P18",
+              "hash": "231be9fc73b44a7ce4dd0a4ec7418b87b65f3564",
+              "datavalue": {
+                "value": "University of Al Qaraouiyine.jpg",
+                "type": "string"
+              },
+              "datatype": "commonsMedia"
+            },
+            "type": "statement",
+            "id": "Q378014$8FACB07E-0263-44F5-861D-1AE98E7DE30F",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "14d2400e3b1d36332748dc330276f099eeaa8800",
+                "snaks": {
+                  "P143": [
+                    {
+                      "snaktype": "value",
+                      "property": "P143",
+                      "hash": "39224a9c2e8ce5424defbd16603d25771956c7fc",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 1551807,
+                          "id": "Q1551807"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P143"
+                ]
+              }
+            ]
+          }
+        ],
+        "P527": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P527",
+              "hash": "6471e4a09bb5c212b4a3c65fe466d9ec08b6a72b",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 25293247,
+                  "id": "Q25293247"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q378014$292E46F2-BF03-4E7C-886A-B0E3B64F6E14",
+            "rank": "normal"
+          }
+        ],
+        "P571": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P571",
+              "hash": "14c16891f63e430085442b66a0fbd04e1c1a1b1d",
+              "datavalue": {
+                "value": {
+                  "time": "+0859-00-00T00:00:00Z",
+                  "timezone": 0,
+                  "before": 0,
+                  "after": 0,
+                  "precision": 9,
+                  "calendarmodel": "http://www.wikidata.org/entity/Q1985786"
+                },
+                "type": "time"
+              },
+              "datatype": "time"
+            },
+            "type": "statement",
+            "id": "Q378014$59b28ab5-46f1-4f9c-6775-d13a151a08a1",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "288ab581e7d2d02995a26dfa8b091d96e78457fc",
+                "snaks": {
+                  "P143": [
+                    {
+                      "snaktype": "value",
+                      "property": "P143",
+                      "hash": "6a164248fc96bfa583bbb495cb63ae6401ec203c",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 206855,
+                          "id": "Q206855"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P143"
+                ]
+              }
+            ]
+          }
+        ],
+        "P3876": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P3876",
+              "hash": "aaf00b81d4b034c7d6fbb3e0b689bb1612f117e7",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 25172254,
+                  "id": "Q25172254"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q378014$9BBB8319-4184-49E1-9A28-A3ED17FE4448",
+            "rank": "normal"
+          }
+        ],
+        "P2427": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P2427",
+              "hash": "141cbf68f6f59028321a153ef0190eb5457f6830",
+              "datavalue": {
+                "value": "grid.442821.9",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q378014$F62FC8CD-5E44-4340-A6CB-42BEC7553894",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "9e0f71f0abd6e9692cbd2fec4b44e5abc3ce6f0c",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "853b3c0b94612443127e3158e7a97662ae38d740",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 53705075,
+                          "id": "Q53705075"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248"
+                ]
+              },
+              {
+                "hash": "a1914c8952a5bc482eafeb26be4fda504fe701f9",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "31f77799b27e462a188007d80e9cae011a037bca",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 53705036,
+                          "id": "Q53705036"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248"
+                ]
+              }
+            ]
+          }
+        ],
+        "P4195": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P4195",
+              "hash": "39c9d3ff083849d04087828ae770434fe7c55f72",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 8885017,
+                  "id": "Q8885017"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q378014$1F10E56D-88DA-43CD-93B6-1A0E9A5BB7CF",
+            "rank": "normal"
+          }
+        ],
+        "P268": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P268",
+              "hash": "6016f7133b5dbd4ae495d91adc8ac691e80cefbc",
+              "datavalue": {
+                "value": "12221178n",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q378014$CF032FC4-CCAA-42C0-8076-574FBCC39C90",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "5a858a70d6ac562123c1debf25a5aed93a5c4939",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "def9f19d84b65167a2a17ce38364d264c16127fc",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 19938912,
+                          "id": "Q19938912"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "97aefaac0484eca89d5fee539362dc40c533824e",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2015-08-26T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P813"
+                ]
+              }
+            ]
+          }
+        ],
+        "P269": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P269",
+              "hash": "771ca57953ace6c5ce42ae16a8a7c9310a6eea70",
+              "datavalue": {
+                "value": "027750647",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q378014$CEA73764-0FB3-4D29-85D1-8DFC9CCC62AA",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "5a858a70d6ac562123c1debf25a5aed93a5c4939",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "def9f19d84b65167a2a17ce38364d264c16127fc",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 19938912,
+                          "id": "Q19938912"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "97aefaac0484eca89d5fee539362dc40c533824e",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2015-08-26T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P813"
+                ]
+              }
+            ]
+          }
+        ],
+        "P213": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P213",
+              "hash": "63d19db831fb09f2cfa3f6392532fcdc324a4db8",
+              "datavalue": {
+                "value": "0000000106299814",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q378014$89FB8E90-1DF2-4CAA-BEE9-47A8189E77CA",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "b7c467e4f08511321503386c2fcb6946033a60e9",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "6b7d4330c4aac4caec4ede9de0311ce273f88ecd",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 54919,
+                          "id": "Q54919"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P214": [
+                    {
+                      "snaktype": "value",
+                      "property": "P214",
+                      "hash": "e8aa23e27f43574a2aef4fa0054331045c9c7a31",
+                      "datavalue": {
+                        "value": "159504309",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "a1b98b5c8bb6eca02829acaf6200c3e4a45b4dd0",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2018-10-07T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P214",
+                  "P813"
+                ]
+              }
+            ]
+          }
+        ],
+        "P244": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P244",
+              "hash": "9e01f4d2c9deb3f23a87f69dbb4ebb55977a4791",
+              "datavalue": {
+                "value": "n85007820",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q378014$D357ADAA-1C84-42B7-8BF5-FB3EB5A7AD25",
+            "rank": "normal"
+          }
+        ],
+        "P6782": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P6782",
+              "hash": "83e6dbf7bee821ab4d38e5f5d85bb56fe9719e40",
+              "datavalue": {
+                "value": "0343jym73",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q378014$BBD09428-3021-4313-A478-4E4C0A147F7A",
+            "rank": "normal"
+          }
+        ],
+        "P1417": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P1417",
+              "hash": "2dba486e694a04db4c8b0f557b8e443e5fffe1f4",
+              "datavalue": {
+                "value": "topic/Qarawiyin",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "qualifiers": {
+              "P1810": [
+                {
+                  "snaktype": "value",
+                  "property": "P1810",
+                  "hash": "164e83f30e81105086a1c4563203ce63d6596ed9",
+                  "datavalue": {
+                    "value": "Qarawīyīn",
+                    "type": "string"
+                  },
+                  "datatype": "string"
+                }
+              ]
+            },
+            "qualifiers-order": [
+              "P1810"
+            ],
+            "id": "Q378014$210822F1-9551-47CE-9588-F2DC70C381B5",
+            "rank": "normal"
+          }
+        ],
+        "P856": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P856",
+              "hash": "80b73f8cd4fd971f1d50cc30a3e5e0b60199ac9b",
+              "datavalue": {
+                "value": "http://uaq.ma/",
+                "type": "string"
+              },
+              "datatype": "url"
+            },
+            "type": "statement",
+            "qualifiers": {
+              "P407": [
+                {
+                  "snaktype": "value",
+                  "property": "P407",
+                  "hash": "1b1356fe89ad919c93fbcf2b7754a7a6ae114093",
+                  "datavalue": {
+                    "value": {
+                      "entity-type": "item",
+                      "numeric-id": 13955,
+                      "id": "Q13955"
+                    },
+                    "type": "wikibase-entityid"
+                  },
+                  "datatype": "wikibase-item"
+                }
+              ]
+            },
+            "qualifiers-order": [
+              "P407"
+            ],
+            "id": "Q378014$cc17113e-402e-82df-4525-caa2d9302bfd",
+            "rank": "normal"
+          }
+        ],
+        "P361": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P361",
+              "hash": "d235dc7d1481ab0fb998831d50e02f537cac64b8",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 2072102,
+                  "id": "Q2072102"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q378014$0513268e-406c-256e-6e3f-6f906d4130c1",
+            "rank": "normal"
+          }
+        ],
+        "P1435": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P1435",
+              "hash": "e4860a5b7394994b9ce8a6cd40ba85f2f5677267",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 43113623,
+                  "id": "Q43113623"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q378014$B900B3DA-F062-424A-B402-F5DABFFF8033",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "9cdd4f1d064faebc44a10fbd408afa604f3b89f6",
+                "snaks": {
+                  "P143": [
+                    {
+                      "snaktype": "value",
+                      "property": "P143",
+                      "hash": "16eef556b717b1b9c8e2599faef3af2af8537632",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 199700,
+                          "id": "Q199700"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P143"
+                ]
+              }
+            ]
+          }
+        ],
+        "P7772": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P7772",
+              "hash": "e5b4db93939c9f711cb03f4fc59e561714a61041",
+              "datavalue": {
+                "value": "university-of-alkaraouine",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q378014$3171860B-6D94-4ED0-9BA7-680697AD457B",
+            "rank": "normal"
+          }
+        ],
+        "P8189": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P8189",
+              "hash": "ff31a41dbeed7fa66eac779657ab76a1e447648b",
+              "datavalue": {
+                "value": "987007311414505171",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q378014$A68E60B6-97BA-44F7-963F-BD185B6F0E2B",
+            "rank": "normal"
+          }
+        ],
+        "P5008": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P5008",
+              "hash": "757684534433e0a6a3f9e0b8e741f228fc86173b",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 109929866,
+                  "id": "Q109929866"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q378014$DA8AA09B-CBFB-453B-96C7-2340F6F83BD5",
+            "rank": "normal"
+          },
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P5008",
+              "hash": "136e3fbe19158e73e4bfebf3f2d98a9df8638b7e",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 6173448,
+                  "id": "Q6173448"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "qualifiers": {
+              "P585": [
+                {
+                  "snaktype": "value",
+                  "property": "P585",
+                  "hash": "7661f66dd5b82a1ea92515ddb16c09ce3088edea",
+                  "datavalue": {
+                    "value": {
+                      "time": "+2022-10-31T00:00:00Z",
+                      "timezone": 0,
+                      "before": 0,
+                      "after": 0,
+                      "precision": 11,
+                      "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                    },
+                    "type": "time"
+                  },
+                  "datatype": "time"
+                }
+              ]
+            },
+            "qualifiers-order": [
+              "P585"
+            ],
+            "id": "Q378014$A1C2D122-8B88-451A-9AE2-B351433E0BF3",
+            "rank": "normal"
+          },
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P5008",
+              "hash": "cbb1c8755f0c286bbb23bbe82ac980cff7606bd8",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 108109790,
+                  "id": "Q108109790"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q378014$1EE3047B-FF06-4A8B-B013-D3DF0D9DDD01",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "0e713ea92bd83c3c09ef7f2f6af26beff08d0e85",
+                "snaks": {
+                  "P854": [
+                    {
+                      "snaktype": "value",
+                      "property": "P854",
+                      "hash": "c0faf83b4b3d71b863a433d52166b26d6107af16",
+                      "datavalue": {
+                        "value": "https://www.govdirectory.org/morocco/",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "2462e36c50dcad1b9012003f944f137351abbe84",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2025-06-22T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854",
+                  "P813"
+                ]
+              },
+              {
+                "hash": "71964b0b8eb2a0abe21457150f63090ee54a6de3",
+                "snaks": {
+                  "P854": [
+                    {
+                      "snaktype": "value",
+                      "property": "P854",
+                      "hash": "c0faf83b4b3d71b863a433d52166b26d6107af16",
+                      "datavalue": {
+                        "value": "https://www.govdirectory.org/morocco/",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "b97d8358132f6c4cad6e9cbe0eb472d1177fb2b1",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2025-07-11T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854",
+                  "P813"
+                ]
+              }
+            ]
+          }
+        ],
+        "P10565": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P10565",
+              "hash": "7f2be4c5f52d5d95ae21fc1098e74280cbf7ea11",
+              "datavalue": {
+                "value": "554373",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "qualifiers": {
+              "P1810": [
+                {
+                  "snaktype": "value",
+                  "property": "P1810",
+                  "hash": "b469685b5eac2d02bb6eeefc158a79d23ace4917",
+                  "datavalue": {
+                    "value": "卡拉维因大学",
+                    "type": "string"
+                  },
+                  "datatype": "string"
+                }
+              ]
+            },
+            "qualifiers-order": [
+              "P1810"
+            ],
+            "id": "Q378014$aaf4e771-43a4-9b2f-e061-f2b02001bd3a",
+            "rank": "normal"
+          }
+        ],
+        "P7293": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P7293",
+              "hash": "4fe5fc42cf776aaad709491f51ab180c19460fd1",
+              "datavalue": {
+                "value": "9811269876905606",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "q378014$a42e2adb-4c8b-c16a-465e-d1593333c488",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "3fc6ff29d0eb01382483065575aa1edf24e3bda3",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "6b7d4330c4aac4caec4ede9de0311ce273f88ecd",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 54919,
+                          "id": "Q54919"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P214": [
+                    {
+                      "snaktype": "value",
+                      "property": "P214",
+                      "hash": "e8aa23e27f43574a2aef4fa0054331045c9c7a31",
+                      "datavalue": {
+                        "value": "159504309",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "b5310a4911472b6055b98d4afae7e891fafaa5a8",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2023-11-19T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P214",
+                  "P813"
+                ]
+              }
+            ]
+          }
+        ],
+        "P463": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P463",
+              "hash": "0793233d36fcebe5633a5ddb47c54513e1168fca",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 743769,
+                  "id": "Q743769"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q378014$7C9EC228-1016-448B-A481-4DD2149E3141",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "6427ecc8043ea503c4d50720b6d7a47b7d51350e",
+                "snaks": {
+                  "P1065": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1065",
+                      "hash": "d701f6a9b0bb35840d3b45dc7bf230dd9be630c6",
+                      "datavalue": {
+                        "value": "https://web.archive.org/web/20221215121521/https://www.aau.org/subs/membership/",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ],
+                  "P854": [
+                    {
+                      "snaktype": "value",
+                      "property": "P854",
+                      "hash": "1528c6e0ac94910ec44db47bbd1495827c4355f5",
+                      "datavalue": {
+                        "value": "https://www.aau.org/subs/membership/",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "23063bd71c3834d1d0740f3ea321d9db5ca78c7a",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2022-12-15T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P1065",
+                  "P854",
+                  "P813"
+                ]
+              }
+            ]
+          }
+        ],
+        "P13092": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P13092",
+              "hash": "fd05ff996cb66d2905d18a9ca946f2184a978256",
+              "datavalue": {
+                "value": "K000203267",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q378014$7E39311D-E96F-49C7-B714-C4B54DC38B2C",
+            "rank": "normal"
+          }
+        ],
+        "P1705": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P1705",
+              "hash": "5de5650c5634e536cbd38faffb7611f3eef7d375",
+              "datavalue": {
+                "value": {
+                  "text": "جَامِعَةُ القَرَوِيِّينَ",
+                  "language": "ar"
+                },
+                "type": "monolingualtext"
+              },
+              "datatype": "monolingualtext"
+            },
+            "type": "statement",
+            "id": "Q378014$cc72696c-497c-74ae-3844-fa5f8436f74a",
+            "rank": "normal"
+          },
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P1705",
+              "hash": "736269aa84a90c7370b04fa8b07eb36931326b10",
+              "datavalue": {
+                "value": {
+                  "text": "ⵜⴰⵙⴷⴰⵡⵉⵜ ⵏ ⵍⵇⴰⵕⴰⵡⵉⵢⵉⵏ",
+                  "language": "zgh"
+                },
+                "type": "monolingualtext"
+              },
+              "datatype": "monolingualtext"
+            },
+            "type": "statement",
+            "id": "Q378014$810fbde7-4ab2-b3a2-693c-6a78837b94cc",
+            "rank": "normal"
+          }
+        ],
+        "P1019": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P1019",
+              "hash": "f5db67847468d5ea26fdbe8d8e59e01e9fda5a79",
+              "datavalue": {
+                "value": "http://uaq.ma/index.php?format=feed&type=rss",
+                "type": "string"
+              },
+              "datatype": "url"
+            },
+            "type": "statement",
+            "id": "Q378014$A229CE9B-47A1-4C5D-ACEF-2B9AED0693F7",
+            "rank": "normal"
+          }
+        ],
+        "P140": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P140",
+              "hash": "94aa66334a34fffdf55fa12f0e281eba5427e453",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 432,
+                  "id": "Q432"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q378014$D0C44D5F-DFE3-463E-9DE0-05AF33AC927A",
+            "rank": "normal"
+          }
+        ],
+        "P1607": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P1607",
+              "hash": "bc95ae60d05eb22387d7f3e9532abcbcdc2cfe12",
+              "datavalue": {
+                "value": "3514977",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q378014$33f0b766-4fde-35e2-bfd9-bfc95157b211",
+            "rank": "normal"
+          }
+        ],
+        "P13606": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P13606",
+              "hash": "741ace0ec5bdd6fb9f944e735fdb92764e4428d2",
+              "datavalue": {
+                "value": "24999",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q378014$9FCBCC7E-BCAA-4BD7-A122-5279587A2831",
+            "rank": "normal"
+          }
+        ],
+        "P14075": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P14075",
+              "hash": "92608d5b2e5615f5cb54d52bcb726fae02035f32",
+              "datavalue": {
+                "value": "34052",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q378014$108FB4D3-B0E5-4C29-A7C9-154192819F20",
+            "rank": "normal"
+          }
+        ],
+        "P6104": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P6104",
+              "hash": "1f2632ff04232d1dfaa70c6ea83d7a9c25dda2f6",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 8486755,
+                  "id": "Q8486755"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q378014$bdb7bc66-4bdb-3a0e-dfda-f1e1adbac35b",
+            "rank": "normal"
+          },
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P6104",
+              "hash": "0d224abb835d96e2e7d51072f69dcd2b600bd35b",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 15106931,
+                  "id": "Q15106931"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q378014$306963d4-47ae-d969-fbd5-a852416845e3",
+            "rank": "normal"
+          },
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P6104",
+              "hash": "de970d035f66c066c6840740f425094b0562da68",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 5496999,
+                  "id": "Q5496999"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q378014$75021dd6-4ca9-9ff1-506d-24711e5b888c",
+            "rank": "normal"
+          }
+        ],
+        "P14541": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P14541",
+              "hash": "8ec6d966e23fcfaf410dc6babb5c90d8047e90d7",
+              "datavalue": {
+                "value": "4GOo2y",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "qualifiers": {
+              "P1810": [
+                {
+                  "snaktype": "value",
+                  "property": "P1810",
+                  "hash": "b469685b5eac2d02bb6eeefc158a79d23ace4917",
+                  "datavalue": {
+                    "value": "卡拉维因大学",
+                    "type": "string"
+                  },
+                  "datatype": "string"
+                }
+              ],
+              "P5017": [
+                {
+                  "snaktype": "value",
+                  "property": "P5017",
+                  "hash": "db222836be3e0f411db075ede25483376c7593ff",
+                  "datavalue": {
+                    "value": {
+                      "time": "+2024-12-04T00:00:00Z",
+                      "timezone": 0,
+                      "before": 0,
+                      "after": 0,
+                      "precision": 11,
+                      "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                    },
+                    "type": "time"
+                  },
+                  "datatype": "time"
+                }
+              ]
+            },
+            "qualifiers-order": [
+              "P1810",
+              "P5017"
+            ],
+            "id": "Q378014$0324A068-C7D6-4944-8E10-C5C7B8324B54",
+            "rank": "normal"
+          }
+        ],
+        "P366": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P366",
+              "hash": "04860031246a313272f7be323dbcf584be55a713",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 32815,
+                  "id": "Q32815"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q378014$3a085eb6-4770-f0d8-8468-82db9dc8e805",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "c09556091412d9ea7c2eb8d1f572ece4ad64218b",
+                "snaks": {
+                  "P854": [
+                    {
+                      "snaktype": "value",
+                      "property": "P854",
+                      "hash": "a27a0fd9ef24ac92497563b590561237611ddee2",
+                      "datavalue": {
+                        "value": "https://archive.org/details/01isart/page/n217/mode/1up",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ],
+                  "P304": [
+                    {
+                      "snaktype": "value",
+                      "property": "P304",
+                      "hash": "fd8da415480ef80b4384ff9c35fe8d23d4d6501a",
+                      "datavalue": {
+                        "value": "216",
+                        "type": "string"
+                      },
+                      "datatype": "string"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854",
+                  "P304"
+                ]
+              }
+            ]
+          }
+        ],
+        "P2670": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P2670",
+              "hash": "b4dfa622535f30d7c82ebffeb4f5e9ed31209e86",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 48356,
+                  "id": "Q48356"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q378014$dfdedb7c-43e0-979c-1714-1c893d80dd1a",
+            "rank": "normal"
+          }
+        ],
+        "P186": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P186",
+              "hash": "5c244d6f88a5c7549c5ba2a0a9726daca7165bb5",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 468402,
+                  "id": "Q468402"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q378014$846c7479-44ed-3892-4081-5e68039abb37",
+            "rank": "normal"
+          }
+        ],
+        "P149": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P149",
+              "hash": "7f2132ba41f5117c888ce6a8d870e83b2d1a64af",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 247492,
+                  "id": "Q247492"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q378014$7509000d-47c6-ae5c-c2ab-6fbbcac22326",
+            "rank": "normal"
+          }
+        ],
+        "P88": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P88",
+              "hash": "ac92d397d2e3c6675fb6eac2383346d7c0834d92",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 182363,
+                  "id": "Q182363"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q378014$573d869e-4e8e-c914-e3d3-1b7d7447fbf8",
+            "rank": "normal"
+          }
+        ]
+      },
+      "sitelinks": {
+        "afwiki": {
+          "site": "afwiki",
+          "title": "Universiteit van Al-Qarawiyyin",
+          "badges": []
+        },
+        "arwiki": {
+          "site": "arwiki",
+          "title": "جامعة القرويين",
+          "badges": [
+            "Q17437796"
+          ]
+        },
+        "arwikisource": {
+          "site": "arwikisource",
+          "title": "جامعة القرويين",
+          "badges": []
+        },
+        "arywiki": {
+          "site": "arywiki",
+          "title": "جامعة د لقرويين",
+          "badges": []
+        },
+        "arzwiki": {
+          "site": "arzwiki",
+          "title": "جامعة القرويين",
+          "badges": []
+        },
+        "astwiki": {
+          "site": "astwiki",
+          "title": "Universidá de Qarawiyyin",
+          "badges": []
+        },
+        "azbwiki": {
+          "site": "azbwiki",
+          "title": "قرویین بیلیم‌یوردو",
+          "badges": []
+        },
+        "azwiki": {
+          "site": "azwiki",
+          "title": "Əl-Qarauin Universiteti",
+          "badges": []
+        },
+        "bawiki": {
+          "site": "bawiki",
+          "title": "Әл-Ҡарауин",
+          "badges": []
+        },
+        "bewiki": {
+          "site": "bewiki",
+          "title": "Аль-Карауін",
+          "badges": []
+        },
+        "bgwiki": {
+          "site": "bgwiki",
+          "title": "Университет „Карауин“",
+          "badges": []
+        },
+        "bnwiki": {
+          "site": "bnwiki",
+          "title": "আল-কারাওইন বিশ্ববিদ্যালয়",
+          "badges": []
+        },
+        "bswiki": {
+          "site": "bswiki",
+          "title": "Univerzitet Al-Karaouine",
+          "badges": []
+        },
+        "cawiki": {
+          "site": "cawiki",
+          "title": "Universitat al-Qarawiyyin",
+          "badges": []
+        },
+        "cebwiki": {
+          "site": "cebwiki",
+          "title": "University of al-Karaouine",
+          "badges": []
+        },
+        "ckbwiki": {
+          "site": "ckbwiki",
+          "title": "زانکۆی قەرەوین",
+          "badges": []
+        },
+        "cswiki": {
+          "site": "cswiki",
+          "title": "Univerzita Al-Karaouine",
+          "badges": []
+        },
+        "dagwiki": {
+          "site": "dagwiki",
+          "title": "University of al-Qarawiyyin",
+          "badges": []
+        },
+        "dewiki": {
+          "site": "dewiki",
+          "title": "Universität al-Qarawīyīn",
+          "badges": []
+        },
+        "enwiki": {
+          "site": "enwiki",
+          "title": "University of al-Qarawiyyin",
+          "badges": []
+        },
+        "eowiki": {
+          "site": "eowiki",
+          "title": "Universitato al-Karaŭijin",
+          "badges": []
+        },
+        "eswiki": {
+          "site": "eswiki",
+          "title": "Universidad de Qarawiyyin",
+          "badges": []
+        },
+        "etwiki": {
+          "site": "etwiki",
+          "title": "Al-Qarawiyyini ülikool",
+          "badges": []
+        },
+        "euwiki": {
+          "site": "euwiki",
+          "title": "Al-Qarawiyyin Unibertsitatea",
+          "badges": []
+        },
+        "fawiki": {
+          "site": "fawiki",
+          "title": "دانشگاه قرویین",
+          "badges": []
+        },
+        "fiwiki": {
+          "site": "fiwiki",
+          "title": "Al-Karaouinen yliopisto",
+          "badges": []
+        },
+        "frwiki": {
+          "site": "frwiki",
+          "title": "Université Al Quaraouiyine",
+          "badges": []
+        },
+        "gpewiki": {
+          "site": "gpewiki",
+          "title": "University of al-Qarawiyyin",
+          "badges": []
+        },
+        "hawiki": {
+          "site": "hawiki",
+          "title": "Jami'ar al-Karaouine",
+          "badges": []
+        },
+        "hewiki": {
+          "site": "hewiki",
+          "title": "אוניברסיטת אל-קרוויין",
+          "badges": []
+        },
+        "hiwiki": {
+          "site": "hiwiki",
+          "title": "अल-क़रवियिन विश्वविद्यालय",
+          "badges": []
+        },
+        "hrwiki": {
+          "site": "hrwiki",
+          "title": "Sveučilište Al-Karaouine",
+          "badges": []
+        },
+        "hywiki": {
+          "site": "hywiki",
+          "title": "Ալ-Կարաուին",
+          "badges": []
+        },
+        "idwiki": {
+          "site": "idwiki",
+          "title": "Universitas Al-Qarawiyyin",
+          "badges": []
+        },
+        "itwiki": {
+          "site": "itwiki",
+          "title": "Università al-Qarawiyyin",
+          "badges": []
+        },
+        "jawiki": {
+          "site": "jawiki",
+          "title": "カラウィーイーン大学",
+          "badges": []
+        },
+        "kowiki": {
+          "site": "kowiki",
+          "title": "알카라윈 대학교",
+          "badges": []
+        },
+        "kuwiki": {
+          "site": "kuwiki",
+          "title": "Zanîngeha Qerewîyîn",
+          "badges": []
+        },
+        "lawiki": {
+          "site": "lawiki",
+          "title": "Universitas al-Qarawīīn",
+          "badges": []
+        },
+        "ltwiki": {
+          "site": "ltwiki",
+          "title": "Al Karauino universitetas",
+          "badges": []
+        },
+        "lvwiki": {
+          "site": "lvwiki",
+          "title": "Karavijas Universitāte",
+          "badges": []
+        },
+        "madwiki": {
+          "site": "madwiki",
+          "title": "Universitas Al-Qarawiyyin",
+          "badges": []
+        },
+        "mlwiki": {
+          "site": "mlwiki",
+          "title": "അൽ കറാവിയ്യിൻ യൂനിവേഴ്‌സിറ്റി",
+          "badges": []
+        },
+        "mswiki": {
+          "site": "mswiki",
+          "title": "Universiti al-Qarawiyyin",
+          "badges": [
+            "Q17437796"
+          ]
+        },
+        "mtwiki": {
+          "site": "mtwiki",
+          "title": "Università ta' Al-Qarawijin",
+          "badges": []
+        },
+        "nlwiki": {
+          "site": "nlwiki",
+          "title": "Al-Qarawiyin-universiteit",
+          "badges": []
+        },
+        "nnwiki": {
+          "site": "nnwiki",
+          "title": "Universitetet ved al-Karaouine",
+          "badges": []
+        },
+        "plwiki": {
+          "site": "plwiki",
+          "title": "Meczet Al-Karawijjin",
+          "badges": []
+        },
+        "pnbwiki": {
+          "site": "pnbwiki",
+          "title": "جامعہ قرویین",
+          "badges": []
+        },
+        "ptwiki": {
+          "site": "ptwiki",
+          "title": "Universidade al Quaraouiyine",
+          "badges": []
+        },
+        "rowiki": {
+          "site": "rowiki",
+          "title": "Universitatea Al-Qarawiyyin",
+          "badges": []
+        },
+        "ruwiki": {
+          "site": "ruwiki",
+          "title": "Аль-Карауин",
+          "badges": []
+        },
+        "shwiki": {
+          "site": "shwiki",
+          "title": "Univerzitet Al-Karaouine",
+          "badges": []
+        },
+        "simplewiki": {
+          "site": "simplewiki",
+          "title": "University of al-Karaouine",
+          "badges": []
+        },
+        "skrwiki": {
+          "site": "skrwiki",
+          "title": "قرویین یونیورسٹی، مراکش",
+          "badges": []
+        },
+        "slwiki": {
+          "site": "slwiki",
+          "title": "Univerza al-Karauin",
+          "badges": []
+        },
+        "sqwiki": {
+          "site": "sqwiki",
+          "title": "Universiteti el-Karavijin",
+          "badges": []
+        },
+        "srwiki": {
+          "site": "srwiki",
+          "title": "Univerzitet Al Karauin",
+          "badges": []
+        },
+        "swwiki": {
+          "site": "swwiki",
+          "title": "Al-Qairawin",
+          "badges": []
+        },
+        "tawiki": {
+          "site": "tawiki",
+          "title": "அல்-கரவிய்யீன் பல்கலைக்கழகம்",
+          "badges": []
+        },
+        "trwiki": {
+          "site": "trwiki",
+          "title": "Karaviyyîn Üniversitesi",
+          "badges": []
+        },
+        "ukwiki": {
+          "site": "ukwiki",
+          "title": "Університет Аль-Карауїн",
+          "badges": []
+        },
+        "urwiki": {
+          "site": "urwiki",
+          "title": "جامعہ قرویین",
+          "badges": []
+        },
+        "viwiki": {
+          "site": "viwiki",
+          "title": "Đại học Al-Qarawiyyin",
+          "badges": []
+        },
+        "warwiki": {
+          "site": "warwiki",
+          "title": "Unibersidad han al-Karaouine",
+          "badges": []
+        },
+        "zh_yuewiki": {
+          "site": "zh_yuewiki",
+          "title": "卡魯因大學",
+          "badges": []
+        },
+        "zhwiki": {
+          "site": "zhwiki",
+          "title": "卡魯因大學",
+          "badges": []
+        }
+      }
+    },
+    "Q29660": {
+      "type": "item",
+      "id": "Q29660",
+      "labels": {
+        "fr": {
+          "language": "fr",
+          "value": "Médersa Bou Inania (Fes)"
+        },
+        "en": {
+          "language": "en",
+          "value": "Bou Inania Madrasa"
+        }
+      },
+      "descriptions": {
+        "en": {
+          "language": "en",
+          "value": "cultural heritage site in Fez, Morocco"
+        },
+        "fr": {
+          "language": "fr",
+          "value": "site du patrimoine culturel marocain"
+        }
+      },
+      "claims": {
+        "P373": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P373",
+              "hash": "380b7ba6fbe221746897dfac3980dca3938865a1",
+              "datavalue": {
+                "value": "Bou Inania Madrasa, Fes",
+                "type": "string"
+              },
+              "datatype": "string"
+            },
+            "type": "statement",
+            "id": "q29660$C37C6857-05AE-4B68-8553-62CF2419E0F7",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+                "snaks": {
+                  "P143": [
+                    {
+                      "snaktype": "value",
+                      "property": "P143",
+                      "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 328,
+                          "id": "Q328"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P143"
+                ]
+              }
+            ]
+          }
+        ],
+        "P131": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P131",
+              "hash": "98e420558e217c447b70fa1ba505ca7a5b17fe29",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 80985,
+                  "id": "Q80985"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q29660$EEEB073F-A1D0-47C7-94A2-EC4343AC4902",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "d4bd87b862b12d99d26e86472d44f26858dee639",
+                "snaks": {
+                  "P143": [
+                    {
+                      "snaktype": "value",
+                      "property": "P143",
+                      "hash": "f30cbd35620c4ea6d0633aaf0210a8916130469b",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 8447,
+                          "id": "Q8447"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P143"
+                ]
+              }
+            ]
+          }
+        ],
+        "P625": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P625",
+              "hash": "0c06d1eab33bd32e40ca3b54329cce6a71e06979",
+              "datavalue": {
+                "value": {
+                  "latitude": 34.062208,
+                  "longitude": -4.982733,
+                  "altitude": null,
+                  "precision": 1e-06,
+                  "globe": "http://www.wikidata.org/entity/Q2"
+                },
+                "type": "globecoordinate"
+              },
+              "datatype": "globe-coordinate"
+            },
+            "type": "statement",
+            "id": "Q29660$0FD9BAE5-03FC-4DE1-B11C-3721B163EFEE",
+            "rank": "normal"
+          }
+        ],
+        "P646": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P646",
+              "hash": "b13bfa1fd476db222463e00eb55d741b5ae812ce",
+              "datavalue": {
+                "value": "/m/0466f9f",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q29660$09760AED-0C53-4CC2-A2D4-29920AF13101",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "2b00cb481cddcac7623114367489b5c194901c4a",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "a94b740202b097dd33355e0e6c00e54b9395e5e0",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 15241312,
+                          "id": "Q15241312"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P577": [
+                    {
+                      "snaktype": "value",
+                      "property": "P577",
+                      "hash": "fde79ecb015112d2f29229ccc1ec514ed3e71fa2",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2013-10-28T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P577"
+                ]
+              }
+            ]
+          }
+        ],
+        "P17": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P17",
+              "hash": "882c688f4851777a2a3ec6d7ab769323b175f3c7",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 1028,
+                  "id": "Q1028"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q29660$D270CDB4-FA4D-42DF-9312-871888ECBD23",
+            "rank": "normal"
+          }
+        ],
+        "P18": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P18",
+              "hash": "4a01a9c2804a6cdb74f22bf5491ad0157d4c10dd",
+              "datavalue": {
+                "value": "Bou Inania Madrasa 2011.jpg",
+                "type": "string"
+              },
+              "datatype": "commonsMedia"
+            },
+            "type": "statement",
+            "qualifiers": {
+              "P2096": [
+                {
+                  "snaktype": "value",
+                  "property": "P2096",
+                  "hash": "acf8188a3aafc36e39c586950d6b675ac41c4394",
+                  "datavalue": {
+                    "value": {
+                      "text": "Un angle del pati amb el minaret",
+                      "language": "ca"
+                    },
+                    "type": "monolingualtext"
+                  },
+                  "datatype": "monolingualtext"
+                }
+              ]
+            },
+            "qualifiers-order": [
+              "P2096"
+            ],
+            "id": "Q29660$6f11aafd-404c-4c33-8145-003a36ec45d3",
+            "rank": "normal"
+          }
+        ],
+        "P31": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P31",
+              "hash": "dec612e149a50d95f6396ceb0ede29ec55a48814",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 132834,
+                  "id": "Q132834"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q29660$722001ff-4b4f-931c-0fd1-1a47b8dc9dc2",
+            "rank": "normal"
+          }
+        ],
+        "P88": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P88",
+              "hash": "3aa8b6f78b86f27b149f70bf713e1a0a6d550ffa",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 336990,
+                  "id": "Q336990"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q29660$E47FCAD2-E067-461F-9A11-0D576261EE89",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "d4bd87b862b12d99d26e86472d44f26858dee639",
+                "snaks": {
+                  "P143": [
+                    {
+                      "snaktype": "value",
+                      "property": "P143",
+                      "hash": "f30cbd35620c4ea6d0633aaf0210a8916130469b",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 8447,
+                          "id": "Q8447"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P143"
+                ]
+              }
+            ]
+          }
+        ],
+        "P5694": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P5694",
+              "hash": "ad331f4c09b0342921fd69d4d915358b8a1b2730",
+              "datavalue": {
+                "value": "pc_architecture/sanae:270005",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q29660$bf597a28-4598-c2f9-ca86-8aa92018eab1",
+            "rank": "normal"
+          }
+        ],
+        "P1435": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P1435",
+              "hash": "031af0d8ea9ce877a6f14dc48d8002cb515b06d9",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 57338034,
+                  "id": "Q57338034"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q29660$abdbb36b-47c4-9b4c-a0b6-1c305a823377",
+            "rank": "normal"
+          },
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P1435",
+              "hash": "e4860a5b7394994b9ce8a6cd40ba85f2f5677267",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 43113623,
+                  "id": "Q43113623"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q29660$FFCC7815-656B-4F50-8E0D-B745918987E5",
+            "rank": "normal"
+          }
+        ],
+        "P361": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P361",
+              "hash": "d235dc7d1481ab0fb998831d50e02f537cac64b8",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 2072102,
+                  "id": "Q2072102"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q29660$60A3077D-1F6B-42A3-AE64-24B3087C745E",
+            "rank": "normal"
+          }
+        ],
+        "P5008": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P5008",
+              "hash": "757684534433e0a6a3f9e0b8e741f228fc86173b",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 109929866,
+                  "id": "Q109929866"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q29660$CF204392-9F3A-4150-A4B9-E005CA2B3CEB",
+            "rank": "normal"
+          }
+        ],
+        "P10689": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P10689",
+              "hash": "15abf3ee9f906c9df421fde5f8dec7eae7e26dfc",
+              "datavalue": {
+                "value": "798151423",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q29660$1B5217FE-3E74-472A-8EBD-FE431AC57174",
+            "rank": "normal"
+          }
+        ],
+        "P11729": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P11729",
+              "hash": "970a4803c44fa0e585c7f0e23410dbcc4f24f50c",
+              "datavalue": {
+                "value": "493077",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q29660$a2749713-4237-cf1c-b4a3-358d9cc3ce49",
+            "rank": "normal"
+          }
+        ]
+      },
+      "sitelinks": {
+        "arwiki": {
+          "site": "arwiki",
+          "title": "المدرسة البوعنانية (فاس)",
+          "badges": []
+        },
+        "arywiki": {
+          "site": "arywiki",
+          "title": "لمدراسة لبوعنانية",
+          "badges": []
+        },
+        "bnwiki": {
+          "site": "bnwiki",
+          "title": "আবু ইনানি মাদ্রাসা",
+          "badges": []
+        },
+        "cawiki": {
+          "site": "cawiki",
+          "title": "Madrassa Bou Inania de Fes",
+          "badges": []
+        },
+        "commonswiki": {
+          "site": "commonswiki",
+          "title": "Category:Bou Inania Madrasa, Fes",
+          "badges": []
+        },
+        "dewiki": {
+          "site": "dewiki",
+          "title": "Madrasa Bū ʿInānīya von Fès",
+          "badges": []
+        },
+        "enwiki": {
+          "site": "enwiki",
+          "title": "Bou Inania Madrasa",
+          "badges": []
+        },
+        "eswiki": {
+          "site": "eswiki",
+          "title": "Madrasa de Bou Inania",
+          "badges": []
+        },
+        "frwiki": {
+          "site": "frwiki",
+          "title": "Médersa Bou Inania de Fès",
+          "badges": []
+        },
+        "gpewiki": {
+          "site": "gpewiki",
+          "title": "Bou Inania Madrasa",
+          "badges": []
+        },
+        "hawiki": {
+          "site": "hawiki",
+          "title": "Bou Inania Madrasa",
+          "badges": []
+        },
+        "idwiki": {
+          "site": "idwiki",
+          "title": "Madrasah Abu Inaniyah",
+          "badges": []
+        },
+        "itwiki": {
+          "site": "itwiki",
+          "title": "Madrasa Bou Inania (Fès)",
+          "badges": []
+        },
+        "jawiki": {
+          "site": "jawiki",
+          "title": "ブー・イナーニーヤ・マドラサ",
+          "badges": []
+        },
+        "nlwiki": {
+          "site": "nlwiki",
+          "title": "Madrassa Bou Inania (Fes)",
+          "badges": []
+        },
+        "plwiki": {
+          "site": "plwiki",
+          "title": "Medresa Bu Inania (Fez)",
+          "badges": []
+        },
+        "ptwiki": {
+          "site": "ptwiki",
+          "title": "Madraça Bu Inania (Fez)",
+          "badges": []
+        },
+        "rowiki": {
+          "site": "rowiki",
+          "title": "Madrasa Bou Inania",
+          "badges": []
+        },
+        "ruwiki": {
+          "site": "ruwiki",
+          "title": "Медресе Бу Инания",
+          "badges": []
+        },
+        "slwiki": {
+          "site": "slwiki",
+          "title": "Medresa Bou Inania",
+          "badges": []
+        },
+        "trwiki": {
+          "site": "trwiki",
+          "title": "Ebu İnaniye Medresesi",
+          "badges": []
+        },
+        "ukwiki": {
+          "site": "ukwiki",
+          "title": "Медресе Бу Інанія (Фес)",
+          "badges": []
+        },
+        "urwiki": {
+          "site": "urwiki",
+          "title": "مدرسہ بوعنانیہ",
+          "badges": []
+        },
+        "uzwiki": {
+          "site": "uzwiki",
+          "title": "Bou Inania madrasasi",
+          "badges": []
+        },
+        "zhwiki": {
+          "site": "zhwiki",
+          "title": "波伊那尼亞學院",
+          "badges": []
+        }
+      }
+    },
+    "Q4702240": {
+      "type": "item",
+      "id": "Q4702240",
+      "labels": {
+        "en": {
+          "language": "en",
+          "value": "Al-Attarine Madrasa"
+        },
+        "fr": {
+          "language": "fr",
+          "value": "Médersa Al-Attarine"
+        }
+      },
+      "descriptions": {
+        "en": {
+          "language": "en",
+          "value": "Moroccan cultural heritage site"
+        },
+        "fr": {
+          "language": "fr",
+          "value": "site du patrimoine culturel marocain"
+        }
+      },
+      "claims": {
+        "P625": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P625",
+              "hash": "83ca9f6c66500148c37b9e3d40eaa59f849ef2f5",
+              "datavalue": {
+                "value": {
+                  "latitude": 34.065138888889,
+                  "longitude": -4.9736111111111,
+                  "altitude": null,
+                  "precision": 2.7777777777778e-05,
+                  "globe": "http://www.wikidata.org/entity/Q2"
+                },
+                "type": "globecoordinate"
+              },
+              "datatype": "globe-coordinate"
+            },
+            "type": "statement",
+            "id": "Q4702240$46F80B8F-A113-47CD-982C-84D5EEE2E567",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "9424852ca7d9d48269148c57acbefacca1899882",
+                "snaks": {
+                  "P143": [
+                    {
+                      "snaktype": "value",
+                      "property": "P143",
+                      "hash": "b7f8bea3bb10c237323eb448dc4798948923bd5c",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 11921,
+                          "id": "Q11921"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P143"
+                ]
+              }
+            ]
+          }
+        ],
+        "P17": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P17",
+              "hash": "882c688f4851777a2a3ec6d7ab769323b175f3c7",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 1028,
+                  "id": "Q1028"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q4702240$28995344-4023-c801-d938-f670029acfe2",
+            "rank": "normal"
+          }
+        ],
+        "P31": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P31",
+              "hash": "dec612e149a50d95f6396ceb0ede29ec55a48814",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 132834,
+                  "id": "Q132834"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q4702240$7fc3c895-468c-385e-0330-8feec9654352",
+            "rank": "normal"
+          }
+        ],
+        "P131": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P131",
+              "hash": "98e420558e217c447b70fa1ba505ca7a5b17fe29",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 80985,
+                  "id": "Q80985"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q4702240$14551ef1-430a-d3e5-f03f-1ffaaf676c0f",
+            "rank": "normal"
+          }
+        ],
+        "P373": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P373",
+              "hash": "4356c85679032d44a745c60c65df62c44f70ddee",
+              "datavalue": {
+                "value": "Al-Attarine Madrasa",
+                "type": "string"
+              },
+              "datatype": "string"
+            },
+            "type": "statement",
+            "id": "Q4702240$43fb4999-401b-ad9a-8369-dcafda156f3b",
+            "rank": "normal"
+          }
+        ],
+        "P18": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P18",
+              "hash": "5f9880561977b69efb66a6b4eb23fae61914be60",
+              "datavalue": {
+                "value": "Medresa Al-Attarin(js)3.jpg",
+                "type": "string"
+              },
+              "datatype": "commonsMedia"
+            },
+            "type": "statement",
+            "id": "Q4702240$a215a9a9-4758-8901-23d0-f195f2dd707a",
+            "rank": "preferred"
+          },
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P18",
+              "hash": "f5fe3a68495bbb19238014361e826c35548e9443",
+              "datavalue": {
+                "value": "Medina of Fez 062023 161.jpg",
+                "type": "string"
+              },
+              "datatype": "commonsMedia"
+            },
+            "type": "statement",
+            "id": "Q4702240$6e9a7441-4dcb-c101-86f6-fd42a798338e",
+            "rank": "normal"
+          }
+        ],
+        "P571": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P571",
+              "hash": "29bd564527c88c1cc9e338c65a8e5668f96104c7",
+              "datavalue": {
+                "value": {
+                  "time": "+1320-00-00T00:00:00Z",
+                  "timezone": 0,
+                  "before": 0,
+                  "after": 0,
+                  "precision": 9,
+                  "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                },
+                "type": "time"
+              },
+              "datatype": "time"
+            },
+            "type": "statement",
+            "id": "Q4702240$fee6a232-41e4-11fe-ce2d-7a4e17d35a61",
+            "rank": "normal"
+          },
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P571",
+              "hash": "642fe3da3f2195b07221701783e8ec3b63ba47cf",
+              "datavalue": {
+                "value": {
+                  "time": "+1323-00-00T00:00:00Z",
+                  "timezone": 0,
+                  "before": 0,
+                  "after": 0,
+                  "precision": 9,
+                  "calendarmodel": "http://www.wikidata.org/entity/Q1985786"
+                },
+                "type": "time"
+              },
+              "datatype": "time"
+            },
+            "type": "statement",
+            "id": "Q4702240$963c30aa-4796-ba3a-6f53-ed535fde8336",
+            "rank": "normal"
+          }
+        ],
+        "P5694": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P5694",
+              "hash": "c75f28163d9670724ee3ac9c8493bb6c9c8736b0",
+              "datavalue": {
+                "value": "pc_architecture/sanae:270001",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q4702240$f14ed14a-4f1e-529a-22b6-1512f7943f1c",
+            "rank": "normal"
+          }
+        ],
+        "P1435": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P1435",
+              "hash": "031af0d8ea9ce877a6f14dc48d8002cb515b06d9",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 57338034,
+                  "id": "Q57338034"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q4702240$1f1a73a4-41ca-d3d9-ae41-32b850b50092",
+            "rank": "normal"
+          },
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P1435",
+              "hash": "e4860a5b7394994b9ce8a6cd40ba85f2f5677267",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 43113623,
+                  "id": "Q43113623"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q4702240$26664E4D-B5E8-4115-8975-5919418E113D",
+            "rank": "normal"
+          }
+        ],
+        "P361": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P361",
+              "hash": "d235dc7d1481ab0fb998831d50e02f537cac64b8",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 2072102,
+                  "id": "Q2072102"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q4702240$D354B45A-87CD-4BC5-9912-CC08EB8BACBD",
+            "rank": "normal"
+          }
+        ],
+        "P646": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P646",
+              "hash": "cf649a905519eb8dc68a6b7fae89c1888a10aec9",
+              "datavalue": {
+                "value": "/m/04zymdb",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q4702240$845C51C1-85BF-48E3-85F1-74E44E3938E0",
+            "rank": "normal"
+          }
+        ],
+        "P5008": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P5008",
+              "hash": "757684534433e0a6a3f9e0b8e741f228fc86173b",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 109929866,
+                  "id": "Q109929866"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q4702240$ED067426-35FF-4732-BF5C-0C259AF0B794",
+            "rank": "normal"
+          }
+        ],
+        "P11729": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P11729",
+              "hash": "f3e58314670b4ce1283f0d22d36f981caa25694e",
+              "datavalue": {
+                "value": "492938",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q4702240$b9cd5dc3-4ccf-3103-4d42-780e0a4daf16",
+            "rank": "normal"
+          }
+        ],
+        "P402": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P402",
+              "hash": "cb79aab43bd487ac11e966c968c414a388defb3d",
+              "datavalue": {
+                "value": "8164757",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q4702240$556820cb-4af0-c101-1e13-3b096cd5c629",
+            "rank": "normal"
+          }
+        ],
+        "P88": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P88",
+              "hash": "cd4cfab079efa437f6473eb6f460a56164600563",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 335335,
+                  "id": "Q335335"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q4702240$f11dacd7-4bed-e611-6f19-6886e1444295",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "67e04cca74247a9e901a1b2ce214d2a9efe9a1fd",
+                "snaks": {
+                  "P854": [
+                    {
+                      "snaktype": "value",
+                      "property": "P854",
+                      "hash": "9953116daf386d2211853c47c58b8ab1cc185624",
+                      "datavalue": {
+                        "value": "https://ar.wikisource.org/wiki/%D8%B5%D9%81%D8%AD%D8%A9:%D8%A7%D9%84%D8%A3%D9%86%D9%8A%D8%B3_%D8%A7%D9%84%D9%85%D8%B7%D8%B1%D8%A8_%D8%A8%D8%B1%D9%88%D8%B6_%D8%A7%D9%84%D9%82%D8%B1%D8%B7%D8%A7%D8%B3_(1917).pdf/282",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "b7489f0be21a6c69d869612c6bc7f1c128ec7785",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2026-09-06T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ],
+                  "P304": [
+                    {
+                      "snaktype": "value",
+                      "property": "P304",
+                      "hash": "6a27e46c1edd9597c866f2e8bf0199b92dc92c63",
+                      "datavalue": {
+                        "value": "281",
+                        "type": "string"
+                      },
+                      "datatype": "string"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854",
+                  "P813",
+                  "P304"
+                ]
+              }
+            ]
+          }
+        ],
+        "P2670": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P2670",
+              "hash": "3f814ee95cc5145ad90f06ed2a94c74d60da4cd6",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 309250,
+                  "id": "Q309250"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q4702240$f981346b-4889-3688-6f01-9412cf41b40d",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "06acc68ceede0acdeff2ccbe08c82a64135ee2a6",
+                "snaks": {
+                  "P854": [
+                    {
+                      "snaktype": "value",
+                      "property": "P854",
+                      "hash": "3ac11ac4feeefcdbb897d6df9c2525ef4d058618",
+                      "datavalue": {
+                        "value": "https://islamicart.museumwnf.org/database_item.php?id=monuments%3BISL%3Bma%3BMon01%3B21%3Bar&utm",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "b7489f0be21a6c69d869612c6bc7f1c128ec7785",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2026-09-06T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854",
+                  "P813"
+                ]
+              }
+            ]
+          },
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P2670",
+              "hash": "dcdf01937a050c9085855fd91c07618758fbb8ac",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 173907,
+                  "id": "Q173907"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q4702240$60102645-470a-184e-5fd8-d80be55c8fe0",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "7a654e5087db94199f9fede1a5648561f9740162",
+                "snaks": {
+                  "P854": [
+                    {
+                      "snaktype": "value",
+                      "property": "P854",
+                      "hash": "15a1a06274f8963aa40bce52326b363b50ae487e",
+                      "datavalue": {
+                        "value": "https://islamicart.museumwnf.org/database_item.php?id=monuments%3BISL%3Bma%3BMon01%3B21%3Bar",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "b7489f0be21a6c69d869612c6bc7f1c128ec7785",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2026-09-06T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854",
+                  "P813"
+                ]
+              }
+            ]
+          },
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P2670",
+              "hash": "929288e4d146762b27db9da77159cd5f044124e9",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 483453,
+                  "id": "Q483453"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "qualifiers": {
+              "P186": [
+                {
+                  "snaktype": "value",
+                  "property": "P186",
+                  "hash": "95805b5f7e0f33f5585583b015e65c1041a2c4ba",
+                  "datavalue": {
+                    "value": {
+                      "entity-type": "item",
+                      "numeric-id": 40861,
+                      "id": "Q40861"
+                    },
+                    "type": "wikibase-entityid"
+                  },
+                  "datatype": "wikibase-item"
+                }
+              ]
+            },
+            "qualifiers-order": [
+              "P186"
+            ],
+            "id": "Q4702240$af48556b-476f-c56f-d25d-fd284da8467c",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "da3e5c07e9c983c533bb4d2bc8e38ecea72a1795",
+                "snaks": {
+                  "P854": [
+                    {
+                      "snaktype": "value",
+                      "property": "P854",
+                      "hash": "c76eb7686ee4504166878457d665d4fb527ad67f",
+                      "datavalue": {
+                        "value": "https://islamicart.museumwnf.org/database_item.php?id=monuments;ISL;ma;Mon01;21;ar",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "b7489f0be21a6c69d869612c6bc7f1c128ec7785",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2026-09-06T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854",
+                  "P813"
+                ]
+              }
+            ]
+          },
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P2670",
+              "hash": "5f115603bca7ad5f18ff4cbc21442146070ee8c3",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 189046,
+                  "id": "Q189046"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q4702240$e790087c-474a-9959-df0b-cfa20475c27c",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "da3e5c07e9c983c533bb4d2bc8e38ecea72a1795",
+                "snaks": {
+                  "P854": [
+                    {
+                      "snaktype": "value",
+                      "property": "P854",
+                      "hash": "c76eb7686ee4504166878457d665d4fb527ad67f",
+                      "datavalue": {
+                        "value": "https://islamicart.museumwnf.org/database_item.php?id=monuments;ISL;ma;Mon01;21;ar",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "b7489f0be21a6c69d869612c6bc7f1c128ec7785",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2026-09-06T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854",
+                  "P813"
+                ]
+              }
+            ]
+          }
+        ],
+        "P140": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P140",
+              "hash": "94aa66334a34fffdf55fa12f0e281eba5427e453",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 432,
+                  "id": "Q432"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q4702240$612afea8-4899-1a7e-7f68-741836ce336b",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "06acc68ceede0acdeff2ccbe08c82a64135ee2a6",
+                "snaks": {
+                  "P854": [
+                    {
+                      "snaktype": "value",
+                      "property": "P854",
+                      "hash": "3ac11ac4feeefcdbb897d6df9c2525ef4d058618",
+                      "datavalue": {
+                        "value": "https://islamicart.museumwnf.org/database_item.php?id=monuments%3BISL%3Bma%3BMon01%3B21%3Bar&utm",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "b7489f0be21a6c69d869612c6bc7f1c128ec7785",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2026-09-06T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854",
+                  "P813"
+                ]
+              }
+            ]
+          }
+        ],
+        "P186": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P186",
+              "hash": "8471c8fa084bf993039988f230646c671ea1de7c",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 5056949,
+                  "id": "Q5056949"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "qualifiers": {
+              "P518": [
+                {
+                  "snaktype": "value",
+                  "property": "P518",
+                  "hash": "8a8c8e961c1e2ecfde279d48568f6a4a3b9e81b9",
+                  "datavalue": {
+                    "value": {
+                      "entity-type": "item",
+                      "numeric-id": 12493,
+                      "id": "Q12493"
+                    },
+                    "type": "wikibase-entityid"
+                  },
+                  "datatype": "wikibase-item"
+                }
+              ]
+            },
+            "qualifiers-order": [
+              "P518"
+            ],
+            "id": "Q4702240$61f4bf93-4492-4792-f5e0-6c820256b93b",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "da3e5c07e9c983c533bb4d2bc8e38ecea72a1795",
+                "snaks": {
+                  "P854": [
+                    {
+                      "snaktype": "value",
+                      "property": "P854",
+                      "hash": "c76eb7686ee4504166878457d665d4fb527ad67f",
+                      "datavalue": {
+                        "value": "https://islamicart.museumwnf.org/database_item.php?id=monuments;ISL;ma;Mon01;21;ar",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "b7489f0be21a6c69d869612c6bc7f1c128ec7785",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2026-09-06T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854",
+                  "P813"
+                ]
+              }
+            ]
+          },
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P186",
+              "hash": "1aafd58b38495eb02b371701f0aff3ff4f8c1193",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 34095,
+                  "id": "Q34095"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "qualifiers": {
+              "P518": [
+                {
+                  "snaktype": "value",
+                  "property": "P518",
+                  "hash": "3225dd9dbbc3222f2580ea5a9659f005d0389363",
+                  "datavalue": {
+                    "value": {
+                      "entity-type": "item",
+                      "numeric-id": 191709,
+                      "id": "Q191709"
+                    },
+                    "type": "wikibase-entityid"
+                  },
+                  "datatype": "wikibase-item"
+                }
+              ]
+            },
+            "qualifiers-order": [
+              "P518"
+            ],
+            "id": "Q4702240$35f38aa6-4507-c6fc-8139-a3e69e334706",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "0580bd130205d0c3595b4f855615b7b4acd23202",
+                "snaks": {
+                  "P854": [
+                    {
+                      "snaktype": "value",
+                      "property": "P854",
+                      "hash": "d80996e04558d7d422b48c2c9e0b4e89d172efe5",
+                      "datavalue": {
+                        "value": "https://islamicart.museumwnf.org/database_item.php?id=monument;ISL;ma;Mon01;21;ar",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "b7489f0be21a6c69d869612c6bc7f1c128ec7785",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2026-09-06T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854",
+                  "P813"
+                ]
+              }
+            ]
+          },
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P186",
+              "hash": "95805b5f7e0f33f5585583b015e65c1041a2c4ba",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 40861,
+                  "id": "Q40861"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q4702240$9550f814-4c4f-30ad-72b6-f9dbb88a2754",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "2e9b3da550b1fe03dc054149fe23b292bd368cc7",
+                "snaks": {
+                  "P854": [
+                    {
+                      "snaktype": "value",
+                      "property": "P854",
+                      "hash": "df50f79aeb0f58b155290189b4950e047ad66b8d",
+                      "datavalue": {
+                        "value": "https://mosqpedia.org/wp-content/uploads/2024/09/OzNCnvrAwbuRXdVRKZBl4uI51mXG9yvOH4KZGq4q.pdf",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ],
+                  "P304": [
+                    {
+                      "snaktype": "value",
+                      "property": "P304",
+                      "hash": "e2073a76c19ec8905569a8ef37e0912d33913099",
+                      "datavalue": {
+                        "value": "87",
+                        "type": "string"
+                      },
+                      "datatype": "string"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854",
+                  "P304"
+                ]
+              }
+            ]
+          }
+        ],
+        "P366": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P366",
+              "hash": "5a28c4c951e3bde056b2ac0f0041c231df2eca42",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 8434,
+                  "id": "Q8434"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q4702240$1f52a4e9-4eba-9856-ed71-8d60afdeda48",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "da3e5c07e9c983c533bb4d2bc8e38ecea72a1795",
+                "snaks": {
+                  "P854": [
+                    {
+                      "snaktype": "value",
+                      "property": "P854",
+                      "hash": "c76eb7686ee4504166878457d665d4fb527ad67f",
+                      "datavalue": {
+                        "value": "https://islamicart.museumwnf.org/database_item.php?id=monuments;ISL;ma;Mon01;21;ar",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "b7489f0be21a6c69d869612c6bc7f1c128ec7785",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2026-09-06T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854",
+                  "P813"
+                ]
+              }
+            ]
+          }
+        ],
+        "P149": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P149",
+              "hash": "56c71c2bd35d71d66fab6de5615b6058aff2a61c",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 136840466,
+                  "id": "Q136840466"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q4702240$15df78fd-498c-e7f9-e676-9ea4201331ae",
+            "rank": "normal"
+          }
+        ],
+        "P8733": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P8733",
+              "hash": "75b3ef477cb9a0b3d3e372df0370356fc9b0b630",
+              "datavalue": {
+                "value": {
+                  "amount": "+30",
+                  "unit": "http://www.wikidata.org/entity/Q180516"
+                },
+                "type": "quantity"
+              },
+              "datatype": "quantity"
+            },
+            "type": "statement",
+            "id": "Q4702240$4feecb47-4d4b-84b0-b700-17466b66bd11",
+            "rank": "normal"
+          }
+        ],
+        "P276": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P276",
+              "hash": "15976b2c4e32f7e28e309a2e88152fc5b9de82d8",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 2072102,
+                  "id": "Q2072102"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q4702240$2efb0d96-4a5e-a709-0a52-40e4532f951e",
+            "rank": "normal"
+          }
+        ],
+        "P1101": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P1101",
+              "hash": "10681143a4dd97742601bd787e615515e0e07a95",
+              "datavalue": {
+                "value": {
+                  "amount": "+2",
+                  "unit": "1"
+                },
+                "type": "quantity"
+              },
+              "datatype": "quantity"
+            },
+            "type": "statement",
+            "id": "Q4702240$bbbd41eb-405c-378a-f4dd-749f810074c0",
+            "rank": "normal"
+          }
+        ]
+      },
+      "sitelinks": {
+        "arwiki": {
+          "site": "arwiki",
+          "title": "مدرسة العطارين",
+          "badges": []
+        },
+        "arywiki": {
+          "site": "arywiki",
+          "title": "مدرسة لعطارين",
+          "badges": []
+        },
+        "bnwiki": {
+          "site": "bnwiki",
+          "title": "আল-আত্তারিন মাদ্রাসা",
+          "badges": []
+        },
+        "commonswiki": {
+          "site": "commonswiki",
+          "title": "Category:Al-Attarine Madrasa",
+          "badges": []
+        },
+        "dewiki": {
+          "site": "dewiki",
+          "title": "Madrasat al-ʿAttārīn",
+          "badges": []
+        },
+        "enwiki": {
+          "site": "enwiki",
+          "title": "Al-Attarine Madrasa",
+          "badges": []
+        },
+        "eswiki": {
+          "site": "eswiki",
+          "title": "Madrasa Al-Attarine",
+          "badges": []
+        },
+        "fawiki": {
+          "site": "fawiki",
+          "title": "مدرسه عطارین",
+          "badges": []
+        },
+        "frwiki": {
+          "site": "frwiki",
+          "title": "Médersa Attarine",
+          "badges": []
+        },
+        "gpewiki": {
+          "site": "gpewiki",
+          "title": "Al-Attarine Madrasa",
+          "badges": []
+        },
+        "hawiki": {
+          "site": "hawiki",
+          "title": "Al-Attarine Madrasa",
+          "badges": []
+        },
+        "mswiki": {
+          "site": "mswiki",
+          "title": "Madrasah Attarin",
+          "badges": []
+        },
+        "ptwiki": {
+          "site": "ptwiki",
+          "title": "Madraça Attarine",
+          "badges": []
+        },
+        "rowiki": {
+          "site": "rowiki",
+          "title": "Madrasa al-Attarine",
+          "badges": []
+        },
+        "ruwiki": {
+          "site": "ruwiki",
+          "title": "Медресе Аттарин",
+          "badges": []
+        },
+        "slwiki": {
+          "site": "slwiki",
+          "title": "Medresa Al-Attarin",
+          "badges": []
+        },
+        "urwiki": {
+          "site": "urwiki",
+          "title": "مدرسہ عطارین",
+          "badges": []
+        }
+      }
+    },
+    "Q3042276": {
+      "type": "item",
+      "id": "Q3042276",
+      "labels": {
+        "fr": {
+          "language": "fr",
+          "value": "Palais royal de Fès"
+        },
+        "en": {
+          "language": "en",
+          "value": "Dar al-Makhzen Fez"
+        }
+      },
+      "descriptions": {
+        "en": {
+          "language": "en",
+          "value": "building in Fez, Morocco"
+        },
+        "fr": {
+          "language": "fr",
+          "value": "bâtiment au Maroc"
+        }
+      },
+      "claims": {
+        "P17": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P17",
+              "hash": "882c688f4851777a2a3ec6d7ab769323b175f3c7",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 1028,
+                  "id": "Q1028"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q3042276$12028bf8-4ddb-4fce-8d41-277541bf98c7",
+            "rank": "normal"
+          }
+        ],
+        "P625": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P625",
+              "hash": "e1ae2b6718a5d8771be63a50e0af3afd9365e7b0",
+              "datavalue": {
+                "value": {
+                  "latitude": 34.05316,
+                  "longitude": -4.99363,
+                  "altitude": null,
+                  "precision": 1e-05,
+                  "globe": "http://www.wikidata.org/entity/Q2"
+                },
+                "type": "globecoordinate"
+              },
+              "datatype": "globe-coordinate"
+            },
+            "type": "statement",
+            "id": "Q3042276$FDBB1292-1DC1-4F03-A9B9-C31237B4278D",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "b3fd5e254143d8b52cd96cff43af9af5e3a82358",
+                "snaks": {
+                  "P143": [
+                    {
+                      "snaktype": "value",
+                      "property": "P143",
+                      "hash": "f13c99a16441677ec69fcea23f221d866f1fc98f",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 199693,
+                          "id": "Q199693"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P143"
+                ]
+              }
+            ]
+          }
+        ],
+        "P31": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P31",
+              "hash": "b225efcfd07dd51107522d10af4b62525219825d",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 53536964,
+                  "id": "Q53536964"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q3042276$03F6C4CB-EB22-4F9E-9C75-E1981CE45A49",
+            "rank": "normal"
+          }
+        ],
+        "P18": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P18",
+              "hash": "a14846ad5c0353164bf878a86fe29a2603dcd506",
+              "datavalue": {
+                "value": "Fes - Palau Reial - Porta principal.JPG",
+                "type": "string"
+              },
+              "datatype": "commonsMedia"
+            },
+            "type": "statement",
+            "qualifiers": {
+              "P2096": [
+                {
+                  "snaktype": "value",
+                  "property": "P2096",
+                  "hash": "6800b8fd61eb3314a34fc1174c2675ffbf71928a",
+                  "datavalue": {
+                    "value": {
+                      "text": "Porte principale du palais.",
+                      "language": "fr"
+                    },
+                    "type": "monolingualtext"
+                  },
+                  "datatype": "monolingualtext"
+                }
+              ]
+            },
+            "qualifiers-order": [
+              "P2096"
+            ],
+            "id": "Q3042276$f09e1216-4045-db44-b95c-a94a518468fa",
+            "rank": "normal"
+          }
+        ],
+        "P373": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P373",
+              "hash": "1944c83dd2728f1895220dc2cc1ca35268ef4b87",
+              "datavalue": {
+                "value": "Dar al-Makhzen (Fes)",
+                "type": "string"
+              },
+              "datatype": "string"
+            },
+            "type": "statement",
+            "id": "Q3042276$C1F9AF57-E6B6-4CFD-94A0-6477DA08A03E",
+            "rank": "normal"
+          }
+        ],
+        "P131": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P131",
+              "hash": "98e420558e217c447b70fa1ba505ca7a5b17fe29",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 80985,
+                  "id": "Q80985"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q3042276$334ca456-42f0-0c45-01b1-772750ef25b0",
+            "rank": "normal"
+          }
+        ],
+        "P361": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P361",
+              "hash": "d235dc7d1481ab0fb998831d50e02f537cac64b8",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 2072102,
+                  "id": "Q2072102"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q3042276$9763ef53-4b8d-371e-e833-3303ccc3f55a",
+            "rank": "normal"
+          }
+        ],
+        "P1435": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P1435",
+              "hash": "e4860a5b7394994b9ce8a6cd40ba85f2f5677267",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 43113623,
+                  "id": "Q43113623"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q3042276$9402807C-DD3F-4F3F-8885-2751DD7A1C41",
+            "rank": "normal"
+          }
+        ],
+        "P2671": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P2671",
+              "hash": "0f151d1a07a190aa426896396bb3387b8f7e22f1",
+              "datavalue": {
+                "value": "/g/12135yt3",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q3042276$46D988B3-46DC-482E-A1DC-37B78828D518",
+            "rank": "normal"
+          }
+        ],
+        "P5008": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P5008",
+              "hash": "757684534433e0a6a3f9e0b8e741f228fc86173b",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 109929866,
+                  "id": "Q109929866"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q3042276$558A36B5-1449-4DC8-B5C9-9B037EFEA20A",
+            "rank": "normal"
+          }
+        ]
+      },
+      "sitelinks": {
+        "arwiki": {
+          "site": "arwiki",
+          "title": "دار المخزن (فاس)",
+          "badges": []
+        },
+        "cawiki": {
+          "site": "cawiki",
+          "title": "Palau reial de Fes",
+          "badges": []
+        },
+        "commonswiki": {
+          "site": "commonswiki",
+          "title": "Category:Dar al-Makhzen (Fes)",
+          "badges": []
+        },
+        "enwiki": {
+          "site": "enwiki",
+          "title": "Royal Palace of Fez",
+          "badges": []
+        },
+        "eswiki": {
+          "site": "eswiki",
+          "title": "Palacio Real de Fez",
+          "badges": []
+        },
+        "frwiki": {
+          "site": "frwiki",
+          "title": "Palais royal (Fès)",
+          "badges": []
+        },
+        "slwiki": {
+          "site": "slwiki",
+          "title": "Kraljeva palača, Fes",
+          "badges": []
+        },
+        "uzwiki": {
+          "site": "uzwiki",
+          "title": "Dorul Maxzan qirollik saroyi",
+          "badges": []
+        },
+        "zhwiki": {
+          "site": "zhwiki",
+          "title": "非斯皇宫",
+          "badges": []
+        }
+      }
+    },
+    "Q48815525": {
+      "type": "item",
+      "id": "Q48815525",
+      "labels": {
+        "en": {
+          "language": "en",
+          "value": "Chouara Tannery"
+        },
+        "fr": {
+          "language": "fr",
+          "value": "Tannerie Chouara"
+        }
+      },
+      "descriptions": {
+        "en": {
+          "language": "en",
+          "value": "Moroccan Tannery in Fez"
+        },
+        "fr": {
+          "language": "fr",
+          "value": "Tannerie à Fes Maroc"
+        }
+      },
+      "claims": {
+        "P625": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P625",
+              "hash": "7acf5261b42109184a0abce1fbc984617e0db8a5",
+              "datavalue": {
+                "value": {
+                  "latitude": 34.066088888889,
+                  "longitude": -4.9709777777778,
+                  "altitude": null,
+                  "precision": 2.7777777777778e-06,
+                  "globe": "http://www.wikidata.org/entity/Q2"
+                },
+                "type": "globecoordinate"
+              },
+              "datatype": "globe-coordinate"
+            },
+            "type": "statement",
+            "id": "Q48815525$8246311f-4765-6d9e-23b5-7892d7a39a5d",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+                "snaks": {
+                  "P143": [
+                    {
+                      "snaktype": "value",
+                      "property": "P143",
+                      "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 328,
+                          "id": "Q328"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P143"
+                ]
+              }
+            ]
+          }
+        ],
+        "P18": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P18",
+              "hash": "34e31c613f1661f941ab942846ca75bdcf2421d6",
+              "datavalue": {
+                "value": "Leather tanning, Fes.jpg",
+                "type": "string"
+              },
+              "datatype": "commonsMedia"
+            },
+            "type": "statement",
+            "id": "Q48815525$afb07028-41d8-e8c7-aae5-3af052c12fe1",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+                "snaks": {
+                  "P143": [
+                    {
+                      "snaktype": "value",
+                      "property": "P143",
+                      "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 328,
+                          "id": "Q328"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P143"
+                ]
+              }
+            ]
+          }
+        ],
+        "P17": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P17",
+              "hash": "882c688f4851777a2a3ec6d7ab769323b175f3c7",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 1028,
+                  "id": "Q1028"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q48815525$255cbb1f-4f2a-003e-7623-a10bca8bdc8c",
+            "rank": "normal"
+          }
+        ],
+        "P131": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P131",
+              "hash": "98e420558e217c447b70fa1ba505ca7a5b17fe29",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 80985,
+                  "id": "Q80985"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q48815525$dc8da7c9-42d7-0317-7a3f-8e7313976895",
+            "rank": "normal"
+          }
+        ],
+        "P31": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P31",
+              "hash": "e66310a04da3a5b0cd8045682f421a6092b2838f",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 3515239,
+                  "id": "Q3515239"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q48815525$a23daf96-4257-9f62-2519-ce4fb8cc33f0",
+            "rank": "normal"
+          }
+        ],
+        "P2671": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P2671",
+              "hash": "af9e36d1f4250c9ed5ea8b61f933e9b8e1f62d98",
+              "datavalue": {
+                "value": "/g/11ghxw1tkn",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q48815525$D74A6691-17BD-4688-A0A6-8604D9C180FF",
+            "rank": "normal"
+          }
+        ],
+        "P7772": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P7772",
+              "hash": "32cae210b5c30a65e18c45206149e52ba209ce44",
+              "datavalue": {
+                "value": "moroccantannery.com",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q48815525$94464E1D-DA4A-4349-8555-513D58056D9D",
+            "rank": "normal"
+          },
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P7772",
+              "hash": "ff2d5af8bb25aa574457baecfbda8d17cb990112",
+              "datavalue": {
+                "value": "chouara-leather-tannery",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q48815525$4AAEFE01-6D0C-407A-8E21-DA3C54F2217A",
+            "rank": "normal"
+          }
+        ],
+        "P373": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P373",
+              "hash": "18dc9327ff4c5735de516fea86a6a19e973ed5ed",
+              "datavalue": {
+                "value": "Chouara Tannery",
+                "type": "string"
+              },
+              "datatype": "string"
+            },
+            "type": "statement",
+            "id": "Q48815525$b60358cd-5751-49f1-af98-7f5e6a63c893",
+            "rank": "normal"
+          }
+        ],
+        "P1435": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P1435",
+              "hash": "e4860a5b7394994b9ce8a6cd40ba85f2f5677267",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 43113623,
+                  "id": "Q43113623"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q48815525$f3662415-4cfa-eeeb-ea34-47d0e186e296",
+            "rank": "normal"
+          }
+        ],
+        "P361": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P361",
+              "hash": "d235dc7d1481ab0fb998831d50e02f537cac64b8",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 2072102,
+                  "id": "Q2072102"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q48815525$b8ea75d1-4eb8-6746-43d0-ddba76358a7f",
+            "rank": "normal"
+          }
+        ],
+        "P5008": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P5008",
+              "hash": "757684534433e0a6a3f9e0b8e741f228fc86173b",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 109929866,
+                  "id": "Q109929866"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q48815525$52df2230-4030-40bd-3440-1cea09498052",
+            "rank": "normal"
+          }
+        ]
+      },
+      "sitelinks": {
+        "arwiki": {
+          "site": "arwiki",
+          "title": "دار شوارة للدبغ",
+          "badges": []
+        },
+        "commonswiki": {
+          "site": "commonswiki",
+          "title": "Category:Chouara Tannery",
+          "badges": []
+        },
+        "dewiki": {
+          "site": "dewiki",
+          "title": "Chouara-Gerberei",
+          "badges": []
+        },
+        "enwiki": {
+          "site": "enwiki",
+          "title": "Chouara Tannery",
+          "badges": []
+        },
+        "idwiki": {
+          "site": "idwiki",
+          "title": "Tempat Penyamakan Chouara",
+          "badges": []
+        },
+        "itwiki": {
+          "site": "itwiki",
+          "title": "Conceria Chouara",
+          "badges": []
+        },
+        "slwiki": {
+          "site": "slwiki",
+          "title": "Usnjarna Čuara",
+          "badges": []
+        }
+      }
+    },
+    "Q2911082": {
+      "type": "item",
+      "id": "Q2911082",
+      "labels": {
+        "fr": {
+          "language": "fr",
+          "value": "Borj Nord"
+        },
+        "en": {
+          "language": "en",
+          "value": "Borj Nord"
+        }
+      },
+      "descriptions": {
+        "en": {
+          "language": "en",
+          "value": "Moroccan cultural heritage site"
+        },
+        "fr": {
+          "language": "fr",
+          "value": "site du patrimoine culturel marocain"
+        }
+      },
+      "claims": {
+        "P31": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P31",
+              "hash": "cbeaf2223221ca8690f00655dd773dc67dd5d68a",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 57831,
+                  "id": "Q57831"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q2911082$5e776b02-466f-6b47-5113-364c13fd2033",
+            "rank": "normal"
+          }
+        ],
+        "P17": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P17",
+              "hash": "882c688f4851777a2a3ec6d7ab769323b175f3c7",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 1028,
+                  "id": "Q1028"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q2911082$306388af-4d9d-1984-36a1-8b393eb5f8da",
+            "rank": "normal"
+          }
+        ],
+        "P131": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P131",
+              "hash": "98e420558e217c447b70fa1ba505ca7a5b17fe29",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 80985,
+                  "id": "Q80985"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q2911082$e7a03eb2-46f4-acdd-34eb-2718f74b8553",
+            "rank": "normal"
+          }
+        ],
+        "P18": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P18",
+              "hash": "0ee552ded67adcf8510dcc8aa46e20831563d8ea",
+              "datavalue": {
+                "value": "Kasbah Cherarda(js).jpg",
+                "type": "string"
+              },
+              "datatype": "commonsMedia"
+            },
+            "type": "statement",
+            "id": "Q2911082$6b13ca8a-4f5a-d2dc-acea-604171e5c1da",
+            "rank": "normal"
+          }
+        ],
+        "P373": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P373",
+              "hash": "9a8c43aa6742da1875ba2e51e286d160568da562",
+              "datavalue": {
+                "value": "Borj Nord",
+                "type": "string"
+              },
+              "datatype": "string"
+            },
+            "type": "statement",
+            "id": "Q2911082$F633280B-F45C-407C-B2F2-39213B9B8E05",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+                "snaks": {
+                  "P143": [
+                    {
+                      "snaktype": "value",
+                      "property": "P143",
+                      "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 328,
+                          "id": "Q328"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P143"
+                ]
+              }
+            ]
+          }
+        ],
+        "P5694": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P5694",
+              "hash": "647c20d5c481cb9df414e1ac83d91103b74b96b7",
+              "datavalue": {
+                "value": "pc_architecture/sanae:050030",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q2911082$0e6e9b5d-4448-2cf4-4c4d-a92ea1574f5a",
+            "rank": "normal"
+          }
+        ],
+        "P625": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P625",
+              "hash": "a15d65b5b76d852c9378b05291441194eb01b3d8",
+              "datavalue": {
+                "value": {
+                  "latitude": 34.067179,
+                  "longitude": -4.984918,
+                  "altitude": null,
+                  "precision": 1e-06,
+                  "globe": "http://www.wikidata.org/entity/Q2"
+                },
+                "type": "globecoordinate"
+              },
+              "datatype": "globe-coordinate"
+            },
+            "type": "statement",
+            "id": "Q2911082$e21dbc86-4078-33b4-92ba-c3ab1e71d973",
+            "rank": "normal"
+          }
+        ],
+        "P1435": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P1435",
+              "hash": "031af0d8ea9ce877a6f14dc48d8002cb515b06d9",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 57338034,
+                  "id": "Q57338034"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q2911082$B29299FA-B5E0-4F5E-8319-A8DEC044A7AB",
+            "rank": "normal"
+          }
+        ],
+        "P2671": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P2671",
+              "hash": "f15721e998a518deed8d84a9d05494a3cb2f7fa3",
+              "datavalue": {
+                "value": "/g/1224nhkl",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q2911082$58308995-4842-493F-9E59-03825F6BF869",
+            "rank": "normal"
+          }
+        ],
+        "P8933": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P8933",
+              "hash": "750c49b59efafa35e985ad234a1837c15c7779a8",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 105741175,
+                  "id": "Q105741175"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q2911082$d144bd12-7058-4558-9366-a5f3985093ad",
+            "rank": "normal"
+          }
+        ],
+        "P1343": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P1343",
+              "hash": "8b83419e3f034e1e65d0da9622cbb2830d95cade",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 115865022,
+                  "id": "Q115865022"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "qualifiers": {
+              "P2699": [
+                {
+                  "snaktype": "value",
+                  "property": "P2699",
+                  "hash": "c426cccfc40cc710f570186bbbda914a96c586d6",
+                  "datavalue": {
+                    "value": "http://www.starforts.com/borjnord.html",
+                    "type": "string"
+                  },
+                  "datatype": "url"
+                }
+              ]
+            },
+            "qualifiers-order": [
+              "P2699"
+            ],
+            "id": "Q2911082$B705EF62-0EAC-4A11-A274-4B9269532537",
+            "rank": "normal"
+          }
+        ],
+        "P11729": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P11729",
+              "hash": "cc06e4dbab9fd9c54a6a929689ce0637bb1bc13e",
+              "datavalue": {
+                "value": "47671",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q2911082$FF2DDDE5-241F-4AA7-A689-221BF198D603",
+            "rank": "normal"
+          }
+        ]
+      },
+      "sitelinks": {
+        "arwiki": {
+          "site": "arwiki",
+          "title": "برج الشمال",
+          "badges": []
+        },
+        "bnwiki": {
+          "site": "bnwiki",
+          "title": "বোর্জ নর্ড",
+          "badges": []
+        },
+        "commonswiki": {
+          "site": "commonswiki",
+          "title": "Category:Borj Nord",
+          "badges": []
+        },
+        "dewiki": {
+          "site": "dewiki",
+          "title": "Borj Nord",
+          "badges": []
+        },
+        "enwiki": {
+          "site": "enwiki",
+          "title": "Borj Nord",
+          "badges": []
+        },
+        "frwiki": {
+          "site": "frwiki",
+          "title": "Borj Nord",
+          "badges": []
+        },
+        "ptwiki": {
+          "site": "ptwiki",
+          "title": "Borj Nord",
+          "badges": []
+        }
+      }
+    },
+    "Q58897414": {
+      "type": "item",
+      "id": "Q58897414",
+      "labels": {
+        "fr": {
+          "language": "fr",
+          "value": "Borj Sud"
+        },
+        "en": {
+          "language": "en",
+          "value": "Southern Tower (Fes)"
+        }
+      },
+      "descriptions": {
+        "fr": {
+          "language": "fr",
+          "value": "site du patrimoine culturel marocain"
+        },
+        "en": {
+          "language": "en",
+          "value": "Moroccan cultural heritage site"
+        }
+      },
+      "claims": {
+        "P31": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P31",
+              "hash": "dd1da0b384ebcfa8e952f15a90f4f57b63428b79",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 2434238,
+                  "id": "Q2434238"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q58897414$37EFAA60-C07C-4404-8E69-B34204D77B5F",
+            "rank": "normal"
+          }
+        ],
+        "P5694": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P5694",
+              "hash": "44d52f8ba988abd01c4b490cc6c3abde61cd4387",
+              "datavalue": {
+                "value": "pc_architecture/sanae:050031",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q58897414$6BCE4BEC-23E3-4AC6-B929-66FE0B111B6D",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "e4ac00df6d73acf10a5de676209714bec60a73e2",
+                "snaks": {
+                  "P854": [
+                    {
+                      "snaktype": "value",
+                      "property": "P854",
+                      "hash": "71cae0bf83bd82a03abad27174baf9df5d345a2c",
+                      "datavalue": {
+                        "value": "http://idpc.ma/view/pc_architecture/sanae:050031",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "8f896a71d465c977998a14a0fb231931f81a8148",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2018-11-20T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854",
+                  "P813"
+                ]
+              }
+            ]
+          }
+        ],
+        "P17": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P17",
+              "hash": "882c688f4851777a2a3ec6d7ab769323b175f3c7",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 1028,
+                  "id": "Q1028"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q58897414$0810BA2C-C5EA-41AE-816E-73714562BF5A",
+            "rank": "normal"
+          }
+        ],
+        "P131": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P131",
+              "hash": "98e420558e217c447b70fa1ba505ca7a5b17fe29",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 80985,
+                  "id": "Q80985"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q58897414$f3441bd8-46d5-ed44-74c2-ac939392b51f",
+            "rank": "normal"
+          }
+        ],
+        "P625": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P625",
+              "hash": "db57645907734cf338f9618521c7eef38000fd82",
+              "datavalue": {
+                "value": {
+                  "latitude": 34.054032,
+                  "longitude": -4.969998,
+                  "altitude": null,
+                  "precision": 1e-06,
+                  "globe": "http://www.wikidata.org/entity/Q2"
+                },
+                "type": "globecoordinate"
+              },
+              "datatype": "globe-coordinate"
+            },
+            "type": "statement",
+            "id": "Q58897414$e3b9118d-4e23-36a0-da5f-e2888a8cc525",
+            "rank": "normal"
+          }
+        ],
+        "P1435": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P1435",
+              "hash": "031af0d8ea9ce877a6f14dc48d8002cb515b06d9",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 57338034,
+                  "id": "Q57338034"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q58897414$F63E157F-179C-4765-9E8A-C72E0BE75D3E",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "5117f16678ed0c05a1279b91ba81615eb4fbb6ee",
+                "snaks": {
+                  "P854": [
+                    {
+                      "snaktype": "value",
+                      "property": "P854",
+                      "hash": "74d1eb8a34c0d178d037fb69747cf828dc46c2b4",
+                      "datavalue": {
+                        "value": "http://idpc.ma/",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854"
+                ]
+              }
+            ]
+          }
+        ],
+        "P18": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P18",
+              "hash": "af22a8b5d567ffc41de9261c0c08ba8786400a46",
+              "datavalue": {
+                "value": "Borj sud2.jpg",
+                "type": "string"
+              },
+              "datatype": "commonsMedia"
+            },
+            "type": "statement",
+            "id": "Q58897414$c5a97fae-46aa-1de5-8bbf-9dde00e07966",
+            "rank": "normal"
+          }
+        ],
+        "P373": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P373",
+              "hash": "b0baa39f10a54681290add763943e33c55553737",
+              "datavalue": {
+                "value": "Borj Sud",
+                "type": "string"
+              },
+              "datatype": "string"
+            },
+            "type": "statement",
+            "id": "Q58897414$87608ae7-4007-9599-4b1d-eb79cb6714d8",
+            "rank": "normal"
+          }
+        ],
+        "P8933": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P8933",
+              "hash": "8b08bf5a7d96e4535f8be7738316048587fb6d1a",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 104635483,
+                  "id": "Q104635483"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q58897414$0e5ddb7c-ebb4-4275-b82f-3cf2cac7fd49",
+            "rank": "normal"
+          }
+        ],
+        "P2671": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P2671",
+              "hash": "449d8741c8e36870e14c619c9281031e200496bf",
+              "datavalue": {
+                "value": "/g/11r9twfbv",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q58897414$0487A394-5B34-499A-BE0B-F4C1DE1A5688",
+            "rank": "normal"
+          }
+        ]
+      },
+      "sitelinks": {
+        "arwiki": {
+          "site": "arwiki",
+          "title": "البرج الجنوبي",
+          "badges": []
+        },
+        "bnwiki": {
+          "site": "bnwiki",
+          "title": "বরজ সুদ",
+          "badges": []
+        },
+        "commonswiki": {
+          "site": "commonswiki",
+          "title": "Category:Borj Sud",
+          "badges": []
+        },
+        "dewiki": {
+          "site": "dewiki",
+          "title": "Borj Sud",
+          "badges": []
+        },
+        "enwiki": {
+          "site": "enwiki",
+          "title": "Borj Sud",
+          "badges": []
+        },
+        "eswiki": {
+          "site": "eswiki",
+          "title": "Borj Sud",
+          "badges": []
+        }
+      }
+    }
+  },
+  "success": 1
+}

@@ -1,0 +1,761 @@
+[
+  {
+    "candidate_id": "Q1137533",
+    "site_id": "Q1137533",
+    "name": "Mosquée Koutoubia",
+    "city": "Marrakech",
+    "country": "Maroc",
+    "category": "mosquée",
+    "aliases": [],
+    "metadata_source": "https://www.wikidata.org/wiki/Q1137533",
+    "source_snapshot": "sources/pilot-wikidata.json",
+    "metadata_status": "country_and_city_area_checked_not_field_verified",
+    "coordinates": {
+      "latitude": 31.624124,
+      "longitude": -7.993541,
+      "altitude": null,
+      "precision": 1e-06,
+      "globe": "http://www.wikidata.org/entity/Q2"
+    },
+    "frwiki": "Mosquée Koutoubia",
+    "enwiki": "Kutubiyya Mosque",
+    "image_candidates": [
+      "Mosquée de la Koutoubia - marakesh.jpg"
+    ],
+    "image_license_review_complete": false,
+    "historical_text_review_complete": false,
+    "visual_evaluation_complete": false,
+    "quality_flags": [],
+    "scope_note": "Premier pilote documentaire, métadonnées et photographie déjà acquises séparément.",
+    "verified_current_hours": null,
+    "verified_current_prices": null
+  },
+  {
+    "candidate_id": "Q2465115",
+    "site_id": "Q2465115",
+    "name": "Palais De La Bahia",
+    "city": "Marrakech",
+    "country": "Maroc",
+    "category": "palais",
+    "aliases": [
+      "Palais El Bahia"
+    ],
+    "metadata_source": "https://www.wikidata.org/wiki/Q2465115",
+    "source_snapshot": "sources/pilot-wikidata.json",
+    "metadata_status": "country_and_city_area_checked_not_field_verified",
+    "coordinates": {
+      "latitude": 31.62159167,
+      "longitude": -7.98223056,
+      "altitude": null,
+      "precision": 2.77777777778e-06,
+      "globe": "http://www.wikidata.org/entity/Q2"
+    },
+    "frwiki": "Palais de la Bahia",
+    "enwiki": "Bahia Palace",
+    "image_candidates": [
+      "Bahia Palace large court.jpg"
+    ],
+    "image_license_review_complete": false,
+    "historical_text_review_complete": false,
+    "visual_evaluation_complete": false,
+    "quality_flags": [],
+    "scope_note": "Premier pilote documentaire, métadonnées et photographie déjà acquises séparément.",
+    "verified_current_hours": null,
+    "verified_current_prices": null
+  },
+  {
+    "candidate_id": "Q1560540",
+    "site_id": "Q1560540",
+    "name": "Médersa Ben Youssef",
+    "city": "Marrakech",
+    "country": "Maroc",
+    "category": "médersa",
+    "aliases": [],
+    "metadata_source": "https://www.wikidata.org/wiki/Q1560540",
+    "source_snapshot": "sources/pilot-wikidata.json",
+    "metadata_status": "country_and_city_area_checked_not_field_verified",
+    "coordinates": {
+      "latitude": 31.632,
+      "longitude": -7.986,
+      "altitude": null,
+      "precision": 2.777777777778e-05,
+      "globe": "http://www.wikidata.org/entity/Q2"
+    },
+    "frwiki": "Médersa Ben Youssef",
+    "enwiki": "Ben Youssef Madrasa",
+    "image_candidates": [
+      "Medersa-Ben-Youssef-01.jpg"
+    ],
+    "image_license_review_complete": false,
+    "historical_text_review_complete": false,
+    "visual_evaluation_complete": false,
+    "quality_flags": [],
+    "scope_note": "Premier pilote documentaire, métadonnées et photographie déjà acquises séparément.",
+    "verified_current_hours": null,
+    "verified_current_prices": null
+  },
+  {
+    "candidate_id": "Q1395431",
+    "site_id": "Q1395431",
+    "name": "Jardin Majorelle",
+    "city": "Marrakech",
+    "country": "Maroc",
+    "category": "jardin",
+    "aliases": [],
+    "metadata_source": "https://www.wikidata.org/wiki/Q1395431",
+    "source_snapshot": "sources/Marrakech-entities.json",
+    "metadata_status": "country_and_city_area_checked_not_field_verified",
+    "coordinates": {
+      "latitude": 31.6415,
+      "longitude": -8.0029,
+      "altitude": null,
+      "precision": 0.0002777777777777778,
+      "globe": "http://www.wikidata.org/entity/Q2"
+    },
+    "frwiki": "Jardin Majorelle",
+    "enwiki": "Majorelle Garden",
+    "image_candidates": [
+      "Le jardin des majorelle 16.JPG"
+    ],
+    "image_license_review_complete": false,
+    "historical_text_review_complete": false,
+    "visual_evaluation_complete": false,
+    "quality_flags": [],
+    "scope_note": "",
+    "verified_current_hours": null,
+    "verified_current_prices": null
+  },
+  {
+    "candidate_id": "Q1277747",
+    "site_id": "Q1277747",
+    "name": "Palais El Badi",
+    "city": "Marrakech",
+    "country": "Maroc",
+    "category": "palais",
+    "aliases": [
+      "Palais El Badiî"
+    ],
+    "metadata_source": "https://www.wikidata.org/wiki/Q1277747",
+    "source_snapshot": "sources/Marrakech-entities.json",
+    "metadata_status": "country_and_city_area_checked_not_field_verified",
+    "coordinates": {
+      "latitude": 31.618333,
+      "longitude": -7.985833,
+      "altitude": null,
+      "precision": 1e-05,
+      "globe": "http://www.wikidata.org/entity/Q2"
+    },
+    "frwiki": "Palais El Badi",
+    "enwiki": "El Badi Palace",
+    "image_candidates": [
+      "Badi, palác, Marrákeš, 2025 (10).jpg"
+    ],
+    "image_license_review_complete": false,
+    "historical_text_review_complete": false,
+    "visual_evaluation_complete": false,
+    "quality_flags": [],
+    "scope_note": "",
+    "verified_current_hours": null,
+    "verified_current_prices": null
+  },
+  {
+    "candidate_id": "Q1920259",
+    "site_id": "Q1920259",
+    "name": "Jardins De La Ménara",
+    "city": "Marrakech",
+    "country": "Maroc",
+    "category": "jardin",
+    "aliases": [
+      "Les Jardins de la Ménara"
+    ],
+    "metadata_source": "https://www.wikidata.org/wiki/Q1920259",
+    "source_snapshot": "sources/gardens-entities.json",
+    "metadata_status": "country_and_city_area_checked_not_field_verified",
+    "coordinates": {
+      "latitude": 31.616703,
+      "longitude": -8.024237,
+      "altitude": null,
+      "precision": 1e-06,
+      "globe": "http://www.wikidata.org/entity/Q2"
+    },
+    "frwiki": "Ménara (jardin)",
+    "enwiki": "Menara Gardens",
+    "image_candidates": [
+      "Jardins de la Ménara.jpg"
+    ],
+    "image_license_review_complete": false,
+    "historical_text_review_complete": false,
+    "visual_evaluation_complete": false,
+    "quality_flags": [],
+    "scope_note": "",
+    "verified_current_hours": null,
+    "verified_current_prices": null
+  },
+  {
+    "candidate_id": "Q59956159",
+    "site_id": "Q59956159",
+    "name": "Dar El Bacha",
+    "city": "Marrakech",
+    "country": "Maroc",
+    "category": "palais et musée",
+    "aliases": [
+      "Musée Dar El Bacha"
+    ],
+    "metadata_source": "https://www.wikidata.org/wiki/Q59956159",
+    "source_snapshot": "sources/Marrakech-entities.json",
+    "metadata_status": "country_and_city_area_checked_not_field_verified",
+    "coordinates": {
+      "latitude": 31.631586,
+      "longitude": -7.992193,
+      "altitude": null,
+      "precision": 1e-06,
+      "globe": "http://www.wikidata.org/entity/Q2"
+    },
+    "frwiki": "Dar el Bacha",
+    "enwiki": "Dar el Bacha",
+    "image_candidates": [
+      "Dar El Bacha.jpg"
+    ],
+    "image_license_review_complete": false,
+    "historical_text_review_complete": false,
+    "visual_evaluation_complete": false,
+    "quality_flags": [],
+    "scope_note": "Distinguer l’histoire du palais des informations sur le musée et ses collections.",
+    "verified_current_hours": null,
+    "verified_current_prices": null
+  },
+  {
+    "candidate_id": "Q3412514",
+    "site_id": "Q3412514",
+    "name": "Qoubba Almoravide",
+    "city": "Marrakech",
+    "country": "Maroc",
+    "category": "édifice historique",
+    "aliases": [
+      "Dôme des Almoravides",
+      "Koubba Almoravide"
+    ],
+    "metadata_source": "https://www.wikidata.org/wiki/Q3412514",
+    "source_snapshot": "sources/Marrakech-entities.json",
+    "metadata_status": "country_and_city_area_checked_not_field_verified",
+    "coordinates": {
+      "latitude": 31.6315,
+      "longitude": -7.9872,
+      "altitude": null,
+      "precision": 2.77777777778e-06,
+      "globe": "http://www.wikidata.org/entity/Q2"
+    },
+    "frwiki": "Qoubba almoravide",
+    "enwiki": "Almoravid Qubba",
+    "image_candidates": [
+      "Koubba Ba'Adiyn.JPG"
+    ],
+    "image_license_review_complete": false,
+    "historical_text_review_complete": false,
+    "visual_evaluation_complete": false,
+    "quality_flags": [],
+    "scope_note": "",
+    "verified_current_hours": null,
+    "verified_current_prices": null
+  },
+  {
+    "candidate_id": "Q3329122",
+    "site_id": "Q3329122",
+    "name": "Musée Dar Si Saïd",
+    "city": "Marrakech",
+    "country": "Maroc",
+    "category": "palais et musée",
+    "aliases": [
+      "Musée Dar Si Said"
+    ],
+    "metadata_source": "https://www.wikidata.org/wiki/Q3329122",
+    "source_snapshot": "sources/Marrakech-entities.json",
+    "metadata_status": "country_and_city_area_checked_not_field_verified",
+    "coordinates": {
+      "latitude": 31.623333333333,
+      "longitude": -7.9836111111111,
+      "altitude": null,
+      "precision": 0.00027777777777778,
+      "globe": "http://www.wikidata.org/entity/Q2"
+    },
+    "frwiki": "Musée Dar Si Saïd",
+    "enwiki": "Dar Si Said",
+    "image_candidates": [
+      "Dar Si Said 1465.jpg"
+    ],
+    "image_license_review_complete": false,
+    "historical_text_review_complete": false,
+    "visual_evaluation_complete": false,
+    "quality_flags": [],
+    "scope_note": "Distinguer le palais, le musée et les collections pour les réponses et les conditions de visite.",
+    "verified_current_hours": null,
+    "verified_current_prices": null
+  },
+  {
+    "candidate_id": "Q2569036",
+    "site_id": "Q2569036",
+    "name": "Kasbah Des Oudayas",
+    "city": "Rabat",
+    "country": "Maroc",
+    "category": "ensemble fortifié",
+    "aliases": [
+      "Kasbah des Oudaias",
+      "Oudaya"
+    ],
+    "metadata_source": "https://www.wikidata.org/wiki/Q2569036",
+    "source_snapshot": "sources/Rabat-entities.json",
+    "metadata_status": "country_and_city_area_checked_not_field_verified",
+    "coordinates": {
+      "latitude": 34.03055555555556,
+      "longitude": -6.835555555555556,
+      "altitude": null,
+      "precision": 0.0002777777777777778,
+      "globe": "http://www.wikidata.org/entity/Q2"
+    },
+    "frwiki": "Kasbah des Oudayas",
+    "enwiki": "Kasbah of the Udayas",
+    "image_candidates": [
+      "Kasbah Oudayas exterior.jpg"
+    ],
+    "image_license_review_complete": false,
+    "historical_text_review_complete": false,
+    "visual_evaluation_complete": false,
+    "quality_flags": [
+      "screenshot_alias_needs_identity_confirmation"
+    ],
+    "scope_note": "« Oudaya » traité provisoirement comme alias de la Kasbah ; ne pas créer un doublon sans identité plus précise.",
+    "verified_current_hours": null,
+    "verified_current_prices": null
+  },
+  {
+    "candidate_id": "Q9163659",
+    "site_id": "Q9163659",
+    "name": "Bab Rouah",
+    "city": "Rabat",
+    "country": "Maroc",
+    "category": "porte historique",
+    "aliases": [
+      "Galerie Bab Rouah",
+      "Bab er-Rouah"
+    ],
+    "metadata_source": "https://www.wikidata.org/wiki/Q9163659",
+    "source_snapshot": "sources/rabat-gates-entities.json",
+    "metadata_status": "country_and_city_area_checked_not_field_verified",
+    "coordinates": {
+      "latitude": 34.012833333333,
+      "longitude": -6.8376388888889,
+      "altitude": null,
+      "precision": 1e-06,
+      "globe": "http://www.wikidata.org/entity/Q2"
+    },
+    "frwiki": null,
+    "enwiki": "Bab er-Rouah",
+    "image_candidates": [
+      "باب الرواح.jpg"
+    ],
+    "image_license_review_complete": false,
+    "historical_text_review_complete": false,
+    "visual_evaluation_complete": false,
+    "quality_flags": [
+      "no_linked_french_wikipedia_article_in_snapshot"
+    ],
+    "scope_note": "La porte historique est retenue ; l’activité de galerie ne doit pas être confondue avec l’édifice ou la station de tramway homonyme.",
+    "verified_current_hours": null,
+    "verified_current_prices": null
+  },
+  {
+    "candidate_id": "Q58897211",
+    "site_id": "Q58897211",
+    "name": "Bab El Had",
+    "city": "Rabat",
+    "country": "Maroc",
+    "category": "porte historique",
+    "aliases": [],
+    "metadata_source": "https://www.wikidata.org/wiki/Q58897211",
+    "source_snapshot": "sources/rabat-gates-entities.json",
+    "metadata_status": "country_and_city_area_checked_not_field_verified",
+    "coordinates": {
+      "latitude": 34.021964,
+      "longitude": -6.840365,
+      "altitude": null,
+      "precision": 1e-06,
+      "globe": "http://www.wikidata.org/entity/Q2"
+    },
+    "frwiki": null,
+    "enwiki": null,
+    "image_candidates": [
+      "Bab El Hadd 2.jpg"
+    ],
+    "image_license_review_complete": false,
+    "historical_text_review_complete": false,
+    "visual_evaluation_complete": false,
+    "quality_flags": [
+      "no_linked_french_wikipedia_article_in_snapshot"
+    ],
+    "scope_note": "Porte à Rabat ; station de tramway et lieu homonyme à d’autres coordonnées exclus.",
+    "verified_current_hours": null,
+    "verified_current_prices": null
+  },
+  {
+    "candidate_id": "Q58975464",
+    "site_id": "Q58975464",
+    "name": "Jardins Andalous Des Oudayas",
+    "city": "Rabat",
+    "country": "Maroc",
+    "category": "jardin",
+    "aliases": [
+      "Jardins Andalous",
+      "Jardin des Oudayas"
+    ],
+    "metadata_source": "https://www.wikidata.org/wiki/Q58975464",
+    "source_snapshot": "sources/gardens-entities.json",
+    "metadata_status": "country_and_city_area_checked_not_field_verified",
+    "coordinates": {
+      "latitude": 34.030107,
+      "longitude": -6.835478,
+      "altitude": null,
+      "precision": 1e-06,
+      "globe": "http://www.wikidata.org/entity/Q2"
+    },
+    "frwiki": null,
+    "enwiki": null,
+    "image_candidates": [
+      "Rabat Kasbah Oudayas (3).jpg"
+    ],
+    "image_license_review_complete": false,
+    "historical_text_review_complete": false,
+    "visual_evaluation_complete": false,
+    "quality_flags": [
+      "part_of_kasbah_relation_to_review",
+      "no_linked_french_wikipedia_article_in_snapshot"
+    ],
+    "scope_note": "Jardin à distinguer de la Kasbah, avec relation d’inclusion à contrôler avant planification.",
+    "verified_current_hours": null,
+    "verified_current_prices": null
+  },
+  {
+    "candidate_id": "rabat-souk-tahti",
+    "site_id": null,
+    "name": "Souk Tahti",
+    "city": "Rabat",
+    "country": "Maroc",
+    "category": "marché",
+    "aliases": [],
+    "metadata_source": null,
+    "source_snapshot": null,
+    "metadata_status": "unresolved_do_not_import",
+    "coordinates": null,
+    "frwiki": null,
+    "enwiki": null,
+    "image_candidates": [],
+    "image_license_review_complete": false,
+    "historical_text_review_complete": false,
+    "visual_evaluation_complete": false,
+    "quality_flags": [
+      "identity_unresolved"
+    ],
+    "scope_note": "Nom, emplacement et photographie à identifier. La capture seule ne suffit pas pour créer une fiche géolocalisée.",
+    "verified_current_hours": null,
+    "verified_current_prices": null
+  },
+  {
+    "candidate_id": "Q2881543",
+    "site_id": "Q2881543",
+    "name": "Bab Boujloud",
+    "city": "Fès",
+    "country": "Maroc",
+    "category": "porte historique",
+    "aliases": [
+      "Bab Bou Jeloud",
+      "Porte Bleue"
+    ],
+    "metadata_source": "https://www.wikidata.org/wiki/Q2881543",
+    "source_snapshot": "sources/Fes-entities.json",
+    "metadata_status": "country_and_city_area_checked_not_field_verified",
+    "coordinates": {
+      "latitude": 34.061692,
+      "longitude": -4.984029,
+      "altitude": null,
+      "precision": 1e-06,
+      "globe": "http://www.wikidata.org/entity/Q2"
+    },
+    "frwiki": "Bab Boujloud",
+    "enwiki": "Bab Bou Jeloud",
+    "image_candidates": [
+      "Fes Bab Bou Jeloud 2011.jpg"
+    ],
+    "image_license_review_complete": false,
+    "historical_text_review_complete": false,
+    "visual_evaluation_complete": false,
+    "quality_flags": [],
+    "scope_note": "",
+    "verified_current_hours": null,
+    "verified_current_prices": null
+  },
+  {
+    "candidate_id": "Q378014",
+    "site_id": "Q378014",
+    "name": "Al Quaraouiyine",
+    "city": "Fès",
+    "country": "Maroc",
+    "category": "complexe religieux et enseignement",
+    "aliases": [
+      "Mosquée et Université Al Quaraouiyine",
+      "Al-Qarawiyyin"
+    ],
+    "metadata_source": "https://www.wikidata.org/wiki/Q378014",
+    "source_snapshot": "sources/Fes-entities.json",
+    "metadata_status": "country_and_city_area_checked_not_field_verified",
+    "coordinates": {
+      "latitude": 34.064444444444,
+      "longitude": -4.9733333333333,
+      "altitude": null,
+      "precision": null,
+      "globe": "http://www.wikidata.org/entity/Q2"
+    },
+    "frwiki": "Université Al Quaraouiyine",
+    "enwiki": "University of al-Qarawiyyin",
+    "image_candidates": [
+      "University of Al Qaraouiyine.jpg"
+    ],
+    "image_license_review_complete": false,
+    "historical_text_review_complete": false,
+    "visual_evaluation_complete": false,
+    "quality_flags": [
+      "institution_and_building_scope_to_review"
+    ],
+    "scope_note": "L’entité trouvée décrit l’université ; délimiter le bâtiment de la mosquée, l’institution et les accès avant import. Les affirmations de fondation et de primauté doivent être sourcées.",
+    "verified_current_hours": null,
+    "verified_current_prices": null
+  },
+  {
+    "candidate_id": "Q29660",
+    "site_id": "Q29660",
+    "name": "Médersa Bou Inania",
+    "city": "Fès",
+    "country": "Maroc",
+    "category": "médersa",
+    "aliases": [],
+    "metadata_source": "https://www.wikidata.org/wiki/Q29660",
+    "source_snapshot": "sources/Fes-entities.json",
+    "metadata_status": "country_and_city_area_checked_not_field_verified",
+    "coordinates": {
+      "latitude": 34.062208,
+      "longitude": -4.982733,
+      "altitude": null,
+      "precision": 1e-06,
+      "globe": "http://www.wikidata.org/entity/Q2"
+    },
+    "frwiki": "Médersa Bou Inania de Fès",
+    "enwiki": "Bou Inania Madrasa",
+    "image_candidates": [
+      "Bou Inania Madrasa 2011.jpg"
+    ],
+    "image_license_review_complete": false,
+    "historical_text_review_complete": false,
+    "visual_evaluation_complete": false,
+    "quality_flags": [],
+    "scope_note": "",
+    "verified_current_hours": null,
+    "verified_current_prices": null
+  },
+  {
+    "candidate_id": "Q4702240",
+    "site_id": "Q4702240",
+    "name": "Médersa Al-Attarine",
+    "city": "Fès",
+    "country": "Maroc",
+    "category": "médersa",
+    "aliases": [
+      "Médersa Attarine"
+    ],
+    "metadata_source": "https://www.wikidata.org/wiki/Q4702240",
+    "source_snapshot": "sources/Fes-entities.json",
+    "metadata_status": "country_and_city_area_checked_not_field_verified",
+    "coordinates": {
+      "latitude": 34.065138888889,
+      "longitude": -4.9736111111111,
+      "altitude": null,
+      "precision": 2.7777777777778e-05,
+      "globe": "http://www.wikidata.org/entity/Q2"
+    },
+    "frwiki": "Médersa Attarine",
+    "enwiki": "Al-Attarine Madrasa",
+    "image_candidates": [
+      "Medresa Al-Attarin(js)3.jpg",
+      "Medina of Fez 062023 161.jpg"
+    ],
+    "image_license_review_complete": false,
+    "historical_text_review_complete": false,
+    "visual_evaluation_complete": false,
+    "quality_flags": [],
+    "scope_note": "",
+    "verified_current_hours": null,
+    "verified_current_prices": null
+  },
+  {
+    "candidate_id": "Q3042276",
+    "site_id": "Q3042276",
+    "name": "Palais Royal De Fès",
+    "city": "Fès",
+    "country": "Maroc",
+    "category": "palais",
+    "aliases": [
+      "Dar al-Makhzen"
+    ],
+    "metadata_source": "https://www.wikidata.org/wiki/Q3042276",
+    "source_snapshot": "sources/Fes-entities.json",
+    "metadata_status": "country_and_city_area_checked_not_field_verified",
+    "coordinates": {
+      "latitude": 34.05316,
+      "longitude": -4.99363,
+      "altitude": null,
+      "precision": 1e-05,
+      "globe": "http://www.wikidata.org/entity/Q2"
+    },
+    "frwiki": "Palais royal (Fès)",
+    "enwiki": "Royal Palace of Fez",
+    "image_candidates": [
+      "Fes - Palau Reial - Porta principal.JPG"
+    ],
+    "image_license_review_complete": false,
+    "historical_text_review_complete": false,
+    "visual_evaluation_complete": false,
+    "quality_flags": [],
+    "scope_note": "Distinguer la façade et les portes visibles des espaces intérieurs ; accès actuels non vérifiés.",
+    "verified_current_hours": null,
+    "verified_current_prices": null
+  },
+  {
+    "candidate_id": "Q609167",
+    "site_id": "Q609167",
+    "name": "Fondouk Nejjarine",
+    "city": "Fès",
+    "country": "Maroc",
+    "category": "fondouk et musée",
+    "aliases": [],
+    "metadata_source": "https://www.wikidata.org/wiki/Q609167",
+    "source_snapshot": "sources/additional-entities.json",
+    "metadata_status": "country_and_city_area_checked_not_field_verified",
+    "coordinates": {
+      "latitude": 34.064861111111114,
+      "longitude": -4.9758611111111115,
+      "altitude": null,
+      "precision": 2.777777777777778e-05,
+      "globe": "http://www.wikidata.org/entity/Q2"
+    },
+    "frwiki": "Fondouk Nejjarine",
+    "enwiki": "Funduq al-Najjarin",
+    "image_candidates": [
+      "Fes - Fondouk el-Nejjarine.jpg"
+    ],
+    "image_license_review_complete": false,
+    "historical_text_review_complete": false,
+    "visual_evaluation_complete": false,
+    "quality_flags": [],
+    "scope_note": "Distinguer le bâtiment historique du musée des arts et métiers du bois.",
+    "verified_current_hours": null,
+    "verified_current_prices": null
+  },
+  {
+    "candidate_id": "Q48815525",
+    "site_id": "Q48815525",
+    "name": "Tannerie Chouara",
+    "city": "Fès",
+    "country": "Maroc",
+    "category": "site artisanal",
+    "aliases": [
+      "Tannerie Chouara de Fès"
+    ],
+    "metadata_source": "https://www.wikidata.org/wiki/Q48815525",
+    "source_snapshot": "sources/Fes-entities.json",
+    "metadata_status": "country_and_city_area_checked_not_field_verified",
+    "coordinates": {
+      "latitude": 34.066088888889,
+      "longitude": -4.9709777777778,
+      "altitude": null,
+      "precision": 2.7777777777778e-06,
+      "globe": "http://www.wikidata.org/entity/Q2"
+    },
+    "frwiki": null,
+    "enwiki": "Chouara Tannery",
+    "image_candidates": [
+      "Leather tanning, Fes.jpg"
+    ],
+    "image_license_review_complete": false,
+    "historical_text_review_complete": false,
+    "visual_evaluation_complete": false,
+    "quality_flags": [
+      "no_linked_french_wikipedia_article_in_snapshot"
+    ],
+    "scope_note": "Site artisanal en activité ; ne pas transformer les tanneries de la ville en un seul monument générique.",
+    "verified_current_hours": null,
+    "verified_current_prices": null
+  },
+  {
+    "candidate_id": "Q2911082",
+    "site_id": "Q2911082",
+    "name": "Borj Nord",
+    "city": "Fès",
+    "country": "Maroc",
+    "category": "fort",
+    "aliases": [],
+    "metadata_source": "https://www.wikidata.org/wiki/Q2911082",
+    "source_snapshot": "sources/Fes-entities.json",
+    "metadata_status": "country_and_city_area_checked_not_field_verified",
+    "coordinates": {
+      "latitude": 34.067179,
+      "longitude": -4.984918,
+      "altitude": null,
+      "precision": 1e-06,
+      "globe": "http://www.wikidata.org/entity/Q2"
+    },
+    "frwiki": "Borj Nord",
+    "enwiki": "Borj Nord",
+    "image_candidates": [
+      "Kasbah Cherarda(js).jpg"
+    ],
+    "image_license_review_complete": false,
+    "historical_text_review_complete": false,
+    "visual_evaluation_complete": false,
+    "quality_flags": [
+      "image_filename_suggests_another_site_review_required"
+    ],
+    "scope_note": "L’image P18 déclarée se nomme Kasbah Cherarda(js).jpg : correspondance à vérifier avant toute utilisation visuelle.",
+    "verified_current_hours": null,
+    "verified_current_prices": null
+  },
+  {
+    "candidate_id": "Q58897414",
+    "site_id": "Q58897414",
+    "name": "Borj Sud",
+    "city": "Fès",
+    "country": "Maroc",
+    "category": "fort",
+    "aliases": [],
+    "metadata_source": "https://www.wikidata.org/wiki/Q58897414",
+    "source_snapshot": "sources/Fes-entities.json",
+    "metadata_status": "country_and_city_area_checked_not_field_verified",
+    "coordinates": {
+      "latitude": 34.054032,
+      "longitude": -4.969998,
+      "altitude": null,
+      "precision": 1e-06,
+      "globe": "http://www.wikidata.org/entity/Q2"
+    },
+    "frwiki": null,
+    "enwiki": "Borj Sud",
+    "image_candidates": [
+      "Borj sud2.jpg"
+    ],
+    "image_license_review_complete": false,
+    "historical_text_review_complete": false,
+    "visual_evaluation_complete": false,
+    "quality_flags": [
+      "no_linked_french_wikipedia_article_in_snapshot"
+    ],
+    "scope_note": "Site distinct de Borj Nord ; prévoir une fiche et des photos séparées.",
+    "verified_current_hours": null,
+    "verified_current_prices": null
+  }
+]

@@ -1,0 +1,921 @@
+{
+  "entities": {
+    "Q9163659": {
+      "type": "item",
+      "id": "Q9163659",
+      "labels": {
+        "en": {
+          "language": "en",
+          "value": "Bab ar-Rwah"
+        },
+        "fr": {
+          "language": "fr",
+          "value": "Bab ar-Rwah"
+        }
+      },
+      "descriptions": {
+        "en": {
+          "language": "en",
+          "value": "gate in Rabat, Morocco"
+        }
+      },
+      "claims": {
+        "P625": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P625",
+              "hash": "094dbe3b45eb312f53ec2282721caa347facdc67",
+              "datavalue": {
+                "value": {
+                  "latitude": 34.012833333333,
+                  "longitude": -6.8376388888889,
+                  "altitude": null,
+                  "precision": 1e-06,
+                  "globe": "http://www.wikidata.org/entity/Q2"
+                },
+                "type": "globecoordinate"
+              },
+              "datatype": "globe-coordinate"
+            },
+            "type": "statement",
+            "id": "Q9163659$BFB986CB-DD5C-4B53-B904-969E21CA910C",
+            "rank": "normal"
+          }
+        ],
+        "P17": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P17",
+              "hash": "882c688f4851777a2a3ec6d7ab769323b175f3c7",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 1028,
+                  "id": "Q1028"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q9163659$AA84BFCE-4C18-4C4F-9468-02C5A38754CE",
+            "rank": "normal"
+          }
+        ],
+        "P18": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P18",
+              "hash": "9c48e512e6e7ad0540db7120528d7ddd49309c66",
+              "datavalue": {
+                "value": "باب الرواح.jpg",
+                "type": "string"
+              },
+              "datatype": "commonsMedia"
+            },
+            "type": "statement",
+            "id": "Q9163659$3c23fc24-416a-6ec7-c52e-2bc399a07581",
+            "rank": "normal"
+          }
+        ],
+        "P5694": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P5694",
+              "hash": "e2c50186f7f2245907673a2172511f340f5a9f24",
+              "datavalue": {
+                "value": "pc_architecture/tm:0066",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q9163659$4BFA859E-9E9B-4512-AD00-CC2F506CEE76",
+            "rank": "normal"
+          }
+        ],
+        "P31": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P31",
+              "hash": "30601b739e9c4bc9d0b0251caa0f9cc1c16ed38c",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 82117,
+                  "id": "Q82117"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q9163659$562b7176-436e-f4fb-c39d-4d4cededeca0",
+            "rank": "normal"
+          }
+        ],
+        "P131": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P131",
+              "hash": "d18ab1364822983cc90285b54607d21ffaddc413",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 3551,
+                  "id": "Q3551"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q9163659$08fbae67-4f92-32c4-9306-38a0565419b2",
+            "rank": "normal"
+          }
+        ],
+        "P1435": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P1435",
+              "hash": "031af0d8ea9ce877a6f14dc48d8002cb515b06d9",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 57338034,
+                  "id": "Q57338034"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q9163659$B21A827D-8600-4209-9349-8F4F688250D2",
+            "rank": "normal"
+          }
+        ],
+        "P373": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P373",
+              "hash": "9d9d741c3f02c77f60aa4d1dd1d344b63381b20c",
+              "datavalue": {
+                "value": "Bab Rouah",
+                "type": "string"
+              },
+              "datatype": "string"
+            },
+            "type": "statement",
+            "id": "Q9163659$7F455CE3-6610-4AE4-B143-0447481C174F",
+            "rank": "normal"
+          }
+        ],
+        "P2671": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P2671",
+              "hash": "d282d8941c8a3323315da15180aaed33cfdfa282",
+              "datavalue": {
+                "value": "/g/122d8fg0",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q9163659$43E56046-306D-4781-8596-DBF6C1294F02",
+            "rank": "normal"
+          }
+        ],
+        "P366": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P366",
+              "hash": "a6a5408e4b7d162b0595b3134c76ff3b8caef9ab",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 1007870,
+                  "id": "Q1007870"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q9163659$ad9313f0-435c-8901-d7e3-f308a1b27da5",
+            "rank": "normal"
+          }
+        ],
+        "P571": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P571",
+              "hash": "61327d42b36ff378dfd25c8fe6e858d527c98f48",
+              "datavalue": {
+                "value": {
+                  "time": "+1197-00-00T00:00:00Z",
+                  "timezone": 0,
+                  "before": 0,
+                  "after": 0,
+                  "precision": 9,
+                  "calendarmodel": "http://www.wikidata.org/entity/Q1985786"
+                },
+                "type": "time"
+              },
+              "datatype": "time"
+            },
+            "type": "statement",
+            "id": "Q9163659$9b57b4ee-41dc-5bf4-1aee-0a3675969ff1",
+            "rank": "normal"
+          }
+        ],
+        "P88": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P88",
+              "hash": "06c2ba58604eac791751a021dd172591377f5841",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 455739,
+                  "id": "Q455739"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q9163659$ea8f4f5e-404a-0d77-10f7-db350bcaf321",
+            "rank": "normal"
+          }
+        ],
+        "P149": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P149",
+              "hash": "2b721d5987f757f33650185db67b74b725fb988f",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 116007157,
+                  "id": "Q116007157"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q9163659$4c2e319e-4783-feb9-d327-a92cedf5a881",
+            "rank": "normal"
+          }
+        ],
+        "P1552": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P1552",
+              "hash": "6ffeffdaac56a41193bedd777eda23311e8934f8",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 4890352,
+                  "id": "Q4890352"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q9163659$6598f114-4cc9-2965-320b-9b3767284e59",
+            "rank": "normal"
+          }
+        ],
+        "P2670": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P2670",
+              "hash": "52c9b3e5d6425ef853d1f09091513246b20628dd",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 2142681,
+                  "id": "Q2142681"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q9163659$afd1836e-4a9e-45fe-a961-efca4c294dd9",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "9d426b3eb9e2f057ae88b2ad809be100dbb3da86",
+                "snaks": {
+                  "P854": [
+                    {
+                      "snaktype": "value",
+                      "property": "P854",
+                      "hash": "df50f79aeb0f58b155290189b4950e047ad66b8d",
+                      "datavalue": {
+                        "value": "https://mosqpedia.org/wp-content/uploads/2024/09/OzNCnvrAwbuRXdVRKZBl4uI51mXG9yvOH4KZGq4q.pdf",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ],
+                  "P304": [
+                    {
+                      "snaktype": "value",
+                      "property": "P304",
+                      "hash": "9be98eff45dfd88dff390727c0b3f88ad713d8e3",
+                      "datavalue": {
+                        "value": "244",
+                        "type": "string"
+                      },
+                      "datatype": "string"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854",
+                  "P304"
+                ]
+              }
+            ]
+          }
+        ],
+        "P2049": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P2049",
+              "hash": "d34299bab63ead0c9c97f5cda6dec14a8e732dcb",
+              "datavalue": {
+                "value": {
+                  "amount": "+28",
+                  "unit": "http://www.wikidata.org/entity/Q11573"
+                },
+                "type": "quantity"
+              },
+              "datatype": "quantity"
+            },
+            "type": "statement",
+            "id": "Q9163659$659d7b56-4ab2-d3b6-5f59-b584a9f3444e",
+            "rank": "normal"
+          }
+        ],
+        "P2048": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P2048",
+              "hash": "747ddb074ca7929f740f553bd6b48dc0497649f1",
+              "datavalue": {
+                "value": {
+                  "amount": "+12",
+                  "unit": "http://www.wikidata.org/entity/Q11573"
+                },
+                "type": "quantity"
+              },
+              "datatype": "quantity"
+            },
+            "type": "statement",
+            "id": "Q9163659$a2b9608f-433a-966d-b420-3eefd7d69130",
+            "rank": "normal"
+          }
+        ]
+      },
+      "sitelinks": {
+        "arwiki": {
+          "site": "arwiki",
+          "title": "باب الرواح",
+          "badges": []
+        },
+        "arzwiki": {
+          "site": "arzwiki",
+          "title": "باب الرواح",
+          "badges": []
+        },
+        "bnwiki": {
+          "site": "bnwiki",
+          "title": "বাব এর-রৌয়াহ",
+          "badges": []
+        },
+        "cawiki": {
+          "site": "cawiki",
+          "title": "Bab er-Rouah",
+          "badges": []
+        },
+        "commonswiki": {
+          "site": "commonswiki",
+          "title": "Category:Bab Rouah",
+          "badges": []
+        },
+        "dewiki": {
+          "site": "dewiki",
+          "title": "Bab er Rouah",
+          "badges": []
+        },
+        "enwiki": {
+          "site": "enwiki",
+          "title": "Bab er-Rouah",
+          "badges": []
+        },
+        "eswiki": {
+          "site": "eswiki",
+          "title": "Bab er-Rouah",
+          "badges": []
+        },
+        "plwiki": {
+          "site": "plwiki",
+          "title": "Bab ar-Rwah",
+          "badges": []
+        },
+        "urwiki": {
+          "site": "urwiki",
+          "title": "باب الرواح",
+          "badges": []
+        }
+      }
+    },
+    "Q58897211": {
+      "type": "item",
+      "id": "Q58897211",
+      "labels": {
+        "fr": {
+          "language": "fr",
+          "value": "Bab El Had"
+        },
+        "en": {
+          "language": "en",
+          "value": "Bab El Had"
+        }
+      },
+      "descriptions": {
+        "fr": {
+          "language": "fr",
+          "value": "site du patrimoine culturel marocain"
+        },
+        "en": {
+          "language": "en",
+          "value": "Moroccan cultural heritage site"
+        }
+      },
+      "claims": {
+        "P31": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P31",
+              "hash": "30601b739e9c4bc9d0b0251caa0f9cc1c16ed38c",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 82117,
+                  "id": "Q82117"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q58897211$9A7F5BA0-F806-4479-BA40-705AAE7988D1",
+            "rank": "normal"
+          }
+        ],
+        "P5694": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P5694",
+              "hash": "396f73413814ad5c369d6aa975587b9987d7b93c",
+              "datavalue": {
+                "value": "pc_architecture/tm:0063",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q58897211$40188012-995D-4223-82DF-52AA88F55471",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "65168d9fe0657fe7ab872fdd6703ad9eab300bd1",
+                "snaks": {
+                  "P854": [
+                    {
+                      "snaktype": "value",
+                      "property": "P854",
+                      "hash": "20e0324a69c8d7e696525cd31ed374133267ff0c",
+                      "datavalue": {
+                        "value": "http://idpc.ma/view/pc_architecture/tm:0063",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "8f896a71d465c977998a14a0fb231931f81a8148",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2018-11-20T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854",
+                  "P813"
+                ]
+              }
+            ]
+          }
+        ],
+        "P17": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P17",
+              "hash": "882c688f4851777a2a3ec6d7ab769323b175f3c7",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 1028,
+                  "id": "Q1028"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q58897211$9FBFF064-1CD1-4275-8A62-E79275D3E350",
+            "rank": "normal"
+          }
+        ],
+        "P131": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P131",
+              "hash": "d18ab1364822983cc90285b54607d21ffaddc413",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 3551,
+                  "id": "Q3551"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q58897211$dd98e2ed-48f5-616a-b621-595e087d36f3",
+            "rank": "normal"
+          }
+        ],
+        "P625": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P625",
+              "hash": "04c483aa609b0ae8b2fe2d46e6f60b09a065957f",
+              "datavalue": {
+                "value": {
+                  "latitude": 34.021964,
+                  "longitude": -6.840365,
+                  "altitude": null,
+                  "precision": 1e-06,
+                  "globe": "http://www.wikidata.org/entity/Q2"
+                },
+                "type": "globecoordinate"
+              },
+              "datatype": "globe-coordinate"
+            },
+            "type": "statement",
+            "id": "Q58897211$957c6634-4919-fe94-2413-383a23e669a5",
+            "rank": "normal"
+          }
+        ],
+        "P18": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P18",
+              "hash": "b59dd1acae6fa752a85de0ecca4a90fcd9268ebd",
+              "datavalue": {
+                "value": "Bab El Hadd 2.jpg",
+                "type": "string"
+              },
+              "datatype": "commonsMedia"
+            },
+            "type": "statement",
+            "id": "Q58897211$50ba76e6-4661-db2c-a902-cc1115cfefa0",
+            "rank": "normal"
+          }
+        ],
+        "P373": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P373",
+              "hash": "9e659ad596b5a41aa04ba122b865ae20f5669a4b",
+              "datavalue": {
+                "value": "Bab El Had",
+                "type": "string"
+              },
+              "datatype": "string"
+            },
+            "type": "statement",
+            "id": "Q58897211$a5fb0da6-4c1f-8d72-aa93-9cf682d25c1c",
+            "rank": "normal"
+          }
+        ],
+        "P1435": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P1435",
+              "hash": "031af0d8ea9ce877a6f14dc48d8002cb515b06d9",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 57338034,
+                  "id": "Q57338034"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q58897211$dcd528a6-48c1-25f9-2f20-d3cb0beff091",
+            "rank": "normal"
+          }
+        ]
+      },
+      "sitelinks": {
+        "commonswiki": {
+          "site": "commonswiki",
+          "title": "Category:Bab El Had",
+          "badges": []
+        }
+      }
+    },
+    "Q27521299": {
+      "type": "item",
+      "id": "Q27521299",
+      "labels": {
+        "en": {
+          "language": "en",
+          "value": "Bab el Had"
+        }
+      },
+      "descriptions": {},
+      "claims": {
+        "P17": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P17",
+              "hash": "882c688f4851777a2a3ec6d7ab769323b175f3c7",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 1028,
+                  "id": "Q1028"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q27521299$A252C935-717C-4377-B227-9FBB857A56CA",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "d3c113a6a6ffeb49d050656bfa5e7812b405e133",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "7648f66055f57f6227dd1f872bc4ed26c70da7c6",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 1194038,
+                          "id": "Q1194038"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P577": [
+                    {
+                      "snaktype": "value",
+                      "property": "P577",
+                      "hash": "a372c95b03a3464736c5fd1d7ed86176f0c04973",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2018-06-11T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ],
+                  "P2326": [
+                    {
+                      "snaktype": "value",
+                      "property": "P2326",
+                      "hash": "9564a82bbb6c6c4696e423ae4b2bcd35455fb8bb",
+                      "datavalue": {
+                        "value": "-33424",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P577",
+                  "P2326"
+                ]
+              }
+            ]
+          }
+        ],
+        "P625": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P625",
+              "hash": "f4c66de8beca0449eca06ca32596c946a0bd95bf",
+              "datavalue": {
+                "value": {
+                  "latitude": 34.53,
+                  "longitude": -4.36,
+                  "altitude": null,
+                  "precision": 1e-05,
+                  "globe": "http://www.wikidata.org/entity/Q2"
+                },
+                "type": "globecoordinate"
+              },
+              "datatype": "globe-coordinate"
+            },
+            "type": "statement",
+            "id": "Q27521299$5BE2B258-CC95-4539-AD8A-68D914FD1B1B",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "bd49d3e4f67bc460ce7a06b6ac3027347cf5ee55",
+                "snaks": {
+                  "P143": [
+                    {
+                      "snaktype": "value",
+                      "property": "P143",
+                      "hash": "e84b0343e79e2a9aa8abadd7301051e15fba52d6",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 169514,
+                          "id": "Q169514"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P143"
+                ]
+              }
+            ]
+          }
+        ],
+        "P1566": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P1566",
+              "hash": "f5caabfc0f9e1cfb0a82b715b0e62e2ae2627c43",
+              "datavalue": {
+                "value": "2548374",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q27521299$1398E3BA-FCA5-4A4F-903C-731894B59A31",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "bd49d3e4f67bc460ce7a06b6ac3027347cf5ee55",
+                "snaks": {
+                  "P143": [
+                    {
+                      "snaktype": "value",
+                      "property": "P143",
+                      "hash": "e84b0343e79e2a9aa8abadd7301051e15fba52d6",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 169514,
+                          "id": "Q169514"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P143"
+                ]
+              }
+            ]
+          }
+        ],
+        "P31": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P31",
+              "hash": "ffbe4b670167f1bb1af17543d4e8a3e5cce1606a",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 133056,
+                  "id": "Q133056"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q27521299$92708A01-E6E5-44F7-9FD5-33C9B7BBEE9C",
+            "rank": "normal"
+          }
+        ],
+        "P2326": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P2326",
+              "hash": "9564a82bbb6c6c4696e423ae4b2bcd35455fb8bb",
+              "datavalue": {
+                "value": "-33424",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q27521299$D222A0C6-4925-419B-9CCA-B8580085683C",
+            "rank": "normal"
+          }
+        ]
+      },
+      "sitelinks": {
+        "cebwiki": {
+          "site": "cebwiki",
+          "title": "Bab el Had",
+          "badges": []
+        }
+      }
+    }
+  },
+  "success": 1
+}

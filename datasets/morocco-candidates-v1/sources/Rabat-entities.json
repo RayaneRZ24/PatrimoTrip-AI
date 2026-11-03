@@ -1,0 +1,809 @@
+{
+  "entities": {
+    "-1": {
+      "site": "enwiki",
+      "title": "Bab Rouah",
+      "missing": ""
+    },
+    "-2": {
+      "site": "enwiki",
+      "title": "Bab el Had",
+      "missing": ""
+    },
+    "-3": {
+      "site": "enwiki",
+      "title": "Andalusian Gardens, Rabat",
+      "missing": ""
+    },
+    "Q2569036": {
+      "type": "item",
+      "id": "Q2569036",
+      "labels": {
+        "fr": {
+          "language": "fr",
+          "value": "Kasbah des Oudaias"
+        },
+        "en": {
+          "language": "en",
+          "value": "Kasbah of the Udayas"
+        }
+      },
+      "descriptions": {
+        "fr": {
+          "language": "fr",
+          "value": "site du patrimoine culturel marocain"
+        },
+        "en": {
+          "language": "en",
+          "value": "Moroccan cultural heritage site"
+        }
+      },
+      "claims": {
+        "P625": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P625",
+              "hash": "c8793cc544874e7a04c2d7b1cd34573ba537ad50",
+              "datavalue": {
+                "value": {
+                  "latitude": 34.03055555555556,
+                  "longitude": -6.835555555555556,
+                  "altitude": null,
+                  "precision": 0.0002777777777777778,
+                  "globe": "http://www.wikidata.org/entity/Q2"
+                },
+                "type": "globecoordinate"
+              },
+              "datatype": "globe-coordinate"
+            },
+            "type": "statement",
+            "id": "q2569036$E1E812B7-12FA-46EE-B12C-BD0D0F54CCC5",
+            "rank": "normal"
+          }
+        ],
+        "P17": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P17",
+              "hash": "882c688f4851777a2a3ec6d7ab769323b175f3c7",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 1028,
+                  "id": "Q1028"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "q2569036$110DA2C2-41E2-4BC2-BAD7-345A29F800CD",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "288ab581e7d2d02995a26dfa8b091d96e78457fc",
+                "snaks": {
+                  "P143": [
+                    {
+                      "snaktype": "value",
+                      "property": "P143",
+                      "hash": "6a164248fc96bfa583bbb495cb63ae6401ec203c",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 206855,
+                          "id": "Q206855"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P143"
+                ]
+              }
+            ]
+          }
+        ],
+        "P131": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P131",
+              "hash": "d18ab1364822983cc90285b54607d21ffaddc413",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 3551,
+                  "id": "Q3551"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q2569036$C73ED26F-32FA-405E-84E4-55873FC3BCBE",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "d4bd87b862b12d99d26e86472d44f26858dee639",
+                "snaks": {
+                  "P143": [
+                    {
+                      "snaktype": "value",
+                      "property": "P143",
+                      "hash": "f30cbd35620c4ea6d0633aaf0210a8916130469b",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 8447,
+                          "id": "Q8447"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P143"
+                ]
+              }
+            ]
+          }
+        ],
+        "P646": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P646",
+              "hash": "8d9fec26418e4bcf73cf918a65b45c238dafc03b",
+              "datavalue": {
+                "value": "/m/02vqhhc",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q2569036$B38B327C-6B3B-484A-9331-CDAAC3CA48BC",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "2b00cb481cddcac7623114367489b5c194901c4a",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "a94b740202b097dd33355e0e6c00e54b9395e5e0",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 15241312,
+                          "id": "Q15241312"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P577": [
+                    {
+                      "snaktype": "value",
+                      "property": "P577",
+                      "hash": "fde79ecb015112d2f29229ccc1ec514ed3e71fa2",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2013-10-28T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P577"
+                ]
+              }
+            ]
+          }
+        ],
+        "P31": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P31",
+              "hash": "dd1da0b384ebcfa8e952f15a90f4f57b63428b79",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 2434238,
+                  "id": "Q2434238"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q2569036$6C1AB98B-949C-492D-BF84-247BBF0F3FDB",
+            "rank": "normal"
+          },
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P31",
+              "hash": "ea391dc93d4a1793095ca3b7abec3cbf20c0da7b",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 358,
+                  "id": "Q358"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q2569036$87d0478a-47ea-f203-c074-7659210ee0c7",
+            "rank": "normal"
+          }
+        ],
+        "P18": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P18",
+              "hash": "493dea77bdf2d29d2b76f7461a208653e7b9b321",
+              "datavalue": {
+                "value": "Kasbah Oudayas exterior.jpg",
+                "type": "string"
+              },
+              "datatype": "commonsMedia"
+            },
+            "type": "statement",
+            "id": "Q2569036$0986961B-9072-4A61-B365-B8108FEC5A7D",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "732ec1c90a6f0694c7db9a71bf09fe7f2b674172",
+                "snaks": {
+                  "P143": [
+                    {
+                      "snaktype": "value",
+                      "property": "P143",
+                      "hash": "9123b0de1cc9c3954366ba797d598e4e1ea4146f",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 10000,
+                          "id": "Q10000"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P143"
+                ]
+              }
+            ]
+          }
+        ],
+        "P373": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P373",
+              "hash": "e09693ffad3b422642a4d336537bb9ddc4fd1971",
+              "datavalue": {
+                "value": "Kasbah of the Udayas",
+                "type": "string"
+              },
+              "datatype": "string"
+            },
+            "type": "statement",
+            "id": "Q2569036$5b53664e-46ff-0ff7-0922-af1b0af7ee17",
+            "rank": "normal"
+          }
+        ],
+        "P5694": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P5694",
+              "hash": "cde78ce527835f49d22f4637f7ab746c8aa9f2a4",
+              "datavalue": {
+                "value": "pc_architecture/sanae:190014",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q2569036$0434bc63-4166-ea6d-8f67-241e7a6ae881",
+            "rank": "normal"
+          },
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P5694",
+              "hash": "b7a7182f6c839a2db6e44fc67c3ad8ceba99505e",
+              "datavalue": {
+                "value": "pc_architecture/sanae:280022",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q2569036$59E51C10-9F60-4B4C-81CF-C5B5A6D2C003",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "c08e989bd1f28a7d514f0eb25cc685d64b7a560e",
+                "snaks": {
+                  "P854": [
+                    {
+                      "snaktype": "value",
+                      "property": "P854",
+                      "hash": "c30a2086f0d88dfcd4d8bfaab8b5a76b960713af",
+                      "datavalue": {
+                        "value": "http://idpc.ma/view/pc_architecture/sanae:280022",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "e699e40a3ae693ac58d287f5c9d8e2a17266181e",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2018-11-21T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854",
+                  "P813"
+                ]
+              }
+            ]
+          }
+        ],
+        "P1435": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P1435",
+              "hash": "031af0d8ea9ce877a6f14dc48d8002cb515b06d9",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 57338034,
+                  "id": "Q57338034"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q2569036$dd8a861d-4a61-35dc-0801-978b97d7578f",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "573b6a7568aece4b07fa4b1625670805942ce57c",
+                "snaks": {
+                  "P854": [
+                    {
+                      "snaktype": "value",
+                      "property": "P854",
+                      "hash": "74d1eb8a34c0d178d037fb69747cf828dc46c2b4",
+                      "datavalue": {
+                        "value": "http://idpc.ma/",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ],
+                  "P1065": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1065",
+                      "hash": "4f81eac41760ea8c18df867f5c8efe1afd0d985c",
+                      "datavalue": {
+                        "value": "https://web.archive.org/web/20190212015902/http://www.idpc.ma/",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ],
+                  "P2960": [
+                    {
+                      "snaktype": "value",
+                      "property": "P2960",
+                      "hash": "0c6e7a94dd7ee74cc50392daea1de3a48d533637",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2019-02-12T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854",
+                  "P1065",
+                  "P2960"
+                ]
+              }
+            ]
+          }
+        ],
+        "P7772": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P7772",
+              "hash": "e9948bb963782447d458f5dcf81e7d9496e56da0",
+              "datavalue": {
+                "value": "kasbah-of-the-udayas",
+                "type": "string"
+              },
+              "datatype": "external-id"
+            },
+            "type": "statement",
+            "id": "Q2569036$1F8D33A5-38B0-499F-8E3C-8420DB81BF7F",
+            "rank": "normal"
+          }
+        ],
+        "P2670": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P2670",
+              "hash": "f15bec5bb6c0e384e2a66c91bf012b1936d55f2f",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 32815,
+                  "id": "Q32815"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q2569036$a3d3c5a3-48c0-1b83-9540-594b3805ef80",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "9d426b3eb9e2f057ae88b2ad809be100dbb3da86",
+                "snaks": {
+                  "P854": [
+                    {
+                      "snaktype": "value",
+                      "property": "P854",
+                      "hash": "df50f79aeb0f58b155290189b4950e047ad66b8d",
+                      "datavalue": {
+                        "value": "https://mosqpedia.org/wp-content/uploads/2024/09/OzNCnvrAwbuRXdVRKZBl4uI51mXG9yvOH4KZGq4q.pdf",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ],
+                  "P304": [
+                    {
+                      "snaktype": "value",
+                      "property": "P304",
+                      "hash": "9be98eff45dfd88dff390727c0b3f88ad713d8e3",
+                      "datavalue": {
+                        "value": "244",
+                        "type": "string"
+                      },
+                      "datatype": "string"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854",
+                  "P304"
+                ]
+              }
+            ]
+          }
+        ],
+        "P206": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P206",
+              "hash": "ef7d1c418b6727d353cf1a57adf35af3a838ca8b",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 894940,
+                  "id": "Q894940"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q2569036$e3299d68-4253-aa45-26a3-6f5012b85b5f",
+            "rank": "normal",
+            "references": [
+              {
+                "hash": "6f392107be467dbc2ba1a5626c44c0a73905d6aa",
+                "snaks": {
+                  "P854": [
+                    {
+                      "snaktype": "value",
+                      "property": "P854",
+                      "hash": "0f598c73de0cec39652b27ba8d35412bdceb2385",
+                      "datavalue": {
+                        "value": "https://whc.unesco.org/archive/advisory_body_evaluation/1401.pdf",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ],
+                  "P304": [
+                    {
+                      "snaktype": "value",
+                      "property": "P304",
+                      "hash": "6c6d512c48926ffe971440406cdac3f31987cde0",
+                      "datavalue": {
+                        "value": "84",
+                        "type": "string"
+                      },
+                      "datatype": "string"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854",
+                  "P304"
+                ]
+              }
+            ]
+          }
+        ],
+        "P149": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P149",
+              "hash": "2b721d5987f757f33650185db67b74b725fb988f",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 116007157,
+                  "id": "Q116007157"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "qualifiers": {
+              "P518": [
+                {
+                  "snaktype": "value",
+                  "property": "P518",
+                  "hash": "20ff241623aa9fa2a514ec1425adf8964d00e6f0",
+                  "datavalue": {
+                    "value": {
+                      "entity-type": "item",
+                      "numeric-id": 42948,
+                      "id": "Q42948"
+                    },
+                    "type": "wikibase-entityid"
+                  },
+                  "datatype": "wikibase-item"
+                }
+              ]
+            },
+            "qualifiers-order": [
+              "P518"
+            ],
+            "id": "Q2569036$b063ffde-4aa7-f21a-bb70-3dd5788957a6",
+            "rank": "normal"
+          }
+        ],
+        "P793": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P793",
+              "hash": "ae652146e3852418b417b93c0bc5633e5e7a18a1",
+              "datavalue": {
+                "value": {
+                  "entity-type": "item",
+                  "numeric-id": 2193950,
+                  "id": "Q2193950"
+                },
+                "type": "wikibase-entityid"
+              },
+              "datatype": "wikibase-item"
+            },
+            "type": "statement",
+            "id": "Q2569036$7850544c-4699-fd25-3be7-90db0aec0e40",
+            "rank": "normal"
+          }
+        ],
+        "P571": [
+          {
+            "mainsnak": {
+              "snaktype": "value",
+              "property": "P571",
+              "hash": "2a860125f42651874fcdea09635ff842cffdb157",
+              "datavalue": {
+                "value": {
+                  "time": "+1200-00-00T00:00:00Z",
+                  "timezone": 0,
+                  "before": 0,
+                  "after": 0,
+                  "precision": 7,
+                  "calendarmodel": "http://www.wikidata.org/entity/Q1985786"
+                },
+                "type": "time"
+              },
+              "datatype": "time"
+            },
+            "type": "statement",
+            "id": "Q2569036$a72c5dfc-4188-d958-78a6-4457795d0d6d",
+            "rank": "normal"
+          }
+        ]
+      },
+      "sitelinks": {
+        "arwiki": {
+          "site": "arwiki",
+          "title": "قصبة الوداية",
+          "badges": []
+        },
+        "arywiki": {
+          "site": "arywiki",
+          "title": "قصبة لوداية",
+          "badges": []
+        },
+        "cawiki": {
+          "site": "cawiki",
+          "title": "Alcassaba dels Oudayas",
+          "badges": []
+        },
+        "commonswiki": {
+          "site": "commonswiki",
+          "title": "Category:Kasbah of the Udayas",
+          "badges": []
+        },
+        "dewiki": {
+          "site": "dewiki",
+          "title": "Kasbah des Oudaïas",
+          "badges": []
+        },
+        "enwiki": {
+          "site": "enwiki",
+          "title": "Kasbah of the Udayas",
+          "badges": []
+        },
+        "eswiki": {
+          "site": "eswiki",
+          "title": "Qasba de los Udayas",
+          "badges": []
+        },
+        "euwiki": {
+          "site": "euwiki",
+          "title": "Udaiarren kasbah",
+          "badges": []
+        },
+        "fawiki": {
+          "site": "fawiki",
+          "title": "قصبه الاودایه",
+          "badges": []
+        },
+        "frwiki": {
+          "site": "frwiki",
+          "title": "Kasbah des Oudayas",
+          "badges": []
+        },
+        "hywiki": {
+          "site": "hywiki",
+          "title": "Կասբահ Ուդայա",
+          "badges": []
+        },
+        "idwiki": {
+          "site": "idwiki",
+          "title": "Kasbah Udaya",
+          "badges": []
+        },
+        "itwiki": {
+          "site": "itwiki",
+          "title": "Casba degli Oudaïa",
+          "badges": []
+        },
+        "kowiki": {
+          "site": "kowiki",
+          "title": "카스바 우다이아",
+          "badges": []
+        },
+        "nlwiki": {
+          "site": "nlwiki",
+          "title": "Kasba van de Oudaya's",
+          "badges": []
+        },
+        "ptwiki": {
+          "site": "ptwiki",
+          "title": "Casbá dos Udaias",
+          "badges": []
+        },
+        "ruwiki": {
+          "site": "ruwiki",
+          "title": "Касба Удая",
+          "badges": []
+        },
+        "slwiki": {
+          "site": "slwiki",
+          "title": "Kazba Udajev",
+          "badges": []
+        },
+        "trwiki": {
+          "site": "trwiki",
+          "title": "Avdaya Kasbahı",
+          "badges": []
+        },
+        "ukwiki": {
+          "site": "ukwiki",
+          "title": "Касба Удая",
+          "badges": []
+        },
+        "uzwiki": {
+          "site": "uzwiki",
+          "title": "Kasba Udaya",
+          "badges": []
+        },
+        "vlswiki": {
+          "site": "vlswiki",
+          "title": "Kasbah van d' Oedajas",
+          "badges": []
+        },
+        "zhwiki": {
+          "site": "zhwiki",
+          "title": "乌达亚斯城堡",
+          "badges": []
+        }
+      }
+    }
+  },
+  "success": 1
+}
