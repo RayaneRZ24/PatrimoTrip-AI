@@ -82,3 +82,5 @@ Outils : `catalog_search`, `heritage_evidence`, `plan_walk`, `tourism_reference_
 `experiments/hybrid-v1` contient l'application et ses moteurs ; `benchmarks` et les anciens lanceurs conservent les expériences reproductibles. Les photographies et corpus ont leurs propres licences et attributions. `.app-state/`, `models/`, `results/` et les caches ne sont pas versionnés. Les rapports utilisateur ne sont pas publiés dans le dépôt.
 
 Les fiches de monuments sont consultables dans le navigateur et téléchargeables en PDF ; les archives de diagnostic sont séparées. La reprise du dernier monument est explicite. Les règles documentaires distinguent les attributions de construction des projets décoratifs et restaurations, avec abstention quand le corpus ne permet pas de conclure.
+
+Le [pilote de données Marrakech](datasets/morocco-marrakech-v1/README.md) prépare trois monuments marocains. Il contient les métadonnées et photos licenciées ainsi qu’un collecteur de textes. Il reste séparé du catalogue de production jusqu’à la revue des sources et à une nouvelle évaluation visuelle.
