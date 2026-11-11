@@ -1,0 +1,131 @@
+{
+  "review_id": "Q1137533-stockstill-2018-v1",
+  "review_date": "2026-11-11",
+  "site_id": "Q1137533",
+  "status": "comparison_of_user_supplied_wikipedia_excerpts_with_scholarly_source_complete",
+  "source": {
+    "author": "Abbey Stockstill",
+    "title": "A Tale of Two Mosques: Marrakesh’s Masjid al-Jamiʿ al-Kutubiyya",
+    "year": 2018,
+    "printed_page_range": [
+      65,
+      82
+    ],
+    "pdf_pages": 18,
+    "catalogue_url": "https://www.archnet.org/publications/14532",
+    "pdf_sha256": "1cebbc2efbf1d80c68bf498698b1347ec6709d36338c7a543758d3da67fa3237",
+    "access": "PDF supplied by user; catalogue HTTP access blocked in research environment",
+    "public_redistribution_license_verified": false,
+    "pdf_redistributed": false
+  },
+  "comparison_scope": {
+    "wikipedia_revision": 240407324,
+    "input": "Introduction and beginning of History pasted in conversation. Full 17061-character snapshot not available for this review.",
+    "independence_limit": "Separate scholarly publication; not a claim that its cited historical sources are independent of every Wikipedia reference."
+  },
+  "findings": [
+    {
+      "id": "K01",
+      "claim_fr": "Stockstill situe le début du chantier de la première Koutoubia en 1147, sous le patronage de ʿAbd al-Muʾmin.",
+      "printed_pages": [
+        65,
+        66
+      ],
+      "epistemic_status": "reported_by_source"
+    },
+    {
+      "id": "K02",
+      "claim_fr": "La première salle était achevée au plus tard en 1157 dans la chronologie approximative proposée par Stockstill.",
+      "printed_pages": [
+        66
+      ],
+      "epistemic_status": "approximate_timeline_reported_by_source",
+      "caveat": "L’autrice dit ne pas connaître de date enregistrée d’achèvement exacte."
+    },
+    {
+      "id": "K03",
+      "claim_fr": "La construction de la seconde salle semble commencer en 1157 ; elle permet la prière en 1158, sans être achevée avant 1162 au plus tôt selon cette reconstitution.",
+      "printed_pages": [
+        66
+      ],
+      "epistemic_status": "approximate_timeline_reported_by_source",
+      "caveat": "Ne pas convertir cette borne en date certaine d’achèvement en 1162."
+    },
+    {
+      "id": "K04",
+      "claim_fr": "L’autrice rapporte des indices archéologiques de coexistence des deux salles au moins jusqu’au XVIIe siècle ; la première a ensuite été démolie ou laissée à l’abandon.",
+      "printed_pages": [
+        73
+      ],
+      "epistemic_status": "archaeological_interpretation_reported_by_source",
+      "caveat": "Ne pas confondre présence matérielle des deux salles et emploi simultané comme deux mosquées actives."
+    },
+    {
+      "id": "K05",
+      "claim_fr": "L’explication d’une reconstruction pour corriger une simple erreur d’orientation est discutée. Stockstill propose une analyse des références astronomiques, juridiques et politiques de l’orientation.",
+      "printed_pages": [
+        67,
+        69,
+        70,
+        72,
+        73,
+        80,
+        81
+      ],
+      "epistemic_status": "scholarly_argument_not_unanimous_fact"
+    },
+    {
+      "id": "K06",
+      "claim_fr": "Le minaret est analysé comme un élément reliant les deux bâtiments, et non comme une preuve de démolition immédiate du premier.",
+      "printed_pages": [
+        73
+      ],
+      "epistemic_status": "architectural_analysis_reported_by_source"
+    },
+    {
+      "id": "K07",
+      "claim_fr": "Le passage sur une interruption des travaux en 1199 après la mort d’al-Mansur concerne la mosquée de Rabat, pas la fondation de la Koutoubia.",
+      "printed_pages": [
+        79
+      ],
+      "epistemic_status": "entity_scope_verified_in_document",
+      "caveat": "Cela ne prouve pas l’origine de l’erreur de Wikipédia."
+    },
+    {
+      "id": "K08",
+      "claim_fr": "Stockstill identifie Abou Yacoub Youssef comme le fils et successeur de ʿAbd al-Muʾmin dans un passage consacré à Séville.",
+      "printed_pages": [
+        78
+      ],
+      "epistemic_status": "genealogical_statement_with_different_site_scope",
+      "caveat": "Ne pas citer ce passage pour attribuer à ce souverain un chantier précis de la Koutoubia."
+    }
+  ],
+  "hold_from_wikipedia_excerpts": [
+    {
+      "claim": "Début en 1146 après l’entrée à Marrakech, alors que le même extrait situe la conquête en 1147.",
+      "decision": "contradiction_in_supplied_excerpt; do not use without correction and source attribution"
+    },
+    {
+      "claim": "Mosquée actuelle édifiée autour de 1199 par al-Mansur après destruction des premières versions.",
+      "decision": "not_supported_by_compared_scholarly_timeline; hold from retrieval"
+    },
+    {
+      "claim": "Démolition immédiate de la première version avant la seconde.",
+      "decision": "conflicts_with_coexistence_described_on_page_73; hold from retrieval"
+    },
+    {
+      "claim": "Yacoub al-Mansour est le fils et successeur d’Abdelmoumen.",
+      "decision": "genealogical_misattribution; hold from retrieval"
+    }
+  ],
+  "not_established_by_this_review": [
+    "Date exacte d’achèvement du minaret",
+    "Nom d’un architecte individuel de la Koutoubia",
+    "Vérification indépendante de la hauteur de 77 mètres",
+    "Horaires, accès et tarifs actuels"
+  ],
+  "application_imported": false,
+  "full_marrakech_corpus_historical_review_complete": false,
+  "editorial_summary_fr": "La Koutoubia de Marrakech est un complexe religieux almohade dont le chantier commence en 1147 sous le patronage d’Abdelmoumen, selon Abbey Stockstill. Une seconde salle est ajoutée une dizaine d’années plus tard, et les deux salles ont coexisté. Les dates exactes d’achèvement et les raisons de cette transformation doivent être présentées avec les incertitudes discutées par les chercheurs."
+}
